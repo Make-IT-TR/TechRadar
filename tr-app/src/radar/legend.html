@@ -1,0 +1,21 @@
+<template>
+<div class="legends">
+  <div class="legend-container" if.bind="appState.data.activeConfig.colorDimension != '-none-'">
+    <div class="legend-title">${appState.data.activeConfig.colorDimension}</div>
+    <ul class="legend-list">
+      <li repeat.for="c of appState.data.colors" class="legend-list-item">
+        <span innerhtml.bind="colorRenderer(c)"></span>${c}
+      </li>
+    </ul>
+  </div>
+  <div class="legend-container" if.bind="appState.data.activeConfig.sizeDimension != '-none-'">
+    <div class="legend-title">${appState.data.activeConfig.sizeDimension}</div>
+    <ul class="legend-list">
+      <li repeat.for="s of appState.data.size" class="legend-list-item">
+        <span innerhtml.bind="sizeRenderer(s)"></span>${s}
+      </li>
+    </ul>
+    </div>
+    </div>
+ 
+</template>

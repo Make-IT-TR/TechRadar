@@ -1,0 +1,239 @@
+.leftpanel {
+    background: white;
+    display: inline-block;
+    pointer-events: all;
+}
+
+.leftpanel-tab {
+    width: 100%;
+    /*position: absolute;*/
+    z-index: 1;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: lightgray;
+}
+
+
+.lp-tab {
+    width: 149px;
+    height: 60px;
+    float: left;
+    padding: 15px;
+    /* padding-left: 20px; */
+    cursor: pointer;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: lightgray;
+    font-size: 20px;
+    color: black;
+}
+
+.lp-tab.active {
+    background: lightskyblue
+}
+
+.preset {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.preset-option-title {
+    font-size: 24px;
+}
+
+.preset-list {
+    clear: both;
+    margin-top: 10px;
+}
+
+.preset-option-list {
+    margin-top: 5px;
+    height: 20px;
+    font-family: ROSans;
+}
+
+.preset-option {
+    cursor: pointer;
+    float: left;
+    margin-right: 5px;
+}
+
+.preset-title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.preset-description {
+    font-size: 18px;
+}
+
+.preset-config {
+    background: #eee;
+    padding: 5px;
+}
+
+.preset-config-title {
+    font-size: 26px;
+    font-weight: 600;
+    background: #eee;
+}
+
+
+/* Header bar should be overwritten by children, so if you increase the border-top height above, you should match it here */
+
+.leftpanel-content> .tab-content {}
+
+.leftpanel-collapsed .leftpanel-content {
+    display: none;
+    width: 0;
+}
+
+.sidebar {
+       pointer-events: none;
+    /* position: absolute; */
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    background: white;
+    margin-top: 15px;
+    width: 300px;
+    margin-left: 15px;
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.4);
+    bottom: 20px;
+}
+
+.leftpanel-collapsed .leftpanel {
+    display: none;
+}
+
+.leftpanel-collapsed .leaflet-container {
+    margin-left: 0;
+}
+
+.techTitle {
+    text-align: center;
+    background: transparent;
+    line-height: 100%;
+    font-size: 10px;
+}
+
+.techCircle {
+    cursor: pointer;
+    pointer-events: visible;
+}
+
+.techCircle:hover {
+    opacity: 0.5
+}
+
+.radar-trend-item
+{
+  font-size:14px;
+  padding:8px;
+  cursor: pointer;
+
+}
+
+.radar-trend-item-selected
+{
+   font-size:14px;
+  padding:8px;
+  cursor: pointer;
+  background: lightskyblue;
+}
+
+#chart {
+    text-align: center;
+}
+
+.segmentArc {
+    fill: white;
+    stroke: gray;
+    stroke-width: 0.5;
+    z-index: 1;
+}
+
+.segmentArc:hover {
+    stroke: black;
+    stroke-width: 3;
+    z-index: 10;
+}
+
+.radialText {
+    fill: #6B6B6B;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Courgette', sans-serif;
+}
+
+.arc {
+    fill: red;
+    stroke: white;
+    stroke-width: 3;
+}
+
+.viz-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.circle-button {
+    cursor: pointer;
+    margin: 4px;
+}
+
+.viz-dimension {
+    font-size: 18px;
+    width: 225px;
+}
+
+.horizontalTitle {
+    fill: #6B6B6B;
+    font-size: 10px;
+    letter-spacing: 0px;
+    line-height: 95%;
+    font-weight: 400;
+}
+
+.legend-container {
+    width: 100%;
+}
+
+.legends {
+    padding: 5px;
+    font-size:12px;
+}
+
+.legend-list {
+    list-style-position: outside;
+}
+
+.legend-list-item {
+    list-style: none;
+    margin-left: -30px;
+    margin-top: 4px;
+}
+
+.legend-list-item:hover
+{
+  font-weight: 800;
+}
+
+.legend-title {
+    clear: both;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+.radar-title {
+    font-size: 34px;
+    /* text-align: center; */
+    /* width: 100%; */
+    /* position: absolute; */
+    /* right: 0; */
+    /* top: 20px; */
+    margin-left: 50px;
+    margin-right: 50px;
+    cursor: pointer;
+}

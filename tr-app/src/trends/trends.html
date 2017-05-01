@@ -1,0 +1,26 @@
+<template>
+  <require from="../blur-image"></require>
+  <require from="../sort"></require>
+
+  <section class="au-animate">
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div repeat.for="trend of appState.trends | sort:'Order'">
+          <a route-href="route: trendsDetail; params.bind: { trend: trend.Id}">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-10 card">    
+              <span class="card-image" style="background: url('img/trends/${trend.ImageUrl}') center center no-repeat;"></span>
+              <div class="trend-card-title">
+                <span class="card-category"><span repeat.for="tech of platform._Technologies">${tech.Technology}<span if.bind="!$last">, </span></span>
+                </span>
+                <span>${trend.Name}</span>
+              </div>
+              <!--anchor-->
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+</template>

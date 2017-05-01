@@ -1,0 +1,142 @@
+<template>  
+  <require from="../bootstrap-select"></require>
+    <require from="../radar/technologysheet"></require>
+    <require from="../GoToRoute"></require>
+
+  <section class="au-animate">
+  <style>
+  .stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+  font-size:30px;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+@media (max-width: 799px) {
+  
+.search-container
+{
+  margin-top:3em;
+}
+}
+
+@media (min-width: 800px) {
+  
+.search-container
+{
+  margin-top:15em;
+}
+}
+
+.search-top
+{
+  margin-top:2em;
+}
+
+.search-title
+{
+  font-size:30px;
+}
+
+.navigate-box
+{
+
+}
+
+.navigate-content
+{
+     margin: 5px;
+    height: 5em;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 24px;
+    font-family: Rubik;
+    cursor: pointer;
+      overflow: hidden;
+ 
+  color: rgb(136, 172, 217);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}
+
+.navigate-image
+{
+  background-size: cover!important;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* position: absolute; */
+    display: block;
+}
+
+.navigate-title
+{
+     position: absolute;
+    bottom: 0px;
+    left: 20px;
+    right: 20px;
+    /* height: 2em; */
+    background: white;
+    font-size: 24px;
+    color: black;
+    margin: 0px;
+}
+
+
+  </style>
+<div class="container">
+	<div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div id="search-form" class="search-container">
+                <!--<div class="search-title">Search</div> -->
+                <div class="input-group stylish-input-group">
+                    <input type="search" class="form-control"  placeholder="search" value.two-way="searchInput" >
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+            </div>           
+        </div>
+  </div>
+      <div class="span12" style="margin-top:5em" if.bind="!showResult">
+      
+        <div class="col-sm-2 navigate-box  col-sm-offset-2">
+         <div class="navigate-content" go-to-route="route: trends">
+          <span class="navigate-image" style="background-image: url(img/trends/iotdata.png)"></span>
+          <span class="navigate-title">Trends</span>
+          </div>
+        </div>
+        <div class="col-sm-2 navigate-box">
+         <div class="navigate-content" go-to-route="route: trends">
+         <span class="navigate-image" style="background: url(img/webshots/ws1112359867.jpg)"></span>
+          <span class="navigate-title">Platforms</span>
+          </div>
+        </div>
+        <div class="col-sm-2 navigate-box">
+         <div class="navigate-content" go-to-route="route: techradar">
+         <span class="navigate-image" style="background: url(img/radar.png)"></span>         
+         <span class="navigate-title">Radar</span>
+          </div>
+        </div><div class="col-sm-2 navigate-box">
+        <div class="navigate-content" go-to-route="route: about">
+        
+        <span class="navigate-image" style="background: url(img/logo_iconic_50_RGB.png)"></span>   
+          <span class="navigate-title">About</span>
+          </div>
+        </div>
+      </div>
+  </div>
+	
+    <technologysheet></technologysheet>
+  </section>
+
+</template>

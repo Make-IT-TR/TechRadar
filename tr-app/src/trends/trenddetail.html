@@ -1,0 +1,45 @@
+<template>
+  <require from="../radar/radar"></require>
+  <require from="../markdown"></require>
+  <require from="../radar/legend"></require>
+  <require from="../radar/technologysheet"></require>
+  <section class="au-animate" style="overflow: hidden;">
+    
+    <div class="trend-title-image" style="background-repeat: no-repeat; background-position: 100%;background-size: cover;background-image: url('img/trends/${trend.ImageUrl}'); ">
+      <div class="trend-content">
+
+        <div class="trend-title">${trend.Name}</div>
+      </div>
+    </div>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 col-md-9 col-sm-9 col-xs-12">
+          <radar view="trend" if.one-time="!mobile" trend="${trend.Id}"></radar>
+          <img class="trendradar-image-mobile" if.one-time="mobile" src="${mobileImage}"></img>
+          <div class="trend-description" markdown.bind="trend.Description"></div>
+        </div>
+        <div class="col-lg-4 col-md-9 col-sm-9 col-xs-12">
+           <h3>Legend</h3>
+          <legend></legend>
+          <h3>Related Technologies</h3>
+          <div repeat.for="tt of trend._TrendTechnologies">
+            <span class="trend-technology" click.trigger="selectTechnology(tt._Technology)">${tt._Technology.Technology}</span>
+          </div>
+           <h3>Related Platforms</h3>
+          <div repeat.for="p of platforms">
+            <span class="trend-example" click.trigger="appState.selectPlatform(p)">${p.Name}</span>
+          </div>
+          
+
+        </div>
+      </div>
+    </div>
+    <div if.one-time="!mobile">
+      <div click.trigger="prevTrend()" class="trendNavigation prevTrend"><i class="fa fa-arrow-left"></i></div>
+      <div click.trigger="nextTrend()" class="trendNavigation nextTrend"><i class="fa fa-arrow-right"></i></div>
+    </div>
+    <technologysheet></technologysheet>
+  </section>
+</template>

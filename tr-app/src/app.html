@@ -1,0 +1,10 @@
+<template>
+  <require from="./nav-bar.html"></require>
+  <require from = "./radar/radar"></require>
+   
+  <nav-bar router.bind="router" if.one-way="router.currentInstruction.config.title!=='RadarImage'"></nav-bar>
+ <div class="page-host">
+
+    <router-view></router-view>
+  </div>
+</template>
