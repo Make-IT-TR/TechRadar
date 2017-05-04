@@ -14,6 +14,7 @@ var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1GE7VF6CSHn
 var wikipedia = require("node-wikipedia");
 var sheet = new classes.SpreadsheetService();
 var app = express();
+var wiki = {};
 function getDBPedia(url) {
     if (url.indexOf('wikipedia') != -1) {
         var parts = url.split('/');
@@ -112,7 +113,6 @@ function updateRadarShots() {
 }
 function updateWikipedia() {
     var wikis = [];
-    var wiki = {};
     sheet.sheets.Categories.forEach(function (t) { if (t.Wikipedia) {
         if (wikis.indexOf(t.Wikipedia) == -1)
             wikis.push(t.Wikipedia);
@@ -225,7 +225,16 @@ var server = app.listen(process.env.PORT, function () {
     app.use('/api/platforms', function (req, res) {
         res.end(CircularJSON.stringify(sheet.sheets.Examples));
     });
+    app.use('/api/technologies', function (req, res) {
+        res.end(CircularJSON.stringify(sheet.sheets.Technologies));
+    });
+    app.use('/api/wiki', function (req, res) {
+        res.end(CircularJSON.stringify(wiki));
+    });
     app.use('/api/sheets', function (req, res) {
+        res.end(CircularJSON.stringify(sheet));
+    });
+    app.use('/api/all', function (req, res) {
         res.end(CircularJSON.stringify(sheet));
     });
     console.log('Example app listening at http://localhost:%s', process.env.PORT);

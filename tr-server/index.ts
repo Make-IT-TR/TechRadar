@@ -14,6 +14,7 @@ var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1GE7VF6CSHn
 var wikipedia = require("node-wikipedia");
 var sheet = new classes.SpreadsheetService();
 var app = express();
+var wiki = {};
 
 function getDBPedia(url: string) {
     if (url.indexOf('wikipedia') != -1) {
@@ -126,7 +127,7 @@ function updateRadarShots() {
 
 function updateWikipedia() {
     var wikis = [];
-    var wiki = {};
+
     sheet.sheets.Categories.forEach(t => { if (t.Wikipedia) { if (wikis.indexOf(t.Wikipedia)==-1) wikis.push(t.Wikipedia); } });
     sheet.sheets.Technologies.forEach(t => { if (t.Wikipedia) { if (wikis.indexOf(t.Wikipedia)==-1) wikis.push(t.Wikipedia); } });
     sheet.sheets.Trends.forEach(t => { if (t.Wikipedia) { if (wikis.indexOf(t.Wikipedia)==-1) wikis.push(t.Wikipedia); } });
@@ -260,7 +261,19 @@ var server = app.listen(process.env.PORT, () => {
         res.end(CircularJSON.stringify(sheet.sheets.Examples));
     });
 
+    app.use('/api/technologies', (req, res) => {
+        res.end(CircularJSON.stringify(sheet.sheets.Technologies));
+    });
+
+    app.use('/api/wiki', (req, res) => {
+        res.end(CircularJSON.stringify(wiki));
+    });
+
     app.use('/api/sheets', (req, res) => {
+        res.end(CircularJSON.stringify(sheet));
+    });
+
+    app.use('/api/all', (req, res) => {
         res.end(CircularJSON.stringify(sheet));
     });
 
