@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+html {
+        font-family: sans-serif;
+}
+
 body {
   margin: 0;
+  background: url('../static/images/background-particles-seamless-white.png') repeat center center fixed !important;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .navbar {
@@ -597,4 +605,549 @@ div.au-stagger {
   100% {
     opacity: 1;
   }
+}
+
+
+/* MAKE-IT */
+nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    display: block;
+}
+
+footer {
+    padding: 50px;
+    font-size: 90%;
+}
+
+header {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.header-logo {
+    margin-top: 110px !important;
+    margin-bottom: 40px !important;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+}
+
+.header-without-logo {
+    margin-top: 90px !important;
+    background-color: rgba(255, 255, 255, 0.0);
+}
+
+.slogan {
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 160%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    width: 30%;
+    text-align: center;
+}
+
+.slogan-long {
+    font-weight: 500;
+    font-size: 110% !important;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    width: 50% !important;
+    text-align: center;
+    margin: 35px auto 0 !important;
+}
+
+.mk-color01 {
+    color: #7DB478;
+}
+
+.mk-color02 {
+    color: #EEAA56;
+}
+
+.mk-color03 {
+    color: #F16456;
+}
+
+.mk-color04 {
+    color: #3E6684;
+}
+
+hr {
+    margin: 50px;
+}
+
+.gradient {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+19,1+100 */
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 19%, rgba(255, 255, 255, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 19%, rgba(255, 255, 255, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 19%, rgba(255, 255, 255, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /*
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+    */
+    /* IE6-9 */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    padding: 5px;
+    font-family: "Rubik", sans-serif;
+}
+
+h1 {
+    font-weight: 500;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 140% !important;
+}
+
+h2 {
+    font-weight: 400;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 120% !important;
+}
+
+h3 {
+    font-weight: 300;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 110% !important;
+}
+
+h4 {
+    font-weight: 200;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 105% !important;
+}
+
+// Automatically heading numbering for pages and posts
+
+body {
+    counter-reset: h2counter;
+}
+
+h2 {
+    counter-reset: h3counter;
+}
+
+h3 {
+    counter-reset: h4counter;
+}
+
+.entry-content h2:before {
+    counter-increment: h2counter;
+    content: counter(h2counter) ". ";
+}
+
+.entry-content h3:before {
+    counter-increment: h3counter;
+    content: counter(h2counter) "." counter(h3counter) ". ";
+}
+
+.entry-content h4:before {
+    counter-increment: h4counter;
+    content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) ". ";
+}
+
+h2.nocount:before,
+h3.nocount:before,
+h4.nocount:before,
+h5.nocount:before,
+h6.nocount:before {
+    content: "";
+    counter-increment: none;
+}
+
+ol,
+p,
+table,
+ul {
+    font-size: 100%;
+}
+
+img {
+    padding: 15px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+section {
+    margin-top: 100px;
+}
+
+strong {
+    border-bottom: 2px solid #F16456;
+}
+
+em {
+    border-bottom: 2px solid #7DB478;
+}
+
+a {
+    color: #3E6684 !important;
+    border-bottom: 2px dashed #3E6684;
+    text-decoration: none;
+    background-color: rgba(62, 102, 133, 0.1);
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+a:hover {
+    color: #fff !important;
+    border-bottom: 2px solid $mk-color-blue !important;
+    text-decoration: none;
+    background-color: rgba(62, 102, 133, 0.5);
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+    -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+    box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+}
+
+a img {
+    text-decoration: none;
+    border: 0 none;
+    border: 1px dashed $mk-color-blue !important;
+    padding: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+a img:hover {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: 0 0 12px 0 rgba(62, 102, 133, .575);
+    -moz-box-shadow: 0 0 12px 0 rgba(62, 102, 133, .575);
+    box-shadow: 0 0 12px 0 rgba(62, 102, 133, .575);
+}
+
+
+/* Fix image link problem in footer */
+footer p a {
+    color: #3E6684;
+    border-bottom: 2px dashed $mk-color-blue;
+    text-decoration: none;
+    background-color: rgba(62, 102, 133, 0.1);
+    padding: 0 3px !important;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+footer p a:hover {
+    color: #fff;
+    border-bottom: 2px solid $mk-color-blue;
+    text-decoration: none;
+    background-color: rgba(62, 102, 133, 0.5);
+    padding: 0 3px !important;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+    -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+    box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+}
+
+footer div {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.cc-license {
+    margin-bottom: 20px !important;
+}
+
+.author-archive {
+    margin-top: 30px;
+}
+
+#socialmedia {
+    width: 50%;
+    margin: 30px auto 0;
+}
+
+#socialmedia .col-sm-4 {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.rounded-separator-h1-top {
+    color: #EEAA56;
+    background-color: #EEAA56;
+    height: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.rounded-separator-h1-bottom {
+    color: #EEAA56;
+    background-color: #EEAA56;
+    height: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.rounded-separator-h2-top {
+    color: #EEAA56;
+    background-color: #EEAA56;
+    height: 6px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-top: 60px !important;
+}
+
+.rounded-separator-h2-bottom {
+    color: #EEAA56;
+    background-color: #EEAA56;
+    height: 6px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.rounded-separator-h3-top {
+    color: #EEAA56;
+    background-color: #EEAA56;
+    height: 3px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    margin-top: 40px !important;
+}
+
+.rounded-separator-h3-bottom {
+    color: #EEAA56;
+    background-color: #EEAA56;
+    height: 3px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+}
+
+.rounded-separator-h4-top {
+    color: #EEAA56;
+    background-color: #EEAA56;
+    height: 2px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    margin-top: 20px !important;
+}
+
+.rounded-separator-h4-bottom {
+    color: #EEAA56;
+    background-color: #EEAA56;
+    height: 2px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+}
+
+
+.btn {
+    padding: 10px !important;
+    font-weight: 600;
+    background: #e2e2e2;
+}
+
+.btn:hover {
+    padding: 10px !important;
+    background: rgba(62, 102, 133, .775);
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+    -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+    box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+}
+
+/ Navbar: CSS RESET
+// From https://gist.github.com/justincarroll/5578679
+
+nav.container-fluid .navbar-fixed-bottom .navbar-inner,
+nav.container-fluid .navbar-fixed-top .navbar-inner,
+nav.container-fluid .navbar-inner,
+nav.container-fluid .navbar-static-top .navbar-inner {
+    background: none;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    filter: none;
+    padding: 0;
+}
+
+nav.container-fluid .navbar {
+    margin-bottom: 0;
+}
+
+nav.container-fluid .navbar .nav {
+    margin: 0;
+}
+
+nav.container-fluid .navbar .brand,
+nav.container-fluid .navbar .nav > li > a {
+    margin: 0;
+    padding: 0;
+    text-shadow: none;
+}
+
+nav.container-fluid .navbar .btn-navbar,
+nav.container-fluid .navbar .btn-navbar:hover {
+    background: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    text-shadow: none;
+}
+
+// New navbar
+// Toggle color
+
+.navbar-default .navbar-toggle {
+    border-color: #000;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 7px !important;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #000;
+}
+// Navbar: NEW
+
+nav {
+    color: #000 !important;
+    font-family: 'Rubik';
+    font-weight: 500 !important;
+    background-color: rgba(255, 255, 255, 1);
+    border: 0;
+    border-bottom: 1px solid #e8e8e8 !important;
+    padding: 10px !important;
+    height: auto !important;
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+    -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+}
+
+nav.container-fluid {
+    padding: 0 !important;
+    height: auto !important;
+}
+
+.navbar-nav li a {
+    line-height: 27px;
+}
+
+.navbar-header button {}
+
+.dropdown-menu a:hover {
+    background-color: #e8e8e8 !important;
+    border-bottom: 2px dotted #000;
+}
+
+a.nav-link {
+    display: block;
+    color: #000 !important;
+    text-decoration: none;
+    border-bottom: 2px dotted #d1d1d1;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 10px !important;
+    margin: 0 20px 0 0 !important;
+}
+
+a.nav-link:hover {
+    background-color: #e8e8e8;
+    border-bottom: 2px dotted #000;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    padding: 10px !important;
+    margin: 0 20px 0 0 !important;
+}
+
+a.nav-link:focus {
+    text-decoration: none;
+    border-bottom: 2px solid #000;
+    color: rgb(230, 230, 230);
+    background-color: #e8e8e8;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 10px !important;
+    margin: 0 20px 0 0 !important;
+}
+
+a.navbar-brand {
+    background-color: transparent !important;
+    border-bottom: 2px solid #fff !important;
+}
+
+a.navbar-brand img {
+    text-decoration: none;
+    border: 2px solid #fff !important;
+    background-color: #fff !important;
+    padding: 10px !important;
+    margin: 0 auto !important;
+}
+
+a.navbar-brand:hover {
+    background-color: #fff !important;
+    border-bottom: 2px solid #e8e8e8 !important;
+    -webkit-transition: all 3.1s ease;
+    transition: all 3.1s ease;
+}
+
+// Dropdown with shadow and more
+
+.dropdown-menu {
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    margin: 0 !important;
+    padding: 5px !important;
+    font-size: 80% !important;
+    border: 0 !important;
+    width: 80% !important;
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    border-radius: 5px !important;
+}
+
+.dropdown-menu a,
+.dropdown-menu a:focus,
+.dropdown-menu a:hover {
+    margin-right: 0 !important;
+}
+
+// All inputs
+
+input,
+textarea {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
