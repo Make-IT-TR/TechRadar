@@ -607,6 +607,91 @@ div.au-stagger {
   }
 }
 
+/*HOME*/
+
+.stylish-input-group .input-group-addon{
+  background: white !important;
+}
+.stylish-input-group .form-control{
+  border-right:0;
+  box-shadow:0 0 0;
+  border-color:#ccc;
+font-size:30px;
+}
+.stylish-input-group button{
+  border:0;
+  background:transparent;
+}
+
+@media (max-width: 799px) {
+
+.search-container
+{
+margin-top:3em;
+}
+}
+
+@media (min-width: 800px) {
+
+.search-container
+{
+margin-top:15em;
+}
+}
+
+.search-top
+{
+margin-top:2em;
+}
+
+.search-title
+{
+font-size:30px;
+}
+
+.navigate-box
+{
+
+}
+
+.navigate-content
+{
+   margin: 5px;
+  height: 5em;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 24px;
+  font-family: Rubik;
+  cursor: pointer;
+    overflow: hidden;
+
+color: rgb(136, 172, 217);
+box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}
+
+.navigate-image
+{
+background-size: cover!important;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* position: absolute; */
+  display: block;
+}
+
+.navigate-title
+{
+   position: absolute;
+  bottom: 0px;
+  left: 20px;
+  right: 20px;
+  /* height: 2em; */
+  background: white;
+  font-size: 24px;
+  color: black;
+  margin: 0px;
+}
 
 /* MAKE-IT */
 nav {
@@ -729,7 +814,7 @@ h4 {
     font-size: 105% !important;
 }
 
-// Automatically heading numbering for pages and posts
+/* Automatical heading numbering */
 
 body {
     counter-reset: h2counter;
@@ -972,8 +1057,8 @@ footer div {
     box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
 }
 
-/ Navbar: CSS RESET
-// From https://gist.github.com/justincarroll/5578679
+/*Navbar: CSS RESET
+From https://gist.github.com/justincarroll/5578679*/
 
 nav.container-fluid .navbar-fixed-bottom .navbar-inner,
 nav.container-fluid .navbar-fixed-top .navbar-inner,
@@ -1020,8 +1105,8 @@ nav.container-fluid .navbar .btn-navbar:hover {
     text-shadow: none;
 }
 
-// New navbar
-// Toggle color
+/*New navbar
+Toggle color*/
 
 .navbar-default .navbar-toggle {
     border-color: #000;
@@ -1035,7 +1120,8 @@ nav.container-fluid .navbar .btn-navbar:hover {
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #000;
 }
-// Navbar: NEW
+
+/*Navbar: NEW*/
 
 nav {
     color: #000 !important;
@@ -1117,7 +1203,7 @@ a.navbar-brand:hover {
     transition: all 3.1s ease;
 }
 
-// Dropdown with shadow and more
+/* Dropdown with shadow and more */
 
 .dropdown-menu {
     background-color: #fff;
@@ -1141,7 +1227,8 @@ a.navbar-brand:hover {
     margin-right: 0 !important;
 }
 
-// All inputs
+/*All inputs*/
+
 
 input,
 textarea {
@@ -1150,4 +1237,28 @@ textarea {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+.container-fluid {
+    width: 95%;
+}
+
+.container-fluid p {
+    margin-bottom: 10px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 20px;
+    padding: 0 !important;
+}
+
+.container-fluid {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.container-fluid ol,
+.container-fluid ul {
+    margin-left: 30px;
 }

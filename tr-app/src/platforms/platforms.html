@@ -2,62 +2,57 @@
   <require from="../blur-image"></require>
   <require from="../bootstrap-select"></require>
   <require from="../valueconverters"></require>
-
-    <require from="../radar/technologysheet"></require>
-
+  <require from="../radar/technologysheet"></require>
   <section class="au-animate">
-
     <a class="add-platform-button" route-href="route:addPlatform">
-      <span>Missing something?<img src="/img/add.png" style="margin-left:10px"></img></span>
-</a>
+      <span>Missing something?<img src="/img/add.png" style="margin-left:10px"></img>
+      </span>
+    </a>
     <form class="nl-form">
-      I am interested in 
-
- <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
+      I am interested in
+      <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
   -->
       <select class='nlf-select' bootstrap-select value.bind="selectedCategory">
-         <option>all</option>
-         <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
+        <option>all</option>
+        <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
       </select>
-      <span if.bind="availableTechnologies.length>0"> using </span> 
+      <span if.bind="availableTechnologies.length>0">
+        using
+      </span>
       <select class='nlf-select' if.bind="availableTechnologies.length>0" bootstrap-select value.bind="selectedTechnology">
-         <option>all</option>
-         <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
+        <option>all</option>
+        <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
       </select>
-     
-     
       <!--<select>
             <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
 					</select>-->
-     
     </form>
-
     <div class="container-fluid">
       <div class="row">
         <div repeat.for="platform of availablePlatforms" mouseenter.trigger="showTechnologies=true" mouseleave.trigger="showTechnologies=false">
-          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-10 card" >
-            <span click.trigger="showTechnologies=true"  class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
+          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-10 card">
+            <span click.trigger="showTechnologies=true" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
             <div class="card-title">
-              <span class="card-category" if.bind="platform._Technologies">${platform._Technologies[0].Technology}<span if.bind="platform._Technologies.length > 1"> + ${platform._Technologies.length-1} </span>
+              <span class="card-category" if.bind="platform._Technologies">${platform._Technologies[0].Technology}<span if.bind="platform._Technologies.length > 1">
+                  + ${platform._Technologies.length-1}
+                </span>
               </span>
               <span click.trigger="appState.selectPlatform(platform)">
-              <span class="platform-title">${platform.Name}</span><img class="link-img" style="float:right" src="/img/link.png"/>
-              <div class="platform-url single-line">${platform.Url}</div>
+                <span class="platform-title">${platform.Name}</span><img class="link-img" style="float:right" src="/img/link.png"/>
+                <div class="platform-url single-line">${platform.Url}</div>
               </span>
               <div style="margin-top:20px">
-              <span if.bind="showTechnologies" class="card-technology-category" repeat.for="t of platform._Technologies" click.trigger="more(t)">
-                ${t.Technology}
-              </span>
+                <span if.bind="showTechnologies" class="card-technology-category" repeat.for="t of platform._Technologies" click.trigger="more(t)">
+                  ${t.Technology}
+                </span>
               </div>
-              
             </div>
             <!--anchor-->
           </div>
         </div>
       </div>
     </div>
-    </div>
-    <technologysheet></technologysheet>
-  </section>
-
+  </div>
+  <technologysheet></technologysheet>
+</section>
 </template>

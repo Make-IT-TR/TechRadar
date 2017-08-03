@@ -1,17 +1,14 @@
 <template>
   <require from="../radar/radar"></require>
   <require from="../radar/legend"></require>
-      <require from="../radar/technologysheet"></require>
-
+  <require from="../radar/technologysheet"></require>
   <section class="au-animate">
     <div style="position:absolute;left:300px">
       <radar view="trend" style="margin-left: 800px"></radar>
     </div>
     <div class="sidebar">
-
       <div class="leftpanel">
         <div class="leftpanel-container">
-
           <div class="leftpanel-tab">
             <ul class="nav nav-pills">
               <!--<li class="lp-tab active" data-target="#config" data-toggle="tab">
@@ -23,17 +20,14 @@
                   </g>
                 </svg>
               </li>-->
-  <li class="lp-tab active" data-target="#config" data-toggle="tab" click.trigger="showAll()">
+              <li class="lp-tab active" data-target="#config" data-toggle="tab" click.trigger="showAll()">
                 <div>Custom</div>
               </li>
               <li class="lp-tab" data-target="#trends" data-toggle="tab" click.trigger="showTrends()">
                 <div>Trends</div>
               </li>
-            
             </ul>
           </div>
-
-
           <div class="leftpanel-content">
             <!-- Tab panes -->
             <div class="tab-content">
@@ -57,51 +51,48 @@
                   <div repeat.for="f of appState.data.activeConfig.Filters" show.bind="f.Enabled">
                     <div class="viz-title">${f.Dimension}</div>
                     <select class="viz-dimension" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
-                                                <option repeat.for="option of f.Options" value.bind="option">${option}</option>
-                                            </select>
+                      <option repeat.for="option of f.Options" value.bind="option">${option}</option>
+                    </select>
                     <div class="fa fa-minus-circle circle-button" click.trigger="disableFilter(f)"></div>
                   </div>
                   <div class="preset-option-list">
                     <div class="dropdown preset-option">
-                      <div class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-plus-circle circle-button"></span> add filter</div>
+                      <div class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-plus-circle circle-button"></span>
+                        add filter</div>
                       <ul class="dropdown-menu">
-                        <li repeat.for="dimension of appState.sheets.Dimensions"><a click.trigger="addNewFilter(dimension)">${dimension}</a></li>
+                        <li repeat.for="dimension of appState.sheets.Dimensions">
+                          <a click.trigger="addNewFilter(dimension)">${dimension}</a>
+                        </li>
                       </ul>
                     </div>
-
-                    <div class="preset-option" click.trigger="editMode = !editMode"><span class="fa fa-cogs circle-button"></span> <span show.bind="editMode">hide</span>
-                      <span show.bind="!editMode">edit</span> visualisation</div>
+                    <div class="preset-option" click.trigger="editMode = !editMode">
+                      <span class="fa fa-cogs circle-button"></span>
+                      <span show.bind="editMode">hide</span>
+                      <span show.bind="!editMode">edit</span>
+                      visualisation</div>
                   </div>
                   <!--
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add Filter<span class="caret"></span></button>
-                                        
+
                                     </div>-->
-
                   <div show.bind="editMode">
-
-                    <div class="viz-title"><input type="checkbox" checked.bind="appState.data.activeConfig.ShowTrend" change.delegate="updateFilter()">Show
-                      Trend
+                    <div class="viz-title">
+                      <input type="checkbox" checked.bind="appState.data.activeConfig.ShowTrend" change.delegate="updateFilter()">Show Trend
                       </input>
                     </div>
-
                     <div repeat.for="f of appState.data.activeConfig.Visualisation">
                       <div class="viz-title">${f.Visual}</div>
-                      <select class="viz-dimension" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">                          
-                          <option repeat.for="dimension of appState.dimensions" value.bind="dimension">${dimension}</option>
+                      <select class="viz-dimension" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">
+                        <option repeat.for="dimension of appState.dimensions" value.bind="dimension">${dimension}</option>
                       </select>
                       <div show.bind="!f.Reverse" class="fa fa-sort-amount-asc circle-button" click.trigger="toggleReverse(f)"></div>
                       <div show.bind="f.Reverse" class="fa fa-sort-amount-desc circle-button" click.trigger="toggleReverse(f)"></div>
                     </div>
                   </div>
-
-
-
-
                 </div>
-
-                <legend />
-
+                <legend/>
                 <!--<div ng-repeat="c in vm.data.presets" class="preset-list">
                                     <div ng-click="vm.selectPreset(c)" class="preset">
                                         <div class="preset-title">{{c.Title}}</div>
@@ -109,9 +100,6 @@
                                     </div>
 
                                 </div>-->
-
-
-
                 <!--<button ng-click="vm.addFilter()">Add Filter</button>-->
               </div>
               <!--
@@ -126,8 +114,7 @@
                             </div>-->
               <div class="tab-pane" id="trends" style="width:300px">
                 <div class="technology-list-container">
-                  <div repeat.for="t of appState.trends" class="${ t == appState.data.activeTrend ? 'radar-trend-item-selected' : 'radar-trend-item' }"
-                    click.trigger="selectTrend(t)">
+                  <div repeat.for="t of appState.trends" class="${ t == appState.data.activeTrend ? 'radar-trend-item-selected' : 'radar-trend-item' }" click.trigger="selectTrend(t)">
                     ${t.Name}
                     <!--<div ng-click="vm.focus(t)" ng-class="{'technologySelected' : vm.activeFocus === t.id}" class="technology-list-title">{{t.Technology}}</div>-->
                   </div>
@@ -138,6 +125,6 @@
         </div>
       </div>
     </div>
- <technologysheet></technologysheet>
+    <technologysheet></technologysheet>
   </section>
 </template>
