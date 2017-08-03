@@ -4,30 +4,46 @@
   <require from="../valueconverters"></require>
   <require from="../radar/technologysheet"></require>
   <section class="au-animate">
-    <a class="add-platform-button" route-href="route:addPlatform">
-      <span>Missing something?<img src="/img/add.png" style="margin-left:10px"></img>
-      </span>
-    </a>
-    <form class="nl-form">
-      I am interested in
-      <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
-  -->
-      <select class='nlf-select' bootstrap-select value.bind="selectedCategory">
-        <option>all</option>
-        <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
-      </select>
-      <span if.bind="availableTechnologies.length>0">
-        using
-      </span>
-      <select class='nlf-select' if.bind="availableTechnologies.length>0" bootstrap-select value.bind="selectedTechnology">
-        <option>all</option>
-        <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
-      </select>
-      <!--<select>
-            <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
-					</select>-->
-    </form>
     <div class="container-fluid">
+      <div class="row">
+        <div class="rounded-separator-h1-top"></div>
+        <h1>Platforms</h1>
+        <div class="rounded-separator-h1-bottom"></div>
+      </div>
+      <div class="row">
+        <p>
+          What are platforms...
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <form class="nl-form">
+            I am interested in
+            <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
+          -->
+            <select class='nlf-select' bootstrap-select value.bind="selectedCategory">
+              <option>all</option>
+              <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
+            </select>
+            <span if.bind="availableTechnologies.length>0">
+              using
+            </span>
+            <select class='nlf-select' if.bind="availableTechnologies.length>0" bootstrap-select value.bind="selectedTechnology">
+              <option>all</option>
+              <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
+            </select>
+            <!--<select>
+                    <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
+        					</select>-->
+          </form>
+        </div>
+        <div class="col-lg-4">
+          <a class="add-platform-button" route-href="route:addPlatform">
+            <span>Missing something?<img src="/img/add.png" style="margin-left:10px"></img>
+            </span>
+          </a>
+        </div>
+      </div>
       <div class="row">
         <div repeat.for="platform of availablePlatforms" mouseenter.trigger="showTechnologies=true" mouseleave.trigger="showTechnologies=false">
           <div class="col-lg-2 col-md-2 col-sm-3 col-xs-10 card">
