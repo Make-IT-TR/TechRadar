@@ -4,10 +4,9 @@
   <section class="au-animate">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-12">
           <div repeat.for="trend of appState.trends | sort:'Order'">
             <a route-href="route: trendsDetail; params.bind: { trend: trend.Id}">
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-10 card">
+              <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 card">
                 <span class="card-image" style="background: url('img/trends/${trend.ImageUrl}') center center no-repeat;"></span>
                 <div class="trend-card-title">
                   <span class="card-category">
@@ -22,7 +21,6 @@
             </a>
           </div>
         </div>
-        </div> 
       </div>
     </div>
   </section>
