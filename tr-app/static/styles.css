@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 html {
-        font-family: sans-serif;
+    font-family: sans-serif;
+    font-size: 14px;
 }
 
 body {
@@ -889,7 +890,7 @@ em {
 
 .container-fluid a:hover {
     color: #fff !important;
-    border-bottom: 2px solid $mk-color-blue !important;
+    border-bottom: 2px solid #3E6684 !important;
     text-decoration: none;
     background-color: rgba(62, 102, 133, 0.5);
     -webkit-transition: all 0.5s ease;
@@ -902,7 +903,7 @@ em {
 .container-fluid a img {
     text-decoration: none;
     border: 0 none;
-    border: 1px dashed $mk-color-blue !important;
+    border: 1px dashed #3E6684 !important;
     padding: 15px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -921,7 +922,7 @@ em {
 /* Fix image link problem in footer */
 footer p a {
     color: #3E6684;
-    border-bottom: 2px dashed $mk-color-blue;
+    border-bottom: 2px dashed #3E6684;
     text-decoration: none;
     background-color: rgba(62, 102, 133, 0.1);
     padding: 0 3px !important;
@@ -931,7 +932,7 @@ footer p a {
 
 footer p a:hover {
     color: #fff;
-    border-bottom: 2px solid $mk-color-blue;
+    border-bottom: 2px solid #3E6684;
     text-decoration: none;
     background-color: rgba(62, 102, 133, 0.5);
     padding: 0 3px !important;
@@ -945,14 +946,6 @@ footer p a:hover {
 footer div {
     margin-top: 30px;
     text-align: center;
-}
-
-.cc-license {
-    margin-bottom: 20px !important;
-}
-
-.author-archive {
-    margin-top: 30px;
 }
 
 #socialmedia {
