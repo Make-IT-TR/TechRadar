@@ -118,7 +118,7 @@ a.nav-link {
   padding: 10px!important;
   margin: 0 20px 0 0!important;
   color: #000!important;
-  font-family: Rubik;
+  font-family: 'Rubik';
   font-weight: 500!important;
   font-size: 24px;
 }
@@ -190,7 +190,7 @@ a.nav-link {
   .trend-title {
     padding: 5px;
     font-size: 45px;
-    font-family: Rubik;
+    font-family: 'Rubik';
     font-weight: 500!important;
     color: white;
   }
@@ -215,7 +215,7 @@ a.nav-link {
   .trend-title {
     padding: 5px;
     font-size: 30px;
-    font-family: Rubik;
+    font-family: 'Rubik';
     font-weight: 500!important;
     color: white;
   }
@@ -264,7 +264,7 @@ a.nav-link {
   line-height: 72px;
   text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
   text-transform: uppercase;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .splash .fa-spinner {
@@ -275,7 +275,7 @@ a.nav-link {
 }
 
 .h2 {
-  font-family: Rubik;
+  font-family: 'Rubik';
   font-weight: 500!important;
 }
 
@@ -667,12 +667,11 @@ font-size:30px;
   text-align: center;
   padding-top: 10px;
   font-size: 24px;
-  font-family: Rubik;
+  font-family: 'Rubik';
   cursor: pointer;
-    overflow: hidden;
-
-color: rgb(136, 172, 217);
-box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+  overflow: hidden;
+  color: rgb(136, 172, 217);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }
 
 .navigate-image
