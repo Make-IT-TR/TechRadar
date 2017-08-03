@@ -16,7 +16,7 @@
         </p>
       </div>
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-6">
           <form class="nl-form">
             I am interested in
             <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
@@ -37,7 +37,7 @@
         					</select>-->
           </form>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
           <a class="add-platform-button" route-href="route:addPlatform">
             <span>Missing something?<img src="/img/add.png" style="margin-left:10px"></img>
             </span>
@@ -45,8 +45,8 @@
         </div>
       </div>
       <div class="row">
-        <div repeat.for="platform of availablePlatforms" mouseenter.trigger="showTechnologies=true" mouseleave.trigger="showTechnologies=false">
-          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-10 card">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" repeat.for="platform of availablePlatforms" mouseenter.trigger="showTechnologies=true" mouseleave.trigger="showTechnologies=false">
+          <div class="card">
             <span click.trigger="showTechnologies=true" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
             <div class="card-title">
               <span class="card-category" if.bind="platform._Technologies">${platform._Technologies[0].Technology}<span if.bind="platform._Technologies.length > 1">
