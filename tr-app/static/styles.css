@@ -878,7 +878,7 @@ em {
     border-bottom: 2px solid #7DB478;
 }
 
-a {
+.container-fluid a {
     color: #3E6684 !important;
     border-bottom: 2px dashed #3E6684;
     text-decoration: none;
@@ -887,7 +887,7 @@ a {
     transition: all 0.5s ease;
 }
 
-a:hover {
+.container-fluid a:hover {
     color: #fff !important;
     border-bottom: 2px solid $mk-color-blue !important;
     text-decoration: none;
@@ -899,7 +899,7 @@ a:hover {
     box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
 }
 
-a img {
+.container-fluid a img {
     text-decoration: none;
     border: 0 none;
     border: 1px dashed $mk-color-blue !important;
@@ -909,7 +909,7 @@ a img {
     border-radius: 5px;
 }
 
-a img:hover {
+.container-fluid a img:hover {
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-box-shadow: 0 0 12px 0 rgba(62, 102, 133, .575);
@@ -1131,15 +1131,10 @@ nav {
     border: 0;
     border-bottom: 1px solid #e8e8e8 !important;
     padding: 10px !important;
-    height: auto !important;
+    height: 80px;
     -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
     -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
-}
-
-nav.container-fluid {
-    padding: 0 !important;
-    height: auto !important;
 }
 
 .navbar-nav li a {
@@ -1153,7 +1148,7 @@ nav.container-fluid {
     border-bottom: 2px dotted #000;
 }
 
-a.nav-link {
+.navbar-nav li a {
     display: block;
     color: #000 !important;
     text-decoration: none;
@@ -1161,10 +1156,12 @@ a.nav-link {
     background-color: rgba(255, 255, 255, 1);
     padding: 10px !important;
     margin: 0 20px 0 0 !important;
+    font-weight: 500px;
 }
 
-a.nav-link:hover {
+.navbar-nav li a:hover {
     background-color: #e8e8e8;
+    color: #000 !important;
     border-bottom: 2px dotted #000;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
@@ -1172,7 +1169,7 @@ a.nav-link:hover {
     margin: 0 20px 0 0 !important;
 }
 
-a.nav-link:focus {
+.navbar-nav li a:focus {
     text-decoration: none;
     border-bottom: 2px solid #000;
     color: rgb(230, 230, 230);
@@ -1186,6 +1183,7 @@ a.nav-link:focus {
 a.navbar-brand {
     background-color: transparent !important;
     border-bottom: 2px solid #fff !important;
+    padding: 0px !important;
 }
 
 a.navbar-brand img {
@@ -1193,7 +1191,6 @@ a.navbar-brand img {
     border: 2px solid #fff !important;
     background-color: #fff !important;
     padding: 10px !important;
-    margin: 0 auto !important;
 }
 
 a.navbar-brand:hover {
@@ -1241,7 +1238,6 @@ textarea {
 
 .container-fluid {
     width: 95%;
-    /*border: 2px solid red !important;*/
 }
 
 .container-fluid p {
