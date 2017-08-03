@@ -4,12 +4,17 @@
 html {
     font-family: sans-serif;
     font-size: 14px;
+    /*For the sticky footer*/
+    position: relative;
+    min-height: 100%;
 }
 
 body {
   margin: 0;
   background: url('../static/images/background-particles-seamless-white.png') repeat center center fixed !important;
   font-family: 'Source Sans Pro', sans-serif;
+  /*For the sticky footer*/
+  margin-bottom: 300px;
 }
 
 .navbar {
@@ -17,7 +22,7 @@ body {
   background: white;
 }
 
-.trend-technology:hover
+.trend-technology:hover,.trend-technology.pg-state-hover
 {
   font-weight: 600;
 }
@@ -393,7 +398,7 @@ div.au-stagger {
   box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }
 
-.platform-card:hover {
+.platform-card:hover,.platform-card.pg-state-hover {
   opacity: 0.5;
   animation: fadeIn 1s;
 }
@@ -426,13 +431,13 @@ div.au-stagger {
   text-decoration: none;
 }
 
-.card:hover .card-category {
+.card:hover .card-category,.card.pg-state-hover .card-category {
     display:none;
 }
 
 
 
-.card:hover .card-technology-category
+.card:hover .card-technology-category,.card.pg-state-hover .card-technology-category
 {
   display:block;
 }
@@ -494,11 +499,11 @@ div.au-stagger {
   color: #252c30;
 }
 
-.card:hover .card-title {
+.card:hover .card-title,.card.pg-state-hover .card-title {
     top: 0px;
 }
 
-.card-title:hover
+.card-title:hover,.card-title.pg-state-hover
 {
       top: 0px;
 }
@@ -703,8 +708,14 @@ nav {
 }
 
 footer {
-    padding: 50px;
+    padding-bottom: 30px;
     font-size: 90%;
+    text-align: center;
+    /*For the sticky footer*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 300px;
 }
 
 header {
@@ -888,7 +899,7 @@ em {
     transition: all 0.5s ease;
 }
 
-.container-fluid a:hover {
+.container-fluid a:hover,.container-fluid a.pg-state-hover {
     color: #fff !important;
     border-bottom: 2px solid #3E6684 !important;
     text-decoration: none;
@@ -910,7 +921,7 @@ em {
     border-radius: 5px;
 }
 
-.container-fluid a img:hover {
+.container-fluid a img:hover,.container-fluid a img.pg-state-hover {
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-box-shadow: 0 0 12px 0 rgba(62, 102, 133, .575);
@@ -930,7 +941,7 @@ footer p a {
     transition: all 0.5s ease;
 }
 
-footer p a:hover {
+footer p a:hover,footer p a.pg-state-hover {
     color: #fff;
     border-bottom: 2px solid #3E6684;
     text-decoration: none;
@@ -941,21 +952,6 @@ footer p a:hover {
     -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
     -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
     box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-}
-
-footer div {
-    margin-top: 30px;
-    text-align: center;
-}
-
-#socialmedia {
-    width: 50%;
-    margin: 30px auto 0;
-}
-
-#socialmedia .col-sm-4 {
-    margin: 0 auto;
-    padding: 10px;
 }
 
 .rounded-separator-h1-top {
@@ -1040,7 +1036,7 @@ footer div {
     background: #e2e2e2;
 }
 
-.btn:hover {
+.btn:hover,.btn.pg-state-hover {
     padding: 10px !important;
     background: rgba(62, 102, 133, .775);
     -webkit-transition: all 0.5s ease;
@@ -1085,7 +1081,7 @@ nav.container-fluid .navbar .nav > li > a {
 }
 
 nav.container-fluid .navbar .btn-navbar,
-nav.container-fluid .navbar .btn-navbar:hover {
+nav.container-fluid .navbar .btn-navbar:hover,nav.container-fluid .navbar .btn-navbar.pg-state-hover {
     background: none;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -1136,7 +1132,7 @@ nav {
 
 .navbar-header button {}
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,.dropdown-menu a.pg-state-hover {
     background-color: #e8e8e8 !important;
     border-bottom: 2px dotted #000;
 }
@@ -1152,7 +1148,7 @@ nav {
     font-weight: 500px;
 }
 
-.navbar-nav li a:hover {
+.navbar-nav li a:hover,.navbar-nav li a.pg-state-hover {
     background-color: #e8e8e8;
     color: #000 !important;
     border-bottom: 2px dotted #000;
@@ -1162,7 +1158,7 @@ nav {
     margin: 0 20px 0 0 !important;
 }
 
-.navbar-nav li a:focus {
+.navbar-nav li a:focus,.navbar-nav li a.pg-state-focus {
     text-decoration: none;
     border-bottom: 2px solid #000;
     color: rgb(230, 230, 230);
@@ -1186,7 +1182,7 @@ a.navbar-brand img {
     padding: 10px !important;
 }
 
-a.navbar-brand:hover {
+a.navbar-brand:hover,a.navbar-brand.pg-state-hover {
     background-color: #fff !important;
     border-bottom: 2px solid #e8e8e8 !important;
     -webkit-transition: all 3.1s ease;
@@ -1213,7 +1209,7 @@ a.navbar-brand:hover {
 
 .dropdown-menu a,
 .dropdown-menu a:focus,
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,.dropdown-menu a.pg-state-hover,.dropdown-menu a.pg-state-focus,.dropdown-menu a.pg-state-hover {
     margin-right: 0 !important;
 }
 
@@ -1251,4 +1247,8 @@ textarea {
 .container-fluid ol,
 .container-fluid ul {
     margin-left: 30px;
+}
+.main {
+  margin-top: 100px;
+  border-top: 20 solid #000000;
 }
