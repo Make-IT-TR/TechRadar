@@ -4,24 +4,33 @@
   <section class="au-animate">
     <div class="container-fluid">
       <div class="row">
-          <div repeat.for="trend of appState.trends | sort:'Order'">
-            <a route-href="route: trendsDetail; params.bind: { trend: trend.Id}">
-              <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 card">
-                <span class="card-image" style="background: url('img/trends/${trend.ImageUrl}') center center no-repeat;"></span>
-                <div class="trend-card-title">
-                  <span class="card-category">
-                    <span repeat.for="tech of platform._Technologies">${tech.Technology}<span if.bind="!$last">,
-                      </span>
+        <div class="rounded-separator-h1-top"></div>
+        <h1>Trends</h1>
+        <div class="rounded-separator-h1-bottom"></div>
+      </div>
+      <div class="row">
+          <p>
+              What are trends...
+          </p>
+      </div>
+      <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" repeat.for="trend of appState.trends | sort:'Order'">
+          <a route-href="route: trendsDetail; params.bind: { trend: trend.Id}">
+            <div class="card">
+              <span class="card-image" style="background: url('img/trends/${trend.ImageUrl}') center center no-repeat;"></span>
+              <div class="trend-card-title">
+                <span class="card-category">
+                  <span repeat.for="tech of platform._Technologies">${tech.Technology}<span if.bind="!$last">,
                     </span>
                   </span>
-                  <span>${trend.Name}</span>
-                </div>
-                <!--anchor-->
+                </span>
+                <span>${trend.Name}</span>
               </div>
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </template>
