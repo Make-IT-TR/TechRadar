@@ -1,0 +1,92 @@
+<template>
+  <div>
+    <div if.bind="appState.data.activeConfig.colorDimension != '-none-'">
+      <h3>${appState.data.activeConfig.colorDimension}</h3>
+      <p>
+        <span>
+          This scale classifies the maturity of a technology’s application, it is an adaption of Perez’s technological revolution paradigm shifts ( <em>Perez, C (2009) ‘Technological Revolutions and Techno-economic Paradigms,’ TOC/TUT Working paper No.20</em>).
+        </span>
+        <span data-toggle="collapse" data-target=".collapse" class="label label-info"> <i class="fa fa-question-circle" aria-hidden="true"></i> Read more...</span>
+      </p>
+      <ul class="legend-list">
+        <li repeat.for="c of appState.data.colors" class="legend-list-item">
+          <span innerhtml.bind="colorRenderer(c)"></span>${c}
+        </li>
+      </ul>
+    </div>
+    <div if.bind="appState.data.activeConfig.sizeDimension != '-none-'">
+      <h3>${appState.data.activeConfig.sizeDimension}</h3>
+      <p>
+          <span>Technology readiness levels assess the maturity of a particular technology under development. The rating is on a scale from 1-9, where 1 is the early stage and 9 the most mature technology application and use stage.</span> <span data-toggle="collapse" data-target=".collapse" class="label label-info"> <i class="fa fa-question-circle" aria-hidden="true"></i> Read more...</span>
+      </p>
+      <ul class="legend-list">
+        <li repeat.for="s of appState.data.size" class="legend-list-item">
+          <span innerhtml.bind="sizeRenderer(s)"></span>${s}
+        </li>
+      </ul>
+    </div>
+
+    <div id="info-collapse" class="collapse">
+      <h3>More information</h3>
+      <p>
+          <span data-toggle="collapse" data-target=".collapse" class="label label-info"> <i class="fa fa-times-circle" aria-hidden="true"></i> Click here to close</span>
+      </p>
+
+      <h4>Perez's Technological Revolution</h4>
+      <p>
+        This scale classifies the maturity of a technology’s application, it is an adaption of Perez’s technological revolution paradigm shifts ( <em>Perez, C (2009) ‘Technological Revolutions and Techno-economic Paradigms,’ TOC/TUT Working paper No.20</em>) consisting of the following five phases:
+      </p>
+      <ol>
+          <li>
+              Innovation and experimentation: Led by enthusiasts during which a new technology is invented or constructed including thorough application testing.
+          </li>
+          <li>
+              Development and installation: Led by lead practitioners and installation capital. During this phase, the technology and its applications start to go viral and  nancial capital starts to pile in, further boosting awareness and enthusiasm. This phase is often characterised by supply-push and ‘creative destruction’, as well as battles with existing technologies.
+          </li>
+          <li>
+              Disappointment & uncertainty: When early enthusiasm begins to be questioned as expectations regarding the real impact of the technology in terms of useful applications, market success and  nancial return are put in serious doubt.
+          </li>
+          <li>
+              Reassessment & revaluation: Led by users and practitioners, as well as the remaining hard-core enthusiasts, when the earlier phase of uncertainty may result in a new recognition of the value of the technology based on practical application experience gained over time.
+          </li>
+          <li>
+              Creative construction & demand-pull: The technology now grows from its small but solid base in phase 4 and starts to reap its full growth potential through innovation and expansion across the economy. This is led by production and application capital (as compared to installation capital in phase 2) and new sustainable waves of users and applications.
+          </li>
+      </ol>
+
+      <h4>TRL</h4>
+      <p>
+          Technology readiness levels assess the maturity of a particular technology under development. The rating is on a scale from 1-9, where 1 is the early stage and 9 the most mature technology application and use stage. Several de nitions of TRL are used in different industries so the exact rating varies from one context to another. TRL is product/system dependent and thus dif cult to compare directly between sectors and technology areas. For example, rating a product as “TRL 9–system operational” might have a quite a broad system perspective in one sector and a relatively narrow system perspective in another. Nevertheless, it is valuable to rate the development progress of a product/system. The <a href="http://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf"></a>definition used in this project is from the European Commission</a>:
+      </p>
+      <ol>
+          <li>
+              TRL 1. Basic principles observed
+          </li>
+          <li>
+              TRL 2. Technology concept formulated
+          </li>
+          <li>
+              TRL 3. Experimental proof of concept
+          </li>
+          <li>
+              TRL 4. Technology validated in lab
+          </li>
+          <li>
+              TRL 5. Technology validated in relevant environment (industrially relevant environment in the case of key enabling technologies)
+          </li>
+          <li>
+              TRL 6. Technology demonstrated in relevant environment (industrially relevant environment in the case of key enabling technologies)
+          </li>
+          <li>
+              TRL 7. System prototype demonstration in operational environment
+          </li>
+          <li>
+              TRL 8. System complete and qualified
+          </li>
+          <li>
+              TRL 9. Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space)
+          </li>
+      </ol>
+    </div>
+  </div>
+</template>
