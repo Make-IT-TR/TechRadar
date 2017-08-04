@@ -900,7 +900,7 @@ em {
     transition: all 0.5s ease;
 }
 
-.container-fluid a:hover,.container-fluid a.pg-state-hover {
+.container-fluid a:hover {
     color: #fff !important;
     border-bottom: 2px solid #3E6684 !important;
     text-decoration: none;
@@ -922,7 +922,7 @@ em {
     border-radius: 5px;
 }
 
-.container-fluid a img:hover,.container-fluid a img.pg-state-hover {
+.container-fluid a img:hover {
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-box-shadow: 0 0 12px 0 rgba(62, 102, 133, .575);
@@ -942,7 +942,7 @@ footer p a {
     transition: all 0.5s ease;
 }
 
-footer p a:hover,footer p a.pg-state-hover {
+footer p a:hover {
     color: #fff;
     border-bottom: 2px solid #3E6684;
     text-decoration: none;
@@ -1150,7 +1150,7 @@ nav {
     font-weight: 500px;
 }
 
-.navbar-nav li a:hover,.navbar-nav li a.pg-state-hover {
+.navbar-nav li a:hover {
     background-color: #e8e8e8;
     color: #000 !important;
     border-bottom: 2px dotted #000;
@@ -1160,7 +1160,7 @@ nav {
     margin: 0 20px 0 0 !important;
 }
 
-.navbar-nav li a:focus,.navbar-nav li a.pg-state-focus {
+.navbar-nav li a:focus {
     text-decoration: none;
     border-bottom: 2px solid #000;
     color: rgb(230, 230, 230);
@@ -1184,7 +1184,7 @@ a.navbar-brand img {
     padding: 10px !important;
 }
 
-a.navbar-brand:hover,a.navbar-brand.pg-state-hover {
+a.navbar-brand:hover {
     background-color: #fff !important;
     border-bottom: 2px solid #e8e8e8 !important;
     -webkit-transition: all 3.1s ease;

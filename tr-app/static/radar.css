@@ -58,7 +58,7 @@
 }
 
 .preset-title {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 700;
 }
 
@@ -200,7 +200,7 @@
 
 .legends {
     padding: 5px;
-    font-size:12px;
+    font-size:11px;
 }
 
 .legend-list {
@@ -243,15 +243,13 @@
     border-radius: 5px;
 }
 
-
-
 #config .input-group {
     margin-top: 10px;
 }
 
 #sidebar-vis .row {
     padding: 10px;
-    border-bottom: 1px solid #d1d1d1;
+    border-bottom: none !important;
     margin-bottom: 10px;
 }
 
@@ -262,24 +260,42 @@
     border-radius: 5px;
 }
 
+#sidebar-tabs.row {
+    padding: 10px !important;
+}
+
 #sidebar-vis .nav-tabs {
-    border-bottom: none !important;
-}
-#sidebar-tabs {
-    padding: 10px 10px 0px 10px !important;
-    border-bottom: none !important;
-
+    margin: 0px auto !important;
 }
 
-.nav-tabs>li>a:hover,
-.nav-tabs>li.active>a:hover  {
-    color: #fff;
-    background: rgba(62, 102, 133, .5);
+#sidebar-vis .nav-tabs>li>a,
+#sidebar-vis .nav-tabs>li.active>a {
+    border: 1px solid #d1d1d1;
+}
+
+#sidebar-vis .nav-tabs>li>a:hover,
+#sidebar-vis .nav-tabs>li.active>a:hover  {
+    border-bottom: none !important;
+    background: rgba(62, 102, 133, .1);
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
     -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
     box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+}
+
+#sidebar-vis .nav-tabs li a {
+    color: #8e8e8e !important;
+}
+
+#sidebar-vis .nav-tabs li.active a {
+    color: #000 !important;
+    transition: all 0.5s ease;
+    border-bottom: 1px solid #fff;
+}
+
+.container-fluid #sidebar-vis a:hover {
+    border-bottom: none !important;
 }
 
 /*Reset the legend from user agent stylesheet*/
