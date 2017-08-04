@@ -57,7 +57,7 @@
               </div>
               <!-- Trends tab -->
               <div class="tab-pane btn-group-vertical" role="group" id="trends">
-                <button type="button" class="btn btn-primary btn-sm" repeat.for="t of appState.trends" class="${ t == appState.data.activeTrend ? 'radar-trend-item-selected' : 'radar-trend-item' }" click.trigger="selectTrend(t)">
+                <button type="button" class="btn btn-default btn-sm" repeat.for="t of appState.trends" class="${ t == appState.data.activeTrend ? 'radar-trend-item-selected' : 'radar-trend-item' }" click.trigger="selectTrend(t)">
                   ${t.Name}
                   <!--<div ng-click="vm.focus(t)" ng-class="{'technologySelected' : vm.activeFocus === t.id}" class="technology-list-title">{{t.Technology}}</div>-->
                 </button>

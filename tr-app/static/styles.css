@@ -1034,12 +1034,13 @@ footer p a:hover,footer p a.pg-state-hover {
 .btn {
     padding: 10px !important;
     font-weight: 600;
-    background: #e2e2e2;
+    color: rgba(62, 102, 133);
 }
 
-.btn:hover,.btn.pg-state-hover {
+.btn:hover {
     padding: 10px !important;
-    background: rgba(62, 102, 133, .775);
+    color: #fff;
+    background: rgba(62, 102, 133, .6);
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
