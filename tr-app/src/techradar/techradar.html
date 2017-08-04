@@ -36,6 +36,7 @@
             <div class="tab-content">
               <!-- Custom tab -->
               <div class="tab-pane active" id="config">
+                <h2>Customise the whole visualisation</h2>
                 <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1">@</span>
                   <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
@@ -57,6 +58,7 @@
               </div>
               <!-- Trends tab -->
               <div class="tab-pane btn-group-vertical" role="group" id="trends">
+                <h2>Explore only one trend</h2>
                 <button type="button" class="btn btn-default btn-sm" repeat.for="t of appState.trends" class="${ t == appState.data.activeTrend ? 'radar-trend-item-selected' : 'radar-trend-item' }" click.trigger="selectTrend(t)">
                   ${t.Name}
                   <!--<div ng-click="vm.focus(t)" ng-class="{'technologySelected' : vm.activeFocus === t.id}" class="technology-list-title">{{t.Technology}}</div>-->
@@ -64,7 +66,9 @@
               </div>
             </div>
           </div>
+          <!-- Legend -->
           <div class="row">
+              <h2>Legend</h2>
             <legend></legend>
           </div>
         </div>
