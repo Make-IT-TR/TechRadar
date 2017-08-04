@@ -325,7 +325,7 @@ a.nav-link {
 }
 
 section {
-  margin: 0 0px;
+  margin: 0px;
 }
 
 .navbar-nav li.loader {
@@ -877,10 +877,6 @@ img {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-}
-
-section {
-    margin-top: 100px;
 }
 
 strong {
