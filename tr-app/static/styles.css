@@ -881,6 +881,7 @@ img {
 
 strong {
     border-bottom: 2px solid #F16456;
+    font-weight: bold;
 }
 
 em {
