@@ -14,16 +14,20 @@
           What are platforms...
         </p>
       </div>
-      <div class="row">
+      <div class="row" id="radar-sidebar">
         <div id="sidebar-vis" class="col-lg-4">
-          <!-- Tabs menu -->
+          <!-- Name -->
           <div class="row">
+            <h1>TechRadar</h1>
+          </div>
+          <!-- Tabs menu -->
+          <div class="row" id="sidebar-tabs">
             <ul class="nav nav-tabs">
               <li role="presentation" class="active" data-target="#config" data-toggle="tab" click.trigger="showAll()">
-                <a href="#">Custom</a>
+                <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Customise</a>
               </li>
               <li role="presentation" class="" data-target="#trends" data-toggle="tab" click.trigger="showTrends()">
-                <a href="#">Trends</a>
+                <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Trends</a>
               </li>
             </ul>
           </div>
@@ -32,6 +36,24 @@
             <div class="tab-content">
               <!-- Custom tab -->
               <div class="tab-pane active" id="config">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">@</span>
+                  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+                  <span class="input-group-addon" id="basic-addon2">@example.com</span>
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  <span class="input-group-addon">.00</span>
+                </div>
+                <label for="basic-url">Your vanity URL</label>
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
               </div>
               <!-- Trends tab -->
               <div class="tab-pane btn-group-vertical" role="group" id="trends">

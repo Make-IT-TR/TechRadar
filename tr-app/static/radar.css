@@ -235,3 +235,43 @@
     margin-right: 50px;
     cursor: pointer;
 }
+
+#sidebar-vis {
+    border-right: 1px solid #d1d1d1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+
+#config .input-group {
+    margin-top: 10px;
+}
+
+#sidebar-vis .row {
+    padding: 10px;
+    border-bottom: 1px solid #d1d1d1;
+    margin-bottom: 10px;
+}
+
+#radar-sidebar {
+    border: 1px solid #d1d1d1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#sidebar-vis .nav-tabs {
+    border-bottom: none !important;
+}
+#sidebar-tabs {
+    padding: 10px 10px 0px 10px !important;
+    border-bottom: none !important;
+
+}
+
+/*Reset the legend from user agent stylesheet*/
+legend {
+    border: none !important;
+}

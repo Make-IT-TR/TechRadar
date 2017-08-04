@@ -111,16 +111,18 @@ a.nav-link {
 
 .nav>li>a {
   display: block;
-  color: #000!important;
   text-decoration: none;
   border-bottom: 2px dotted #d1d1d1;
   background-color: #fff;
-  padding: 10px!important;
-  margin: 0 20px 0 0!important;
-  color: #000!important;
+  padding: 10px !important;
+  margin: 0 20px 0 0 !important;
+  color: #000 !important;
   font-family: 'Rubik';
-  font-weight: 500!important;
-  font-size: 24px;
+  font-weight: 500 !important;
+}
+
+.site-navigation {
+    font-size: 130%;
 }
 
 .ts-technology-title
