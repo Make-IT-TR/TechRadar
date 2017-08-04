@@ -49,7 +49,6 @@
 .preset-option-list {
     margin-top: 5px;
     height: 20px;
-    font-family: ROSans;
 }
 
 .preset-option {
@@ -163,7 +162,6 @@
     fill: #6B6B6B;
     font-size: 14px;
     font-weight: 600;
-    font-family: 'Courgette', sans-serif;
 }
 
 .arc {
