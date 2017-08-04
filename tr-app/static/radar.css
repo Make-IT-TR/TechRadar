@@ -298,6 +298,11 @@
     border-bottom: none !important;
 }
 
+#sidebar-vis h1, h2, h3 {
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #d1d1d1 !important;
+}
+
 /*Reset the legend from user agent stylesheet*/
 legend {
     border: none !important;
