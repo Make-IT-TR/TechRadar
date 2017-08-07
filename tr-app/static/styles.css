@@ -1248,7 +1248,8 @@ Toggle color*/
 nav
 {
     font-family: 'Rubik';
-    font-weight: 500 !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
 
     height: 80px;
     padding: 10px !important;
