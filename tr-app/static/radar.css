@@ -1,331 +1,423 @@
-.leftpanel {
-    background: white;
+.leftpanel
+{
     display: inline-block;
+
     pointer-events: all;
+
+    background: white;
 }
 
-.leftpanel-tab {
-    width: 100%;
+.leftpanel-tab
+{
     /*position: absolute;*/
     z-index: 1;
-    border-bottom-style: solid;
+
+    width: 100%;
+
     border-bottom-width: thin;
+    border-bottom-style: solid;
     border-bottom-color: lightgray;
 }
 
 
-.lp-tab {
+.lp-tab
+{
+    font-size: 20px;
+
+    float: left;
+
     width: 149px;
     height: 60px;
-    float: left;
     padding: 15px;
     /* padding-left: 20px; */
+
     cursor: pointer;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-left-color: lightgray;
-    font-size: 20px;
+
     color: black;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: lightgray;
 }
 
-.lp-tab.active {
-    background: lightskyblue
+.lp-tab.active
+{
+    background: lightskyblue;
 }
 
-.preset {
-    cursor: pointer;
+.preset
+{
     margin-top: 10px;
+
+    cursor: pointer;
 }
 
-.preset-option-title {
+.preset-option-title
+{
     font-size: 24px;
 }
 
-.preset-list {
+.preset-list
+{
     clear: both;
+
     margin-top: 10px;
 }
 
-.preset-option-list {
-    margin-top: 5px;
+.preset-option-list
+{
     height: 20px;
+    margin-top: 5px;
 }
 
-.preset-option {
-    cursor: pointer;
+.preset-option
+{
     float: left;
+
     margin-right: 5px;
+
+    cursor: pointer;
 }
 
-.preset-title {
+.preset-title
+{
     font-size: 21px;
     font-weight: 700;
 }
 
-.preset-description {
+.preset-description
+{
     font-size: 18px;
 }
 
-.preset-config {
-    background: #eee;
+.preset-config
+{
     padding: 5px;
+
+    background: #eee;
 }
 
-.preset-config-title {
+.preset-config-title
+{
     font-size: 26px;
     font-weight: 600;
+
     background: #eee;
 }
 
 
 /* Header bar should be overwritten by children, so if you increase the border-top height above, you should match it here */
 
-.leftpanel-content> .tab-content {}
 
-.leftpanel-collapsed .leftpanel-content {
+
+.leftpanel-collapsed .leftpanel-content
+{
     display: none;
+
     width: 0;
 }
 
-.sidebar {
-       pointer-events: none;
+.sidebar
+{
+    bottom: 20px;
     /* position: absolute; */
+
     display: -ms-flexbox;
     display: flex;
-    height: 100%;
-    background: white;
-    margin-top: 15px;
+
     width: 300px;
+    height: 100%;
+    margin-top: 15px;
     margin-left: 15px;
-    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.4);
-    bottom: 20px;
+
+    pointer-events: none;
+
+    background: white;
+    box-shadow: 0 1px 7px rgba(0, 0, 0, .4);
 }
 
-.leftpanel-collapsed .leftpanel {
+.leftpanel-collapsed .leftpanel
+{
     display: none;
 }
 
-.leftpanel-collapsed .leaflet-container {
+.leftpanel-collapsed .leaflet-container
+{
     margin-left: 0;
 }
 
-.techTitle {
-    text-align: center;
-    background: transparent;
-    line-height: 100%;
+.techTitle
+{
     font-size: 10px;
+    line-height: 100%;
+
+    text-align: center;
+
+    background: transparent;
 }
 
-.techCircle {
+.techCircle
+{
     cursor: pointer;
     pointer-events: visible;
 }
 
-.techCircle:hover {
-    opacity: 0.5
+.techCircle:hover
+{
+    opacity: .5;
 }
 
 .radar-trend-item
 {
-  font-size:14px;
-  padding:8px;
-  cursor: pointer;
+    font-size: 14px;
 
+    padding: 8px;
+
+    cursor: pointer;
 }
 
 .radar-trend-item-selected
 {
-   font-size:14px;
-  padding:8px;
-  cursor: pointer;
-  background: lightskyblue;
+    font-size: 14px;
+
+    padding: 8px;
+
+    cursor: pointer;
+
+    background: lightskyblue;
 }
 
-#chart {
+#chart
+{
     text-align: center;
 }
 
-.segmentArc {
+.segmentArc
+{
+    z-index: 1;
+
     fill: white;
     stroke: gray;
-    stroke-width: 0.5;
-    z-index: 1;
+    stroke-width: .5;
 }
 
-.segmentArc:hover {
+.segmentArc:hover
+{
+    z-index: 10;
+
     stroke: black;
     stroke-width: 3;
-    z-index: 10;
 }
 
-.radialText {
-    fill: #6B6B6B;
+.radialText
+{
     font-size: 14px;
     font-weight: 600;
+
+    fill: #6b6b6b;
 }
 
-.arc {
+.arc
+{
     fill: red;
     stroke: white;
     stroke-width: 3;
 }
 
-.viz-title {
+.viz-title
+{
     font-size: 18px;
     font-weight: 600;
+
     margin-top: 15px;
 }
 
-.circle-button {
-    cursor: pointer;
+.circle-button
+{
     margin: 4px;
+
+    cursor: pointer;
 }
 
-.viz-dimension {
+.viz-dimension
+{
     width: 80%;
 }
 
-.horizontalTitle {
-    fill: #6B6B6B;
+.horizontalTitle
+{
     font-size: 10px;
-    letter-spacing: 0px;
-    line-height: 95%;
     font-weight: 400;
+    line-height: 95%;
+    letter-spacing: 0;
+    fill: #6b6b6b;
 }
 
 
-.legend-list {
+.legend-list
+{
     list-style-position: outside;
 }
 
-.legend-list-item {
-    list-style: none;
-    margin-left: -30px;
+.legend-list-item
+{
     margin-top: 4px;
+    margin-left: -30px;
+    list-style: none;
 }
 
 .legend-list-item:hover
 {
-  font-weight: 800;
+    font-weight: 800;
 }
 
-.radar-title {
+.radar-title
+{
     font-size: 34px;
+    margin-right: 50px;
     /* text-align: center; */
     /* width: 100%; */
     /* position: absolute; */
     /* right: 0; */
     /* top: 20px; */
     margin-left: 50px;
-    margin-right: 50px;
+
     cursor: pointer;
 }
 
 /*Reset the legend from user agent stylesheet*/
-legend {
+legend
+{
     border: none !important;
 }
 
-#sidebar-vis {
+#sidebar-vis
+{
     border-right: 1px solid #d1d1d1;
     -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
 }
 
-#config .input-group {
+#config .input-group
+{
     margin-top: 10px;
 }
 
 
 #radar-sidebar,
-#radar-sidebar .row {
+#radar-sidebar .row
+{
     border: 1px solid #d1d1d1;
     -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
 }
 
-.container-fluid #sidebar-vis a:hover {
+.container-fluid #sidebar-vis a:hover
+{
     border-bottom: none !important;
 }
 
-#sidebar-vis h1, h2, h3, h4 {
-    padding-bottom: 15px;
-    border-bottom: 1px dotted #e9e9e9 !important;
+#sidebar-vis h1,
+#sidebar-vis h2,
+#sidebar-vis h3,
+#sidebar-vis h4
+{
     margin-top: 30px;
+    padding-bottom: 15px;
+
+    border-bottom: 1px dotted #e9e9e9 !important;
 }
 
-#sidebar-vis span.label-info {
+#sidebar-vis span.label-info
+{
+    cursor: context-menu;
+
     color: #fff;
     background: rgba(62, 102, 133, .5);
-    cursor:context-menu;
 }
 
-#sidebar-vis span.label-info:hover {
+#sidebar-vis span.label-info:hover
+{
+    -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+
     color: rgb(62, 102, 133);
     background: rgba(62, 102, 133, .1);
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
     -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-    -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-    box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+       -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+            box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
 }
 
-#info-collapse {
+#info-collapse
+{
     position: relative;
+
     margin-top: 20px;
     padding: 20px;
+
     text-align: justify;
-    background: rgba(204, 217, 227, 0.05);
-    border: 1px solid rgba(204, 217, 227, 0.8);
+
+    border: 1px solid rgba(204, 217, 227, .8);
     -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    background: rgba(204, 217, 227, .05);
 }
 
-#info-collapse span.label-info {
+#info-collapse span.label-info
+{
     position: absolute;
     z-index: 100;
     top: 10px;
     right: 10px;
 }
 
-#techradar-vis {
-    margin: 0 auto !important;
+#techradar-vis
+{
     display: block;
-    text-align:center;
     /* Prevent the vis from taking all the space in the window */
+
     max-width: 1000px;
+    margin: 0 auto !important;
+
+    text-align: center;
 }
 
-.label-button {
+.label-button
+{
+    margin-left: 5px;
+
+    color: rgb(51, 51, 51);
     border: 1px solid rgb(204, 204, 204);
     background: #fff;
-    color: rgb(51, 51, 51);
-    margin-left: 5px;
 }
 
-.label-button:hover {
+.label-button:hover
+{
+    -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+
     color: #fff;
     background: rgba(62, 102, 133, .5);
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
     -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-    -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-    box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+       -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+            box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
 }
 
-.explore-col {
+.explore-col
+{
     padding: 10px;
     padding-bottom: 30px;
 }
 
-.btn-group-vertical {
-    padding:0px;
+.btn-group-vertical
+{
     width: 100% !important;
+    padding: 0;
 }
 
-#radar-sidebar .input-group {
+#radar-sidebar .input-group
+{
     width: 100% !important;
 }
