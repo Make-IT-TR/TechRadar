@@ -1435,5 +1435,11 @@ textarea
 }
 
 .technologysheet {
-    margin-top: 100px;
+    margin: 100px auto auto auto;
+    background: #fff;
+    padding: 30px;
+    width: 80%;
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
 }

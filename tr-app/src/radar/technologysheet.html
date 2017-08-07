@@ -4,7 +4,9 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <div class="ts-technology-title">${tech.Technology}</div>
+            <div class="rounded-separator-h1-top"></div>
+            <h1 class="ts-technology-title">${tech.Technology}</h1>
+            <div class="rounded-separator-h1-bottom"></div>
             <div>
               <span>Category:</span>
               <a click.trigger="selectCategory()">${tech.Category}</a>
@@ -18,7 +20,9 @@
           </div>
           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
             <!-- trends -->
-            <div if.bind="tech._TrendTechnologies" class="ts-technology-title">Related Trends</div>
+            <div class="rounded-separator-h2-top"></div>
+            <h2 if.bind="tech._TrendTechnologies" class="ts-technology-title">Related Trends</h2>
+            <div class="rounded-separator-h2-bottom"></div>
             <div class="container-fluid">
               <div class="row">
                 <!--route-href="route: trendsDetail; params.bind: { trend: tt._Trend.Id}"-->
@@ -34,7 +38,9 @@
               </div>
             </div>
             <!-- examples -->
-            <div class="ts-technology-title">Related Platforms</div>
+            <div class="rounded-separator-h2-top"></div>
+            <h2 class="ts-technology-title">Related Platforms</h2>
+            <div class="rounded-separator-h2-bottom"></div>
             <div class="container-fluid">
               <div class="row">
                 <div repeat.for="platform of examples" click.trigger="selectPlatform($event,platform)">
