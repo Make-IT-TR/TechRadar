@@ -182,8 +182,7 @@
 }
 
 .viz-dimension {
-    font-size: 18px;
-    width: 225px;
+    width: 80%;
 }
 
 .horizontalTitle {
@@ -336,4 +335,21 @@ svg {
 }
 
 #radar-vis {
+}
+
+.label-button {
+    border: 1px solid rgb(204, 204, 204);
+    background: #fff;
+    color: rgb(51, 51, 51);
+    margin-left: 5px;
+}
+
+.label-button:hover {
+    color: #fff;
+    background: rgba(62, 102, 133, .5);
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+    -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+    box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
 }

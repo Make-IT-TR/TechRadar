@@ -47,7 +47,9 @@
                   <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
                     <option repeat.for="option of f.Options" value.bind="option">${option}</option>
                   </select>
-                  <div class="fa fa-minus-circle circle-button" click.trigger="disableFilter(f)"></div>
+                  <label class="label label-default label-button" click.trigger="disableFilter(f)">
+                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                  </label>
                 </div>
                 <!-- Second -->
                 <div repeat.for="f of appState.data.activeConfig.Visualisation" class="input-group">
@@ -55,8 +57,12 @@
                   <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">
                     <option repeat.for="dimension of appState.dimensions" value.bind="dimension">${dimension}</option>
                   </select>
-                  <div show.bind="!f.Reverse" class="fa fa-sort-amount-asc circle-button" click.trigger="toggleReverse(f)"></div>
-                  <div show.bind="f.Reverse" class="fa fa-sort-amount-desc circle-button" click.trigger="toggleReverse(f)"></div>
+                  <label class="label label-default label-button" show.bind="!f.Reverse" click.trigger="toggleReverse(f)">
+                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                  </label>
+                  <label class="label label-default label-button" show.bind="f.Reverse" click.trigger="toggleReverse(f)">
+                    <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+                  </label>
                 </div>
               </div>
               <!-- Trends tab -->
