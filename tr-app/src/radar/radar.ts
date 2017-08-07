@@ -198,6 +198,8 @@ export class Radar {
 
     var segment = d3.scale.linear().domain([0, nr_of_segments]).range([start_angle, end_angle]);
 
+    // Remove previous visualisations
+    var svg = d3.select("#techradar-vis svg").remove();
 
     var svg = d3.select("#techradar-vis").append("svg")
 
