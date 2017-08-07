@@ -243,45 +243,12 @@ legend {
     margin-bottom: 10px;
 }
 
-#radar-sidebar {
+#radar-sidebar,
+#radar-sidebar .row {
     border: 1px solid #d1d1d1;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-}
-
-#sidebar-tabs.row {
-    padding: 10px !important;
-}
-
-#sidebar-vis .nav-tabs {
-    margin: 0px auto !important;
-}
-
-#sidebar-vis .nav-tabs>li>a,
-#sidebar-vis .nav-tabs>li.active>a {
-    border: 1px solid #d1d1d1;
-}
-
-#sidebar-vis .nav-tabs>li>a:hover,
-#sidebar-vis .nav-tabs>li.active>a:hover  {
-    border-bottom: none !important;
-    background: rgba(62, 102, 133, .1);
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-    -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-    box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-}
-
-#sidebar-vis .nav-tabs li a {
-    color: #8e8e8e !important;
-}
-
-#sidebar-vis .nav-tabs li.active a {
-    color: #000 !important;
-    transition: all 0.5s ease;
-    border-bottom: 1px solid #fff;
 }
 
 .container-fluid #sidebar-vis a:hover {
@@ -331,10 +298,10 @@ legend {
 
 
 svg {
-    width: 100%;
 }
 
 #radar-vis {
+    height: 600px;
 }
 
 .label-button {
@@ -352,4 +319,24 @@ svg {
     -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
     -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
     box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+}
+
+.explore-col {
+    padding-bottom: 30px;
+}
+
+.btn-group-vertical {
+    padding:0px;
+    width: 100% !important;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#radar-sidebar .input-group {
+    width: 100% !important;
 }
