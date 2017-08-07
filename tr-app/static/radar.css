@@ -298,6 +298,7 @@ legend {
 
 
 svg {
+    border: 1px solid red;
 }
 
 #radar-vis {
