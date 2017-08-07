@@ -205,23 +205,17 @@ export class Radar {
     var width = 750; //Math.max(screenWidth, 900) - margin.left - margin.right;
     var height = 450; //Math.max(screenHeight, 500) - margin.top - margin.bottom;
 
-
-    var el = $('#techradar-vis');
-
-    el.empty();
-
-    el.append("<div id='radarvis' style='position:absolute'></div>");
-    el.append("<div id='technology' style='position:absolute'></div>");
-    var radar = d3.select("#radarvis").append("svg")
+    var radar = d3.select("#techradar-vis")
+      .append("svg")
       .attr("width", (width + margin.left + margin.right))
       .attr("height", (height + margin.top + margin.bottom))
-      .append("g").attr("class", "wrapper")
+      .append("g")
+      .attr("class", "wrapper")
       .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
 
-    var tech = d3.select("#technology").append("svg")
-      .attr("width", (width + margin.left + margin.right))
-      .attr("height", (height + margin.top + margin.bottom))
-      .append("g").attr("class", "wrapper")
+    var tech = d3.select("svg")
+      .append("g")
+      .attr("class", "wrapper")
       .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
 
 
@@ -343,7 +337,7 @@ export class Radar {
       });
       var depth = ((arcDepth * id) + minDepth) / 2;
 
-      //Creates a function that makes SVG paths in the shape of arcs with the specified inner and outer radius 
+      //Creates a function that makes SVG paths in the shape of arcs with the specified inner and outer radius
       var arc = d3.svg.arc()
         .innerRadius(width * depth - arcWidth)
         .outerRadius(width * depth);
