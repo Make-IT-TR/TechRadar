@@ -95,23 +95,24 @@ body
     left: 0;
 }
 
-
-
-.nl-form
-{
-    font-size: 30px;
-
-    margin: 10px;
-}
-
 .nlf-select
 {
-    font-size: 30px;
-
-    color: green;
-    border-color: transparent;
-    border-bottom-color: green;
+    width: 200px !important;
+    border-bottom: 2px dashed rgb(62, 102, 133);
 }
+
+.nlf-select:hover
+{
+    -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+
+    color: rgb(62, 102, 133);
+    background: rgba(62, 102, 133, .1);
+    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+       -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+            box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+}
+
 
 .ts-technology-title
 {
