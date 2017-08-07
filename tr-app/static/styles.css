@@ -1225,7 +1225,9 @@ textarea {
 }
 
 .container-fluid {
-    width: 95%;
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .container-fluid p {
@@ -1237,10 +1239,6 @@ textarea {
     padding-right: 30px;
     margin-top: 20px;
     padding: 0 !important;
-}
-
-.container-fluid {
-    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .container-fluid ol,

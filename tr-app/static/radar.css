@@ -296,13 +296,12 @@ legend {
     right: 10px;
 }
 
-
-svg {
-    border: 1px solid red;
-}
-
-#radar-vis {
-    height: 600px;
+#techradar-vis {
+    margin: 0 auto !important;
+    display: block;
+    text-align:center;
+    /* Prevent the vis from taking all the space in the window */
+    max-width: 1000px;
 }
 
 .label-button {
