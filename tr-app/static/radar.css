@@ -237,11 +237,6 @@ legend {
     margin-top: 10px;
 }
 
-#sidebar-vis .row {
-    padding: 10px;
-    border-bottom: none !important;
-    margin-bottom: 10px;
-}
 
 #radar-sidebar,
 #radar-sidebar .row {
@@ -322,19 +317,13 @@ legend {
 }
 
 .explore-col {
+    padding: 10px;
     padding-bottom: 30px;
 }
 
 .btn-group-vertical {
     padding:0px;
     width: 100% !important;
-}
-
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 #radar-sidebar .input-group {

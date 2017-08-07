@@ -58,34 +58,7 @@ body {
   left: 0px;
 }
 
-@media (max-width: 799px) {
-  .navbar-title {
-    font-weight: 600;
-    margin-left: 10px;
-    font-size: 22px;
-  }
-}
 
-@media (min-width: 800px) {
-  .navbar-title {
-    display: none;
-  }
-}
-
-@media (max-width: 799px) {
-  .navbar-logo {
-    width: 75px;
-    float: left;
-    margin-right: 10px
-  }
-}
-
-@media (min-width: 800px) {
-  .navbar-logo {
-    float: left;
-    margin-right: 10px
-  }
-}
 
 .nl-form {
   font-size: 30px;
@@ -97,32 +70,6 @@ body {
   border-color: transparent;
   color: green;
   border-bottom-color: green;
-}
-
-a.nav-link {
-  display: block;
-  color: #000!important;
-  text-decoration: none;
-  border-bottom: 2px dotted #d1d1d1;
-  background-color: #fff;
-  padding: 10px!important;
-  margin: 0 20px 0 0!important;
-}
-
-.nav>li>a {
-  display: block;
-  text-decoration: none;
-  border-bottom: 2px dotted #d1d1d1;
-  background-color: #fff;
-  padding: 10px !important;
-  margin: 0 20px 0 0 !important;
-  color: #000 !important;
-  font-family: 'Rubik';
-  font-weight: 500 !important;
-}
-
-.site-navigation {
-    font-size: 130%;
 }
 
 .ts-technology-title
@@ -138,39 +85,7 @@ a.nav-link {
   margin-bottom: 5px;
 }
 
-@media (min-width: 800px) {
-  .technologysheet {
-    position: fixed;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    top: 50px;
-    height: 400px;
-    z-index: 1001;
-    background-color: white;
-    color: rgb(105, 105, 105);
-    margin: 10px;
-    overflow-y: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-  }
-}
 
-@media (max-width: 799px) {
-  .technologysheet {
-    position: fixed;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    top: 50px;
-    bottom: 0;
-    z-index: 1001;
-    background-color: white;
-    color: rgb(105, 105, 105);
-    margin: 10px;
-    overflow-y: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-  }
-}
 
 .sheetbackground {
   position: fixed;
@@ -182,49 +97,7 @@ a.nav-link {
   background: rgba(0%, 0%, 0%, 0.495);
 }
 
-@media (min-width: 800px) {
-  .trend-content {
-    background-color: rgba(0, 0, 0, .75);
-    width: auto;
-    height: 85px;
-    margin-left: 40px;
-  }
-  .trend-title {
-    padding: 5px;
-    font-size: 45px;
-    font-family: 'Rubik';
-    font-weight: 500!important;
-    color: white;
-  }
-  .trend-description {
-    margin-left: 5em;
-    margin-top: 550px;
-  }
-}
 
-.trendradar-image-mobile {
-  width: 300px;
-}
-
-@media (max-width: 799px) {
-  .trendradar-desktop {
-    display: none;
-  }
-  .trend-content {
-    background-color: rgba(0, 0, 0, .75);
-    height: 85px;
-  }
-  .trend-title {
-    padding: 5px;
-    font-size: 30px;
-    font-family: 'Rubik';
-    font-weight: 500!important;
-    color: white;
-  }
-  .trend-description {
-    margin-left: 1em;
-  }
-}
 
 .trend-title-image {
   height: 10em;
@@ -249,11 +122,6 @@ a.nav-link {
   border-bottom-left-radius: 0px;
 }
 
-@media (max-width: 799px) {
-  .card {
-    height: 150px;
-  }
-}
 
 .splash {
   text-align: center;
@@ -287,18 +155,6 @@ a.nav-link {
   overflow-y: auto;
 }
 
-@media print {
-  .page-host {
-    position: absolute;
-    left: 10px;
-    right: 0;
-    top: 50px;
-    bottom: 0;
-    overflow-y: inherit;
-    overflow-x: inherit;
-  }
-}
-
 .newsBlock {
   background-color: rgb(255, 255, 255);
   width: 100%;
@@ -322,10 +178,6 @@ a.nav-link {
   margin-bottom: 10px;
   margin-left: 10px;
   box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 5px;
-}
-
-section {
-  margin: 0px;
 }
 
 .navbar-nav li.loader {
