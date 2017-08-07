@@ -15,7 +15,7 @@
         </p>
       </div>
       <div class="row" id="radar-sidebar">
-        <div id="sidebar-vis" class="col-lg-4">
+        <div id="sidebar-vis" class="col-xs-3 col-md-3 col-lg-4">
           <!-- Name -->
           <div class="row">
             <h1>TechRadar</h1>
@@ -24,10 +24,14 @@
           <div class="row" id="sidebar-tabs" role="navigation">
             <ul class="nav nav-tabs">
               <li role="presentation" class="active" data-target="#config" data-toggle="tab" click.trigger="showAll()">
-                <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Customise</a>
+                <a href="#">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Customise</a>
               </li>
               <li role="presentation" class="" data-target="#trends" data-toggle="tab" click.trigger="showTrends()">
-                <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Trends</a>
+                <a href="#">
+                  <i class="fa fa-line-chart" aria-hidden="true"></i>
+                  Trends</a>
               </li>
             </ul>
           </div>
@@ -37,23 +41,22 @@
               <!-- Custom tab -->
               <div class="tab-pane active" id="config">
                 <h2>Customise the whole visualisation</h2>
-                <div class="input-group">
-                  <span class="input-group-addon" id="basic-addon1">@</span>
-                  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                <!-- First -->
+                <div repeat.for="f of appState.data.activeConfig.Filters" show.bind="f.Enabled" class="input-group">
+                  <h4>${f.Dimension}</h4>
+                  <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
+                    <option repeat.for="option of f.Options" value.bind="option">${option}</option>
+                  </select>
+                  <div class="fa fa-minus-circle circle-button" click.trigger="disableFilter(f)"></div>
                 </div>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-                  <span class="input-group-addon" id="basic-addon2">@example.com</span>
-                </div>
-                <div class="input-group">
-                  <span class="input-group-addon">$</span>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  <span class="input-group-addon">.00</span>
-                </div>
-                <label for="basic-url">Your vanity URL</label>
-                <div class="input-group">
-                  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
-                  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <!-- Second -->
+                <div repeat.for="f of appState.data.activeConfig.Visualisation" class="input-group">
+                  <h4>${f.Visual}</h4>
+                  <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">
+                    <option repeat.for="dimension of appState.dimensions" value.bind="dimension">${dimension}</option>
+                  </select>
+                  <div show.bind="!f.Reverse" class="fa fa-sort-amount-asc circle-button" click.trigger="toggleReverse(f)"></div>
+                  <div show.bind="f.Reverse" class="fa fa-sort-amount-desc circle-button" click.trigger="toggleReverse(f)"></div>
                 </div>
               </div>
               <!-- Trends tab -->
@@ -68,12 +71,12 @@
           </div>
           <!-- Legend -->
           <div class="row">
-              <h2>Legend</h2>
+            <h2>Legend</h2>
             <legendsidebar></legendsidebar>
           </div>
         </div>
         <!-- The Radar -->
-        <div id="radar-vis" class="col-lg-8">
+        <div id="radar-vis" class="col-xs-9 col-md-9 col-lg-8">
           <radar view="trend"></radar>
         </div>
       </div>
