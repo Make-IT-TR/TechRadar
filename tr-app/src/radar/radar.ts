@@ -201,6 +201,7 @@ export class Radar {
     // Remove previous visualisations
     var svg = d3.select("#techradar-vis svg").remove();
 
+    // Add the svg for the visualisation
     var svg = d3.select("#techradar-vis").append("svg")
 
     // Make it responsive with viewBox

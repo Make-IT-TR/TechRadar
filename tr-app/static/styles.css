@@ -18,7 +18,7 @@ body
     /*For the sticky footer*/
     margin-bottom: 300px;
 
-    background: url('../static/images/background-particles-seamless-white.png') repeat center center fixed !important;
+    background: url('../img/background-particles-seamless-white.png') repeat center center fixed !important;
 }
 
 .navbar
