@@ -1444,3 +1444,7 @@ textarea
             border-radius: 10px;
     background: #fff;
 }
+
+.col-platforms {
+    padding: 20px;
+}
