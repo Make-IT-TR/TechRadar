@@ -5,10 +5,33 @@
   <section class="au-animate">
     <div class="container-fluid">
       <div class="row">
-          <div class="rounded-separator-h1-top"></div>
-          <h1>TechRadar</h1>
-          <div class="rounded-separator-h1-bottom"></div>
+        <div class="col-xs-12">
+          <img class="img-responsive center-block" src="../../img/techradar_logo_100.png"/>
+          <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+          <a href="#" class="btn btn-default">Read more</a>
+        </div>
       </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div class="navigate-content" go-to-route="route: trends">
+            <span class="navigate-title"><i class="fa fa-line-chart" aria-hidden="true"></i> Trends</span>
+            <a href="#" go-to-route="route: trends" class="btn btn-default">Read more</a>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="navigate-content">
+            <span class="navigate-title"><i class="fa fa-th-large" aria-hidden="true"></i> Platforms</span>
+            <a href="#" go-to-route="route: platforms" class="btn btn-default">Read more</a>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="navigate-content">
+            <span class="navigate-title"><i class="fa fa-tachometer" aria-hidden="true"></i> Radar</span>
+            <a href="#" go-to-route="route: techradar" class="btn btn-default">Read more</a>
+          </div>
+        </div>
+      </div>
+      <!-- Search -->
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
           <div id="search-form" class="search-container">
@@ -24,32 +47,8 @@
           </div>
         </div>
       </div>
-      <div class="span12" style="margin-top:5em" if.bind="!showResult">
-        <div class="col-sm-2 navigate-box  col-sm-offset-2">
-          <div class="navigate-content" go-to-route="route: trends">
-            <span class="navigate-image" style="background-image: url(img/trends/iotdata.png)"></span>
-            <span class="navigate-title">Trends</span>
-          </div>
-        </div>
-        <div class="col-sm-2 navigate-box">
-          <div class="navigate-content" go-to-route="route: trends">
-            <span class="navigate-image" style="background: url(img/webshots/ws1112359867.jpg)"></span>
-            <span class="navigate-title">Platforms</span>
-          </div>
-        </div>
-        <div class="col-sm-2 navigate-box">
-          <div class="navigate-content" go-to-route="route: techradar">
-            <span class="navigate-image" style="background: url(img/radar.png)"></span>
-            <span class="navigate-title">Radar</span>
-          </div>
-        </div>
-        <div class="col-sm-2 navigate-box">
-          <div class="navigate-content" go-to-route="route: about">
-            <span class="navigate-image" style="background: url(img/logo_iconic_50_RGB.png)"></span>
-            <span class="navigate-title">About</span>
-          </div>
-        </div>
-      </div>
+      <!-- Search results -->
+      <div class="span12" style="margin-top:5em" if.bind="!showResult"></div>
     </div>
     <technologysheet></technologysheet>
   </section>

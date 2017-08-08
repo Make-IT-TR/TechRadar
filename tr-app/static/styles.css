@@ -325,7 +325,9 @@ div.au-stagger
 
     color: rgb(136, 172, 217);
     background-color: #337ab7;
-    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+       -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
 }
 
 .card
@@ -345,7 +347,9 @@ div.au-stagger
        -moz-border-radius: 10px;
             border-radius: 10px;
     background-color: #337ab7;
-    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+       -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
 }
 
 .card:hover
@@ -441,6 +445,7 @@ div.au-stagger
 .example-card-title
 {
     font-size: 14px;
+    font-family: "Rubik";
     font-weight: 500;
 
     position: absolute;
@@ -460,8 +465,8 @@ div.au-stagger
 .card-title
 {
     font-size: 16px;
-    font-weight: 700;
-
+    font-weight: 500;
+    font-family: "Rubik";
     position: absolute;
     z-index: 10;
     bottom: 0;
@@ -479,8 +484,8 @@ div.au-stagger
 .trend-card-title
 {
     font-size: 16px;
-    font-weight: 700;
-
+    font-weight: 500;
+    font-family: "Rubik";
     position: absolute;
     z-index: 10;
     bottom: 0;
@@ -550,7 +555,9 @@ div.au-stagger
     font-size: 18px;
 
     color: white;
-    text-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+       -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
 }
 
 .card .header-bg
@@ -690,53 +697,40 @@ div.au-stagger
 }
 
 
-
 .navigate-content
 {
-    font-family: 'Rubik';
-    font-size: 24px;
-
-    overflow: hidden;
-
-    height: 5em;
     margin: 5px;
-    padding-top: 10px;
+    padding: 10px;
 
     cursor: pointer;
     text-align: center;
 
-    color: rgb(136, 172, 217);
-    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    color: #000;
+
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+       -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
 }
 
-.navigate-image
+
+.navigate-content:hover
 {
-    top: 0;
-    left: 0;
-    /* position: absolute; */
+    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+       -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+            box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
 
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    background-size: cover!important;
 }
 
 .navigate-title
 {
-    font-size: 24px;
-
-    position: absolute;
-    right: 20px;
-    bottom: 0;
-    left: 20px;
-
+    font-size: 150%;
+    font-family: 'Rubik';
+    font-weight: 700;
     margin: 0;
-
     color: black;
-    /* height: 2em; */
-    background: white;
 }
 
 /* MAKE-IT */
