@@ -1,5 +1,9 @@
+/*For the headings*/
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500');
+/*For the contents*/
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700');
+/*For the visualisations (svg)*/
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500');
 
 html
 {
@@ -19,6 +23,10 @@ body
     margin-bottom: 300px;
 
     background: url('../img/background-particles-seamless-white.png') repeat center center fixed !important;
+}
+
+svg {
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .navbar
