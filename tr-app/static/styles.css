@@ -1268,6 +1268,9 @@ nav
     line-height: 27px;
 }
 
+.navbar-header {
+    padding-bottom: 10px;
+}
 
 
 .dropdown-menu a:hover,
@@ -1447,4 +1450,8 @@ textarea
 
 .col-platforms {
     padding: 20px;
+}
+
+#main-div {
+    margin-top: 120px;
 }

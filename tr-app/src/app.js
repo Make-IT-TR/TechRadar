@@ -1,4 +1,5 @@
 import { PLATFORM } from 'aurelia-pal';
+
 var App = (function () {
     function App() {
     }

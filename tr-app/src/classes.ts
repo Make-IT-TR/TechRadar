@@ -10,7 +10,7 @@ export module classes {
     source: string;
 
     constructor(public ref = []) {
-        
+
     }
 
 }
@@ -328,4 +328,3 @@ export interface ITechnology {
 
   }
 }
-
