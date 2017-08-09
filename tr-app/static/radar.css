@@ -304,8 +304,7 @@ legend
 }
 
 
-#radar-sidebar,
-#radar-sidebar .row
+#radar-sidebar
 {
     border: 1px solid #d1d1d1;
     -webkit-border-radius: 5px;
