@@ -10,7 +10,9 @@ html
     font-family: sans-serif;
     font-size: 14px;
     /*For the sticky footer*/
+
     position: relative;
+
     min-height: 100%;
 }
 
@@ -25,7 +27,8 @@ body
     background: url('../img/background-particles-seamless-white.png') repeat center center fixed !important;
 }
 
-svg {
+svg
+{
     font-family: 'Fira Sans', sans-serif;
 }
 
@@ -444,8 +447,8 @@ div.au-stagger
 
 .example-card-title
 {
+    font-family: 'Rubik';
     font-size: 14px;
-    font-family: "Rubik";
     font-weight: 500;
 
     position: absolute;
@@ -464,9 +467,10 @@ div.au-stagger
 
 .card-title
 {
+    font-family: 'Rubik';
     font-size: 16px;
     font-weight: 500;
-    font-family: "Rubik";
+
     position: absolute;
     z-index: 10;
     bottom: 0;
@@ -483,9 +487,10 @@ div.au-stagger
 
 .trend-card-title
 {
+    font-family: 'Rubik';
     font-size: 16px;
     font-weight: 500;
-    font-family: "Rubik";
+
     position: absolute;
     z-index: 10;
     bottom: 0;
@@ -670,21 +675,6 @@ div.au-stagger
     background: transparent;
 }
 
-@media (max-width: 799px)
-{
-    .search-container
-    {
-        margin-top: 3em;
-    }
-}
-
-@media (min-width: 800px)
-{
-    .search-container
-    {
-        margin-top: 15em;
-    }
-}
 
 .search-top
 {
@@ -706,13 +696,12 @@ div.au-stagger
     text-align: center;
 
     color: #000;
-
-    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
-       -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
-            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
     -webkit-border-radius: 10px;
        -moz-border-radius: 10px;
             border-radius: 10px;
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+       -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
 }
 
 
@@ -721,15 +710,16 @@ div.au-stagger
     -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
        -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
             box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
-
 }
 
 .navigate-title
 {
-    font-size: 150%;
     font-family: 'Rubik';
+    font-size: 150%;
     font-weight: 700;
+
     margin: 0;
+
     color: black;
 }
 
@@ -1270,7 +1260,8 @@ nav
     line-height: 27px;
 }
 
-.navbar-header {
+.navbar-header
+{
     padding-bottom: 10px;
 }
 
@@ -1450,14 +1441,57 @@ textarea
     background: #fff;
 }
 
-.col-platforms {
+.col-platforms
+{
     padding: 20px;
 }
 
-#main-div {
+#main-div
+{
     margin-top: 120px;
 }
 
-#home .row {
+#home .row
+{
     margin-top: 50px;
+}
+
+.lead
+{
+    text-align: center;
+}
+
+
+.search-button
+{
+    -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+    text-decoration: none;
+
+    color: #3e6684 !important;
+    border-bottom: 2px dashed #3e6684;
+    background-color: rgba(62, 102, 133, .1);
+}
+
+.search-button:hover
+{
+    -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+    text-decoration: none;
+
+    color: #fff !important;
+    border-bottom: 2px solid #3e6684 !important;
+    background-color: rgba(62, 102, 133, .5);
+    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+       -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+            box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+}
+
+.search-button button {
+    border: none !important;
+    background: none !important;
+}
+
+#search-form p {
+    text-align: center;
 }
