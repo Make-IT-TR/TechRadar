@@ -1456,6 +1456,10 @@ textarea
     margin-top: 50px;
 }
 
+.row {
+    margin-top: 20px;
+}
+
 .lead
 {
     text-align: center;
@@ -1495,3 +1499,17 @@ textarea
 #search-form p {
     text-align: center;
 }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1920px) {
+    body {
+        font-size: 20px;
+    }
+    .container-fluid {
+        width: 80%;
+
+    }
+    .row {
+        margin-top: 40px;
+    }
+ }
