@@ -1,6 +1,7 @@
 FROM node:alpine
 
 # Install webpack, yarn and aurelia
+RUN npm install --global typescript
 RUN npm install --global webpack
 RUN npm install --global yarn
 RUN npm install --global aurelia-cli
@@ -14,8 +15,8 @@ RUN npm --prefix ./tr-server install ./tr-server
 
 # Install packages for the app
 WORKDIR tr-app/
-RUN npm install
-RUN yarn install
+RUN yarn
+
 
 # Run
 EXPOSE 8080
