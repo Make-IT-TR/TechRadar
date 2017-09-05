@@ -165,21 +165,23 @@ export class Radar {
   draw2() {
     console.log('start drawing');
 
-    var screenWidth = window.innerWidth - 800;
-    var screenHeight = window.innerHeight - 800;
-
-
     if (!this.data.radial || !this.data.horizontal) return;
     var radial = this.data.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
     var horizontal = ["very low", "low", "neutral", "high", "very high"];
 
+    // Get the dimensions of the container div
+    // We set it as a square (1:1 rect)
+    // So that we can easily use Viebox for making it responsive
+    var container = d3.select("#techradar-vis").node()
+    var width = container.getBoundingClientRect().width;
+    // Scale it a bit dow in order to make it fir into the viz
+    width = width * 0.85;
+    var height = width;
 
-    var radius = 600; // radius of a circle
+    var radius = 12; // radius of a circle
     var thickness = 6; //thickness of a circle
     var nr_of_segments = radial.length;
     var nr_of_levels = horizontal.length;
-    var origin_x = 10; // distance to the right from left top
-    var origin_y = 1; // distance from the top from left top
 
     var rings = d3.scale.linear().domain([0, horizontal.length + 1]).range([0, radius])
     var padding_rings = rings(1); // distance between rings
@@ -194,36 +196,26 @@ export class Radar {
     var start_angle = degrees(0);
     var end_angle = degrees(180);
 
-    var _origin_x_offset = origin_x + radius;
-    var _origin_y_offset = origin_y + radius;
     var segment = d3.scale.linear().domain([0, nr_of_segments]).range([start_angle, end_angle]);
-    // var width = _origin_x_offset * 2;
-    // var height = _origin_y_offset * 2;
 
+    // Remove previous visualisations
+    var svg = d3.select("#techradar-vis svg").remove();
 
-    var margin = { left: 100, top: 200, right: 100, bottom: 0 };
-    var width = 750; //Math.max(screenWidth, 900) - margin.left - margin.right;
-    var height = 450; //Math.max(screenHeight, 500) - margin.top - margin.bottom;
+    // Add the svg for the visualisation
+    var svg = d3.select("#techradar-vis").append("svg")
 
+    // Make it responsive with viewBox
+    svg.attr( 'preserveAspectRatio',"xMinYMin meet")
+      .attr("viewBox", "0 0 1000 600")
+      .attr('width', '100%')
 
-    var el = $('#techradar-vis');
+    var radar = svg.append("g")
+      .attr("class", "wrapper")
+      .attr("transform", "translate(500, 450)");
 
-    el.empty();
-
-    el.append("<div id='radarvis' style='position:absolute'></div>");
-    el.append("<div id='technology' style='position:absolute'></div>");
-    var radar = d3.select("#radarvis").append("svg")
-      .attr("width", (width + margin.left + margin.right))
-      .attr("height", (height + margin.top + margin.bottom))
-      .append("g").attr("class", "wrapper")
-      .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
-
-    var tech = d3.select("#technology").append("svg")
-      .attr("width", (width + margin.left + margin.right))
-      .attr("height", (height + margin.top + margin.bottom))
-      .append("g").attr("class", "wrapper")
-      .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
-
+    var tech = svg.append("g")
+      .attr("class", "wrapper")
+      .attr("transform", "translate(500, 450)");
 
 
     var radial = this.data.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
@@ -231,11 +223,9 @@ export class Radar {
 
     var step = 180 / nr_of_segments;
 
-
     var minDepth = 0.25;
     var arcDepth = (0.95 - minDepth) / this.data.horizontal.length;
     var arcWidth = width / 2 / horizontal.length * (0.95 - minDepth);
-
 
     var first = true;
     var id = this.data.horizontal.length;
@@ -307,7 +297,6 @@ export class Radar {
           if (years.indexOf(y) >= 0) {
             var future = (years.length > 1 && years[1] === y);
 
-
             var horScore = this.appState.getDimensionScore(i, this.data.activeConfig.horizontalDimension, y);
             if (horScore.Value === h) {
               var radScore = this.appState.getDimensionScore(i, this.data.activeConfig.radialDimension, y);
@@ -329,7 +318,6 @@ export class Radar {
                     c._radScore = radScore;
                     //    console.log(horScore.Value + ' - ' + radScore.Value);
 
-
                     items.push(c);
                     all.push(c);
                   }
@@ -343,7 +331,7 @@ export class Radar {
       });
       var depth = ((arcDepth * id) + minDepth) / 2;
 
-      //Creates a function that makes SVG paths in the shape of arcs with the specified inner and outer radius 
+      //Creates a function that makes SVG paths in the shape of arcs with the specified inner and outer radius
       var arc = d3.svg.arc()
         .innerRadius(width * depth - arcWidth)
         .outerRadius(width * depth);
@@ -366,6 +354,7 @@ export class Radar {
         .on('mouseover', (d) => {
           // bus.publish("segment", "mouseover", d.data);
           d.parentNode.appendChild(d);
+          // radar.ts:367 Uncaught TypeError: Cannot read property 'appendChild' of undefined
         })
 
       items.forEach((i: classes.RadarCircle) => {
@@ -463,10 +452,7 @@ export class Radar {
       //arcPos -= (1 / this.data.horizontal.length);
       mycolor = mycolor.darker(0.5 / this.data.horizontal.length);
 
-
       id -= 1;
-
-
 
     });
 
@@ -474,9 +460,6 @@ export class Radar {
 
     all.forEach((i: classes.RadarCircle) => {
       if (i._future) {
-
-
-
         var origin = _.find(all, (item: classes.RadarCircle) => {
           var o = (item._Input === i._Input && item._pos != i._pos);
           return o;
@@ -502,8 +485,6 @@ export class Radar {
       }
 
     });
-
-
 
 
   }

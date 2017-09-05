@@ -7,8 +7,6 @@ import { ApplicationState } from '../ApplicationState';
 var d3 = require('d3');
 
 
-
-
 @inject(ApplicationState, MessageBusService)
 export class Techradar {
 
@@ -28,7 +26,7 @@ export class Techradar {
   }
 
   showAll()
-  {   
+  {
     this.bus.publish("filter","all");
   }
 

@@ -1,10 +1,20 @@
 <template>
   <require from="./nav-bar.html"></require>
-  <require from = "./radar/radar"></require>
-   
+  <require from="./radar/radar"></require>
+  <!-- Navbar -->
   <nav-bar router.bind="router" if.one-way="router.currentInstruction.config.title!=='RadarImage'"></nav-bar>
- <div class="page-host">
-
+  <!-- Page content -->
+  <div id="main-div">
     <router-view></router-view>
   </div>
+  <!-- Footer -->
+  <footer class="gradient">
+    <div class="container-fluid">
+      <hr/>
+      <a href="https://ec.europa.eu/digital-agenda/en/news/22-new-caps-projects-horizon-2020">
+        <img class="img-responsive
+center-block" src="../img/from_30.png">
+      </a>
+    </div>
+  </footer>
 </template>

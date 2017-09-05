@@ -7,7 +7,7 @@ import { ApplicationState } from '../ApplicationState';
 
 
 @inject(ApplicationState, MessageBusService)
-export class Legend {
+export class Legendsidebar {
 
   appState: ApplicationState;
   bus: MessageBusService;
