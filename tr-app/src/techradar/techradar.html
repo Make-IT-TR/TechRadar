@@ -1,143 +1,91 @@
 <template>
   <require from="../radar/radar"></require>
-  <require from="../radar/legend"></require>
-      <require from="../radar/technologysheet"></require>
-
-  <section class="au-animate">
-    <div style="position:absolute;left:300px">
-      <radar view="trend" style="margin-left: 800px"></radar>
-    </div>
-    <div class="sidebar">
-
-      <div class="leftpanel">
-        <div class="leftpanel-container">
-
-          <div class="leftpanel-tab">
-            <ul class="nav nav-pills">
-              <!--<li class="lp-tab active" data-target="#config" data-toggle="tab">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                  viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
-                  <g>
-                    <path d="M24.1,30.3c0.7,0.7,1,1.7,1,2.7v29c0,1.7,2.1,2.6,3.4,1.4l8.1-9.3c1.1-1.3,1.7-1.9,1.7-3.2v-18c0-1,0.4-1.9,1-2.7L62.6,5
-		c1.7-1.9,0.4-5-2.2-5H3C0.4,0.1-1,3.1,0.8,5L24.1,30.3z" />
-                  </g>
-                </svg>
-              </li>-->
-  <li class="lp-tab active" data-target="#config" data-toggle="tab" click.trigger="showAll()">
-                <div>Custom</div>
-              </li>
-              <li class="lp-tab" data-target="#trends" data-toggle="tab" click.trigger="showTrends()">
-                <div>Trends</div>
-              </li>
-            
-            </ul>
+  <require from="../radar/legendsidebar"></require>
+  <require from="../radar/technologysheet"></require>
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="rounded-separator-h1-top"></div>
+          <h1><i class="fa fa-tachometer" aria-hidden="true"></i> Radar</h1>
+          <div class="rounded-separator-h1-bottom"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <p>
+            The <em>Radar</em> is a visual presentation based on the categorisations and dimension scores presented in the <em>Trends</em> and <em>Platforms</em> sections. Here it is fully interactive, you can explore it (filter) by category, a certain score, etc., and thereby change the layout of it.
+          </p>
+        </div>
+      </div>
+      <div id="radar-sidebar" class="row">
+        <div class="col-md-12">
+          <!-- The Radar -->
+          <div class="row" id="radar-vis">
+            <radar view="trend"></radar>
           </div>
-
-
-          <div class="leftpanel-content">
-            <!-- Tab panes -->
-            <div class="tab-content">
-              <div class="tab-pane active" id="config">
-                <div class="preset-config" style="width:300px">
-                  <!--<div class="preset-config-title">${appState.activeConfig.Title}</div>-->
-                  <!--<div class="dropdown preset-config-title" style="float:left">
-                                        <div data-toggle="dropdown" class="dropdown-toggle" style="float:left">{{vm.data.activeConfig.Title}} <span class="fa fa-caret-down" style="margin-left:8px;margin-top:8px"></span></div>
-                                        <ul class="dropdown-menu">
-                                            <li ng-repeat="preset in vm.data.presets" class="preset-option-title"><a ng-click="vm.selectPreset(preset)">{{preset.Title}}</a></li>
-                                        </ul>
-
-                                    </div>-->
-                  <!--<div>
-                    <div class="viz-title">Preset</div>
-                    <select class="viz-dimension" value.bind="appState.data.activeConfig" change.delegate="updateFilter()">
-                                                <option repeat.for="preset of appState.sheets.presets" value.bind="preset">${preset.Title}</option>
-                                            </select>
-
-                  </div>-->
-                  <div repeat.for="f of appState.data.activeConfig.Filters" show.bind="f.Enabled">
-                    <div class="viz-title">${f.Dimension}</div>
-                    <select class="viz-dimension" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
-                                                <option repeat.for="option of f.Options" value.bind="option">${option}</option>
-                                            </select>
-                    <div class="fa fa-minus-circle circle-button" click.trigger="disableFilter(f)"></div>
-                  </div>
-                  <div class="preset-option-list">
-                    <div class="dropdown preset-option">
-                      <div class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-plus-circle circle-button"></span> add filter</div>
-                      <ul class="dropdown-menu">
-                        <li repeat.for="dimension of appState.sheets.Dimensions"><a click.trigger="addNewFilter(dimension)">${dimension}</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="preset-option" click.trigger="editMode = !editMode"><span class="fa fa-cogs circle-button"></span> <span show.bind="editMode">hide</span>
-                      <span show.bind="!editMode">edit</span> visualisation</div>
-                  </div>
-                  <!--
-                                    <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add Filter<span class="caret"></span></button>
-                                        
-                                    </div>-->
-
-                  <div show.bind="editMode">
-
-                    <div class="viz-title"><input type="checkbox" checked.bind="appState.data.activeConfig.ShowTrend" change.delegate="updateFilter()">Show
-                      Trend
-                      </input>
-                    </div>
-
-                    <div repeat.for="f of appState.data.activeConfig.Visualisation">
-                      <div class="viz-title">${f.Visual}</div>
-                      <select class="viz-dimension" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">                          
-                          <option repeat.for="dimension of appState.dimensions" value.bind="dimension">${dimension}</option>
-                      </select>
-                      <div show.bind="!f.Reverse" class="fa fa-sort-amount-asc circle-button" click.trigger="toggleReverse(f)"></div>
-                      <div show.bind="f.Reverse" class="fa fa-sort-amount-desc circle-button" click.trigger="toggleReverse(f)"></div>
-                    </div>
-                  </div>
-
-
-
-
-                </div>
-
-                <legend />
-
-                <!--<div ng-repeat="c in vm.data.presets" class="preset-list">
-                                    <div ng-click="vm.selectPreset(c)" class="preset">
-                                        <div class="preset-title">{{c.Title}}</div>
-                                        <div class="preset-description">{{c.Description}}</div>
-                                    </div>
-
-                                </div>-->
-
-
-
-                <!--<button ng-click="vm.addFilter()">Add Filter</button>-->
+          <!-- The title -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="rounded-separator-h2-top"></div>
+              <h2>Explore the TechRadar</h2>
+              <div class="rounded-separator-h2-bottom"></div>
+            </div>
+          </div>
+          <!-- Columns -->
+          <div class="row">
+            <div class="col-sx-12 col-md-4 col-lg-4 explore-col">
+              <h3>
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+                Customise the Radar
+              </h3>
+              <!-- First -->
+              <div repeat.for="f of appState.data.activeConfig.Filters" show.bind="f.Enabled" class="input-group">
+                <h4>${f.Dimension}</h4>
+                <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
+                  <option repeat.for="option of f.Options" value.bind="option">${option}</option>
+                </select>
+                <label class="label label-default label-button" click.trigger="disableFilter(f)">
+                  <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                </label>
               </div>
-              <!--
-
-                            <div class="tab-pane" id="examples">
-                                <h1>Examples</h1>
-                                <div class="example-list-container">
-                                    <div ng-repeat="e in vm.data.sheets.Examples">
-                                        <div ng-click="vm.selectExample(e)" ng-class="{'technologySelected' : vm.activeExample === e}" class="technology-list-title">{{e.Name}}</div>
-                                    </div>
-                                </div>
-                            </div>-->
-              <div class="tab-pane" id="trends" style="width:300px">
-                <div class="technology-list-container">
-                  <div repeat.for="t of appState.trends" class="${ t == appState.data.activeTrend ? 'radar-trend-item-selected' : 'radar-trend-item' }"
-                    click.trigger="selectTrend(t)">
-                    ${t.Name}
-                    <!--<div ng-click="vm.focus(t)" ng-class="{'technologySelected' : vm.activeFocus === t.id}" class="technology-list-title">{{t.Technology}}</div>-->
-                  </div>
-                </div>
+              <!-- Second -->
+              <div repeat.for="f of appState.data.activeConfig.Visualisation" class="input-group">
+                <h4>${f.Visual}</h4>
+                <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">
+                  <option repeat.for="dimension of appState.dimensions" value.bind="dimension">${dimension}</option>
+                </select>
+                <label class="label label-default label-button" show.bind="!f.Reverse" click.trigger="toggleReverse(f)">
+                  <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                </label>
+                <label class="label label-default label-button" show.bind="f.Reverse" click.trigger="toggleReverse(f)">
+                  <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+                </label>
               </div>
+            </div>
+            <div class="col-sx-12 col-md-4 col-lg-4 explore-col">
+              <h3>
+                <i class="fa fa-line-chart" aria-hidden="true"></i>
+                Explore Trends
+              </h3>
+              <div class="btn-group-vertical" role="group" aria-label="trendsbuttons">
+                <button type="button" class="btn btn-default btn-sm btn-block" repeat.for="t of appState.trends" class="${ t == appState.data.activeTrend ? 'radar-trend-item-selected' : 'radar-trend-item' }" click.trigger="selectTrend(t)">
+                  ${t.Name}
+                  <!--<div ng-click="vm.focus(t)" ng-class="{'technologySelected' : vm.activeFocus === t.id}" class="technology-list-title">{{t.Technology}}</div>-->
+                </button>
+              </div>
+            </div>
+            <div class="col-sx-12 col-md-4 col-lg-4 explore-col">
+              <h3>
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                Legend
+              </h3>
+              <legendsidebar></legendsidebar>
             </div>
           </div>
         </div>
       </div>
     </div>
- <technologysheet></technologysheet>
+    <technologysheet></technologysheet>
   </section>
 </template>

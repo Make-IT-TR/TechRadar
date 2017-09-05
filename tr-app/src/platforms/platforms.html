@@ -2,62 +2,75 @@
   <require from="../blur-image"></require>
   <require from="../bootstrap-select"></require>
   <require from="../valueconverters"></require>
-
-    <require from="../radar/technologysheet"></require>
-
+  <require from="../radar/technologysheet"></require>
   <section class="au-animate">
-
-    <a class="add-platform-button" route-href="route:addPlatform">
-      <span>Missing something?<img src="/img/add.png" style="margin-left:10px"></img></span>
-</a>
-    <form class="nl-form">
-      I am interested in 
-
- <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
-  -->
-      <select class='nlf-select' bootstrap-select value.bind="selectedCategory">
-         <option>all</option>
-         <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
-      </select>
-      <span if.bind="availableTechnologies.length>0"> using </span> 
-      <select class='nlf-select' if.bind="availableTechnologies.length>0" bootstrap-select value.bind="selectedTechnology">
-         <option>all</option>
-         <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
-      </select>
-     
-     
-      <!--<select>
-            <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
-					</select>-->
-     
-    </form>
-
     <div class="container-fluid">
       <div class="row">
-        <div repeat.for="platform of availablePlatforms" mouseenter.trigger="showTechnologies=true" mouseleave.trigger="showTechnologies=false">
-          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-10 card" >
-            <span click.trigger="showTechnologies=true"  class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
+        <div class="col-xs-12">
+          <div class="rounded-separator-h1-top"></div>
+          <h1><i class="fa fa-th-large" aria-hidden="true"></i> Platforms</h1>
+          <div class="rounded-separator-h1-bottom"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <p>
+            This section allows you to navigate and search the available <em>Platforms</em> within the radar. Typical situations for using this part of the website would be when a maker is looking for suggestions for team collaboration tools or wants to explore what kind of funding possibilities are available.
+          </p>
+        </div>
+        <div class="col-xs-4 col-platforms">
+          <form class="nl-form2">
+            I am interested in
+            <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
+          -->
+            <select class='nlf-select' bootstrap-select value.bind="selectedCategory">
+              <option>all</option>
+              <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
+            </select>
+            <span if.bind="availableTechnologies.length>0">
+              using
+            </span>
+            <select class='nlf-select' if.bind="availableTechnologies.length>0" bootstrap-select value.bind="selectedTechnology">
+              <option>all</option>
+              <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
+            </select>
+            <!--<select>
+                    <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
+        					</select>-->
+          </form>
+        </div>
+        <div class="col-xs-2 col-platforms">
+          <a class="btn btn-default" route-href="route:addPlatform">
+            <span>
+              <i class="fa fa-plus-circle" aria-hidden="true"></i>
+              Add a Platform</span>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" repeat.for="platform of availablePlatforms" mouseenter.trigger="showTechnologies=true" mouseleave.trigger="showTechnologies=false">
+          <div class="card">
+            <span click.trigger="showTechnologies=true" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
             <div class="card-title">
-              <span class="card-category" if.bind="platform._Technologies">${platform._Technologies[0].Technology}<span if.bind="platform._Technologies.length > 1"> + ${platform._Technologies.length-1} </span>
+              <span class="card-category" if.bind="platform._Technologies">${platform._Technologies[0].Technology}<span if.bind="platform._Technologies.length > 1">
+                  + ${platform._Technologies.length-1}
+                </span>
               </span>
               <span click.trigger="appState.selectPlatform(platform)">
-              <span class="platform-title">${platform.Name}</span><img class="link-img" style="float:right" src="/img/link.png"/>
-              <div class="platform-url single-line">${platform.Url}</div>
+                <span class="platform-title">${platform.Name}</span><img class="link-img" style="float:right" src="/img/link.png"/>
+                <div class="platform-url single-line">${platform.Url}</div>
               </span>
               <div style="margin-top:20px">
-              <span if.bind="showTechnologies" class="card-technology-category" repeat.for="t of platform._Technologies" click.trigger="more(t)">
-                ${t.Technology}
-              </span>
+                <span if.bind="showTechnologies" class="card-technology-category" repeat.for="t of platform._Technologies" click.trigger="more(t)">
+                  ${t.Technology}
+                </span>
               </div>
-              
             </div>
             <!--anchor-->
           </div>
         </div>
       </div>
     </div>
-    </div>
     <technologysheet></technologysheet>
   </section>
-
 </template>

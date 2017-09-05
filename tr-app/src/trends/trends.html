@@ -1,26 +1,53 @@
 <template>
   <require from="../blur-image"></require>
   <require from="../sort"></require>
-
   <section class="au-animate">
-    
     <div class="container-fluid">
       <div class="row">
-        <div repeat.for="trend of appState.trends | sort:'Order'">
+        <div class="rounded-separator-h1-top"></div>
+        <h1><i class="fa fa-line-chart" aria-hidden="true"></i> Trends</h1>
+        <div class="rounded-separator-h1-bottom"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <p>
+            This page contains a list of all the <em>Trends</em> currently available in the radar; they are described by the following aspects:
+          </p>
+          <ul>
+            <li>
+              <strong>Related technologies:</strong>
+              Trends in the Technology Radar will most often relate to multiple technologies. The trend towards Desktop manufacturing for example will need enhancements in manufacturing hardware, but also requires more accessible 3D modelling tools and 3D model
+              sharing platforms. Using the existing dimensions, the technology radar can visualise how these technologies will change over time.
+            </li>
+            <li>
+              <strong>In Products and Platforms:</strong>
+              These are examples of existing products and platforms related to the technologies for a speci c trend. Most often these are the products to follow for innovations.
+            </li>
+            <li>
+              <strong>Roadmap:</strong>
+              Technologies are evolving within their own timeframe. To describe these changes, we focus on roughly two time periods: soon (within 2 years) and later (within 5 years)
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" repeat.for="trend of appState.trends | sort:'Order'">
           <a route-href="route: trendsDetail; params.bind: { trend: trend.Id}">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-10 card">    
+            <div class="card">
               <span class="card-image" style="background: url('img/trends/${trend.ImageUrl}') center center no-repeat;"></span>
               <div class="trend-card-title">
-                <span class="card-category"><span repeat.for="tech of platform._Technologies">${tech.Technology}<span if.bind="!$last">, </span></span>
+                <span class="card-category">
+                  <span repeat.for="tech of platform._Technologies">${tech.Technology}<span if.bind="!$last">,
+                    </span>
+                  </span>
                 </span>
                 <span>${trend.Name}</span>
               </div>
-              <!--anchor-->
             </div>
           </a>
         </div>
       </div>
     </div>
-    </div>
-  </section>
+  </div>
+</section>
 </template>
