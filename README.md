@@ -33,13 +33,16 @@ If you want to build and run the TechRadar using docker, you can use the followi
 
 build:
 ```
-docker build -t tr . --no-cache
+docker build -t makeit/techradar .
 ```
 
 run:
 ```
-docker run -p 8080:8080 tr
+docker run -p 8080:8080 makeit/techradar
 ```
+
+The TechRadar will be then accessible at [http://0.0.0.0:8080](http://0.0.0.0:8080).
+
 
 ## Credits
 
