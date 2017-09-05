@@ -4,7 +4,7 @@ FROM node:alpine
 RUN npm install --global typescript
 RUN npm install --global webpack
 RUN npm install --global yarn
-RUN npm install --global aurelia-cli
+# RUN npm install --global aurelia-cli
 
 # Copy files to the container
 ADD tr-server/ tr-server/
@@ -20,4 +20,4 @@ RUN yarn
 
 # Run
 EXPOSE 8080
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
