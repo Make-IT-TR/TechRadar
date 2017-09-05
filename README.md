@@ -27,6 +27,20 @@ cd tr-app
 npm start
 ```
 
+## Docker
+
+If you want to build and run the TechRadar using docker, you can use the following commands for building and running
+
+build:
+```
+docker build -t tr . --no-cache
+```
+
+run:
+```
+docker run -p 8080:8080 tr
+```
+
 ## Credits
 
 [![](tr-app/img/from_30.png)](https://ec.europa.eu/digital-agenda/en/news/22-new-caps-projects-horizon-2020)
