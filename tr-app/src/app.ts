@@ -2,6 +2,7 @@ import { Aurelia } from 'aurelia-framework';
 import { Router, RouterConfiguration } from 'aurelia-router';
 import { PLATFORM } from 'aurelia-pal';
 import 'bootstrap';
+import 'cookieconsent';
 
 
 export class App {
@@ -24,5 +25,22 @@ export class App {
     ]);
 
     this.router = router;
+
+    (<any>window).cookieconsent.initialise({
+      container: document.getElementById("content"),
+      palette:{
+        popup: {background: "#fff"},
+        button: {background: "#aa0000"},
+      },
+      revokable:true,
+      onStatusChange: function(status) {
+        console.log(this.hasConsented() ?
+          'enable cookies' : 'disable cookies');
+      },
+      law: {
+        regionalLaw: false,
+      },
+      location: true,
+    });
   }
 }

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "dist-server": "copyfiles -a ./**/*.* ../dist",
     "dist-client": "copyfiles -u 3 ../tr-app/dist/**/*.* ../dist/public",
     "dist": "npm run dist-server && npm run dist-client",
@@ -28,6 +29,7 @@
     "node-wikipedia": "0.0.2",
     "public-eye": "^0.3.2",
     "sparql-client": "^0.2.0",
-    "tabletop": "^1.5.1"
+    "tabletop": "^1.5.1",
+    "webshot": "^0.18.0"
   }
 }
