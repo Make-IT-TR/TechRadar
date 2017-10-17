@@ -11,20 +11,20 @@ Read more [here](http://make-it.io/deliverables/d5-1-report-on-mapping-of-ict-an
 Install packages in server and app:
 
 ```
-cd tr-server
+cd tr-host
 npm install
 cd..
 
 cd tr-app
 npm install
-yarn install
+webpack
 ```
 
 Run app:
 
 ```
-cd tr-app
-npm start
+cd tr-host
+node src/
 ```
 
 ## Docker
@@ -38,10 +38,10 @@ docker build -t makeit/techradar .
 
 run:
 ```
-docker run -p 8080:8080 makeit/techradar
+docker run -p 8010:8010 makeit/techradar
 ```
 
-The TechRadar will be then accessible at [http://0.0.0.0:8080](http://0.0.0.0:8080).
+The TechRadar will be then accessible at [http://0.0.0.0:8010](http://0.0.0.0:8010).
 
 
 ## Credits
