@@ -1,4 +1,3 @@
-import { classes } from './../classes';
 import { bindable } from 'aurelia-framework';
 import { inject } from 'aurelia-framework';
 import { ApplicationState } from '../ApplicationState';

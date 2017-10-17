@@ -8,14 +8,15 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="rounded-separator-h1-top"></div>
-          <h1><i class="fa fa-line-chart" aria-hidden="true"></i> Trend: ${trend.Name}</h1>
+          <h1>
+            <i class="fa fa-line-chart" aria-hidden="true"></i> Trend: ${trend.Name}</h1>
           <div class="rounded-separator-h1-bottom"></div>
         </div>
       </div>
       <!-- Radar -->
       <div class="row">
         <div class="col-lg-12">
-          <radar view="trend" if.one-time="!mobile" trend="${trend.Id}"></radar>
+          <radar view="trend" if.one-time="!mobile" trend="${trend.id}"></radar>
         </div>
       </div>
       <div class="row">
@@ -38,11 +39,19 @@
             <div class="rounded-separator-h3-bottom"></div>
             <div class="related">
               <h2>
-                <span repeat.for="tt of trend._TrendTechnologies">
-                  <label class="label label-default label-button" click.trigger="selectTechnology(tt._Technology)">
+                <span repeat.for="tt of trend._Technologies">
+                  <label class="label label-default label-button" click.trigger="selectTechnology(tt)">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
-                    ${tt._Technology.Technology}</label>
+                    ${tt.Technology}</label>
+                  <span click.trigger="removeTrendTechnology(tt)" if:bind="appState.adminMode" class="fa fa-remove platform-technology"></span>
+                  <span click.trigger="editTechnology(tt)" if:bind="appState.adminMode" class="fa fa-edit platform-technology"></span>
                 </span>
+                <div if:bind="appState.adminMode">
+                  <select style="width:300px;float:left;margin-top:3px" value.bind="selectedTech">
+                    <option repeat.for="tech of appState.project.technologies">${tech.Technology}</option>
+                  </select>
+                  <button type="button" click.trigger="addTechnology()" class="btn btn-primary fa fa-plus" style="float:left; margin:5px"></button>
+                </div>
               </h2>
             </div>
           </div>

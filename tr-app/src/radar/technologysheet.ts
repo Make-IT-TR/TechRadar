@@ -1,7 +1,8 @@
 import { MessageBusService } from './../MessageBus';
 import { Router } from 'aurelia-router';
 import { inject } from 'aurelia-framework';
-import { classes } from '../classes';
+import { InputScore, Trend, Example, ITechnology, WikiResult, Project, RadarInput } from './../classes';
+
 import $ from 'jquery';
 import { ApplicationState } from '../ApplicationState';
 import * as _ from 'lodash';
@@ -11,22 +12,23 @@ import * as _ from 'lodash';
 export class Technologysheet {
 
   mobile: boolean;
-  tech: classes.ITechnology;
+  tech: ITechnology;
   show = false;
-  wiki: classes.WikiResult;
-  examples: classes.Example[];
+  wiki: WikiResult;
+  examples: Example[];
+  scores: InputScore[];
 
-  updateTech(t: classes.ITechnology) {
+  updateTech(t: ITechnology) {
     console.log('Get examples');
     this.examples = [];
     this.tech = t;
-    this.wiki = null;
-
-
-    if (t.Wikipedia && this.appState.wiki.hasOwnProperty(t.Wikipedia)) this.wiki = this.appState.wiki[t.Wikipedia];
-
+    this.wiki = t.WikiResult;
     this.examples = this.appState.getTechExamples(t);
-
+    let input = this.appState.project.radarinput.find(ri=>ri._Technology === this.tech);
+    if (input) {
+      this.scores = input.Scores;
+    }
+    let s = this.appState.project.dimensions;
   }
 
   closeSheet(e: MouseEvent) {
@@ -35,10 +37,11 @@ export class Technologysheet {
     this.show = false;
   }
 
-  public selectPlatform(e: MouseEvent, example: classes.Example) {
+  public selectPlatform(e: MouseEvent, example: Example) {
     e.cancelBubble = true;
     this.show = false;
     this.appState.selectPlatform(example);
+    
   }
 
   public selectCategory()
@@ -47,15 +50,15 @@ export class Technologysheet {
     window.location.href = '#/platforms/' + this.tech.Category + '/all';  
   }
 
-  public selectTrend(e: MouseEvent, trend: classes.Trend) {    
+  public selectTrend(e: MouseEvent, trend: Trend) {    
     e.cancelBubble = true;
     this.show = false;
-    window.location.href = '#/trends/' + trend.Id + '/detail';  
+    window.location.href = '#/trends/' + trend.id + '/detail';  
   }
 
   constructor(private appState: ApplicationState, private bus: MessageBusService, private router:Router) {
 
-    this.bus.subscribe("technologysheet", (title, t: classes.ITechnology) => {
+    this.bus.subscribe("technologysheet", (title, t: ITechnology) => {
       switch (title) {
         case "show":
           if (this.tech != t || !this.show) {

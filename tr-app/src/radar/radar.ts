@@ -1,4 +1,5 @@
-import { classes } from '../classes';
+
+import { Trend, Example, ITechnology, WikiResult, Project, SpreadsheetService, Config, RadarInput, RadarCircle } from './../classes';
 import { inject } from 'aurelia-framework';
 import { bindable } from "aurelia-framework";
 import { ApplicationState } from '../ApplicationState';
@@ -11,13 +12,14 @@ var d3 = require('d3');
 @inject(Element, ApplicationState, MessageBusService)
 export class Radar {
   @bindable view = "all";
-  @bindable trend: classes.Trend;
+  @bindable trend: Trend;
 
   id: string;
   heading: string = 'Radar';
   appState: ApplicationState;
   bus: MessageBusService;
-  data: classes.SpreadsheetService;
+
+
   element;
 
   /**
@@ -34,10 +36,10 @@ export class Radar {
       this.id = "all";
     }
     else {
-      this.id = this.trend.Id;
-      this.appState.data.activeConfig.ShowTrend = true;
+      this.id = this.trend.id;
+      this.appState.activeConfig.ShowTrend = false;
     }
-    this.bus.subscribe("filter", (title, t: classes.Trend) => {
+    this.bus.subscribe("filter", (title, t: Trend) => {
       switch (title) {
         case "all":
           console.log('select all');
@@ -59,18 +61,16 @@ export class Radar {
 
   selectAll() {
 
-    if (this.data) {
-      this.data.activeTrend = null;
-      this.trend = null;
-      this.data = this.appState.sheets;
-      this.selectPreset(this.data.presets[0]);
-      this.draw();
-    }
+
+    this.trend = null;
+    this.selectPreset(this.appState.project.presets[0]);
+    this.draw();
+
   }
 
   trendChanged(newValue) {
     console.log('trend changed');
-    var trend = _.find(this.appState.trends, t => t.Id === newValue);
+    var trend = _.find(this.appState.project.trends, t => t.id === newValue);
     if (trend) this.selectTrend(trend);
   }
 
@@ -78,18 +78,18 @@ export class Radar {
     console.log('Active Radar');
   }
 
-  public selectPreset(preset: classes.Config) {
-    this.data.activeConfig = preset;
+  public selectPreset(preset: Config) {
+    this.appState.activeConfig = preset;
     this.updateFilter();
   }
 
   private getDimensions(dim: string, reverse = false): string[] {
     var res: string[] = [];
     // dimension has been defined is lists sheet
-    if (this.data.dimensions.hasOwnProperty(dim)) { res = this.data.dimensions[dim]; }
+    if (this.appState.project.dimensions.hasOwnProperty(dim)) { res = this.appState.project.dimensions[dim]; }
     else {
       // get dimensions from actual items
-      this.data.items.forEach(ri => {
+      this.appState.project.radarinput.forEach(ri => {
         var s = _.find(ri.Scores, { Title: dim });
         if (s && s.Value !== '') if (s && res.indexOf(s.Value) === -1) res.push(s.Value);
       });
@@ -101,39 +101,39 @@ export class Radar {
   }
 
   public updateFilter() {
-    this.data.items = [];
-    if (!this.data.sheets || !this.data.sheets.RadarInput) return;
+    this.appState.items = [];
+    // if (!this.data.sheets || !this.data.sheets.RadarInput) return;
 
-    this.data.sheets.RadarInput.forEach(ri => {
+    this.appState.project.radarinput.forEach(ri => {
       var match = true;
 
-      if (this.data.activeTrend) {
-        match = !_.isUndefined(_.find(this.data.activeTrend._TrendTechnologies, tt => tt._Technology === ri._Technology));
+      if (this.appState.activeTrend) {
+        // match = !_.isUndefined(_.find(this.appState.activeTrend._TrendTechnologies, tt => tt._Technology === ri._Technology));
       }
-      if (this.appState.data.activeConfig && this.appState.data.activeConfig.Filters){
-        this.appState.data.activeConfig.Filters.forEach(f => {
-        if (f.Enabled && f.Value && this.appState.getDimensionValue(ri, f.Dimension) !== f.Value) match = false;
-      });
+      if (this.appState.activeConfig && this.appState.activeConfig.Filters) {
+        this.appState.activeConfig.Filters.forEach(f => {
+          if (f.Enabled && f.Value && this.appState.getDimensionValue(ri, f.Dimension) !== f.Value) match = false;
+        });
       }
-      if (match) this.data.items.push(ri);
+      if (match) this.appState.items.push(ri);
     });
-    this.data.activeConfig.Visualisation.forEach(f => {
+    this.appState.activeConfig.Visualisation.forEach(f => {
       switch (f.Visual) {
         case 'Horizontal':
-          this.data.horizontal = this.getDimensions(f.Dimension, f.Reverse);
-          this.data.activeConfig.horizontalDimension = f.Dimension;
+          this.appState.horizontal = this.getDimensions(f.Dimension, f.Reverse);
+          this.appState.activeConfig.horizontalDimension = f.Dimension;
           break;
         case 'Radial':
-          this.data.radial = this.getDimensions(f.Dimension, f.Reverse);
-          this.data.activeConfig.radialDimension = f.Dimension;
+          this.appState.radial = this.getDimensions(f.Dimension, f.Reverse);
+          this.appState.activeConfig.radialDimension = f.Dimension;
           break;
         case 'Color':
-          this.data.colors = this.getDimensions(f.Dimension, f.Reverse);
-          this.data.activeConfig.colorDimension = f.Dimension;
+          this.appState.colorsD = this.getDimensions(f.Dimension, f.Reverse);
+          this.appState.activeConfig.colorDimension = f.Dimension;
           break;
         case 'Size':
-          this.data.size = this.getDimensions(f.Dimension, f.Reverse);
-          this.data.activeConfig.sizeDimension = f.Dimension;
+          this.appState.size = this.getDimensions(f.Dimension, f.Reverse);
+          this.appState.activeConfig.sizeDimension = f.Dimension;
           break;
       }
     });
@@ -142,17 +142,17 @@ export class Radar {
 
   }
 
-  public selectTrend(t: classes.Trend) {
+  public selectTrend(t: Trend) {
     console.log('select trend');
-    this.data = this.appState.sheets;
+    // this.data = this.appState.sheets;
     this.trend = t;
 
 
-    this.data.activeTrend = t;
+    this.appState.activeTrend = t;
 
     if (t._Preset) {
       this.selectPreset(t._Preset);
-      this.appState.data.activeConfig.ShowTrend = true;
+      this.appState.activeConfig.ShowTrend = true;
     }
     else this.updateFilter();
     this.draw();
@@ -165,8 +165,8 @@ export class Radar {
   draw2() {
     console.log('start drawing');
 
-    if (!this.data.radial || !this.data.horizontal) return;
-    var radial = this.data.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
+    if (!this.appState.radial || !this.appState.horizontal) return;
+    var radial = this.appState.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
     var horizontal = ["very low", "low", "neutral", "high", "very high"];
 
     // Get the dimensions of the container div
@@ -205,7 +205,7 @@ export class Radar {
     var svg = d3.select("#techradar-vis").append("svg")
 
     // Make it responsive with viewBox
-    svg.attr( 'preserveAspectRatio',"xMinYMin meet")
+    svg.attr('preserveAspectRatio', "xMinYMin meet")
       .attr("viewBox", "0 0 1000 600")
       .attr('width', '100%')
 
@@ -218,28 +218,28 @@ export class Radar {
       .attr("transform", "translate(500, 450)");
 
 
-    var radial = this.data.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
-    var horizontal = this.data.horizontal; //["very low", "low", "neutral", "high", "very high"];
+    var radial = this.appState.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
+    var horizontal = this.appState.horizontal; //["very low", "low", "neutral", "high", "very high"];
 
     var step = 180 / nr_of_segments;
 
     var minDepth = 0.25;
-    var arcDepth = (0.95 - minDepth) / this.data.horizontal.length;
+    var arcDepth = (0.95 - minDepth) / this.appState.horizontal.length;
     var arcWidth = width / 2 / horizontal.length * (0.95 - minDepth);
 
     var first = true;
-    var id = this.data.horizontal.length;
+    var id = this.appState.horizontal.length;
     var mycolor = d3.rgb("#eee");
     var hpos = 1;
-    var all: classes.RadarCircle[] = [];
+    var all: RadarCircle[] = [];
 
     var horTitlePos = 80;
-    var horTitleSteps = horTitlePos / this.data.horizontal.length;
-    this.data.horizontal.forEach(h => {
+    var horTitleSteps = horTitlePos / this.appState.horizontal.length;
+    this.appState.horizontal.forEach(h => {
       var segmentData = [];
       var start = 0;
 
-      this.data.radial.forEach(r => {
+      this.appState.radial.forEach(r => {
         segmentData.push({ title: r, startAngle: start, endAngle: start + step, items: [] });
         start += step;
       });
@@ -288,46 +288,50 @@ export class Radar {
       hpos += 1;
 
       var years = [2016];
-      if (this.appState.data.activeConfig.ShowTrend) years.push(2020);
+      if (this.appState.activeConfig.ShowTrend) years.push(2020);
 
       var items = [];
-      this.data.items.forEach(i => {
 
-        years.forEach(y => {
-          if (years.indexOf(y) >= 0) {
-            var future = (years.length > 1 && years[1] === y);
+      this.appState.project.radarinput.forEach(i => {
+        if (this.appState.activeTrend._Technologies.indexOf(i._Technology) >= 0) {
+          years.forEach(y => {
+            if (years.indexOf(y) >= 0) {
+              var future = (years.length > 1 && years[1] === y);
 
-            var horScore = this.appState.getDimensionScore(i, this.data.activeConfig.horizontalDimension, y);
-            if (horScore.Value === h) {
-              var radScore = this.appState.getDimensionScore(i, this.data.activeConfig.radialDimension, y);
-              if (radScore) {
-                var pos = this.data.radial.indexOf(radScore.Value);
-                if (pos !== -1) {
-                  var segment = _.find(segmentData, (s => s.title === radScore.Value));
-                  if (segment) {
-                    segment.items.push(i);
-                    let c = new classes.RadarCircle();
-                    c._future = future;
-                    c._segment = segment;
-                    c._year = y;
-                    c._segmentPos = pos;
-                    c._segmentItemPos = segment.items.length;
-                    c._Input = i;
-                    c._Technology = i._Technology;
-                    c._horScore = horScore;
-                    c._radScore = radScore;
-                    //    console.log(horScore.Value + ' - ' + radScore.Value);
+              var horScore = this.appState.getDimensionScore(i, this.appState.activeConfig.horizontalDimension, y);
+              if (horScore.Value === h) {
+                var radScore = this.appState.getDimensionScore(i, this.appState.activeConfig.radialDimension, y);
+                if (radScore) {
+                  var pos = this.appState.radial.indexOf(radScore.Value);
+                  if (pos !== -1) {
+                    var segment = _.find(segmentData, (s => s.title === radScore.Value));
+                    if (segment) {
+                      segment.items.push(i);
+                      let c = new RadarCircle();
+                      c._future = future;
+                      c._segment = segment;
+                      c._year = y;
+                      c._segmentPos = pos;
+                      c._segmentItemPos = segment.items.length;
+                      c._Input = i;
+                      c._Technology = i._Technology;
+                      c._horScore = horScore;
+                      c._radScore = radScore;
+                      //    console.log(horScore.Value + ' - ' + radScore.Value);
 
-                    items.push(c);
-                    all.push(c);
+                      if (i._Technology) {
+                        items.push(c);
+                        all.push(c);
+                      }
+                    }
                   }
                 }
               }
-            }
 
-          };
-        });
 
+            };
+          });
+        }
       });
       var depth = ((arcDepth * id) + minDepth) / 2;
 
@@ -353,11 +357,12 @@ export class Radar {
         .attr("d", arc)
         .on('mouseover', (d) => {
           // bus.publish("segment", "mouseover", d.data);
-          d.parentNode.appendChild(d);
+          if (d.parentNode) d.parentNode.appendChild(d);
           // radar.ts:367 Uncaught TypeError: Cannot read property 'appendChild' of undefined
         })
 
-      items.forEach((i: classes.RadarCircle) => {
+      console.log(items);
+      items.forEach((i: RadarCircle) => {
 
         //console.log(i._segment.items.length);
 
@@ -376,22 +381,22 @@ export class Radar {
         i._pos = pos;
         var color = "black";
 
-        if (this.data.activeConfig.colorDimension) {
-          var colorValue = this.appState.getDimensionValue(i._Input, this.data.activeConfig.colorDimension, i._year);
-          if (!colorValue && i._future) colorValue = this.appState.getDimensionValue(i._Input, this.data.activeConfig.colorDimension);
-          if (colorValue && this.data.colors.indexOf(colorValue) !== -1) {
-            color = this.appState.colors[this.data.colors.indexOf(colorValue)];
+        if (this.appState.activeConfig.colorDimension) {
+          var colorValue = this.appState.getDimensionValue(i._Input, this.appState.activeConfig.colorDimension, i._year);
+          if (!colorValue && i._future) colorValue = this.appState.getDimensionValue(i._Input, this.appState.activeConfig.colorDimension);
+          if (colorValue && this.appState.colorsD.indexOf(colorValue) !== -1) {
+            color = this.appState.colors[this.appState.colorsD.indexOf(colorValue)];
           }
         }
         i._color = color;
 
         let size = 10;
 
-        if (this.data.activeConfig.sizeDimension && this.data.activeConfig.sizeDimension !== "-none-") {
-          var sizeValue = this.appState.getDimensionValue(i._Input, this.data.activeConfig.sizeDimension, i._year);
-          var sizeIndex = this.data.size.length - this.data.size.indexOf(sizeValue);
+        if (this.appState.activeConfig.sizeDimension && this.appState.activeConfig.sizeDimension !== "-none-") {
+          var sizeValue = this.appState.getDimensionValue(i._Input, this.appState.activeConfig.sizeDimension, i._year);
+          var sizeIndex = this.appState.size.length - this.appState.size.indexOf(sizeValue);
           if (sizeValue && sizeIndex >= 0) {
-            size = (10 / this.data.size.length * sizeIndex) + 3;
+            size = (10 / this.appState.size.length * sizeIndex) + 3;
           }
         }
 
@@ -414,7 +419,7 @@ export class Radar {
 
         var px = pos[0] - 75 / 2;
         var py = pos[1] + size + 5;
-        if (!i._future) {
+        if (!i._future && i._Technology) {
           tech.append("foreignObject")
             .attr("x", px) /*the position of the text (left to right)*/
             .attr("y", py) /*the position of the text (Up and Down)*/
@@ -450,7 +455,7 @@ export class Radar {
       }
 
       //arcPos -= (1 / this.data.horizontal.length);
-      mycolor = mycolor.darker(0.5 / this.data.horizontal.length);
+      mycolor = mycolor.darker(0.5 / this.appState.horizontal.length);
 
       id -= 1;
 
@@ -458,9 +463,9 @@ export class Radar {
 
     //console.log(all);
 
-    all.forEach((i: classes.RadarCircle) => {
+    all.forEach((i: RadarCircle) => {
       if (i._future) {
-        var origin = _.find(all, (item: classes.RadarCircle) => {
+        var origin = _.find(all, (item: RadarCircle) => {
           var o = (item._Input === i._Input && item._pos != i._pos);
           return o;
         });

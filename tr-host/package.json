@@ -1,0 +1,71 @@
+{
+  "name": "ft",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "damylen",
+    "email": "damylen@gmail.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "yarn": ">= 0.18.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive --exit"
+  },
+  "dependencies": {
+    "@types/async": "^2.0.44",
+    "@types/circular-json": "^0.1.31",
+    "@types/lodash": "^4.14.77",
+    "async": "^2.5.0",
+    "body-parser": "^1.18.2",
+    "circular-json": "^0.3.3",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "feathers": "^2.2.2",
+    "feathers-authentication": "^1.2.7",
+    "feathers-authentication-hooks": "^0.1.4",
+    "feathers-authentication-jwt": "^0.3.2",
+    "feathers-authentication-oauth2": "^0.3.1",
+    "feathers-configuration": "^0.4.1",
+    "feathers-errors": "^2.9.2",
+    "feathers-hooks": "^2.1.0",
+    "feathers-hooks-common": "^3.7.3",
+    "feathers-memory": "^1.2.1",
+    "feathers-nedb": "^2.7.0",
+    "feathers-rest": "^1.8.0",
+    "feathers-socketio": "^2.0.0",
+    "helmet": "^3.8.2",
+    "lodash": "^4.17.4",
+    "nedb": "^1.8.0",
+    "passport-facebook": "^2.1.1",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth20": "^1.0.0",
+    "serve-favicon": "^2.4.5",
+    "sparql-client": "^0.2.0",
+    "tabletop": "^1.5.2",
+    "webshot": "^0.18.0",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "mocha": "^4.0.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}

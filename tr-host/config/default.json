@@ -1,0 +1,68 @@
+{
+  "host": "localhost",
+  "port": 8010,
+  "public": "../../tr-app/dist/",
+  "paginate": {
+    "default": 1000,
+    "max": 5000
+  },
+  "authentication": {
+    "secret": "cb85d9718acc260f3ff5f756f530a511bf705e24550d3020b27ecfa291f031eb31e0194a7fa54767dbef292e96f24d86dd36b7fb5f6799a5841a4528b65c96fc493a4f3283d960c608be1a973b50eab1ee72daf51b5b3c2b3aad6a298db8c46be9661071089cab7d0a129cbe8779b3409ff48d739dbc8f4ed339ceee7647bc9c6b530c1a55cb207ce32472c47ba4276afe162f18d6c9b4c5321604a6e12f28a21fbfcc6200fd7d8c1de84de061d874218cf2e500857b8996d3088772a03e89ecf635d7bd602c2b39d1cdaac74b2ab7ab3a7c29149c8c058bbecf8407ab078cb3b737e86b967bdb4fd3bec76dbdf736f4a9985038e882695c05c8adfdc4545b0b",
+    "strategies": [
+      "jwt"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "google": {
+      "clientID": "741362351536-54ta0tioh4nrd2tto7vlppeb3db5rbjg.apps.googleusercontent.com",
+      "clientSecret": "0WbrFmscpkgaLJICgAGXyYXG",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "github": {
+      "clientID": "681c3e6ae2c787f3caad",
+      "clientSecret": "b843de202a3d450f817aed27f8df46630f416866",
+      "successRedirect": "/#/"
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  },
+  "nedb": "../data"
+}

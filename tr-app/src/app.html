@@ -1,29 +1,78 @@
 <template>
   <require from="./nav-bar.html"></require>
   <require from="./radar/radar"></require>
+  <require from="./login/login"></require>
+
+
   <!-- Navbar -->
-  <nav-bar router.bind="router" if.one-way="router.currentInstruction.config.title!=='RadarImage'"></nav-bar>
+  <!-- <nav-bar router.bind="router" if.one-way="router.currentInstruction.config.title!=='RadarImage'"></nav-bar> -->
+
+  <!-- ******************* The Navbar Area ******************* -->
+  <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
+    <a class="skip-link screen-reader-text sr-only" href="#content">Skip to content</a>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle pull-right" type="button" data-toggle="collapse" data-target="#mainnavbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span>Menu</span>
+          </button>
+          <span style="float:left">
+            <a class="navbar-brand" href="#" title="TechRadar" rel="home">
+              <img src="../img/techradar_logo_20.png" />
+            </a>
+          </span>
+        </div>
+        <div class="collapse navbar-collapse" id="mainnavbar" style="width:100%">
+          <ul class="nav navbar-nav" style="width:80%" id="main-menu">
+            <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}" if.bind="row.title">
+              <a data-toggle="collapse" data-target="#mainnavbar" href.bind="row.href">${row.title}</a>
+            </li>
+            <li style="float:right" if.bind="appState.authenticated===true" class="${row.isActive ? 'active' : ''}" click.delegate="logout()">
+              <a data-toggle="collapse" data-target="#mainnavbar">
+                <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+            </li>
+            <li style="float:right" if.bind="appState.authenticated===false" class="${row.isActive ? 'active' : ''}" click.delegate="login()">
+              <a data-toggle="collapse" data-target="#mainnavbar">
+                <span class="glyphicon glyphicon-user"></span> Login</a>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </div>
+  <!-- .wrapper-navbar end -->
+  <span class="loader" if.bind="router.isNavigating">
+    <i class="fa fa-spinner fa-spin fa-2x"></i>
+  </span>
+  <login></login>
+
+  <!-- <a if.bind="appState.authenticated===false" class="btn btn-block btn-google-plus btn-login" >sign in</a> -->
   <!-- Page content -->
   <div id="main-div">
     <router-view></router-view>
   </div>
 
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
+  />
   <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
   <script>
-  window.addEventListener("load", function(){
-  window.cookieconsent.initialise({
-    "palette": {
-      "popup": {
-        "background": "#000"
-      },
-      "button": {
-        "background": "#f1d600"
-      }
-    }
-  })});
+    window.addEventListener("load", function () {
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#000"
+          },
+          "button": {
+            "background": "#f1d600"
+          }
+        }
+      })
+    });
   </script>
-  
+
   <!-- Footer -->
   <footer class="gradient">
     <div class="container-fluid">
@@ -34,4 +83,5 @@ center-block" src="../img/from_30.png">
       </a>
     </div>
   </footer>
+
 </template>

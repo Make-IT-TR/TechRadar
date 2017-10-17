@@ -1,5 +1,5 @@
 import { inject } from 'aurelia-framework';
-import { classes } from '../classes';
+import { Trend, Example, ITechnology, WikiResult, Project } from './../classes';
 import { ApplicationState } from '../ApplicationState';
 import $ from 'jquery';
 
@@ -14,7 +14,7 @@ export class Trends {
 
   heading: string = 'Trend ';
   appState: ApplicationState;
-  trend: classes.Trend;
+  trend: Trend;
   mobile: boolean;
 
   params: {}
@@ -33,10 +33,10 @@ export class Trends {
   activate(parms, routeConfig) {
     this.params = parms;
     this.appState.loadSheets().then(() => {
-      this.trend = this.appState.trends.find((t) => { return t.Id == this.params["trend"] });
+      this.trend = this.appState.project.trends.find((t) => { return t.id == this.params["trend"] });
 
       $('.page-host').css('margin-top',0);
-      $('#techradar-' + this.trend.Id).css('margin-left','-25px');
+      $('#techradar-' + this.trend.id).css('margin-left','-25px');
     });
   }
 

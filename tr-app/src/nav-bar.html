@@ -10,7 +10,9 @@
             <span>Menu</span>
           </button>
           <span>
-            <a class="navbar-brand" href="#" title="TechRadar" rel="home"><img src="../img/techradar_logo_20.png"/></a>
+            <a class="navbar-brand" href="#" title="TechRadar" rel="home">
+              <img src="../img/techradar_logo_20.png" />
+            </a>
           </span>
         </div>
         <div class="collapse navbar-collapse" id="mainnavbar">
@@ -18,8 +20,16 @@
             <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
               <a data-toggle="collapse" data-target="#mainnavbar" href.bind="row.href">${row.title}</a>
             </li>
+            <li class="${row.isActive ? 'active' : ''}" click.delegate="logout()">
+              <span >Logout</span>
+            </li>
+            <li if.bind="appState.authenticated===false" class="${row.isActive ? 'active' : ''}" click.delegate="login()">
+              <span>Login</span>
+            </li>
+          
           </ul>
         </div>
+       
       </div>
     </nav>
   </div>

@@ -1,55 +1,59 @@
 <template>
   <div if.bind="show" click.trigger="closeSheet($event)" class="sheetbackground">
     <div class="technologysheet">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <div class="rounded-separator-h1-top"></div>
-            <h1 class="ts-technology-title">${tech.Technology}</h1>
-            <div class="rounded-separator-h1-bottom"></div>
-            <div>
-              <span>Category:</span>
-              <a click.trigger="selectCategory()">${tech.Category}</a>
-            </div>
-            <div class="ts-technology-description">${tech.Description}</div>
-            <div if.bind="wiki"><img src="/img/wiki.png" class="wiki-ref"/>
-              <span class="wiki-abstract">${wiki.abstract}
-                <a href="${wiki.source}"><img class="link-img" src="/img/link.png"/></a>
-              </span>
-            </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+          <!-- <div class="rounded-separator-h1-top"></div> -->
+          <h1 class="ts-technology-title">${tech.Technology}</h1>
+          <div class="rounded-separator-h1-bottom"></div>
+          <div>
+            <span>Category:</span>
+            <a click.trigger="selectCategory()">${tech.Category}</a>
           </div>
-          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-            <!-- trends -->
-            <div class="rounded-separator-h2-top"></div>
-            <h2 if.bind="tech._TrendTechnologies" class="ts-technology-title">Related Trends</h2>
+          <div class="ts-technology-description">${tech.Description}</div>
+          <div if.bind="wiki">
+            <img src="/img/wiki.png" class="wiki-ref" />
+            <span class="wiki-abstract">${wiki.abstract}
+              <a href="${wiki.source}">
+                <img class="link-img" src="/img/link.png" />
+              </a>
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <!-- trends -->
+          <!-- <div class="rounded-separator-h2-top"></div> -->
+          <div if.bind="tech._Trends.length>0">
+            <h2 class="ts-technology-title">Related Trends</h2>
             <div class="rounded-separator-h2-bottom"></div>
             <div class="container-fluid">
               <div class="row">
                 <!--route-href="route: trendsDetail; params.bind: { trend: tt._Trend.Id}"-->
-                <a repeat.for="tt of tech._TrendTechnologies">
+                <a repeat.for="tt of tech._Trends">
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 example-card">
                     <span class="card-image" style="background: url('img/trends/${tt._Trend.ImageUrl}') center center no-repeat;"></span>
                     <span click.trigger="selectTrend($event,tt._Trend)" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
                     <div class="example-card-title">
                       <span class="platform-title">${tt._Trend.Name}</span>
                     </div>
+
                   </div>
                 </a>
               </div>
             </div>
-            <!-- examples -->
-            <div class="rounded-separator-h2-top"></div>
-            <h2 class="ts-technology-title">Related Platforms</h2>
-            <div class="rounded-separator-h2-bottom"></div>
-            <div class="container-fluid">
-              <div class="row">
-                <div repeat.for="platform of examples" click.trigger="selectPlatform($event,platform)">
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 example-card">
-                    <span click.trigger="more(platform)" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
-                    <div class="example-card-title">
-                      <span class="platform-title">${platform.Name}</span>
-                      <img class="link-img" style="float:right" src="/img/link.png"/>
-                    </div>
+          </div>
+          <!-- examples -->
+          <h2 class="ts-technology-title">Related Platforms</h2>
+          <div class="rounded-separator-h2-bottom"></div>
+          <div class="container-fluid">
+            <div class="row">
+              <div repeat.for="platform of examples" click.trigger="selectPlatform($event,platform)">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 example-card">
+                  <span click.trigger="more(platform)" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
+                  <div class="example-card-title">
+                    <span class="platform-title">${platform.Name}</span>
+                    <img class="link-img" style="float:right" src="/img/link.png" />
                   </div>
                 </div>
               </div>
@@ -57,4 +61,4 @@
           </div>
         </div>
       </div>
-    </template>
+</template>

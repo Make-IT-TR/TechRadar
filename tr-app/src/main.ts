@@ -8,35 +8,40 @@ import 'aurelia-bootstrapper';
 import 'bootstrap';
 import 'bootstrap-select';
 import 'd3';
+import 'feathers/client';
+import 'socket.io-client';
 import { Aurelia } from 'aurelia-framework';
 import { PLATFORM } from 'aurelia-pal';
 import * as Bluebird from 'bluebird';
-import 'aurelia-google-analytics'; 
+import 'aurelia-google-analytics';
+// import '../node_modules/ag-grid/dist/styles/ag-grid.css';
 
 // remove out if you don't want a Promise polyfill (remove also from webpack.config.js)
 Bluebird.config({ warnings: { wForgottenReturn: false } });
-
 
 export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
+    // .plugin(PLATFORM.moduleName('ag-grid-aurelia'))
+    .plugin(PLATFORM.moduleName('aurelia-validation'))
     .plugin(PLATFORM.moduleName('aurelia-google-analytics'), config => {
-			config.init('UA-98391880-1');
-			config.attach({
-				logging: {
-					enabled: true // Set to `true` to have some log messages appear in the browser console.
-				},
-				pageTracking: {
-					enabled: true // Set to `false` to disable in non-production environments.
-				},
-				clickTracking: {
-					enabled: true // Set to `false` to disable in non-production environments.
-				},
-				exceptionTracking: {
-					enabled: true // Set to `false` to disable in non-production environments.
-				}
-			})});
+    config.init('UA-98391880-1');
+    config.attach({
+      logging: {
+        enabled: true // Set to `true` to have some log messages appear in the browser console.
+      },
+      pageTracking: {
+        enabled: true // Set to `false` to disable in non-production environments.
+      }, 
+      clickTracking: {
+        enabled: true // Set to `false` to disable in non-production environments.
+      },
+      exceptionTracking: {
+        enabled: true // Set to `false` to disable in non-production environments.
+      }
+    })
+  });
 
   // Uncomment the line below to enable animation.
   //aurelia.use.plugin(PLATFORM.moduleName('aurelia-animator-css'));

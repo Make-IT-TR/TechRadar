@@ -31,8 +31,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" repeat.for="trend of appState.trends | sort:'Order'">
-          <a route-href="route: trendsDetail; params.bind: { trend: trend.Id}">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" repeat.for="trend of appState.project.trends | sort:'Order'">
+          <a route-href="route: trendsDetail; params.bind: { trend: trend.id}">
             <div class="card">
               <span class="card-image" style="background: url('img/trends/${trend.ImageUrl}') center center no-repeat;"></span>
               <div class="trend-card-title">

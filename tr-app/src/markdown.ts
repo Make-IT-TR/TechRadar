@@ -1,7 +1,7 @@
 import { TemplatingEngine, inject, DOM } from 'aurelia-framework';
 import {} from 'aurelia-framework';
 import * as md from 'marked';
-import * as katex from 'katex';
+// import * as katex from 'katex';
  
 /**
 * This markdown custom attribute can be applied to any HTML element. You bind it to a markdown string,
@@ -70,20 +70,20 @@ export class MarkdownCustomAttribute {
     }
   }
  
-  private parseMath(str: string) {
-    // var html = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}");
+  // private parseMath(str: string) {
+  //   // var html = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}");
  
-    const inlineRegex = /\$\$(.*)\$\$/gmi; // Math between $$ and $$
+  //   const inlineRegex = /\$\$(.*)\$\$/gmi; // Math between $$ and $$
  
-    str = str.replace(inlineRegex, (s, r) => {
-      return katex.renderToString(r, { displayMode: false });
-    });
+  //   str = str.replace(inlineRegex, (s, r) => {
+  //     return katex.renderToString(r, { displayMode: false });
+  //   });
  
-    const multilineRegex = /\\\\\[(?!(\\\\\]))([\s\S]*?)\\\\\]/gmi;   // Math between \\[ and \\]
+  //   const multilineRegex = /\\\\\[(?!(\\\\\]))([\s\S]*?)\\\\\]/gmi;   // Math between \\[ and \\]
  
-    str = str.replace(multilineRegex, (s, ignore, r) => {
-      return katex.renderToString(r, { displayMode: true });
-    });
-    return str;
-  }
+  //   str = str.replace(multilineRegex, (s, ignore, r) => {
+  //     return katex.renderToString(r, { displayMode: true });
+  //   });
+  //   return str;
+  // }
 }

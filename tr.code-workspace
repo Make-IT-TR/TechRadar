@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "tr-app"
+		},
+		{
+			"path": "tr-host"
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "node_modules/typescript/lib"
+	}
+}

@@ -1,7 +1,7 @@
 import { MessageBusService } from './../MessageBus';
 
 import { inject } from 'aurelia-framework';
-import { classes } from '../classes';
+import { Trend, Example, ITechnology, WikiResult, Project, Config, Vis, Filter } from './../classes';
 import $ from 'jquery';
 import { ApplicationState } from '../ApplicationState';
 var d3 = require('d3');
@@ -14,7 +14,7 @@ export class Techradar {
   bus: MessageBusService;
   mobile: boolean;
   editMode : boolean = true;
-  activePreset : classes.Config;
+  activePreset : Config;
 
   constructor(appState, bus) {
     this.appState = appState;
@@ -32,12 +32,12 @@ export class Techradar {
 
   showTrends()
   {
-    this.bus.publish("filter","trend",this.appState.trends[0]);
+    this.bus.publish("filter","trend",this.appState.project.trends[0]);
   }
 
   updatePreset()
   {
-    this.appState.data.activeConfig = this.activePreset;
+    this.appState.activeConfig = this.activePreset;
     this.updateFilter();
   }
 
@@ -47,25 +47,25 @@ export class Techradar {
 
   }
 
-  toggleReverse(v: classes.Vis) {
+  toggleReverse(v: Vis) {
     console.log('toggle reverse');
     v.Reverse = !v.Reverse;
     this.updateFilter();
   }
 
   addNewFilter(value: string) {
-    this.appState.data.activeConfig.Filters.forEach(f => {
+    this.appState.activeConfig.Filters.forEach(f => {
       if (f.Dimension === value) f.Enabled = true;
     });
     this.updateFilter();
   }
 
-  selectTrend(t:classes.Trend)
+  selectTrend(t:Trend)
   {
     this.bus.publish("filter","trend",t);
   }
 
-  disableFilter(f: classes.Filter) {
+  disableFilter(f: Filter) {
     f.Enabled = false;
     this.updateFilter();
   }

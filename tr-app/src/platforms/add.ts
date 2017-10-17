@@ -1,4 +1,4 @@
-import { classes } from './../classes';
+import { Trend, Example, ITechnology, WikiResult, Project } from './../classes';
 import { bindable } from 'aurelia-framework';
 import { inject } from 'aurelia-framework';
 import { ApplicationState } from '../ApplicationState';
@@ -14,9 +14,9 @@ export class AddPlatform {
   heading: string = 'Platforms 2';
   appState: ApplicationState;
   @bindable selectedCategory: string;
-  availableTechnologies: classes.ITechnology[];
+  availableTechnologies: ITechnology[];
   @bindable selectedTechnology: string;
-  availablePlatforms: classes.Example[];
+  availablePlatforms: Example[];
 
   categoryOptions = {
     style: 'btn-info',

@@ -1,8 +1,9 @@
 import { inject } from 'aurelia-framework';
-import { classes } from '../classes';
+import { Trend, Example, ITechnology, WikiResult, Project } from './../classes';
 import { ApplicationState } from '../ApplicationState';
 import $ from 'jquery';
 import { MessageBusService } from './../MessageBus';
+import { Router, RouterConfiguration } from 'aurelia-router';
 
 
 interface IUser {
@@ -10,14 +11,15 @@ interface IUser {
   login: string;
 }
 
-@inject(ApplicationState, MessageBusService)
+@inject(ApplicationState, MessageBusService, Router)
 export class Trends {
 
-  heading: string = 'Trend ';  
-  trend: classes.Trend;
+  heading: string = 'Trend ';
+  trend: Trend;
   mobile: boolean;
   mobileImage: string;
-  platforms: classes.Example[];
+  platforms: Example[];
+  selectedTech: string;
 
   params: {}
   /**
@@ -25,66 +27,98 @@ export class Trends {
    */
   image: HTMLImageElement;
 
-  constructor(private appState : ApplicationState, private bus : MessageBusService) {
-    
+  constructor(private appState: ApplicationState, private bus: MessageBusService, private router: Router) {
+
   }
 
-public selectTechnology(tech: classes.ITechnology) {
+  public selectTechnology(tech: ITechnology) {
     this.bus.publish('technologysheet', 'show', tech);
   }
 
   public checkKey(e) {
     console.log('check key');
-
-
-
   }
 
-  public getNextTrend(): classes.Trend {
-    var ni = this.appState.trends.indexOf(this.trend) + 1;
-    if (ni === this.appState.trends.length) ni = 0;
-    return this.appState.trends[ni];
+
+
+  public getNextTrend(): Trend {
+    var ni = this.appState.project.trends.indexOf(this.trend) + 1;
+    if (ni === this.appState.project.trends.length) ni = 0;
+    return this.appState.project.trends[ni];
   }
 
-  public getPrevTrend(): classes.Trend {
-    var ni = this.appState.trends.indexOf(this.trend) - 1;
-    if (ni === -1) ni = this.appState.trends.length - 1;
-    return this.appState.trends[ni];
+  public getPrevTrend(): Trend {
+    var ni = this.appState.project.trends.indexOf(this.trend) - 1;
+    if (ni === -1) ni = this.appState.project.trends.length - 1;
+    return this.appState.project.trends[ni];
   }
 
   public prevTrend() {
     this.trend = this.getPrevTrend();
-    history.pushState({}, "new title", "#/trends/" + this.trend.Id + "/detail");
+    history.pushState({}, "new title", "#/trends/" + this.trend.id + "/detail");
   }
 
   public nextTrend() {
     this.trend = this.getNextTrend();
-    history.pushState({}, "new title", "#/trends/" + this.trend.Id + "/detail");
+    history.pushState({}, "new title", "#/trends/" + this.trend.id + "/detail");
   }
 
-  public selectPlatform(platform : classes.Example)
-  {
-    
+  public selectPlatform(platform: Example) {
+
   }
 
   activate(parms, routeConfig) {
+    this.params = parms;
+  }
+
+  public addTechnology() {
+    let tech = this.appState.project.technologies.find(t => t.Technology === this.selectedTech);
+    if (tech) {
+      this.appState.addTechnologyToTrend(this.appState.activeTrend, tech);
+      this.update();
+      this.bus.publish('reload', 'update');
+    }
+  }
+
+  public editTechnology(t: ITechnology) {
+    this.router.navigateToRoute('techEdit', { technology: t.id});
+  }
+
+  public removeTrendTechnology(t: ITechnology) {
+    this.appState.removeTrendTechnology(this.appState.activeTrend, t);
+    this.update();
+    this.bus.publish('reload', 'update');
+  }
+
+  update() {
+    this.trend = this.appState.project.trends.find((t) => { return t.id == this.params["trend"] });
+    //this.trend._TrendTechnologies[0]._Technology.Technology
+    if (!this.trend.Description || this.trend.Description === "") this.trend.Description = " ";
+    // console.log(this.trend.Description);
+    this.appState.activeConfig.ShowTrend = true;
+    // this.radarmodel.selectTrend(this.trend);
+    this.mobileImage = "img/radar/trend-" + this.trend.id + ".png";
+
+    this.platforms = this.appState.getTrendExamples(this.trend);
+
+  }
+
+  attached() {
     this.mobile = $(document).width() < 800;
 
-    this.params = parms;
-    this.appState.loadSheets().then(() => {
-      
-      this.trend = this.appState.trends.find((t) => { return t.Id == this.params["trend"] });
-      //this.trend._TrendTechnologies[0]._Technology.Technology
-      if (!this.trend.Description || this.trend.Description === "") this.trend.Description = " ";
-      console.log(this.trend.Description);
-      this.appState.data.activeConfig.ShowTrend = true;
-      // this.radarmodel.selectTrend(this.trend);
-      this.mobileImage = "img/radar/trend-" + this.trend.Id + ".png";      
 
-      this.platforms = this.appState.getTrendExamples(this.trend);
-      
+    console.log(this.params);
+    this.appState.loadSheets().then(() => {
+      this.update();
+
+      this.bus.subscribe('refresh', (a, d) => {
+        if (a === 'trend') {          
+          this.update();
+        }
+      });
+
       //this.bus.publish("reload", "all");
-      
+
     });
     document.onkeydown = ((e) => {
       //e = e || window.event;

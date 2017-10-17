@@ -34,8 +34,7 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
     modules: [srcDir, 'node_modules'],
   },
   entry: {
-    app: ['./src/main'],
-    vendor: ['bluebird', 'jquery', 'bootstrap'],
+    app: ['./src/main']
   },
   output: {
     path: outDir,
@@ -99,7 +98,7 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
       'Promise': 'bluebird',
       '$': 'jquery',
       'jQuery': 'jquery',
-      'window.jQuery': 'jquery',
+      'window.jQuery': 'jquery', 
     }),
     new TsConfigPathsPlugin(),
     new CheckerPlugin(),

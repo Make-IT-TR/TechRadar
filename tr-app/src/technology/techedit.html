@@ -1,0 +1,80 @@
+<template>
+
+  <div class="technologysheet">
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- <div class="rounded-separator-h1-top"></div> -->
+        <h1 class="ts-technology-title">${tech.Technology}</h1>
+        <div class="rounded-separator-h1-bottom"></div>
+        <div>
+          <div>Title</div>
+          <input class="form-control" value.bind="tech.Technology" change.delegate="update()"></input>
+          <span>Category:</span>
+          <select class="form-control" value.bind="tech.Category" change.delegate="update()">
+            <option value.bind="category.Category" repeat.for="category of appState.project.categories">${category.Category}</option>
+          </select>
+        </div>
+        <div class="ts-technology-description">Description</div>
+        <textarea class="form-control" value.bind="tech.Description" change.delegate="update()"></textarea>
+        <div>Wikipedia URL</div>
+        <input class="form-control" value.bind="tech.Wikipedia" change.delegate="update()"></input>
+        <br/>
+        <h1>Dimension scores</h1>
+        <div class="rounded-separator-h1-bottom"></div>
+      </div>
+      <div repeat.for="y of years" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <h3>Year: ${y.year}</h3>
+        <div repeat.for="d of appState.project.dimensions">
+          <div bind="" repeat.for="s of getScores(y.year,d.title)">
+            <div>${s.Title} - ${s.Year}</div>
+            <select class="form-control" change.delegate="scoreChanged(s)" value.bind="s.Value">
+              <option value="">[not specified]</option>
+              <option value.bind="option" repeat.for="option of appState.getDimensionValues(s.Title)">${option}</option>
+            </select>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <br/>
+        <!-- trends -->
+        <!-- <div class="rounded-separator-h2-top"></div> -->
+        <h1 if.bind="tech._Trends">Related Trends</h1>
+        <div class="rounded-separator-h2-bottom"></div>
+        <!--route-href="route: trendsDetail; params.bind: { trend: tt._Trend.Id}"-->
+        <div repeat.for="tt of tech._Trends">
+          ${tt.Name}
+          <span click.trigger="removeTrendTechnology(tt)" class="fa fa-remove platform-technology"></span>
+
+          <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 example-card">
+                <span class="card-image" style="background: url('img/trends/${tt._Trend.ImageUrl}') center center no-repeat;"></span>
+                <span click.trigger="selectTrend($event,tt._Trend)" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
+                <div class="example-card-title">
+                  <span class="platform-title">${tt._Trend.Name}</span>
+                </div>
+
+              </div> -->
+        </div>
+        <select style="width:300px;float:left;margin-top:3px" value.bind="selectedTrend">
+          <option repeat.for="trend of appState.project.trends" value.bind="trend.id">${trend.Name}</option>
+        </select>
+        <button type="button" click.trigger="addTrend()" class="btn btn-primary fa fa-plus" style="float:left; margin:5px"></button>
+        <!-- examples -->
+        <br/>
+        <h1>Related Platforms</h1>
+        <div class="rounded-separator-h2-bottom"></div>
+        <div repeat.for="platform of tech._Examples">
+          ${platform.Name}
+          <span click.trigger="removePlatform(platform)" class="fa fa-remove platform-technology"></span>
+        </div>
+        <select style="width:300px;float:left;margin-top:3px" value.bind="selectedExample">
+          <option repeat.for="example of appState.project.examples" value.bind="example.id">${example.Name}</option>
+        </select>
+        <button type="button" click.trigger="addExample()" class="btn btn-primary fa fa-plus" style="float:left; margin:5px"></button>
+
+
+      </div>
+
+</template>

@@ -2,17 +2,39 @@
   <require from="../bootstrap-select"></require>
   <require from="../radar/technologysheet"></require>
   <require from="../GoToRoute"></require>
+  <require from="../utils/autocomplete/autocomplete"></require>
   <section class="au-animate">
     <div class="container-fluid" id="home">
-      <div class="row">
+      <div class="row" if.bind="!showResult">
         <div class="col-xs-12">
-          <img class="img-responsive center-block" src="../../img/techradar_logo_100.png"/>
+          <img class="img-responsive center-block" src="../../img/techradar_logo_100.png" />
           <p class="lead">
-            Explore how future technology developments, platforms or trends will impact how makers will create, communicate, organize and might even do business ...
+            Explore how future technology developments, platforms or trends will impact how makers will create, communicate, organize
+            and might even do business ...
             <label go-to-route="route: about" class="label label-info label-button">Read more</label>
           </p>
         </div>
       </div>
+      <!-- Search -->
+      <div class="row" style="margin-top:20px">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div id="search-form">
+            <div class="input-group" style="width:100%">
+              <!-- <input type="search" class="form-control main-search" placeholder="search technologies and platforms" value.two-way="searchInput"> -->
+
+              <autocomplete style="width: 100%;" service.bind="suggestionService.example" value.bind="model.example" placeholder="search technologies and platforms" change.delegate="model.city = null">
+              </autocomplete>
+              <!-- <span class="input-group-addon search-button">
+                  <button type="submit">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Search results -->
+      <div class="span12" style="margin-top:5em" if.bind="!showResult"></div>
       <div class="row">
         <div class="col-xs-12 col-sm-4">
           <div class="navigate-content" go-to-route="route: trends">
@@ -23,9 +45,10 @@
             </h1>
             <div class="rounded-separator-h1-bottom"></div>
             <p>
-              A list of the current <em>Trends</em> in technologies used by and affecting the Maker movement.
+              A list of the current
+              <em>Trends</em> in technologies used by and affecting the Maker movement.
             </p>
-            <img class="img-responsive center-block" src="../../img/home_trends.png"/>
+            <img class="img-responsive center-block" src="../../img/home_trends.png" />
             <a href="#" go-to-route="route: trends" class="btn btn-default">Explore Trends</a>
           </div>
         </div>
@@ -38,9 +61,10 @@
             </h1>
             <div class="rounded-separator-h1-bottom"></div>
             <p>
-              A list of the current <em>Platforms</em> available for Maker initiatives to use for their projects.
+              A list of the current
+              <em>Platforms</em> available for Maker initiatives to use for their projects.
             </p>
-            <img class="img-responsive center-block" src="../../img/home_platforms.png"/>
+            <img class="img-responsive center-block" src="../../img/home_platforms.png" />
             <a go-to-route="route: platforms-page" class="btn btn-default">Explore Platforms</a>
           </div>
         </div>
@@ -53,37 +77,16 @@
             </h1>
             <div class="rounded-separator-h1-bottom"></div>
             <p>
-              Explore how <em>Trends</em> and <em>Platforms</em> are connected and related to each other, and more.
+              Explore how
+              <em>Trends</em> and
+              <em>Platforms</em> are connected and related to each other, and more.
             </p>
-            <img class="img-responsive center-block" src="../../img/home_radar.png"/>
+            <img class="img-responsive center-block" src="../../img/home_radar.png" />
             <a href="#" go-to-route="route: techradar" class="btn btn-default">Explore Radar</a>
           </div>
         </div>
       </div>
-      <!-- Search -->
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div id="search-form">
-              <h1>
-                <i class="fa fa-search" aria-hidden="true"></i>
-                Search
-              </h1>
-              <p>
-                Search all <em>Trends</em> and <em>Platforms</em>.
-              </p>
-            <div class="input-group">
-              <input type="search" class="form-control" placeholder="search" value.two-way="searchInput">
-              <span class="input-group-addon search-button">
-                <button type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Search results -->
-      <div class="span12" style="margin-top:5em" if.bind="!showResult"></div>
+
     </div>
     <technologysheet></technologysheet>
   </section>

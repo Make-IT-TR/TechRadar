@@ -1,0 +1,28 @@
+<template>
+    <require from="./autocomplete.css"></require>
+  
+    <input type="text" class="form-control main-search" autocomplete="off"
+           aria-autocomplete="list"
+           aria-expanded.bind="expanded"
+           aria-owns.one-time="'au-autocomplate-' + id + '-suggestions'"
+           aria-activedescendant.bind="index >= 0 ? 'au-autocomplate-' + id + '-suggestion-' + index : ''"
+           id.one-time="'au-autocomplete-' + id"
+           placeholder.bind="placeholder"
+           value.bind="inputValue & debounce:delay"
+           keydown.delegate="keydown($event.which)"
+           blur.trigger="blur()">
+    <ul class="suggestions" role="listbox"
+        if.bind="expanded"
+        id.one-time="'au-autocomplate-' + id + '-suggestions'"
+        ref="suggestionsUL">
+      <li repeat.for="suggestion of suggestions" 
+          id.one-time="'au-autocomplate-' + id + '-suggestion-' + $index"
+          role="option"
+          class-name.bind="($index === index ? 'selected' : '') + ' suggestion'"
+          mousedown.delegate="suggestionClicked(suggestion)">
+        <template replaceable part="suggestion">
+          ${suggestion.name}
+        </template>
+      </li>
+    </ul>
+  </template>

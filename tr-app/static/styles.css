@@ -32,6 +32,15 @@ svg
     font-family: 'Fira Sans', sans-serif;
 }
 
+.btn-login
+{
+  z-index: 2000;
+  width: 100px;
+  right: 10px;
+  top: 10px;
+  position:absolute;
+}
+
 .navbar
 {
     padding: 0;
@@ -143,13 +152,35 @@ svg
 .sheetbackground
 {
     position: fixed;
-    z-index: 1000;
+    z-index: 2000;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
 
     background: rgba(0%, 0%, 0%, .495);
+}
+
+.platform-technology
+{
+   cursor: pointer;
+}
+
+.edit-platform-card
+{
+  position:absolute;
+  bottom:7px;
+}
+
+.action-button{
+  background: gray;
+  width: 40px;
+  font-size: 18px;
+  height: 40px;
+  border-radius: 40px;
+  padding: 12px;
+  cursor: pointer;
+
 }
 
 .trend-title-image
@@ -178,8 +209,12 @@ svg
 {
     height: 250px;
     padding: 0;
-
     border-bottom-left-radius: 0;
+    color: rgb(62, 102, 133);
+    background: rgba(62, 102, 133, .1);
+    -webkit-box-shadow: 0 0 15px 0 rgba(62, 102, 133, .775);
+       -moz-box-shadow: 0 0 15px 0 rgba(62, 102, 133, .775);
+            box-shadow: 0 0 15px 0 rgba(62, 102, 133, .775);
 }
 
 
@@ -678,7 +713,7 @@ div.au-stagger
 
 .search-top
 {
-    margin-top: 2em;
+    /* margin-top: 2em; */
 }
 
 .search-title
@@ -1448,7 +1483,13 @@ textarea
 
 #main-div
 {
-    margin-top: 120px;
+    margin-top: 80px;
+}
+
+.main-search
+{
+  font-size:40px;
+  height:50px;
 }
 
 #home .row
@@ -1506,10 +1547,10 @@ textarea
         font-size: 20px;
     }
     .container-fluid {
-        width: 80%;
+        width: 90%;
 
     }
     .row {
-        margin-top: 40px;
+        margin-top: 20px;
     }
  }
