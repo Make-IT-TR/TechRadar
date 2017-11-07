@@ -35,9 +35,9 @@ export class Platforms {
     this.appState = appState;
     this.activePlatform = new Example("");
     ValidationRules
-    .ensure((m: Example) => m.Name).displayName("Name").required()
-    .ensure((m: Example) => m.Url).displayName("Url").required()
-    .on(this.activePlatform);
+      .ensure((m: Example) => m.Name).displayName("Name").required()
+      .ensure((m: Example) => m.Url).displayName("Url").required()
+      .on(this.activePlatform);
   }
 
   public searchTextChanged(n, o) {
@@ -63,17 +63,14 @@ export class Platforms {
   }
 
   public savePlatform() {
-    if (this.activePlatform._Technologies.length === 0) {
+    debugger;
+    if (this.activePlatform._isNew) {
+      this.activePlatform._isNew = false;
+      this.appState.addPlatform(this.activePlatform);
+    } else {
+      this.updatePlatform();
+      $('#editplatform').modal('hide');
 
-    }
-    else {
-      if (this.activePlatform._isNew) {
-        this.activePlatform._isNew = false;
-        this.appState.addPlatform(this.activePlatform);
-      } else {
-        this.updatePlatform();
-        $('#editplatform').modal('hide');
-      }
     }
 
 
@@ -101,19 +98,25 @@ export class Platforms {
 
   public editPlatform(platform: Example) {
     this.activePlatform = platform;
-    
+
   }
 
   public updatePlatform() {
+    debugger;
     this.appState.updatePlatform(this.activePlatform);
-
     // this.appState.feathersClient.service('examples').update(this.activePlatform.Name, this.activePlatform);
     // alert('updating');
   }
 
   public addTechnology() {
-    let tech = this.appState.project.technologies.find(k => k.Technology === this.selectedTech);
-    if (tech && this.activePlatform) this.appState.addPlatformToTechnology(tech, this.activePlatform);
+    debugger;
+    if (this.activePlatform._isNew) {
+      let tech = this.appState.project.technologies.find(k => k.Technology === this.selectedTech);
+      this.activePlatform._Technologies.push(tech);
+    } else {
+      let tech = this.appState.project.technologies.find(k => k.Technology === this.selectedTech);
+      if (tech && this.activePlatform) this.appState.addPlatformToTechnology(tech, this.activePlatform);
+    }
   }
 
   public removePlatform() {
@@ -127,7 +130,11 @@ export class Platforms {
   }
 
   public removeTechnology(t: ITechnology) {
-    this.appState.removePlatformFromTechnology(t, this.activePlatform);
+    if (this.activePlatform._isNew) {
+      this.activePlatform._Technologies = this.activePlatform._Technologies.filter(te => t.id != te.id);
+    } else {
+      this.appState.removePlatformFromTechnology(t, this.activePlatform);
+    }
   }
 
   public match(p: Example) {

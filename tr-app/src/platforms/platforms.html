@@ -52,6 +52,7 @@
               <i class="fa fa-th-large" aria-hidden="true"></i> Suggest a platform</h1>
           </div> -->
           <div class="modal-body" style="padding:0">
+            <div id="addStep1">
             <div class="row">
               <div class="col-xs-12">
                 <form class="form-horizontal add-platform-form" >
@@ -91,13 +92,14 @@
                       <button type="button" click.trigger="addTechnology()" class="btn btn-primary fa fa-plus"> select</button>
                     </div>
                   </div>
-                  <span repeat.for="t of activePlatform._Technologies" class="platform-technology" click.trigger="removeTechnology(t)">
+                  <span repeat.for="t of activePlatform._Technologies" v-if="t.Technology!==''" class="platform-technology" click.trigger="removeTechnology(t)">
                     <span class="card-technology-category">${t.Technology}</span>
                     <span class="fa fa-remove" />
                   </span>
 
                 </form>
               </div>
+            </div>
             </div>
           </div>
           ${message}
@@ -115,37 +117,40 @@
           <h1>
             <i class="fa fa-th-large" aria-hidden="true"></i> Platforms</h1>
           <div style="text-align: center;margin-bottom: 20px;">This section allows you to navigate and search the available <em>Platforms</em> within the radar.</div>
-          <div class="rounded-separator-h1-bottom"></div>
-        </div>
-      </div>
-      <div class="row">
-
-        <div class="col-xs-12 col-platforms" style="text-align: center">
-          <form class="nl-form2">
-            I am interested in
-            <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
-          -->
-            <select class='platform-select' bootstrap-select value.bind="selectedCategory">
-              <option>all</option>
-              <option repeat.for="cat of appState.project.categories">${cat.Category}</option>
-            </select>
-            <span if.bind="availableTechnologies.length>0">
-              using
-            </span>
-            <select class='platform-select' bootstrap-select if.bind="availableTechnologies.length>0" value.bind="selectedTechnology">
-              <option>all</option>
-              <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
-            </select>
-            <span class="fa fa-search" style="font-size:30px;margin-left:50px;margin-right:10px"></span><input type="search" blur.trigger="searchBlur()" focus.trigger="searchFocus()" style="font-size:40px; width:50px" id="platformSearch" value.bind="searchText"/>
-            <!--<select>
-                    <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
-        					</select>-->
-          </form>
-          <a style="position:absolute;right:0;top:0"if.bind="appState.adminMode" class="btn btn-default" data-toggle="modal" click.trigger="addPlatform()" data-target="#editplatform">
+          <!-- <div class="rounded-separator-h1-bottom"></div> -->
+          <a style="position:absolute;right:20px;top:20px" if.bind="appState.adminMode" class="btn btn-default" data-toggle="modal" click.trigger="addPlatform()" data-target="#editplatform">
               <span>
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 Suggest a Platform</span>
             </a>
+
+            <div class="col-xs-12 col-platforms" style="text-align: center">
+              <form class="nl-form2">
+                I am interested in
+                <!--<select-picker selectable-values.bind="appState.sheets.sheets.Categories" selected-value.bind="Category"></select-picker>
+              -->
+                <select class='platform-select' bootstrap-select value.bind="selectedCategory">
+                  <option>all</option>
+                  <option repeat.for="cat of appState.project.categories">${cat.Category}</option>
+                </select>
+                <span if.bind="availableTechnologies.length>0">
+                  using
+                </span>
+                <select class='platform-select' bootstrap-select if.bind="availableTechnologies.length>0" value.bind="selectedTechnology">
+                  <option>all</option>
+                  <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
+                </select>
+                <span class="fa fa-search" style="font-size:30px;margin-left:50px;margin-right:10px"></span><input type="search" blur.trigger="searchBlur()" focus.trigger="searchFocus()" style="font-size:40px; width:50px" id="platformSearch" value.bind="searchText"/>
+                <!--<select>
+                        <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
+                      </select>-->
+              </form>
+        </div>
+      </div>
+      <div class="row">
+
+        
+          
         </div>
       
       </div>
