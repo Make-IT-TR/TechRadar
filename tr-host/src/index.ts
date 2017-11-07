@@ -26,6 +26,7 @@ import classes = require('./utils/classes');
 
 const wikiUtils = require('./utils/wikipedia');
 import { importSheet, loadProject } from './utils/project';
+import { updateScreenshots } from './utils/screenshots';
 
 const app = feathers();
 var projects: { [id: string]: classes.Project } = {};
@@ -89,6 +90,12 @@ function loadProjects(app: feathers.Application) {
           projects[project.config.id] = project;
           project.id = projectFile;
 
+          console.log('updating screenshots');
+
+                    updateScreenshots(project,()=>{
+                      console.log('done');
+                    })
+
           for (var dim in project.dimensions) {
               // project.dimensions[dim].id = dim;
               let o = { id: dim, title: dim, values: project.dimensions[dim] }
@@ -145,6 +152,8 @@ function loadProjects(app: feathers.Application) {
               // trend['id'] = trend.Name;
               app.service('radarinput').create(ri);
           });
+
+
           // app.service('projects').create({ project: projects['makeit'], id: projectFile }).then(message => console.log('Created project'));
       }));
 

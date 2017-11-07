@@ -1,6 +1,7 @@
 import classes = require('./classes');
 var webshot = require('webshot');
 var fs = require('fs');
+var async = require('async');
 
 
 export function sdbmCode(str) {
@@ -17,11 +18,11 @@ export function updateScreenshots(project: classes.Project, callback: Function) 
     let websites = [];
     var options = {};
     project.examples.forEach(e => websites.push(e.Url));
-    async.eachSeries(websites, (url, cb) => {
+    async.each(websites, (url, cb) => {
         var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
         var regex = new RegExp(expression);
         if (url.match(regex)) {
-            var file = 'projects/' + project + '/webshots/ws' + sdbmCode(url) + '.jpg';
+            var file = 'projects/' + project.id + '/webshots/ws' + sdbmCode(url) + '.jpg';
             if (!fs.existsSync(file)) {
                 console.log('getting ' + url + " (" + file + " - " + c + "/" + websites.length + ")");
                 webshot(url, file, options, function (err) {
@@ -31,7 +32,7 @@ export function updateScreenshots(project: classes.Project, callback: Function) 
                     };
 
                     c += 1;
-                    console.log('done');
+                    console.log('done: ' + url);
                     cb();
                 });
 

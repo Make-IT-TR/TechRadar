@@ -23,6 +23,7 @@ const appHooks = require('./app.hooks');
 const authentication = require('./authentication');
 const wikiUtils = require('./utils/wikipedia');
 const project_1 = require("./utils/project");
+const screenshots_1 = require("./utils/screenshots");
 const app = feathers();
 var projects = {};
 require('dotenv').config();
@@ -73,6 +74,10 @@ function loadProjects(app) {
         project_1.loadProject(projectFile, ((project) => {
             projects[project.config.id] = project;
             project.id = projectFile;
+            console.log('updating screenshots');
+            screenshots_1.updateScreenshots(project, () => {
+                console.log('done');
+            });
             for (var dim in project.dimensions) {
                 // project.dimensions[dim].id = dim;
                 let o = { id: dim, title: dim, values: project.dimensions[dim] };

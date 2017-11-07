@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var webshot = require('webshot');
 var fs = require('fs');
+var async = require('async');
 function sdbmCode(str) {
     var hash = 0;
     for (var i = 0; i < str.length; i++) {
@@ -16,11 +17,11 @@ function updateScreenshots(project, callback) {
     let websites = [];
     var options = {};
     project.examples.forEach(e => websites.push(e.Url));
-    async.eachSeries(websites, (url, cb) => {
+    async.each(websites, (url, cb) => {
         var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
         var regex = new RegExp(expression);
         if (url.match(regex)) {
-            var file = 'projects/' + project + '/webshots/ws' + sdbmCode(url) + '.jpg';
+            var file = 'projects/' + project.id + '/webshots/ws' + sdbmCode(url) + '.jpg';
             if (!fs.existsSync(file)) {
                 console.log('getting ' + url + " (" + file + " - " + c + "/" + websites.length + ")");
                 webshot(url, file, options, function (err) {
@@ -30,7 +31,7 @@ function updateScreenshots(project, callback) {
                     }
                     ;
                     c += 1;
-                    console.log('done');
+                    console.log('done: ' + url);
                     cb();
                 });
             }

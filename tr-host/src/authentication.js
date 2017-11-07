@@ -15,16 +15,6 @@ module.exports = function () {
   app.configure(jwt());
 
   app.configure(oauth2(Object.assign({
-    name: 'google',
-    Strategy: GoogleStrategy
-  }, config.google)));
-
-  app.configure(oauth2(Object.assign({
-    name: 'facebook',
-    Strategy: FacebookStrategy
-  }, config.facebook)));
-
-  app.configure(oauth2(Object.assign({
     name: 'github',
     Strategy: GithubStrategy
   }, config.github)));
