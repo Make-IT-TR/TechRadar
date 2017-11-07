@@ -18,7 +18,8 @@ export class Login {
 
   public login(strategy: string)
   {
-    location.replace('http://localhost:8010/auth/' + strategy)
+    // alert('login');
+    location.replace('auth/' + strategy)
   }
 
 }

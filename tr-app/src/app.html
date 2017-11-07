@@ -23,7 +23,7 @@
             </a>
           </span>
         </div>
-        <div class="collapse navbar-collapse" id="mainnavbar" style="width:100%">
+        <div class="collapse navbar-collapse" id="mainnavbar" >
           <ul class="nav navbar-nav" style="width:80%" id="main-menu">
             <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}" if.bind="row.title">
               <a data-toggle="collapse" data-target="#mainnavbar" href.bind="row.href">${row.title}</a>
@@ -36,6 +36,8 @@
               <a data-toggle="collapse" data-target="#mainnavbar">
                 <span class="glyphicon glyphicon-user"></span> Login</a>
             </li>
+            <li style="float:right;"><a href="http://make-it.io/surveys/index.php/888114?lang=en"><img style="padding:0;width:25px;height:25px" src="../img/feedback.png"></img>Give us feedback!</a></li>
+            
 
           </ul>
         </div>

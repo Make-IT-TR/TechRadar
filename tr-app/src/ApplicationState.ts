@@ -36,7 +36,7 @@ export class ApplicationState {
   // public examples: Example[] = [];
   public colors = ['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33', '#a65628', '#f781bf', '#999999'];
   public wiki: { [url: string]: WikiResult };
-  public authenticated: boolean;
+  public authenticated: boolean = false;
   public project: Project = new Project();
   public activeConfig: Config;
   // public presets: Config[] = [];
@@ -65,7 +65,7 @@ export class ApplicationState {
 
   initFeathers() {
     const socket = io(location.hostname + ':8010', {
-      transports: ['websocket']
+      transports: ['rest']
     });
 
     this.feathersClient = feathers();
@@ -73,6 +73,9 @@ export class ApplicationState {
       .configure(rest('http://' + location.hostname + ':8010').superagent(superagent))
       // .configure(socketio(socket))
       .configure(auth({ storage: localStorage }));
+
+      //this.authenticated = false;
+      //this.adminMode = false;
 
     (<any>this.feathersClient).authenticate()
       .then((e) => {
@@ -177,6 +180,9 @@ export class ApplicationState {
   }
 
   public addPlatform(p: Example): any {
+    p._Technologies.forEach(t => {
+      if (!t.Platforms.includes(p.id)) t.Platforms.push(p.id);
+    })
     this.services['examples'].create(_.omitBy(p, ((value, key) => { return key[0] === '_'; }))).catch(e => {
       console.log(e);
     }).then(() => {
@@ -190,9 +196,9 @@ export class ApplicationState {
 
   public addPlatformToTechnology(t: ITechnology, e: Example) {
     // if (t._Examples.indexOf(e) === -1) t._Examples.push(e);
-    t._Examples = [];
+    // t._Examples = [];
     if (t.Platforms.indexOf(e.id) === -1) t.Platforms.push(e.id);
-    // if (e._Technologies.indexOf(t) === -1) e._Technologies.push(t);
+    if (e._Technologies.indexOf(t) === -1) e._Technologies.push(t);
     this.updateTechnology(t);
   }
 
