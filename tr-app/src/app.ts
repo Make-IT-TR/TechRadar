@@ -47,7 +47,7 @@ export class App {
       { route: 'trends/:trend/image', name: 'trendsImage', moduleId: PLATFORM.moduleName('./trends/trendimage'), title: 'RadarImage', nav: false },
       { route: 'platforms/add', name: 'addPlatform', moduleId: PLATFORM.moduleName('./platforms/add'), nav: false },
       {
-        route: 'callback',
+        route: 'auth/github/callback',
         name: 'callback',
         moduleId: PLATFORM.moduleName('./callback'),
         nav: false,

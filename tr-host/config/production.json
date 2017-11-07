@@ -23,39 +23,10 @@
       "algorithm": "HS256",
       "expiresIn": "1d"
     },
-    "google": {
-      "clientID": "741362351536-54ta0tioh4nrd2tto7vlppeb3db5rbjg.apps.googleusercontent.com",
-      "clientSecret": "0WbrFmscpkgaLJICgAGXyYXG",
-      "successRedirect": "/",
-      "scope": [
-        "profile openid email"
-      ]
-    },
-    "facebook": {
-      "clientID": "your facebook client id",
-      "clientSecret": "your facebook client secret",
-      "successRedirect": "/",
-      "scope": [
-        "public_profile",
-        "email"
-      ],
-      "profileFields": [
-        "id",
-        "displayName",
-        "first_name",
-        "last_name",
-        "email",
-        "gender",
-        "profileUrl",
-        "birthday",
-        "picture",
-        "permissions"
-      ]
-    },
     "github": {
       "clientID": "681c3e6ae2c787f3caad",
       "clientSecret": "b843de202a3d450f817aed27f8df46630f416866",
-      "successRedirect": "/#/"
+      "successRedirect": "/"
     },
     "cookie": {
       "enabled": true,

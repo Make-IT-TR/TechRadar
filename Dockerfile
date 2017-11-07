@@ -4,6 +4,7 @@ FROM node:8
 RUN npm install --global typescript
 RUN npm install --global webpack
 RUN npm install --global yarn
+RUN npm install --global supervisor
 # RUN npm install --global aurelia-cli
 
 # Copy files to the container
@@ -21,4 +22,5 @@ RUN yarn
 
 # Run
 EXPOSE 8010
-CMD ["node", "../../tr-host/src/index"]
+ENV NODE_ENV=cool
+CMD ["supervisor", "-w", "../../tr-host/src","../../tr-host/src/index"]
