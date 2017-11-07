@@ -7,82 +7,90 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="rounded-separator-h1-top"></div>
-          <h1><i class="fa fa-tachometer" aria-hidden="true"></i> Radar</h1>
-          <div class="rounded-separator-h1-bottom"></div>
+          <h1>
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Radar</h1>
+          <div style="text-align: center;margin-bottom: 20px;">The
+            <em>Radar</em> is a visual presentation based on the categorisations and dimension scores presented in the
+            <em>Trends</em> and
+            <em>Platforms</em> sections.</div>
+
+          <!-- <div class="rounded-separator-h1-bottom"></div> -->
         </div>
       </div>
+
       <div class="row">
-        <div class="col-xs-12">
-          <p>
-            The <em>Radar</em> is a visual presentation based on the categorisations and dimension scores presented in the <em>Trends</em> and <em>Platforms</em> sections. Here it is fully interactive, you can explore it (filter) by category, a certain score, etc., and thereby change the layout of it.
-          </p>
-        </div>
-      </div>
-      <div id="radar-sidebar" class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
           <!-- The Radar -->
           <div class="row" id="radar-vis">
-            <radar view="trend"></radar>
+            <radar></radar>
           </div>
-          <!-- The title -->
-          <div class="row">
-            <div class="col-md-12">
-              <div class="rounded-separator-h2-top"></div>
-              <h2>Explore the TechRadar</h2>
-              <div class="rounded-separator-h2-bottom"></div>
+         
+          
+        </div>
+        <div class="col-md-4">
+          <h2>
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            Customise the Radar
+          </h2>
+          <!-- First -->
+          <!-- <input type="checkbox" value.bind="appState.activeConfig.ShowTrend" change.delegate="updateFilter()">Show trend</input> -->
+
+          <div class="preset-option-list">          
+            <!-- <div class="preset-option" click.trigger="editMode = !editMode">
+              <span class="fa fa-cogs circle-button"></span>
+              <span show.bind="editMode">hide</span>
+              <span show.bind="!editMode">edit</span>
+              visualisation options</div>
+          </div> -->
+          <!-- <h3>Search</h3>
+          <div class="rounded-separator-h3-bottom"></div> -->
+          <h3>Filters</h3>
+          <div class="rounded-separator-h3-bottom"></div>
+          <div style="margin-bottom:20px">
+            <div repeat.for="f of appState.activeConfig.Filters" show.bind="f.Enabled" class="input-group">
+              <h5>${f.Dimension}</h5>
+              <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
+                <option repeat.for="option of f.Options" value.bind="option">${option}</option>
+              </select>
+              <label class="label label-default label-button" click.trigger="disableFilter(f)">
+                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+              </label>
             </div>
+            <div class="dropdown preset-option">
+                <div class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="fa fa-plus-circle circle-button"></span>
+                  add filter</div>
+                <ul class="dropdown-menu">
+                  <li repeat.for="dimension of appState.project.dimensions">
+                    <a click.trigger="addNewFilter(dimension.title)">${dimension.title}</a>
+                  </li>
+                </ul>
+              </div>
           </div>
-          <!-- Columns -->
-          <div class="row">
-            <div class="col-sx-12 col-md-4 col-lg-4 explore-col">
-              <h3>
-                <i class="fa fa-cogs" aria-hidden="true"></i>
-                Customise the Radar
-              </h3>
-              <!-- First -->
-              <div repeat.for="f of appState.data.activeConfig.Filters" show.bind="f.Enabled" class="input-group">
-                <h4>${f.Dimension}</h4>
-                <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
-                  <option repeat.for="option of f.Options" value.bind="option">${option}</option>
-                </select>
-                <label class="label label-default label-button" click.trigger="disableFilter(f)">
-                  <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                </label>
-              </div>
-              <!-- Second -->
-              <div repeat.for="f of appState.data.activeConfig.Visualisation" class="input-group">
-                <h4>${f.Visual}</h4>
-                <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">
-                  <option repeat.for="dimension of appState.dimensions" value.bind="dimension">${dimension}</option>
-                </select>
-                <label class="label label-default label-button" show.bind="!f.Reverse" click.trigger="toggleReverse(f)">
-                  <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-                </label>
-                <label class="label label-default label-button" show.bind="f.Reverse" click.trigger="toggleReverse(f)">
-                  <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
-                </label>
-              </div>
-            </div>
-            <div class="col-sx-12 col-md-4 col-lg-4 explore-col">
-              <h3>
-                <i class="fa fa-line-chart" aria-hidden="true"></i>
-                Explore Trends
-              </h3>
-              <div class="btn-group-vertical" role="group" aria-label="trendsbuttons">
-                <button type="button" class="btn btn-default btn-sm btn-block" repeat.for="t of appState.trends" class="${ t == appState.data.activeTrend ? 'radar-trend-item-selected' : 'radar-trend-item' }" click.trigger="selectTrend(t)">
-                  ${t.Name}
-                  <!--<div ng-click="vm.focus(t)" ng-class="{'technologySelected' : vm.activeFocus === t.id}" class="technology-list-title">{{t.Technology}}</div>-->
-                </button>
-              </div>
-            </div>
-            <div class="col-sx-12 col-md-4 col-lg-4 explore-col">
-              <h3>
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-                Legend
-              </h3>
-              <legendsidebar></legendsidebar>
-            </div>
+
+          <h3>Visualisation</h3>
+          <div class="rounded-separator-h3-bottom"></div>
+
+          <!-- Second -->
+          <div if.bind="editMode" repeat.for="f of appState.activeConfig.Visualisation" class="input-group">
+            <h5>${f.Visual}</h5>
+            <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">
+              <option repeat.for="dimension of appState.project.dimensions" value.bind="dimension.title">${dimension.title}</option>
+            </select>
+            <label class="label label-default label-button" show.bind="!f.Reverse" click.trigger="toggleReverse(f)">
+              <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+            </label>
+            <label class="label label-default label-button" show.bind="f.Reverse" click.trigger="toggleReverse(f)">
+              <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+            </label>
           </div>
+
+          <h3>
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            Legend
+          </h3>
+          <div class="rounded-separator-h3-bottom"></div>
+          <legendsidebar></legendsidebar>
         </div>
       </div>
     </div>

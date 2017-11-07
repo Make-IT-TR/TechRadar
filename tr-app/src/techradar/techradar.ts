@@ -38,6 +38,7 @@ export class Techradar {
   updatePreset()
   {
     this.appState.activeConfig = this.activePreset;
+
     this.updateFilter();
   }
 
@@ -49,6 +50,8 @@ export class Techradar {
 
   toggleReverse(v: Vis) {
     console.log('toggle reverse');
+    console.log(this.appState.project.dimensions);
+    
     v.Reverse = !v.Reverse;
     this.updateFilter();
   }

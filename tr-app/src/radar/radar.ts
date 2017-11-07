@@ -1,3 +1,4 @@
+import { Technology } from './../../../tr-host/src/utils/technology';
 
 import { Trend, Example, ITechnology, WikiResult, Project, SpreadsheetService, Config, RadarInput, RadarCircle } from './../classes';
 import { inject } from 'aurelia-framework';
@@ -34,6 +35,8 @@ export class Radar {
     this.bus = bus;
     if (this.view === "all") {
       this.id = "all";
+      
+      //this.selectPreset(this.appState.project.presets[0]);
     }
     else {
       this.id = this.trend.id;
@@ -60,8 +63,6 @@ export class Radar {
   }
 
   selectAll() {
-
-
     this.trend = null;
     this.selectPreset(this.appState.project.presets[0]);
     this.draw();
@@ -107,13 +108,14 @@ export class Radar {
     this.appState.project.radarinput.forEach(ri => {
       var match = true;
 
-      if (this.appState.activeTrend) {
-        // match = !_.isUndefined(_.find(this.appState.activeTrend._TrendTechnologies, tt => tt._Technology === ri._Technology));
-      }
-      if (this.appState.activeConfig && this.appState.activeConfig.Filters) {
+      if (this.view === 'all' && this.appState.activeConfig && this.appState.activeConfig.Filters) {
         this.appState.activeConfig.Filters.forEach(f => {
-          if (f.Enabled && f.Value && this.appState.getDimensionValue(ri, f.Dimension) !== f.Value) match = false;
+          if (f.Enabled && f.Value && this.appState.getDimensionValue(ri, f.Dimension) !== f.Value) {
+            match = false;
+          }
         });
+      } else {
+         // match = !_.isUndefined(_.find(this.appState.activeTrend._TrendTechnologies, tt => tt._Technology === ri._Technology));
       }
       if (match) this.appState.items.push(ri);
     });
@@ -269,16 +271,16 @@ export class Radar {
       horTitlePos -= horTitleSteps;
 
       radar.append("foreignObject")
-        .attr("x", 55 + haxispos - textWidth / 2) /*the position of the text (left to right)*/
-        .attr("y", 35 + horTitlePos) /*the position of the text (Up and Down)*/
+        .attr("x", haxispos -40 - textWidth / 2) /*the position of the text (left to right)*/
+        .attr("y", 55 + horTitlePos) /*the position of the text (Up and Down)*/
         .attr("class", "horizontalTitle")
         .attr("width", textWidth)
         .append("xhtml:div")
         .text(txt);
 
       radar.append("foreignObject")
-        .attr("x", -haxispos - 35 - textWidth / 2) /*the position of the text (left to right)*/
-        .attr("y", 35 + horTitlePos) /*the position of the text (Up and Down)*/
+        .attr("x", -haxispos + 40 - textWidth / 2) /*the position of the text (left to right)*/
+        .attr("y", 55 + horTitlePos) /*the position of the text (Up and Down)*/
         .attr("class", "horizontalTitle")
         .attr("width", textWidth)
         .append("xhtml:div")
@@ -288,12 +290,20 @@ export class Radar {
       hpos += 1;
 
       var years = [2016];
-      if (this.appState.activeConfig.ShowTrend) years.push(2020);
+      // if (this.appState.activeConfig.ShowTrend) years.push(2020);
 
-      var items = [];
+      var its = [];
 
       this.appState.project.radarinput.forEach(i => {
-        if (this.appState.activeTrend._Technologies.indexOf(i._Technology) >= 0) {
+        let techs = [];
+        if (this.view === 'all' && this.appState.items) {
+          techs = this.appState.items;
+          
+        } else if (this.appState.activeTrend) {
+          techs = this.appState.activeTrend._Technologies;
+        }
+        if (_.findIndex(techs,(t)=> t.Technology === i.Technology)>=0)
+        {
           years.forEach(y => {
             if (years.indexOf(y) >= 0) {
               var future = (years.length > 1 && years[1] === y);
@@ -320,7 +330,7 @@ export class Radar {
                       //    console.log(horScore.Value + ' - ' + radScore.Value);
 
                       if (i._Technology) {
-                        items.push(c);
+                        its.push(c);
                         all.push(c);
                       }
                     }
@@ -361,8 +371,8 @@ export class Radar {
           // radar.ts:367 Uncaught TypeError: Cannot read property 'appendChild' of undefined
         })
 
-      console.log(items);
-      items.forEach((i: RadarCircle) => {
+      console.log(its);
+      its.forEach((i: RadarCircle) => {
 
         //console.log(i._segment.items.length);
 
