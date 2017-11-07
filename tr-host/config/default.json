@@ -26,7 +26,7 @@
     "github": {
       "clientID": "85efeaf9cae731940639",
       "clientSecret": "562dc2f335435684455f72a04464519f4bb8791d",
-      "successRedirect" : "/"
+      "successRedirect" : "http://localhost:8010/"
     },
     "cookie": {
       "enabled": true,
