@@ -76,7 +76,9 @@ export class Techradar {
   activate(parms, routeConfig) {
     this.mobile = $(document).width() < 800;
     this.appState.loadSheets().then(()=>{
-      this.showTrends();
+      // this.appState.activeConfig.Filters.forEach(f=>f.Enabled = false);
+      // this.updateFilter();
+      
     })
   }
 }

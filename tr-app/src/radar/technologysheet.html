@@ -32,8 +32,8 @@
                 <!--route-href="route: trendsDetail; params.bind: { trend: tt._Trend.Id}"-->
                 <a repeat.for="tt of tech._Trends">
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 example-card">
-                    <span class="card-image" style="background: url('img/trends/${tt._Trend.ImageUrl}') center center no-repeat;"></span>
-                    <span click.trigger="selectTrend($event,tt._Trend)" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
+                    <span class="card-image" style="background: url('img/trends/${tt.ImageUrl}') center center no-repeat;"></span>
+                    <span click.trigger="selectTrend($event,tt)" class="card-image platform-card" style="background: url('${platform.Webshot}') center center no-repeat;"></span>
                     <div class="example-card-title">
                       <span class="platform-title">${tt._Trend.Name}</span>
                     </div>

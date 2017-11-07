@@ -34,9 +34,7 @@ export class Radar {
     this.appState = appState;
     this.bus = bus;
     if (this.view === "all") {
-      this.id = "all";
-      
-      //this.selectPreset(this.appState.project.presets[0]);
+      this.id = "all";           
     }
     else {
       this.id = this.trend.id;
@@ -45,7 +43,7 @@ export class Radar {
     this.bus.subscribe("filter", (title, t: Trend) => {
       switch (title) {
         case "all":
-          console.log('select all');
+          console.log('select all');          
           this.selectAll();
           break;
         case "trend":
@@ -53,7 +51,7 @@ export class Radar {
           break;
       }
     });
-    this.bus.subscribe("reload", (title, data) => {
+    this.bus.subscribe("reload", (title, data) => {            
       this.updateFilter();
       this.draw();
     });
@@ -107,7 +105,6 @@ export class Radar {
 
     this.appState.project.radarinput.forEach(ri => {
       var match = true;
-
       if (this.view === 'all' && this.appState.activeConfig && this.appState.activeConfig.Filters) {
         this.appState.activeConfig.Filters.forEach(f => {
           if (f.Enabled && f.Value && this.appState.getDimensionValue(ri, f.Dimension) !== f.Value) {
@@ -148,10 +145,7 @@ export class Radar {
     console.log('select trend');
     // this.data = this.appState.sheets;
     this.trend = t;
-
-
     this.appState.activeTrend = t;
-
     if (t._Preset) {
       this.selectPreset(t._Preset);
       this.appState.activeConfig.ShowTrend = true;

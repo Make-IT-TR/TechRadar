@@ -259,8 +259,10 @@ export class ApplicationState {
 
       ], () => {
         this.project.linkObjects();
-        this.activeConfig = this.project.presets[0];
+        this.activeConfig = this.project.presets[0];          
+        this.activeConfig.Filters.forEach(f=>f.Enabled = false);
         console.log('got all data');
+        console.log(this.activeConfig);
         this.initialized = true;
         // this.services['technologies'].on('update',)
 

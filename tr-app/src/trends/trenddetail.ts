@@ -67,8 +67,11 @@ export class Trends {
 
   }
 
-  activate(parms, routeConfig) {
+  activate(parms, routeConfig) {    
     this.params = parms;
+    console.log(this.params);
+    this.update();
+    
   }
 
   public addTechnology() {
@@ -91,8 +94,10 @@ export class Trends {
   }
 
   update() {
+    if (!this.appState.project || !this.appState.project.trends) return;
     this.trend = this.appState.project.trends.find((t) => { return t.id == this.params["trend"] });
     //this.trend._TrendTechnologies[0]._Technology.Technology
+    
     if (!this.trend.Description || this.trend.Description === "") this.trend.Description = " ";
     // console.log(this.trend.Description);
     this.appState.activeConfig.ShowTrend = true;
@@ -101,6 +106,20 @@ export class Trends {
 
     this.platforms = this.appState.getTrendExamples(this.trend);
 
+  }
+
+  updateFilter() {
+    console.log('publish');
+    this.bus.publish("reload", "all");
+
+  }
+
+  toggleReverse(v: any) {
+    console.log('toggle reverse');
+    console.log(this.appState.project.dimensions);
+    
+    v.Reverse = !v.Reverse;
+    this.updateFilter();
   }
 
   attached() {

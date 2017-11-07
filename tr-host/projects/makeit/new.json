@@ -173,7 +173,7 @@
         },
         {
           "Visual": "Radial",
-          "Dimension": "SubCategory",
+          "Dimension": "TRL",
           "Enabled": false,
           "Reverse": false
         },

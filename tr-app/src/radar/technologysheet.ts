@@ -47,13 +47,18 @@ export class Technologysheet {
   public selectCategory()
   {
     console.log('select category');
-    window.location.href = '#/platforms/' + this.tech.Category + '/all';  
+    //window.location.href = '#/platforms/' + this.tech.Category + '/all';  
+    this.router.navigateToRoute('Platforms', { category: this.tech.Category });     
+    
   }
 
-  public selectTrend(e: MouseEvent, trend: Trend) {    
-    e.cancelBubble = true;
-    this.show = false;
-    window.location.href = '#/trends/' + trend.id + '/detail';  
+  public selectTrend(e: MouseEvent, trend: Trend) {           
+    // e.cancelBubble = true;
+    // this.show = false;
+    // window.location.href = '#/trends/' + trend.id + '/detail';  
+    this.router.navigateToRoute('trendsDetail', { trend: trend.id });     
+    // history.pushState({}, "new title", "#/trends/" + trend.id + "/detail");
+
   }
 
   constructor(private appState: ApplicationState, private bus: MessageBusService, private router:Router) {

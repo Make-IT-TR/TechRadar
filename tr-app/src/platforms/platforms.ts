@@ -63,7 +63,6 @@ export class Platforms {
   }
 
   public savePlatform() {
-    debugger;
     if (this.activePlatform._isNew) {
       this.activePlatform._isNew = false;
       this.appState.addPlatform(this.activePlatform);
@@ -72,16 +71,17 @@ export class Platforms {
       $('#editplatform').modal('hide');
 
     }
-
-
-
   }
 
   public addPlatform() {
-    this.isNew = true;
-    this.activePlatform = new Example("");
-    this.activePlatform.id = this.appState.guid();
-    this.activePlatform._isNew = true;
+    if (!this.appState.adminMode) {
+      this.appState.showLogin = true;
+    } else {
+      this.isNew = true;
+      this.activePlatform = new Example("");
+      this.activePlatform.id = this.appState.guid();
+      this.activePlatform._isNew = true;
+    }
   }
 
   public selectedTechnologyChanged(n, o) {
@@ -102,14 +102,12 @@ export class Platforms {
   }
 
   public updatePlatform() {
-    debugger;
     this.appState.updatePlatform(this.activePlatform);
     // this.appState.feathersClient.service('examples').update(this.activePlatform.Name, this.activePlatform);
     // alert('updating');
   }
 
   public addTechnology() {
-    debugger;
     if (this.activePlatform._isNew) {
       let tech = this.appState.project.technologies.find(k => k.Technology === this.selectedTech);
       this.activePlatform._Technologies.push(tech);
