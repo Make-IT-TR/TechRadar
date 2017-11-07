@@ -24,21 +24,6 @@
       "Late Majority",
       "Laggards"
     ],
-    "Distributed awareness": [
-      "Network",
-      "Ecosystem",
-      "Community",
-      "Collaboration",
-      "Single",
-      "None"
-    ],
-    "Technological application cycle": [
-      "Innovation & experimentation",
-      "Development & installation",
-      "Disappointment & uncertainty",
-      "Reassessment & revaluation",
-      "Creative construction & demand-pull"
-    ],
     "Perez Technological Revolution": [
       "Innovation and experimentation",
       "Development and installation",
@@ -7892,25 +7877,6 @@
       ]
     },
     {
-      "Name": "Nano technology",
-      "Description": "",
-      "Preset": "Technology Adoption",
-      "Preset2": "",
-      "(old) Person": "",
-      "Person responsible ": "",
-      "Review": "",
-      "Scenario1": "",
-      "Scenario2": "",
-      "References": "",
-      "ImageUrl": "",
-      "Order": "",
-      "Status": "HIDE",
-      "in draft 4.1": "",
-      "deskman": "",
-      "id": "nanotech",
-      "Technologies": []
-    },
-    {
       "Name": "Robotics and robot arms",
       "Description": "# Robotoics and robot arms\n\nRobots, robot arm and robotics comes in many shapes and sizes. Applications range from pick and place in production facilities over toys to domestic tasks. Some are very simple in shape and function and in recent years, even advanced robot arms with several axis (bends or rotation) has become very easy to install with motion recordings.\n\nRobots have been around for many years and in the past few years development pace have increased a lot together with Big Data and Artificial Intelligence (AI). Author of the book, [Rise of the robots](https://www.amazon.com/Rise-Robots-Technology-Threat-Jobless/dp/0465097537), Martin Ford, predicts that, in Amerika only, millions of low wage jobs is replaced by robots and especially the fast food industry will be soon to implement the new technology, where robots will not only deliver the food but also make it.\n\n## Helping out or overtaking\nThere is no doubt about that robots is changing the way factories of the future works, but could it also change the way we live our lives. We already see many automated processes in our home, freeing time for us to spend otherwise. In recent year robots has also entered as a part of the educational programme in Europe alongside with entrepreneurships, innovation and creativity. The robotics is useful as a tool to promote a different and experimental approach in learning even for young kids.\n\nMind controlled (neurally) robotics arms attached to a person’s amputated limb as a prosthetic – a bionic arm – is fairly new and not a finished product yet, but a handful of groups in U.S and Europa have come a long way. In the field of bionics arms, the development is closely followed in the Maker movement as well with among other projects the open source Open bionics.\n\n<img src=\"../img/details/robot1.jpg\" />\n\nOn the other hand, some predicts a dark future for humans when robots is developed to fulfil many of our existing jobs and outperform us. This is most likely to affect jobs like drivers, accountants, labours, and waiters.  Also at risk is [construction workers](http://www.construction-robotics.com/), [carers](http://medicalfuturist.com/robotics-healthcare/) and [soldiers](http://www.bostondynamics.com/). This could result in a lot of spare time for people in the future, but that might not be so fantastic according to Professor [Moshe Vardi](https://www.eurekalert.org/pub_releases/2016-02/ru-wmc021016.php) and computer scientist [Jürgen Schmidhuber](https://www.theguardian.com/technology/2017/apr/18/robot-man-artificial-intelligence-computer-milky-way). \n\n## Makers make professional robot arms\nRobotic arms is, like any other technology, getting smart and cheaper by each day. This leads to robots handling tasks that are more advanced, but also smaller and simpler tasks - since buying the robot arm and installing it, is cheap and easy. It has become easy by programming it with e.g. motion recording (handhold teaching), easy-of-use software with 3D visualisation and self-learning / AI. Some projects making this happen comes from [maker communities](http://makezine.com/2015/09/18/robot-arms-you-can-buy-soon/) and start-ups.\n\n<div style=\"clear:both\">\n<img src=\"../img/details/robot2.jpg\" style=\"width:200px;margin:10px\"/><img src=\"../img/details/robot3.jpg\" style=\"width:200px;margin:10px\"/><img src=\"../img/details/robot4.jpg\" style=\"width:200px;margin:10px\"/>\n</div>\n\nSome of the robotic machines coming from the maker communities solves very simple tasks like alarming when mail is delivered and is mostly for fun etc. but others is perfected to be very precise, stabile and ease of use and at the same time is capable of working as a [multipurpose machine](http://makerarm.com/). Other makers collaborate and aim high in making an [open source self-driving car](https://www.udacity.com/self-driving-car). \n\n## Domestic robots\nFrom a consumer’s perspective by now, robotics have only affected the price on consumer goods, making them cheaper and in some places replaced several workers in the nearby factory. In the UK, [reports](https://www.eurekalert.org/pub_releases/2016-02/ru-wmc021016.php) state that by 2035 1/10 jobs is replaced by [robots](https://www.adzuna.co.uk/blog/2017/01/27/drivers-and-receptionists-are-most-at-risk-from-losing-their-jobs-to-automation/)  and in 2050 about 50%.\n\nThe thought of having a robot in your home as a servant might not be appealing to everyone, but slowly robots will be become a part of our everyday lives. Already people use robot lawn mowers, vacuum cleaners, gutter cleaner, pool cleaners and coffee machines - that can serve you a drink that used to require a “skilled” barista. When technology that only used to be a part of a production facility finds more awareness in our minds and application in homes, it becomes more natural for us to interact with it. By now, it is not uncommon as a toy for children like a programmable teddy bear or an assembly kit with computer, actuators and sensors etc. like Lego Mindstorms among others (The online shop [www.robotshop.com](http://makezine.com/2017/02/14/robotics-kit-right/) has 117 products in the category Robot Toys.)\n\nFully self-driving or semi driving ([driver assistance systems](https://www.lifewire.com/advanced-driver-assistance-systems-534859)) cars, [bar mixing drinks](http://www.moley.com/) (but hey, all it does is pouring the liquids in the glass!) is already a reality and the future could easily bring fully [robotic kitchen help](https://www.youtube.com/watch?v=xYA2d35e-w8).\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/xYA2d35e-w8?ecver=1\" frameborder=\"0\" allowfullscreen></iframe>\n\n## Productions = Robot arms\nThere is no doubt that robots are going to have a huge impact already in the production facilities all over the world. Right now in Europe, we typically see that robots are making insourcing feasible again. While, for many years the “easy” way to gain profit in a society demanding cheaper products, was to outsource manufacturing to low wage countries around the world, it is now time for insourcing (except for Germany). Robots are an essential part of Industry 4.0 to ensure an intelligent, reliable but flexible production based on increased automatization and sophisticated robots.[more](https://www.roboticsbusinessreview.com/manufacturing/industry_4-0_robotics_presents_a_golden_opportunity/) \n\nIn enterprises, robots and humans will likely be working together by side in within a few years, opposed to now a day, where the robot is safely shielded of in a cage, and the process is stopped when a human is passing into the working area. This is a challenge for certification/standardisation bodies focusing on safety together with the developers of the robot arms.  \nMany SME’s right now see the benefits in robot taking over the dull monotone work but it’s still a challenge economically or [practically](http://www.gereports.com/post/107898198705/rethink-robotics-is-freeing-next-gen-robots-from/).  The enabler is robots getting smarter and [easier to install](https://www.universal-robots.com/products/ur-robot-benefits/), so production can keep running. [more](http://www.project-leanautomation.eu/)\n\n",
       "Preset": "Technology Adoption",
@@ -7977,49 +7943,6 @@
         "eCommerce Website",
         "Distributed Computing"
       ]
-    },
-    {
-      "Name": "Electronics Manufacturing",
-      "Description": "",
-      "Preset": "Technology Adoption",
-      "Preset2": "",
-      "(old) Person": "",
-      "Person responsible ": "",
-      "Review": "",
-      "Scenario1": "",
-      "Scenario2": "",
-      "References": "",
-      "ImageUrl": "electronics.jpg",
-      "Order": 18,
-      "Status": "PLANNED",
-      "in draft 4.1": "",
-      "deskman": "",
-      "id": "electronics",
-      "Technologies": [
-        "Nanoelectronics",
-        "Electronics Design platform",
-        "Micro controllers",
-        "FDM - Plug and Play"
-      ]
-    },
-    {
-      "Name": "Online Collaboration",
-      "Description": "",
-      "Preset": "Technology Adoption",
-      "Preset2": "",
-      "(old) Person": "",
-      "Person responsible ": "",
-      "Review": "",
-      "Scenario1": "",
-      "Scenario2": "",
-      "References": "",
-      "ImageUrl": "onlinecollaboration.jpg",
-      "Order": 19,
-      "Status": "PLANNED",
-      "in draft 4.1": "",
-      "deskman": "",
-      "id": "onlinecollaboration",
-      "Technologies": []
     }
   ],
   "radarinput": [
