@@ -1,6 +1,6 @@
 {
   "host": "localhost",
-  "port": 8010,
+  "port": 8080,
   "public": "../../tr-app/dist/",
   "paginate": {
     "default": 1000,
@@ -26,7 +26,7 @@
     "github": {
       "clientID": "07c7b38ca2f2e8559307",
       "clientSecret": "6b90f5841079c59a30159878c55ffebc06d29ec6",
-      "successRedirect": "http://localhost:8010/auth/github"
+      "successRedirect": "http://localhost:8080/auth/github"
     },
     "cookie": {
       "enabled": true,

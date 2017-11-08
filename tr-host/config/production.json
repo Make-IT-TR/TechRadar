@@ -1,6 +1,6 @@
 {
   "host": "localhost",
-  "port": 8010,
+  "port": 8080,
   "public": "../../tr-app/dist/",
   "paginate": {
     "default": 1000,

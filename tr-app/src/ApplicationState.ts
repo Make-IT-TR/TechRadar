@@ -64,13 +64,14 @@ export class ApplicationState {
   public feathersClient: feathers.Application;
 
   initFeathers() {
-    const socket = io(location.hostname + ':8010', {
+    const socket = io(location.hostname + ':8080', {
       transports: ['rest']
     });
 
     this.feathersClient = feathers();
     this.feathersClient.configure(hooks())
-      .configure(rest('http://' + location.hostname + ':8010').superagent(superagent))
+       .configure(rest('http://' + location.hostname + ':8080').superagent(superagent))
+      //.configure(rest('/').superagent(superagent))
       // .configure(socketio(socket))
       .configure(auth());
 

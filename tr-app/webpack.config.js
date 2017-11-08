@@ -122,7 +122,8 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
     new UglifyJSPlugin(),
     new CopyWebpackPlugin([
       { from: 'static/favicon.ico', to: 'favicon.ico' },
-      { from: './../tr-host/projects', to: 'projects' }
+      { from: './../tr-host/projects', to: 'projects' },
+      { from: 'img', to: 'img' }
     ]),
     ...when(extractCss, new ExtractTextPlugin({
       filename: production ? '[contenthash].css' : '[id].css',
