@@ -106,8 +106,6 @@ export class TechEdit {
   }
 
   closeSheet(e: MouseEvent) {
-
-    console.log(e);
     this.show = false;
   }
 

@@ -1,6 +1,6 @@
 export class FilterOnPropertyValueConverter {
 toView(array: {}[], property: string, exp: string) {
-  console.log(property);
+  // console.log(property);
     if (array === undefined || array === null || property === undefined || exp === undefined) {
         return array;
     }

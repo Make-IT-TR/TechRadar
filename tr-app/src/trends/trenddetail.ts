@@ -116,7 +116,6 @@ export class Trends {
 
   toggleReverse(v: any) {
     console.log('toggle reverse');
-    console.log(this.appState.project.dimensions);
     
     v.Reverse = !v.Reverse;
     this.updateFilter();

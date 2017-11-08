@@ -72,22 +72,22 @@ export class ApplicationState {
     this.feathersClient.configure(hooks())
       .configure(rest('http://' + location.hostname + ':8010').superagent(superagent))
       // .configure(socketio(socket))
-      .configure(auth({ storage: localStorage }));
+      .configure(auth());
 
-      //this.authenticated = false;
-      //this.adminMode = false;
+      this.authenticated = true;
+      this.adminMode = true;
 
-    (<any>this.feathersClient).authenticate()
-      .then((e) => {
-        console.log('authenticated');
-        this.authenticated = true;
-        this.adminMode = true;
-      })
-      .catch(() => {
-        console.log('not authenticated');
-        this.authenticated = false;
-        this.adminMode = false;
-      });
+    // (<any>this.feathersClient).authenticate()
+    //   .then((e) => {
+    //     console.log('authenticated');
+    //     this.authenticated = true;
+    //     this.adminMode = true;
+    //   })
+    //   .catch(() => {
+    //     console.log('not authenticated');
+    //     this.authenticated = false;
+    //     this.adminMode = false;
+    //   });
 
     // this.feathersClient.authenticate({
     //   strategy: 'github'}).then((result) => {

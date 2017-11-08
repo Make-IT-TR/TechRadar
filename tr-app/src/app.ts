@@ -18,7 +18,7 @@ export class App {
 
   activate() {
 
-    console.log(this.router);
+   // console.log(this.router);
   }
 
   public login()

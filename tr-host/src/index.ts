@@ -11,7 +11,7 @@ import * as feathers from 'feathers';
 const configuration = require('feathers-configuration');
 const hooks = require('feathers-hooks');
 const rest = require('feathers-rest');
-const socketio = require('feathers-socketio');
+// const socketio = require('feathers-socketio');
 
 const handler = require('feathers-errors/handler');
 const notFound = require('feathers-errors/not-found');
@@ -26,7 +26,7 @@ import classes = require('./utils/classes');
 
 const wikiUtils = require('./utils/wikipedia');
 import { importSheet, loadProject } from './utils/project';
-import { updateScreenshots } from './utils/screenshots';
+import { updateScreenshots, sdbmCode } from './utils/screenshots';
 
 const app = feathers();
 var projects: { [id: string]: classes.Project } = {};
@@ -49,7 +49,7 @@ app.use('/', feathers.static(app.get('public')));
 // Set up Plugins and providers
 app.configure(hooks());
 app.configure(rest());
-app.configure(socketio());
+// app.configure(socketio());
 app.use('/categories', memory())
 app.use('/subcategories', memory())
 app.use('/technologies', memory())
@@ -112,11 +112,11 @@ function loadProjects(app: feathers.Application) {
 
           project.subcategories.forEach(subcategory => {
               app.service('subcategories').create(subcategory);
-          })
-
+          });
 
           project.examples.forEach(example => {
               // example['id'] = example.Name;
+              example.Webshot = "projects/" + project.id + "/webshots/ws" + sdbmCode(example.Url) + ".jpg";
               app.service('examples').create(example);
 
           });

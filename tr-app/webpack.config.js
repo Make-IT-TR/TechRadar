@@ -6,6 +6,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { AureliaPlugin } = require('aurelia-webpack-plugin');
 const { optimize: { CommonsChunkPlugin }, ProvidePlugin } = require('webpack')
 const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loader');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
 //var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 // config helpers:
@@ -32,6 +35,9 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
   resolve: {
     extensions: ['.ts', '.js'],
     modules: [srcDir, 'node_modules'],
+    alias: {
+      'aurelia-binding$': path.resolve(__dirname, 'node_modules/aurelia-binding/dist/amd/aurelia-binding.js')
+    }
   },
   entry: {
     app: ['./src/main']
@@ -113,8 +119,10 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
         title, server, baseUrl
       },
     }),
+    new UglifyJSPlugin(),
     new CopyWebpackPlugin([
-      { from: 'static/favicon.ico', to: 'favicon.ico' },{from: 'static/api/wiki.json', to: 'wiki.json'}, {from: 'static/api/sheets.json', to: 'sheets.json'}, { from: 'img', to: 'img' }
+      { from: 'static/favicon.ico', to: 'favicon.ico' },
+      { from: './../tr-host/projects', to: 'projects' }
     ]),
     ...when(extractCss, new ExtractTextPlugin({
       filename: production ? '[contenthash].css' : '[id].css',
@@ -126,5 +134,37 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
     ...when(production, new CopyWebpackPlugin([
       { from: 'static/favicon.ico', to: 'favicon.ico' }
     ]))
+    // ,
+    // new BundleAnalyzerPlugin({
+    //   // Can be `server`, `static` or `disabled`. 
+    //   // In `server` mode analyzer will start HTTP server to show bundle report. 
+    //   // In `static` mode single HTML file with bundle report will be generated. 
+    //   // In `disabled` mode you can use this plugin to just generate Webpack Stats JSON file by setting `generateStatsFile` to `true`. 
+    //   analyzerMode: 'static',
+    //   // Host that will be used in `server` mode to start HTTP server. 
+    //   analyzerHost: '127.0.0.1',
+    //   // Port that will be used in `server` mode to start HTTP server. 
+    //   analyzerPort: 8888,
+    //   // Path to bundle report file that will be generated in `static` mode. 
+    //   // Relative to bundles output directory. 
+    //   reportFilename: 'report.html',
+    //   // Module sizes to show in report by default. 
+    //   // Should be one of `stat`, `parsed` or `gzip`. 
+    //   // See "Definitions" section for more information. 
+    //   defaultSizes: 'parsed',
+    //   // Automatically open report in default browser 
+    //   openAnalyzer: false,
+    //   // If `true`, Webpack Stats JSON file will be generated in bundles output directory 
+    //   generateStatsFile: false,
+    //   // Name of Webpack Stats JSON file that will be generated if `generateStatsFile` is `true`. 
+    //   // Relative to bundles output directory. 
+    //   statsFilename: 'stats.json',
+    //   // Options for `stats.toJson()` method. 
+    //   // For example you can exclude sources of your modules from stats file with `source: false` option. 
+    //   // See more options here: https://github.com/webpack/webpack/blob/webpack-1/lib/Stats.js#L21 
+    //   statsOptions: null,
+    //   // Log level. Can be 'info', 'warn', 'error' or 'silent'. 
+    //   logLevel: 'info'
+    // })
   ],
 })

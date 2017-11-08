@@ -1,9 +1,10 @@
 <template>
   <div if.bind="show" click.trigger="closeSheet($event)" class="sheetbackground">
     <div class="technologysheet">
-
+      
       <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            
           <!-- <div class="rounded-separator-h1-top"></div> -->
           <h1 class="ts-technology-title">${tech.Technology}</h1>
           <div class="rounded-separator-h1-bottom"></div>
@@ -22,6 +23,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <button type="button" class="btn fa fa-edit" style="float:right" if.bind="appState.adminMode" click.trigger="editTech(tech)"></button>
           <!-- trends -->
           <!-- <div class="rounded-separator-h2-top"></div> -->
           <div if.bind="tech._Trends.length>0">

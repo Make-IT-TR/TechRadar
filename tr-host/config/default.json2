@@ -24,9 +24,9 @@
       "expiresIn": "1d"
     },
     "github": {
-      "clientID": "07c7b38ca2f2e8559307",
-      "clientSecret": "6b90f5841079c59a30159878c55ffebc06d29ec6",
-      "successRedirect": "http://cool5.sensorlab.tno.nl:8010/"
+      "clientID": "85efeaf9cae731940639",
+      "clientSecret": "562dc2f335435684455f72a04464519f4bb8791d",
+      "successRedirect" : "http://localhost:8010/"
     },
     "cookie": {
       "enabled": true,

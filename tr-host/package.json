@@ -51,6 +51,7 @@
     "feathers-rest": "^1.8.0",
     "feathers-socketio": "^2.0.0",
     "helmet": "^3.8.2",
+    "jimp": "^0.2.28",
     "lodash": "^4.17.4",
     "nedb": "^1.8.0",
     "passport-facebook": "^2.1.1",

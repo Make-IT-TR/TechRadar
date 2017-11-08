@@ -8,7 +8,9 @@ import { MessageBusService } from './../MessageBus'
 import $ from 'jquery';
 import * as _ from "lodash";
 
+
 var d3 = require('d3');
+var tip = require('./../utils/d3tip');
 
 @inject(Element, ApplicationState, MessageBusService)
 export class Radar {
@@ -34,7 +36,7 @@ export class Radar {
     this.appState = appState;
     this.bus = bus;
     if (this.view === "all") {
-      this.id = "all";           
+      this.id = "all";
     }
     else {
       this.id = this.trend.id;
@@ -43,7 +45,7 @@ export class Radar {
     this.bus.subscribe("filter", (title, t: Trend) => {
       switch (title) {
         case "all":
-          console.log('select all');          
+          console.log('select all');
           this.selectAll();
           break;
         case "trend":
@@ -51,7 +53,7 @@ export class Radar {
           break;
       }
     });
-    this.bus.subscribe("reload", (title, data) => {            
+    this.bus.subscribe("reload", (title, data) => {
       this.updateFilter();
       this.draw();
     });
@@ -112,7 +114,7 @@ export class Radar {
           }
         });
       } else {
-         // match = !_.isUndefined(_.find(this.appState.activeTrend._TrendTechnologies, tt => tt._Technology === ri._Technology));
+        // match = !_.isUndefined(_.find(this.appState.activeTrend._TrendTechnologies, tt => tt._Technology === ri._Technology));
       }
       if (match) this.appState.items.push(ri);
     });
@@ -265,7 +267,7 @@ export class Radar {
       horTitlePos -= horTitleSteps;
 
       radar.append("foreignObject")
-        .attr("x", haxispos -40 - textWidth / 2) /*the position of the text (left to right)*/
+        .attr("x", haxispos - 40 - textWidth / 2) /*the position of the text (left to right)*/
         .attr("y", 55 + horTitlePos) /*the position of the text (Up and Down)*/
         .attr("class", "horizontalTitle")
         .attr("width", textWidth)
@@ -280,7 +282,15 @@ export class Radar {
         .append("xhtml:div")
         .text(txt);
 
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html((d) => {
+          let res = d.join(',');
+          return "<strong>Technology:</strong> <span style='color:red'>" + res + "</span>";
+        })
 
+      svg.call(tip);
       hpos += 1;
 
       var years = [2016];
@@ -292,12 +302,11 @@ export class Radar {
         let techs = [];
         if (this.view === 'all' && this.appState.items) {
           techs = this.appState.items;
-          
+
         } else if (this.appState.activeTrend) {
           techs = this.appState.activeTrend._Technologies;
         }
-        if (_.findIndex(techs,(t)=> t.Technology === i.Technology)>=0)
-        {
+        if (_.findIndex(techs, (t) => t.Technology === i.Technology) >= 0) {
           years.forEach(y => {
             if (years.indexOf(y) >= 0) {
               var future = (years.length > 1 && years[1] === y);
@@ -359,16 +368,26 @@ export class Radar {
         .attr("id", function (d, i) { return "monthArc_" + i; })
         .style("fill", mycolor.toString())
         .attr("d", arc)
-        .on('mouseover', (d) => {
+        .on('mouseenter', (d) => {
+          console.log(d);
+          if (d.data && d.data.items && d.data.items.length > 0) {
+            let res = [];
+            d.data.items.forEach(t => res.push(t.Technology));
+            tip.show(res);
+          }
           // bus.publish("segment", "mouseover", d.data);
           if (d.parentNode) d.parentNode.appendChild(d);
           // radar.ts:367 Uncaught TypeError: Cannot read property 'appendChild' of undefined
         })
+        .on('mouseleave', (d) => {
+          tip.hide();
+        })
 
-      console.log(its);
+      // console.log(its);
       its.forEach((i: RadarCircle) => {
 
-        //console.log(i._segment.items.length);
+        console.log(i._segment.items.length);
+
 
         var difS = 0;
         var difE = 1;
@@ -412,9 +431,11 @@ export class Radar {
           .style("fill", color.toString())
           .style("opacity", i._future ? 0.5 : 1)
           .on('mouseenter', (d) => {
+            tip.show([i._Technology.Technology]);
             console.log('Enter ' + i._Technology.Technology);
           })
           .on('mouseleave', (d) => {
+            tip.hide();
             console.log('Leave ' + i._Technology.Technology);
           })
           .on("mousedown", () => {

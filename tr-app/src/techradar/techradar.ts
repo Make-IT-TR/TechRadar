@@ -13,8 +13,8 @@ export class Techradar {
   appState: ApplicationState;
   bus: MessageBusService;
   mobile: boolean;
-  editMode : boolean = true;
-  activePreset : Config;
+  editMode: boolean = true;
+  activePreset: Config;
 
   constructor(appState, bus) {
     this.appState = appState;
@@ -25,18 +25,15 @@ export class Techradar {
 
   }
 
-  showAll()
-  {
-    this.bus.publish("filter","all");
+  showAll() {
+    this.bus.publish("filter", "all");
   }
 
-  showTrends()
-  {
-    this.bus.publish("filter","trend",this.appState.project.trends[0]);
+  showTrends() {
+    this.bus.publish("filter", "trend", this.appState.project.trends[0]);
   }
 
-  updatePreset()
-  {
+  updatePreset() {
     this.appState.activeConfig = this.activePreset;
 
     this.updateFilter();
@@ -50,8 +47,6 @@ export class Techradar {
 
   toggleReverse(v: Vis) {
     console.log('toggle reverse');
-    console.log(this.appState.project.dimensions);
-    
     v.Reverse = !v.Reverse;
     this.updateFilter();
   }
@@ -63,9 +58,8 @@ export class Techradar {
     this.updateFilter();
   }
 
-  selectTrend(t:Trend)
-  {
-    this.bus.publish("filter","trend",t);
+  selectTrend(t: Trend) {
+    this.bus.publish("filter", "trend", t);
   }
 
   disableFilter(f: Filter) {
@@ -75,10 +69,13 @@ export class Techradar {
 
   activate(parms, routeConfig) {
     this.mobile = $(document).width() < 800;
-    this.appState.loadSheets().then(()=>{
+    this.appState.loadSheets().then(() => {
+      setTimeout(() => this.bus.publish("reload", "all"), 300);
+
+
       // this.appState.activeConfig.Filters.forEach(f=>f.Enabled = false);
       // this.updateFilter();
-      
+
     })
   }
 }

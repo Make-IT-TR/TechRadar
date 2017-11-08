@@ -6,6 +6,7 @@ import { InputScore, Trend, Example, ITechnology, WikiResult, Project, RadarInpu
 import $ from 'jquery';
 import { ApplicationState } from '../ApplicationState';
 import * as _ from 'lodash';
+import { Technology } from '../../../tr-host/src/utils/technology';
 
 
 @inject(ApplicationState, MessageBusService, Router)
@@ -33,7 +34,7 @@ export class Technologysheet {
 
   closeSheet(e: MouseEvent) {
 
-    console.log(e);
+    // console.log(e);
     this.show = false;
   }
 
@@ -59,6 +60,10 @@ export class Technologysheet {
     this.router.navigateToRoute('trendsDetail', { trend: trend.id });     
     // history.pushState({}, "new title", "#/trends/" + trend.id + "/detail");
 
+  }
+
+  public editTech(tech: Technology) {
+    this.router.navigateToRoute('techEdit', { technology: tech.id });   
   }
 
   constructor(private appState: ApplicationState, private bus: MessageBusService, private router:Router) {

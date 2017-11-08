@@ -13,7 +13,7 @@ const feathers = require("feathers");
 const configuration = require('feathers-configuration');
 const hooks = require('feathers-hooks');
 const rest = require('feathers-rest');
-const socketio = require('feathers-socketio');
+// const socketio = require('feathers-socketio');
 const handler = require('feathers-errors/handler');
 const notFound = require('feathers-errors/not-found');
 const memory = require('feathers-memory');
@@ -41,7 +41,7 @@ app.use('/', feathers.static(app.get('public')));
 // Set up Plugins and providers
 app.configure(hooks());
 app.configure(rest());
-app.configure(socketio());
+// app.configure(socketio());
 app.use('/categories', memory());
 app.use('/subcategories', memory());
 app.use('/technologies', memory());
@@ -95,6 +95,7 @@ function loadProjects(app) {
             });
             project.examples.forEach(example => {
                 // example['id'] = example.Name;
+                example.Webshot = "projects/" + project.id + "/webshots/ws" + screenshots_1.sdbmCode(example.Url) + ".jpg";
                 app.service('examples').create(example);
             });
             app.service('examples').on('created', pl => {

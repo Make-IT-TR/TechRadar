@@ -23,14 +23,14 @@
           <div class="row" id="radar-vis">
             <radar></radar>
             <h3>
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-                Legend
-              </h3>
-              <div class="rounded-separator-h3-bottom"></div>
-              <legendsidebar></legendsidebar>
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+              Legend
+            </h3>
+            <div class="rounded-separator-h3-bottom"></div>
+            <legendsidebar></legendsidebar>
           </div>
-         
-          
+
+
         </div>
         <div class="col-md-4">
           <h2>
@@ -40,28 +40,28 @@
           <!-- First -->
           <!-- <input type="checkbox" value.bind="appState.activeConfig.ShowTrend" change.delegate="updateFilter()">Show trend</input> -->
 
-          <div class="preset-option-list">          
+          <div class="preset-option-list">
             <!-- <div class="preset-option" click.trigger="editMode = !editMode">
               <span class="fa fa-cogs circle-button"></span>
               <span show.bind="editMode">hide</span>
               <span show.bind="!editMode">edit</span>
               visualisation options</div>
           </div> -->
-          <!-- <h3>Search</h3>
+            <!-- <h3>Search</h3>
           <div class="rounded-separator-h3-bottom"></div> -->
-          <h3>Filters</h3>
-          <div class="rounded-separator-h3-bottom"></div>
-          <div style="margin-bottom:20px">
-            <div repeat.for="f of appState.activeConfig.Filters" show.bind="f.Enabled" class="input-group">
-              <h5>${f.Dimension}</h5>
-              <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
-                <option repeat.for="option of f.Options" value.bind="option">${option}</option>
-              </select>
-              <label class="label label-default label-button" click.trigger="disableFilter(f)">
-                <i class="fa fa-minus-circle" aria-hidden="true"></i>
-              </label>
-            </div>
-            <div class="dropdown preset-option">
+            <h3>Filters</h3>
+            <div class="rounded-separator-h3-bottom"></div>
+            <div style="margin-bottom:20px">
+              <div repeat.for="f of appState.activeConfig.Filters" show.bind="f.Enabled" class="input-group">
+                <h5>${f.Dimension}</h5>
+                <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Value" change.delegate="updateFilter()">
+                  <option repeat.for="option of f.Options" value.bind="option">${option}</option>
+                </select>
+                <label class="label label-default label-button" click.trigger="disableFilter(f)">
+                  <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                </label>
+              </div>
+              <div class="dropdown preset-option">
                 <div class="dropdown-toggle" data-toggle="dropdown">
                   <span class="fa fa-plus-circle circle-button"></span>
                   add filter</div>
@@ -69,31 +69,35 @@
                   <li repeat.for="dimension of appState.project.dimensions">
                     <a click.trigger="addNewFilter(dimension.title)">${dimension.title}</a>
                   </li>
+                  <li><a click.trigger="addNewFilter('Category')">Category</a></li>
+                  <li><a click.trigger="addNewFilter('Sub Category')">Sub Category</a></li>
                 </ul>
               </div>
+            </div>
+
+            <h3>Visualisation</h3>
+            <div class="rounded-separator-h3-bottom"></div>
+
+            <!-- Second -->
+            <div if.bind="editMode" repeat.for="f of appState.activeConfig.Visualisation" class="input-group">
+              <h5>${f.Visual}</h5>
+              <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">
+                <option repeat.for="dimension of appState.project.dimensions" value.bind="dimension.title">${dimension.title}</option>\
+                <option value="Category">Category</option>
+                <option value="SubCategory">SubCategory</option>
+              </select>
+              <label class="label label-default label-button" show.bind="!f.Reverse" click.trigger="toggleReverse(f)">
+                <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+              </label>
+              <label class="label label-default label-button" show.bind="f.Reverse" click.trigger="toggleReverse(f)">
+                <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+              </label>
+            </div>
+
+
           </div>
-
-          <h3>Visualisation</h3>
-          <div class="rounded-separator-h3-bottom"></div>
-
-          <!-- Second -->
-          <div if.bind="editMode" repeat.for="f of appState.activeConfig.Visualisation" class="input-group">
-            <h5>${f.Visual}</h5>
-            <select class="viz-dimension input-group-addon" name="repeatSelect" id="repeatSelect" value.bind="f.Dimension" change.delegate="updateFilter()">
-              <option repeat.for="dimension of appState.project.dimensions" value.bind="dimension.title">${dimension.title}</option>
-            </select>
-            <label class="label label-default label-button" show.bind="!f.Reverse" click.trigger="toggleReverse(f)">
-              <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-            </label>
-            <label class="label label-default label-button" show.bind="f.Reverse" click.trigger="toggleReverse(f)">
-              <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
-            </label>
-          </div>
-
-         
         </div>
       </div>
-    </div>
-    <technologysheet></technologysheet>
+      <technologysheet></technologysheet>
   </section>
 </template>
