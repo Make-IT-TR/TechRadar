@@ -22,5 +22,5 @@ RUN yarn
 
 # Run
 EXPOSE 8010
-ENV NODE_ENV=cool
+ENV NODE_ENV=production
 CMD ["supervisor", "-w", "../../tr-host/src","../../tr-host/src/index"]
