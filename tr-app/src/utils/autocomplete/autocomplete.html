@@ -9,7 +9,7 @@
            id.one-time="'au-autocomplete-' + id"
            placeholder.bind="placeholder"
            value.bind="inputValue & debounce:delay"
-           keydown.delegate="keydown($event.which)"
+           
            blur.trigger="blur()">
     <ul class="suggestions" role="listbox"
         if.bind="expanded"

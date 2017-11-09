@@ -34,6 +34,11 @@ export class Platforms {
   constructor(element, appState, animator, private bus: MessageBusService, private router: Router, private routerConfig: RouterConfiguration, private controller: ValidationController) {
     this.appState = appState;
     this.activePlatform = new Example("");
+    if (this.appState.searchFilter && this.appState.searchFilter.length>0) {
+      this.searchText = this.appState.searchFilter;
+      this.appState.searchFilter = "";
+      this.searchFocus();
+    }
     ValidationRules
       .ensure((m: Example) => m.Name).displayName("Name").required()
       .ensure((m: Example) => m.Url).displayName("Url").required()

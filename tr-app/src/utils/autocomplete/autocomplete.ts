@@ -81,9 +81,10 @@ export class Autocomplete {
       .then(suggestions => {
         this.index = -1;
         this.suggestions.splice(0, this.suggestions.length, ...suggestions);
-        if (suggestions.length === 1 && suggestions[0] !== this.value) {
-          this.select(suggestions[0], true);
-        } else if (suggestions.length === 0) {
+        // if (suggestions.length === 1 && suggestions[0] !== this.value) {
+        //   this.select(suggestions[0], true);
+        // } else 
+        if (suggestions.length === 0) {
           this.collapse();
         } else {
           this.expanded = true;
@@ -101,57 +102,58 @@ export class Autocomplete {
     }
   }
 
-  keydown(key) {
-    if (!this.expanded) {
-      return true;
-    }
+  // keydown(key) {
+  //   if (!this.expanded) {
+  //     return true;
+  //   }
 
-    // down
-    if (key === 40) {
-      if (this.index < this.suggestions.length - 1) {
-        this.index++;
-        this.display(this.getName(this.suggestions[this.index]));
-      } else {
-        this.index = -1;
-        this.display(this.userInput);
-      }
-      this.scroll();
-      return;
-    }
+  //   // down
+  //   if (key === 40) {
+  //     debugger;
+  //     if (this.index < this.suggestions.length - 1) {
+  //       this.index++;
+  //       this.display(this.getName(this.suggestions[this.index]));
+  //     } else {
+  //       this.index = -1;
+  //       this.display(this.userInput);
+  //     }
+  //     this.scroll();
+  //     return;
+  //   }
 
-    // up
-    if (key === 38) {
-      if (this.index === -1) {
-        this.index = this.suggestions.length - 1;
-        this.display(this.getName(this.suggestions[this.index]));
-      } else if (this.index > 0) {
-        this.index--;
-        this.display(this.getName(this.suggestions[this.index]));
-      } else {
-        this.index = -1;
-        this.display(this.userInput);
-      }
-      this.scroll();
-      return;
-    }
+  //   // up
+  //   if (key === 38) {
+  //     if (this.index === -1) {
+  //       this.index = this.suggestions.length - 1;
+  //       this.display(this.getName(this.suggestions[this.index]));
+  //     } else if (this.index > 0) {
+  //       this.index--;
+  //       this.display(this.getName(this.suggestions[this.index]));
+  //     } else {
+  //       this.index = -1;
+  //       this.display(this.userInput);
+  //     }
+  //     this.scroll();
+  //     return;
+  //   }
 
-    // escape
-    if (key === 27) {
-      this.display(this.userInput);
-      this.collapse();
-      return;
-    }
+  //   // escape
+  //   if (key === 27) {
+  //     this.display(this.userInput);
+  //     this.collapse();
+  //     return;
+  //   }
 
-    // enter
-    if (key === 13) {
-      if (this.index >= 0) {
-        this.select(this.suggestions[this.index], true);
-      }
-      return;
-    }
+  //   // enter
+  //   if (key === 13) {
+  //     if (this.index >= 0) {
+  //       this.select(this.suggestions[this.index], true);
+  //     }
+  //     return;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
   blur() {
     this.select(this.value, false);

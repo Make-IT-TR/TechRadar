@@ -51,6 +51,7 @@ export class ApplicationState {
   public colorsD: string[];
   public size: string[];
   public items: RadarInput[];
+  public searchFilter: string;
   // public passport = new Passport();
   baseUrl = '';
 

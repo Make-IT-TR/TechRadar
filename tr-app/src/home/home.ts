@@ -46,7 +46,7 @@ export class Home {
 
 
     this.appState.loadSheets().then(() => {
-      this.suggestionService = new SuggestionService(this.router, this.model, this.appState.project);
+      this.suggestionService = new SuggestionService(this.router, this.model, this.appState.project, this.appState);
 
       //this.appState.sheets.sheets.Technologies[0].Technology
     })
@@ -68,7 +68,7 @@ export class SuggestionResult {
 
 
 export class SuggestionService {
-  constructor(public router: Router, public model, public project: Project) {
+  constructor(public router: Router, public model, public project: Project, public appState: ApplicationState) {
     // this.model = model;
     // this.countryIndex = countries;
     // this.project = Object.keys(countries);
@@ -86,6 +86,8 @@ export class SuggestionService {
       this.project.examples
         .filter(x => x.Name.toLowerCase().indexOf(value) === 0)
         .forEach(e => result.push(new SuggestionResult(e.Name, 'example', (sr: SuggestionResult) => {
+          this.appState.searchFilter = e.Name;
+          this.router.navigateToRoute('Platforms', { category: 'all', technology: 'all'}, { search: e.Name});          
           
         })));
 
