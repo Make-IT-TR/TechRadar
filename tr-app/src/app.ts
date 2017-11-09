@@ -10,6 +10,7 @@ import { inject } from 'aurelia-framework';
 export class App {
   router: Router;
   public appState: ApplicationState;
+  public showIntro = true;
 
   constructor(router, appState) {
     this.router = router;
