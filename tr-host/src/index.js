@@ -103,10 +103,10 @@ function loadProjects(app) {
                 // console.log(pl);
             });
             app.service('examples').on('update', pl => {
-                console.log(JSON.stringify(pl));
+                // console.log(JSON.stringify(pl));
             });
             app.service('technologies').on('update', pl => {
-                console.log(JSON.stringify(pl));
+                // console.log(JSON.stringify(pl));
             });
             project.trends.forEach(trend => {
                 // trend.id = trend.Name;

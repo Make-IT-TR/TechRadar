@@ -25,7 +25,7 @@
         </div>
         <div class="collapse navbar-collapse" id="mainnavbar">
           <ul class="nav navbar-nav" style="width:80%" id="main-menu">
-            <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}" if.bind="row.title">
+            <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}" >
               <a data-toggle="collapse" data-target="#mainnavbar" href.bind="row.href">${row.title}</a>
             </li>
             <li style="float:right" if.bind="appState.authenticated===true" class="${row.isActive ? 'active' : ''}" click.delegate="logout()">

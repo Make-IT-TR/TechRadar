@@ -165,7 +165,7 @@
                   + ${platform._Technologies.length-1}
                 </span>
               </span>
-              <span click.trigger="appState.selectPlatform(platform)">
+              <span click.trigger="appState.selectPlatform(platform)" data-analytics-category="platforms" data-analytics-action="select" data-analytics-value="platform.Name">
                 <span class="platform-title">${platform.Name}</span>
                 <img class="link-img" style="float:right" src="/img/link.png" />
                 <div class="platform-url single-line">${platform.Url}</div>

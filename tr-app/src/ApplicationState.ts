@@ -102,7 +102,6 @@ export class ApplicationState {
   }
 
   subscribeObject(service: string, project: Project, result: Function) {
-
     if (!this.services.hasOwnProperty(service)) {
       let s = this.feathersClient.service(service);
       this.services[service] = s;
@@ -363,6 +362,7 @@ export class ApplicationState {
   }
 
   public selectPlatform(platform: Example) {
+    (<any>window).ga('send', 'event', 'platforms', 'select', platform.id);
     window.open(platform.Url, 'platformResult');
   }
 

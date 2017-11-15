@@ -34,6 +34,7 @@ export class App {
     location.reload();
   }
 
+  
   configureRouter(config: RouterConfiguration, router: Router) {
     config.title = 'TechRadar';
     config.map([
