@@ -64,8 +64,7 @@
             Welcome
           </h1>
           <div class="rounded-separator-h1-bottom"></div>
-          <p>
-          </p>
+          <p></p>
           <p>Thank you for visiting the Technology Radar. The researchers at
             <a href="http://www.make-it.io">MAKE-IT</a>
             project invite you to test the TechRadar and provide them project with very valuable feedback. The TechRadar was developed for the purpose of research, but it has also features that we hope can make it useful for a maker, especially for the maker
@@ -84,6 +83,32 @@
     </div>
   </div>
 </div>
+<!-- Notify of problems with older browsers -->
+<script>
+  var $buoop = {
+    notify: {
+      i: -5,
+      f: -4,
+      o: -4,
+      s: -2,
+      c: -4
+    },
+    insecure: true,
+    unsupported: true,
+    api: 5
+  };
+  function $buo_f() {
+    var e = document.createElement("script");
+    e.src = "//browser-update.org/update.min.js";
+    document.body.appendChild(e);
+  };
+  try {
+    document.addEventListener("DOMContentLoaded", $buo_f, false)
+  } catch (e) {
+    window.attachEvent("onload", $buo_f)
+  }
+</script>
+<!-- Add a Cookie Consent disclaimer -->
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"/>
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
