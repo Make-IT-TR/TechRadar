@@ -2,11 +2,8 @@
   <require from="./nav-bar.html"></require>
   <require from="./radar/radar"></require>
   <require from="./login/login"></require>
-
-
   <!-- Navbar -->
   <!-- <nav-bar router.bind="router" if.one-way="router.currentInstruction.config.title!=='RadarImage'"></nav-bar> -->
-
   <!-- ******************* The Navbar Area ******************* -->
   <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
     <a class="skip-link screen-reader-text sr-only" href="#content">Skip to content</a>
@@ -19,32 +16,27 @@
           </button>
           <span style="float:left">
             <a class="navbar-brand" href="#" title="TechRadar" rel="home">
-              <img src="../img/techradar_logo_20.png" />
+              <img src="../img/techradar_logo_beta_20.png"/>
             </a>
           </span>
         </div>
         <div class="collapse navbar-collapse" id="mainnavbar">
           <ul class="nav navbar-nav" style="width:80%" id="main-menu">
-            <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}" >
+            <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
               <a data-toggle="collapse" data-target="#mainnavbar" href.bind="row.href">${row.title}</a>
             </li>
             <li style="float:right" if.bind="appState.authenticated===true" class="${row.isActive ? 'active' : ''}" click.delegate="logout()">
               <a data-toggle="collapse" data-target="#mainnavbar">
-                <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                <span class="glyphicon glyphicon-log-out"></span>
+                Logout</a>
             </li>
             <li style="float:right" if.bind="appState.authenticated===false" class="${row.isActive ? 'active' : ''}" click.delegate="login()">
               <a data-toggle="collapse" data-target="#mainnavbar">
-                <span class="glyphicon glyphicon-user"></span> Login</a>
+                <span class="glyphicon glyphicon-user"></span>
+                Login</a>
             </li>
-            <li style="float:right;">
-              <a href="http://make-it.io/surveys/index.php/888114?lang=en">
-                <img style="padding:0;width:25px;height:25px" src="../img/feedback.png"></img>Give us feedback!</a>
-            </li>
-
-
           </ul>
         </div>
-
       </div>
     </nav>
   </div>
@@ -53,69 +45,69 @@
     <i class="fa fa-spinner fa-spin fa-2x"></i>
   </span>
   <login></login>
-
   <!-- <a if.bind="appState.authenticated===false" class="btn btn-block btn-google-plus btn-login" >sign in</a> -->
   <!-- Page content -->
   <div id="main-div">
     <router-view></router-view>
   </div>
-
   <div if.bind="showIntro" class="sheetbackground">
-
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" click.trigger="showIntro=false" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h1>
-            Welcome</h1>
         </div>
         <div class="modal-body">
-          <p>Thank you for visiting the Technology Radar. The researchers at <a href="http://www.make-it.io">MAKE-IT</a> project invite you to test the TechRadar and provide them project with very valuable feedback. The TechRadar
-          was developed for the purpose of research, but it has also features that we hope can make it useful for a maker,
-          especially for the maker beginners and as an educational tool within fab labs.</p>
+          <div class="rounded-separator-h1-top"></div>
+          <h1>
+            Welcome
+          </h1>
+          <div class="rounded-separator-h1-bottom"></div>
           <p>
-            <b>Dislaimer</b>: This is still a beta version. So some features might not work completely. That is why after exploring the TechRadar, we appreciate your feedback .
-            Please use our <a href="http://make-it.io/surveys/index.php/888114?lang=en">online survey</a> for your feedback</a>
           </p>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" click.trigger="showIntro=false" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+          <p>Thank you for visiting the Technology Radar. The researchers at
+            <a href="http://www.make-it.io">MAKE-IT</a>
+            project invite you to test the TechRadar and provide them project with very valuable feedback. The TechRadar was developed for the purpose of research, but it has also features that we hope can make it useful for a maker, especially for the maker
+            beginners and as an educational tool within Fab Labs.</p>
+          <p>
+            <span class="label label-danger">Disclaimer</span>
+            This is still a
+            <strong>beta version</strong>. So some features might not work completely. That is why after exploring the TechRadar, we appreciate your feedback. Please use our
+            <a href="http://make-it.io/surveys/index.php/888114?lang=en">online survey</a>
+            for your feedback</a>.
+        </p>
       </div>
-
+      <div class="modal-footer">
+        <button type="button" click.trigger="showIntro=false" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
-
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
-  />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-  <script>
-    window.addEventListener("load", function () {
-      window.cookieconsent.initialise({
-        "palette": {
-          "popup": {
-            "background": "#000"
-          },
-          "button": {
-            "background": "#f1d600"
-          }
+</div>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", function () {
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#000"
+        },
+        "button": {
+          "background": "#f1d600"
         }
-      })
-    });
-  </script>
-
-  <!-- Footer -->
-  <footer class="gradient">
-    <div class="container-fluid">
-      <hr/>
-      <a href="https://ec.europa.eu/digital-agenda/en/news/22-new-caps-projects-horizon-2020">
-        <img class="img-responsive
+      }
+    })
+  });
+</script>
+<!-- Footer -->
+<footer class="gradient">
+  <div class="container-fluid">
+    <hr/>
+    <a href="https://ec.europa.eu/digital-agenda/en/news/22-new-caps-projects-horizon-2020">
+      <img class="img-responsive
 center-block" src="../img/from_30.png">
-      </a>
-    </div>
-  </footer>
-
+    </a>
+  </div>
+</footer>
 </template>
