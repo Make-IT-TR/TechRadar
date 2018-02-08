@@ -34,7 +34,7 @@ export class Platforms {
   constructor(element, appState, animator, private bus: MessageBusService, private router: Router, private routerConfig: RouterConfiguration, private controller: ValidationController) {
     this.appState = appState;
     this.activePlatform = new Example("");
-    if (this.appState.searchFilter && this.appState.searchFilter.length>0) {
+    if (this.appState.searchFilter && this.appState.searchFilter.length > 0) {
       this.searchText = this.appState.searchFilter;
       this.appState.searchFilter = "";
       this.searchFocus();
@@ -160,19 +160,26 @@ export class Platforms {
 
     this.appState.project.examples.forEach((p) => {
       var score = 0;
-      if (p.Name !== "" && p._Technologies && !p.Removed) {
-        p._Technologies.forEach(t => {
+      if (p.Name !== "" && !p.Removed) {
+        if (p._Technologies && p._Technologies.length>0) {
+          p._Technologies.forEach(t => {
+            if (this.selectedCategory === "all") {
+              score = 1;
+            } else if (this.selectedTechnology !== "all") {
+              if (t && t.Technology === this.selectedTechnology) {
+                score += 1;
+              }
+            }
+            else {
+              if (t && t._Category && t._Category.Category === this.selectedCategory) { score += 1; }
+            }
+          })
+        }
+        else {
           if (this.selectedCategory === "all") {
             score = 1;
-          } else if (this.selectedTechnology !== "all") {
-            if (t && t.Technology === this.selectedTechnology) {
-              score += 1;
-            }
           }
-          else {
-            if (t && t._Category && t._Category.Category === this.selectedCategory) { score += 1; }
-          }
-        })
+        }
       }
       if (this.searchText && this.searchText.length > 0 && this.match(p) === false) score = 0;
       if (score > 0) temp.push(p);
@@ -188,8 +195,6 @@ export class Platforms {
    */
   image: HTMLImageElement;
   message: string;
-
-
 
   validateMe() {
     this.controller
@@ -207,12 +212,16 @@ export class Platforms {
     this.appState.loadSheets().then(() => {
       this.updatePlatforms();
       //this.appState.sheets.sheets.Technologies[0].Technology
+    });
+    this.appState.bus.subscribe('platformsearch', (s: string, a: any) => {
+      this.searchText = s;
     })
   }
 
   activate(parms, routeConfig) {
     this.selectedCategory = parms['category'];
     this.selectedTechnology = parms['technology'];
+    this.searchText = parms['search'];
   }
 
 }

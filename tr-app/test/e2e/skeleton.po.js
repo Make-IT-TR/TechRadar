@@ -12,3 +12,4 @@ var PageObject_Skeleton = (function () {
     return PageObject_Skeleton;
 }());
 export { PageObject_Skeleton };
+//# sourceMappingURL=skeleton.po.js.map

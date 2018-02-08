@@ -9,7 +9,7 @@ const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loade
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
-//var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 // config helpers:
 const ensureArray = (config) => config && (Array.isArray(config) ? config : [config]) || []
@@ -119,11 +119,11 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
         title, server, baseUrl
       },
     }),
-    new UglifyJSPlugin(),
+    // new UglifyJSPlugin(),
     new CopyWebpackPlugin([
-      { from: 'static/favicon.ico', to: 'favicon.ico' },
-      { from: './../tr-host/projects', to: 'projects' },
-      { from: 'img', to: 'img' }
+      { from: 'static/favicon.ico', to: 'favicon.ico' }
+      ,{ from: './../tr-host/projects', to: 'projects' }
+      ,{ from: 'img', to: 'img' }
     ]),
     ...when(extractCss, new ExtractTextPlugin({
       filename: production ? '[contenthash].css' : '[id].css',

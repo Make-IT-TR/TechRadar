@@ -15,10 +15,11 @@ var Trends = (function () {
         this.appState = appState;
         this.appState.loadSheets();
     }
+    Trends = __decorate([
+        inject(ApplicationState),
+        __metadata("design:paramtypes", [Object])
+    ], Trends);
     return Trends;
 }());
-Trends = __decorate([
-    inject(ApplicationState),
-    __metadata("design:paramtypes", [Object])
-], Trends);
 export { Trends };
+//# sourceMappingURL=trends.js.map

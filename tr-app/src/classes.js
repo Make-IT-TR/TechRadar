@@ -1,77 +1,96 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const _ = require("lodash");
-class ProjectConfig {
-}
-exports.ProjectConfig = ProjectConfig;
-class Dimension {
-}
-exports.Dimension = Dimension;
-class Project {
-    linkExamples(e) {
+import * as _ from 'lodash';
+var ProjectConfig = (function () {
+    function ProjectConfig() {
+    }
+    return ProjectConfig;
+}());
+export { ProjectConfig };
+var Dimension = (function () {
+    function Dimension() {
+    }
+    return Dimension;
+}());
+export { Dimension };
+var Project = (function () {
+    function Project() {
+    }
+    Project.prototype.linkExamples = function (e) {
         e.Name = _.trim(e.Name);
         e._Technologies = [];
-    }
-    linkTechnology(t) {
+    };
+    Project.prototype.linkTechnology = function (t) {
+        var _this = this;
         t._Category = _.find(this.categories, { Category: t.Category });
         t._SubCategory = _.find(this.subcategories, { SubCategory: t.SubCategory });
         t._RadarInput = [];
         t._Examples = [];
         t._Trends = [];
-        t.Platforms.forEach(p => {
-            let example = _.find(this.examples, { id: p });
+        t.Platforms.forEach(function (p) {
+            var example = _.find(_this.examples, { id: p });
             if (example) {
-                t._Examples.push(example);
-                example._Technologies.push(t);
+                if (!t._Examples.includes(example))
+                    t._Examples.push(example);
+                if (!example._Technologies.includes(t))
+                    example._Technologies.push(t);
             }
         });
-    }
-    linkRadarInput(ri) {
+    };
+    Project.prototype.linkRadarInput = function (ri) {
         ri._Technology = _.find(this.technologies, { Technology: ri.Technology });
         if (ri._Technology) {
             if (!ri._Technology._RadarInput)
                 ri._Technology._RadarInput = [];
-            ri._Technology._RadarInput.push(ri);
+            if (!ri._Technology._RadarInput.includes)
+                ri._Technology._RadarInput.push(ri);
         }
-    }
-    linkTrend(tr) {
+    };
+    Project.prototype.linkTrend = function (tr) {
+        var _this = this;
         tr._Preset = _.find(this.presets, { Title: tr.Preset });
         tr._Technologies = [];
-        tr.Technologies.forEach(t => {
-            let tech = _.find(this.technologies, { Technology: t });
+        tr.Technologies.forEach(function (t) {
+            var tech = _.find(_this.technologies, { Technology: t });
             if (tech) {
-                tr._Technologies.push(tech);
-                tech._Trends.push(tr);
+                if (!tr._Technologies.includes(tech))
+                    tr._Technologies.push(tech);
+                if (!tech._Trends.includes(tr))
+                    tech._Trends.push(tr);
             }
         });
-    }
-    linkObjects() {
-        this.examples.forEach(e => {
-            this.linkExamples(e);
+    };
+    Project.prototype.linkObjects = function () {
+        var _this = this;
+        this.examples.forEach(function (e) {
+            _this.linkExamples(e);
         });
-        this.technologies.forEach(t => {
-            this.linkTechnology(t);
+        this.technologies.forEach(function (t) {
+            _this.linkTechnology(t);
         });
-        this.radarinput.forEach(ri => {
-            this.linkRadarInput(ri);
+        this.radarinput.forEach(function (ri) {
+            _this.linkRadarInput(ri);
         });
-        this.trends.forEach(tr => {
-            this.linkTrend(tr);
+        this.trends.forEach(function (tr) {
+            _this.linkTrend(tr);
         });
-        this.subcategories.forEach(sc => {
-            sc._Category = _.find(this.categories, { Category: sc.Category });
+        this.subcategories.forEach(function (sc) {
+            sc._Category = _.find(_this.categories, { Category: sc.Category });
         });
-    }
-}
-exports.Project = Project;
-class WikiResult {
-    constructor(ref = []) {
+    };
+    return Project;
+}());
+export { Project };
+var WikiResult = (function () {
+    function WikiResult(ref) {
+        if (ref === void 0) { ref = []; }
         this.ref = ref;
     }
-}
-exports.WikiResult = WikiResult;
-class Vis {
-    constructor(Visual, Dimension, Enabled = true, Reverse = false) {
+    return WikiResult;
+}());
+export { WikiResult };
+var Vis = (function () {
+    function Vis(Visual, Dimension, Enabled, Reverse) {
+        if (Enabled === void 0) { Enabled = true; }
+        if (Reverse === void 0) { Reverse = false; }
         this.Visual = Visual;
         this.Dimension = Dimension;
         this.Enabled = Enabled;
@@ -81,41 +100,49 @@ class Vis {
             this.Reverse = true;
         }
     }
-}
-exports.Vis = Vis;
-class Filter {
-    constructor(Dimension, Value, Enabled) {
+    return Vis;
+}());
+export { Vis };
+var Filter = (function () {
+    function Filter(Dimension, Value, Enabled) {
         this.Dimension = Dimension;
         this.Value = Value;
         this.Enabled = Enabled;
     }
-}
-exports.Filter = Filter;
-class Trend {
-    constructor() {
+    return Filter;
+}());
+export { Filter };
+var Trend = (function () {
+    function Trend() {
         this.Technologies = [];
     }
-}
-exports.Trend = Trend;
-class Config {
-}
-exports.Config = Config;
-class Sheets {
-    constructor() {
+    return Trend;
+}());
+export { Trend };
+var Config = (function () {
+    function Config() {
+    }
+    return Config;
+}());
+export { Config };
+var Sheets = (function () {
+    function Sheets() {
         this.Years = [2016, 2020];
         this.Examples = [];
         this.Dimensions = ["-none-"];
     }
-}
-exports.Sheets = Sheets;
-class InputScore {
-    constructor(title, obj, sheet, description) {
+    return Sheets;
+}());
+export { Sheets };
+var InputScore = (function () {
+    function InputScore(title, obj, sheet, description) {
+        var _this = this;
         this.Title = title;
-        sheet.Years.forEach(y => {
+        sheet.Years.forEach(function (y) {
             if (title.indexOf(y.toString()) >= 0) {
                 var t = title.replace(' ' + y, '');
-                this.Title = t;
-                this.Year = y;
+                _this.Title = t;
+                _this.Year = y;
             }
         });
         this.Value = obj[title];
@@ -123,13 +150,17 @@ class InputScore {
         if (sheet.Dimensions.indexOf(this.Title) === -1)
             sheet.Dimensions.push(this.Title);
     }
-}
-exports.InputScore = InputScore;
-class RadarCircle {
-}
-exports.RadarCircle = RadarCircle;
-class RadarInput {
-    constructor(input, sheet) {
+    return InputScore;
+}());
+export { InputScore };
+var RadarCircle = (function () {
+    function RadarCircle() {
+    }
+    return RadarCircle;
+}());
+export { RadarCircle };
+var RadarInput = (function () {
+    function RadarInput(input, sheet) {
         this.Technology = input.Technology;
         this.Users = input.Users;
         this.Description = input.Description;
@@ -145,18 +176,19 @@ class RadarInput {
         this.Trend = input["Trend"];
         //this.Scores.push(new InputScore("Potential Impact", input, sheet));
     }
-    getDimensionValue(title, year) {
+    RadarInput.prototype.getDimensionValue = function (title, year) {
         if (_.isUndefined(year))
             year = 2016;
-        var score = _.find(this.Scores, s => { return s.Title === title && (!s.Year || s.Year === year); });
+        var score = _.find(this.Scores, function (s) { return s.Title === title && (!s.Year || s.Year === year); });
         if (score)
             return score.Value;
         return null;
-    }
-}
-exports.RadarInput = RadarInput;
-class Example {
-    constructor(i) {
+    };
+    return RadarInput;
+}());
+export { RadarInput };
+var Example = (function () {
+    function Example(i) {
         this._Technologies = [];
         this.Featured = 0;
         if (i.indexOf('[') >= 0) {
@@ -174,43 +206,46 @@ class Example {
             this.Url = "http://www." + i.trim() + ".com";
         }
     }
-}
-exports.Example = Example;
-class SpreadsheetService {
-    constructor() {
+    return Example;
+}());
+export { Example };
+var SpreadsheetService = (function () {
+    function SpreadsheetService() {
         this.dimensions = {};
         /**
          * Load a worksheet.
          */
     }
-    initConfig(config) {
+    SpreadsheetService.prototype.initConfig = function (config) {
         config.Visualisation = [];
         // config.Visualisation.push(new Vis("Horizontal", "Adoption", false,false));
         // config.Visualisation.push(new Vis("Radial", "Category", false));
         // config.Visualisation.push(new Vis("Color", "TRL", false));
         // config.Visualisation.push(new Vis("Size", "TRL", false));
-    }
-    parseLists(lists) {
+    };
+    SpreadsheetService.prototype.parseLists = function (lists) {
+        var _this = this;
         var cn = lists.columnNames;
         var count = 0;
-        cn.forEach(c => {
-            this.dimensions[c] = [];
+        cn.forEach(function (c) {
+            _this.dimensions[c] = [];
         });
-        lists.elements.forEach(e => {
-            for (var c in this.dimensions) {
+        lists.elements.forEach(function (e) {
+            for (var c in _this.dimensions) {
                 if (e.hasOwnProperty(c) && e[c] !== "")
-                    this.dimensions[c].push(e[c]);
+                    _this.dimensions[c].push(e[c]);
             }
         });
         //console.log(this.dimensions);
-    }
-    cloneWithoutUnderscore(v) {
+    };
+    SpreadsheetService.prototype.cloneWithoutUnderscore = function (v) {
+        var _this = this;
         if (typeof v !== 'object')
             return v;
         if (v instanceof Array) {
             var a = [];
-            v.forEach((i) => {
-                a.push(this.cloneWithoutUnderscore(i));
+            v.forEach(function (i) {
+                a.push(_this.cloneWithoutUnderscore(i));
             });
             return a;
         }
@@ -222,23 +257,24 @@ class SpreadsheetService {
             }
             return c;
         }
-    }
-    parseFilter(filter) {
+    };
+    SpreadsheetService.prototype.parseFilter = function (filter) {
         if (filter.indexOf('=') > 0) {
             var ff = filter.split('=');
             var f = new Filter(ff[0], ff[1], true);
             return f;
         }
         return null;
-    }
-    sdbmCode(str) {
+    };
+    SpreadsheetService.prototype.sdbmCode = function (str) {
         var hash = 0;
         for (var i = 0; i < str.length; i++) {
             var char = str.charCodeAt(i);
             hash = char + (hash << 6) + (hash << 16) - hash;
         }
         return hash;
-    }
-}
-exports.SpreadsheetService = SpreadsheetService;
+    };
+    return SpreadsheetService;
+}());
+export { SpreadsheetService };
 //# sourceMappingURL=classes.js.map

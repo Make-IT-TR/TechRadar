@@ -10,7 +10,8 @@ import { inject } from 'aurelia-framework';
 export class App {
   router: Router;
   public appState: ApplicationState;
-  public showIntro = true;
+  // show intro at main screen
+  public showIntro = false;
 
   constructor(router, appState) {
     this.router = router;
@@ -19,32 +20,37 @@ export class App {
 
   activate() {
 
-   // console.log(this.router);
+    // console.log(this.router);
   }
 
-  public login()
-  {
+  public login() {
     this.appState.showLogin = true;
     // 
   }
 
-  public logout()
-  {
+  public logout() {
     this.appState.logout();
     location.reload();
   }
 
-  
+
+
+  static isLoggedIn(): boolean {
+    var auth_token = localStorage.getItem("auth_token");
+    return (typeof auth_token !== "undefined" && auth_token !== null);
+  }
+
   configureRouter(config: RouterConfiguration, router: Router) {
     config.title = 'TechRadar';
+    config.addAuthorizeStep(AuthorizeStep);
     config.map([
       { route: ['', 'home'], name: 'home', moduleId: PLATFORM.moduleName('./home/home'), nav: true, title: 'Home' },
       { route: ['trends'], name: 'trends', moduleId: PLATFORM.moduleName('./trends/trends'), nav: true, title: 'Trends' },
       { route: 'trends/:trend/detail', name: 'trendsDetail', moduleId: PLATFORM.moduleName('./trends/trenddetail'), title: 'Trend', nav: false },
-      { route: 'technology/:technology/edit', name: 'techEdit', moduleId: PLATFORM.moduleName('./technology/techedit'), title: 'Technology', nav: false },
+      { route: 'technology/:technology/edit', name: 'techEdit', moduleId: PLATFORM.moduleName('./technology/techedit'), auth: true, title: 'Technology', nav: false },
       { route: 'platforms/:category/:technology', href: 'platforms/all/all', name: 'Platforms', moduleId: PLATFORM.moduleName('./platforms/platforms'), nav: true, title: 'Platforms' },
       { route: ['platforms'], name: 'platforms-page', moduleId: PLATFORM.moduleName('./platforms/platforms'), nav: false, title: 'Platforms' },
-      { route: ['techradar'], name: 'techradar', moduleId: PLATFORM.moduleName('./techradar/techradar'), nav: true, title: 'Radar' },
+      { route: 'techradar', name: 'techradar', moduleId: PLATFORM.moduleName('./techradar/techradar'), nav: true, title: 'Radar' },
       { route: ['about'], name: 'about', moduleId: PLATFORM.moduleName('./about/about'), nav: true, title: 'About' },
       { route: 'trends/:trend/image', name: 'trendsImage', moduleId: PLATFORM.moduleName('./trends/trendimage'), title: 'RadarImage', nav: false },
       { route: 'platforms/add', name: 'addPlatform', moduleId: PLATFORM.moduleName('./platforms/add'), nav: false },
@@ -58,7 +64,6 @@ export class App {
     ]);
 
     this.router = router;
-
 
     (<any>window).cookieconsent.initialise({
       container: document.getElementById("content"),
@@ -76,5 +81,32 @@ export class App {
       },
       location: true,
     });
+  }
+}
+
+@inject(ApplicationState)
+class AuthorizeStep {
+
+  private appState: ApplicationState;
+
+  constructor(appState) {
+    this.appState = appState;
+  }
+
+
+  run(routingContext, next) {
+    if (routingContext.config.auth) {
+      var isLoggedIn = this.appState.authenticated;
+      if (!isLoggedIn) {
+        alert("Not Logged In!\nClick the Sign In icon to log in");
+        return next.cancel();
+      }
+    }
+    return next();
+  }
+
+  static isLoggedIn(): boolean {
+    var auth_token = localStorage.getItem("auth_token");
+    return (typeof auth_token !== "undefined" && auth_token !== null);
   }
 }

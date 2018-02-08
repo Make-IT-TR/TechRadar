@@ -65,40 +65,42 @@ export class ApplicationState {
   public feathersClient: feathers.Application;
 
   initFeathers() {
-    const socket = io(location.hostname + ':8080', {
+    const socket = io(location.hostname, { // + ':8080'
       transports: ['rest']
     });
 
     this.feathersClient = feathers();
     this.feathersClient.configure(hooks())
-       .configure(rest('http://' + location.hostname + ':8080').superagent(superagent))
+      .configure(rest('http://' + location.hostname).superagent(superagent)) // + ':8080'
       //.configure(rest('/').superagent(superagent))
       // .configure(socketio(socket))
       .configure(auth());
 
-      this.authenticated = true;
-      this.adminMode = true;
+    // this.authenticated = true;
+    this.adminMode = true;
 
-    // (<any>this.feathersClient).authenticate()
-    //   .then((e) => {
-    //     console.log('authenticated');
-    //     this.authenticated = true;
-    //     this.adminMode = true;
-    //   })
-    //   .catch(() => {
-    //     console.log('not authenticated');
-    //     this.authenticated = false;
-    //     this.adminMode = false;
-    //   });
+    (<any>this.feathersClient).authenticate()
+      .then((e) => {
+        console.log('authenticated');
+        this.authenticated = true;
+
+        this.adminMode = true;
+      })
+      .catch(() => {
+        console.log('not authenticated');
+        this.authenticated = false;
+        this.adminMode = false;
+      });
 
     // this.feathersClient.authenticate({
-    //   strategy: 'github'}).then((result) => {
+    //   strategy: 'github'
+    // }).then((result) => {
     //   console.log('Authenticated!', result);
     //   alert('Your JWT is: ' + this.feathersClient.get('token'));
     // }).catch(function (error) {
     //   console.error('Error authenticating!', error);
     // });
-    // openLoginPopup('http://localhost:3030/auth/github');
+    // openLoginPopup('http://localhost:8080/auth/github');
   }
 
   subscribeObject(service: string, project: Project, result: Function) {
@@ -172,7 +174,7 @@ export class ApplicationState {
     })
   }
 
-  public updateRadarInput(ri : RadarInput) {
+  public updateRadarInput(ri: RadarInput) {
     this.services['radarinput'].update(ri.id, _.omitBy(ri, ((value, key) => { return key[0] === '_'; }))).catch(e => {
       console.log(e);
     }).then(v => {
@@ -260,8 +262,8 @@ export class ApplicationState {
 
       ], () => {
         this.project.linkObjects();
-        this.activeConfig = this.project.presets[0];          
-        this.activeConfig.Filters.forEach(f=>f.Enabled = false);
+        this.activeConfig = this.project.presets[0];
+        this.activeConfig.Filters.forEach(f => f.Enabled = false);
         console.log('got all data');
         console.log(this.activeConfig);
         this.initialized = true;
@@ -362,7 +364,7 @@ export class ApplicationState {
   }
 
   public selectPlatform(platform: Example) {
-    (<any>window).ga('send', 'event', 'platforms', 'select', platform.id);
+    // (<any>window).ga('send', 'event', 'platforms', 'select', platform.id);
     window.open(platform.Url, 'platformResult');
   }
 

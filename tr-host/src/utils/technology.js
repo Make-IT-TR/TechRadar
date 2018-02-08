@@ -1,17 +1,18 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class Content {
-    constructor(id, contentType, content, subTitle) {
+var Content = (function () {
+    function Content(id, contentType, content, subTitle) {
         this.id = id;
         this.contentType = contentType;
         this.content = content;
         this.subTitle = subTitle;
     }
-}
-exports.Content = Content;
+    return Content;
+}());
+export { Content };
 /** description of a technology  */
-class Technology {
-    constructor(id, priority, category, thumbnail, timePeriod, relativeRadius, shortTitle, title, subTitle, text, color, visible = true, focus = false) {
+var Technology = (function () {
+    function Technology(id, priority, category, thumbnail, timePeriod, relativeRadius, shortTitle, title, subTitle, text, color, visible, focus) {
+        if (visible === void 0) { visible = true; }
+        if (focus === void 0) { focus = false; }
         this.id = id;
         this.priority = priority;
         this.category = category;
@@ -28,6 +29,7 @@ class Technology {
         this.content = [];
         this.content = [];
     }
-}
-exports.Technology = Technology;
+    return Technology;
+}());
+export { Technology };
 //# sourceMappingURL=technology.js.map

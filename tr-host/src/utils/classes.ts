@@ -272,8 +272,11 @@ export class Example {
     Featured: number;
     Description: string;
     Webshot: string;
+    WebshotFailed: boolean;
     Wikipedia: string;
+    WikiLookup: string;
     WikiResult: WikiResult;
+
     _Technologies: ITechnology[];
 
     constructor(i: string) {

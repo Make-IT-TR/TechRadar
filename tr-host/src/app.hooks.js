@@ -13,13 +13,13 @@ module.exports = {
   },
 
   after: {
-    all: [ logger() ],
+    all: [ ],
     find: [],
     get: [],
-    create: [],
-    update: [],
-    patch: [],
-    remove: []
+    create: [logger()],
+    update: [logger()],
+    patch: [logger()],
+    remove: [logger()]
   },
 
   error: {

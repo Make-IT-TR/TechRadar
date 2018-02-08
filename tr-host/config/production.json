@@ -1,6 +1,6 @@
 {
   "host": "localhost",
-  "port": 8080,
+  "port": 80,
   "public": "../../tr-app/dist/",
   "paginate": {
     "default": 1000,
@@ -26,7 +26,7 @@
     "github": {
       "clientID": "681c3e6ae2c787f3caad",
       "clientSecret": "b843de202a3d450f817aed27f8df46630f416866",
-      "successRedirect": "http://make-it.io:8080"
+      "successRedirect": "http://techradar.make-it.io/"
     },
     "cookie": {
       "enabled": true,

@@ -7,39 +7,73 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+import { Trend, RadarCircle } from './../classes';
 import { inject } from 'aurelia-framework';
 import { bindable } from "aurelia-framework";
-import { ApplicationState } from './ApplicationState';
-var _ = require('lodash');
-import $ from 'jquery';
+import { ApplicationState } from '../ApplicationState';
+import { MessageBusService } from './../MessageBus';
+import * as _ from "lodash";
 var d3 = require('d3');
+var tip = require('./../utils/d3tip');
 var Radar = (function () {
-    function Radar(element, appState) {
+    function Radar(element, appState, bus) {
+        var _this = this;
+        this.view = "all";
         this.heading = 'Radar';
         this.element = element;
         this.appState = appState;
+        this.bus = bus;
+        if (this.view === "all") {
+            this.id = "all";
+        }
+        else {
+            this.id = this.trend.id;
+            this.appState.activeConfig.ShowTrend = false;
+        }
+        this.bus.subscribe("filter", function (title, t) {
+            switch (title) {
+                case "all":
+                    console.log('select all');
+                    _this.selectAll();
+                    break;
+                case "trend":
+                    _this.selectTrend(t);
+                    break;
+            }
+        });
+        this.bus.subscribe("reload", function (title, data) {
+            _this.updateFilter();
+            _this.draw();
+        });
     }
+    Radar.prototype.selectAll = function () {
+        this.trend = null;
+        this.selectPreset(this.appState.project.presets[0]);
+        this.draw();
+    };
     Radar.prototype.trendChanged = function (newValue) {
-        var trend = _.find(this.appState.trends, function (t) { return t.Id === newValue; });
+        console.log('trend changed');
+        var trend = _.find(this.appState.project.trends, function (t) { return t.id === newValue; });
         if (trend)
             this.selectTrend(trend);
     };
     Radar.prototype.activate = function (parms, routeConfig) {
+        console.log('Active Radar');
     };
     Radar.prototype.selectPreset = function (preset) {
-        this.data.activeConfig = preset;
+        this.appState.activeConfig = preset;
         this.updateFilter();
     };
     Radar.prototype.getDimensions = function (dim, reverse) {
         if (reverse === void 0) { reverse = false; }
         var res = [];
         // dimension has been defined is lists sheet
-        if (this.data.dimensions.hasOwnProperty(dim)) {
-            res = this.data.dimensions[dim];
+        if (this.appState.project.dimensions.hasOwnProperty(dim)) {
+            res = this.appState.project.dimensions[dim];
         }
         else {
             // get dimensions from actual items
-            this.data.items.forEach(function (ri) {
+            this.appState.project.radarinput.forEach(function (ri) {
                 var s = _.find(ri.Scores, { Title: dim });
                 if (s && s.Value !== '')
                     if (s && res.indexOf(s.Value) === -1)
@@ -47,118 +81,131 @@ var Radar = (function () {
             });
         }
         if (reverse)
-            res.reverse();
+            return (res.reverse());
         return res;
     };
     Radar.prototype.updateFilter = function () {
         var _this = this;
-        this.data.items = [];
-        if (!this.data.sheets || !this.data.sheets.RadarInput)
-            return;
-        this.data.sheets.RadarInput.forEach(function (ri) {
+        this.appState.items = [];
+        // if (!this.data.sheets || !this.data.sheets.RadarInput) return;
+        this.appState.project.radarinput.forEach(function (ri) {
             var match = true;
-            if (_this.data.activeTrend) {
-                match = !_.isUndefined(_.find(_this.data.activeTrend._TrendTechnologies, function (tt) { return tt._Technology === ri._Technology; }));
+            if (_this.view === 'all' && _this.appState.activeConfig && _this.appState.activeConfig.Filters) {
+                _this.appState.activeConfig.Filters.forEach(function (f) {
+                    if (f.Enabled && f.Value && _this.appState.getDimensionValue(ri, f.Dimension) !== f.Value) {
+                        match = false;
+                    }
+                });
             }
-            _this.data.activeConfig.Filters.forEach(function (f) {
-                if (f.Enabled && f.Value && _this.appState.getDimensionValue(ri, f.Dimension) !== f.Value)
-                    match = false;
-            });
+            else {
+                // match = !_.isUndefined(_.find(this.appState.activeTrend._TrendTechnologies, tt => tt._Technology === ri._Technology));
+            }
             if (match)
-                _this.data.items.push(ri);
+                _this.appState.items.push(ri);
         });
-        this.data.activeConfig.Visualisation.forEach(function (f) {
+        this.appState.activeConfig.Visualisation.forEach(function (f) {
             switch (f.Visual) {
                 case 'Horizontal':
-                    _this.data.horizontal = _this.getDimensions(f.Dimension, f.Reverse);
-                    _this.data.activeConfig.horizontalDimension = f.Dimension;
+                    _this.appState.horizontal = _this.getDimensions(f.Dimension, f.Reverse);
+                    _this.appState.activeConfig.horizontalDimension = f.Dimension;
                     break;
                 case 'Radial':
-                    _this.data.radial = _this.getDimensions(f.Dimension, f.Reverse);
-                    _this.data.activeConfig.radialDimension = f.Dimension;
+                    _this.appState.radial = _this.getDimensions(f.Dimension, f.Reverse);
+                    _this.appState.activeConfig.radialDimension = f.Dimension;
                     break;
                 case 'Color':
-                    _this.data.colors = _this.getDimensions(f.Dimension, f.Reverse);
-                    _this.data.activeConfig.colorDimension = f.Dimension;
+                    _this.appState.colorsD = _this.getDimensions(f.Dimension, f.Reverse);
+                    _this.appState.activeConfig.colorDimension = f.Dimension;
                     break;
                 case 'Size':
-                    _this.data.size = _this.getDimensions(f.Dimension, f.Reverse);
-                    _this.data.activeConfig.sizeDimension = f.Dimension;
+                    _this.appState.size = _this.getDimensions(f.Dimension, f.Reverse);
+                    _this.appState.activeConfig.sizeDimension = f.Dimension;
                     break;
             }
         });
         // this.busService.publish('filter', 'updated');
     };
     Radar.prototype.selectTrend = function (t) {
-        this.data = this.appState.sheets;
-        this.data.activeTrend = t;
-        if (t._Preset)
+        console.log('select trend');
+        // this.data = this.appState.sheets;
+        this.trend = t;
+        this.appState.activeTrend = t;
+        if (t._Preset) {
             this.selectPreset(t._Preset);
-        this.updateFilter();
+            this.appState.activeConfig.ShowTrend = true;
+        }
+        else
+            this.updateFilter();
         this.draw();
     };
     Radar.prototype.draw = function () {
         var _this = this;
-        var c10 = d3.scale.category10();
-        var screenWidth = window.innerWidth;
-        var screenHeight = window.innerHeight;
-        if (!this.data.radial || !this.data.horizontal)
+        setTimeout(function () { return _this.draw2(); }, 1);
+    };
+    Radar.prototype.draw2 = function () {
+        var _this = this;
+        console.log('start drawing');
+        if (!this.appState.radial || !this.appState.horizontal)
             return;
-        var radial = this.data.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
+        var radial = this.appState.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
         var horizontal = ["very low", "low", "neutral", "high", "very high"];
-        var radius = 400; // radius of a circle
+        // Get the dimensions of the container div
+        // We set it as a square (1:1 rect)
+        // So that we can easily use Viebox for making it responsive
+        var container = d3.select("#techradar-vis").node();
+        var width = container.getBoundingClientRect().width;
+        // Scale it a bit dow in order to make it fir into the viz
+        width = width * 0.85;
+        var height = width;
+        var radius = 12; // radius of a circle
         var thickness = 6; //thickness of a circle
         var nr_of_segments = radial.length;
         var nr_of_levels = horizontal.length;
-        var origin_x = 10; // distance to the right from left top
-        var origin_y = 1; // distance from the top from left top
         var rings = d3.scale.linear().domain([0, horizontal.length + 1]).range([0, radius]);
         var padding_rings = rings(1); // distance between rings
         var _outer_radius = radius;
         var _inner_radius = radius - thickness;
-        var _start_angle = -0.5 * Math.PI;
-        var _end_angle = 0.5 * Math.PI;
+        var _start_angle = -0.6 * Math.PI;
+        var _end_angle = 0.6 * Math.PI;
         var degrees = d3.scale.linear().domain([0, 180]).range([_start_angle, _end_angle]);
         var start_angle = degrees(0);
         var end_angle = degrees(180);
-        var _origin_x_offset = origin_x + radius;
-        var _origin_y_offset = origin_y + radius;
         var segment = d3.scale.linear().domain([0, nr_of_segments]).range([start_angle, end_angle]);
-        // var width = _origin_x_offset * 2;
-        // var height = _origin_y_offset * 2;
-        var margin = { left: 100, top: 200, right: 100, bottom: 50 };
-        var width = 1000; // Math.max(screenWidth, 900) - margin.left - margin.right;
-        var height = 900; //Math.max(screenHeight, 600) - margin.top - margin.bottom;
-        $(this.element).append("<div id='radarvis' style='position:absolute'></div>");
-        $(this.element).append("<div id='technology' style='position:absolute'></div>");
-        var radar = d3.select("#radarvis").append("svg")
-            .attr("width", (width + margin.left + margin.right))
-            .attr("height", (height + margin.top + margin.bottom))
-            .append("g").attr("class", "wrapper")
-            .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
-        var tech = d3.select("#technology").append("svg")
-            .attr("width", (width + margin.left + margin.right))
-            .attr("height", (height + margin.top + margin.bottom))
-            .append("g").attr("class", "wrapper")
-            .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
-        var radial = this.data.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
-        var horizontal = this.data.horizontal; //["very low", "low", "neutral", "high", "very high"];
+        // Remove previous visualisations
+        var svg = d3.select("#techradar-vis svg").remove();
+        // Add the svg for the visualisation
+        var svg = d3.select("#techradar-vis").append("svg");
+        // Make it responsive with viewBox
+        svg.attr('preserveAspectRatio', "xMinYMin meet")
+            .attr("viewBox", "0 0 1000 600")
+            .attr('width', '100%');
+        var radar = svg.append("g")
+            .attr("class", "wrapper")
+            .attr("transform", "translate(500, 450)");
+        var tech = svg.append("g")
+            .attr("class", "wrapper")
+            .attr("transform", "translate(500, 450)");
+        var radial = this.appState.radial; // ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
+        var horizontal = this.appState.horizontal; //["very low", "low", "neutral", "high", "very high"];
         var step = 180 / nr_of_segments;
         var minDepth = 0.25;
-        var arcDepth = (0.95 - minDepth) / this.data.horizontal.length;
+        var arcDepth = (0.95 - minDepth) / this.appState.horizontal.length;
         var arcWidth = width / 2 / horizontal.length * (0.95 - minDepth);
         var first = true;
-        var id = this.data.horizontal.length;
+        var id = this.appState.horizontal.length;
         var mycolor = d3.rgb("#eee");
         var hpos = 1;
-        this.data.horizontal.forEach(function (h) {
+        var all = [];
+        var horTitlePos = 80;
+        var horTitleSteps = horTitlePos / this.appState.horizontal.length;
+        this.appState.horizontal.forEach(function (h) {
             var segmentData = [];
             var start = 0;
-            _this.data.radial.forEach(function (r) {
+            _this.appState.radial.forEach(function (r) {
                 segmentData.push({ title: r, startAngle: start, endAngle: start + step, items: [] });
                 start += step;
             });
-            var haxispos = -((arcWidth * (horizontal.length - hpos + 1) - arcWidth / 4 + _inner_radius / 4));
+            var haxispos = -((arcWidth * (horizontal.length - hpos + 1) - arcWidth / 8 + _inner_radius / 8));
             // var text = svg.append("text")
             //     .attr("x", haxispos)
             //     .attr("y", 30)
@@ -176,48 +223,83 @@ var Radar = (function () {
                 txt = h[0];
             if (txt.length > 15)
                 txt = txt.substr(0, 14);
+            var textWidth = 75;
+            horTitlePos -= horTitleSteps;
             radar.append("foreignObject")
-                .attr("x", haxispos - 75 / 2) /*the position of the text (left to right)*/
-                .attr("y", 20) /*the position of the text (Up and Down)*/
+                .attr("x", haxispos - 40 - textWidth / 2) /*the position of the text (left to right)*/
+                .attr("y", 55 + horTitlePos) /*the position of the text (Up and Down)*/
                 .attr("class", "horizontalTitle")
-                .attr("width", 75)
+                .attr("width", textWidth)
                 .append("xhtml:div")
                 .text(txt);
             radar.append("foreignObject")
-                .attr("x", -haxispos - 75 / 2) /*the position of the text (left to right)*/
-                .attr("y", 20) /*the position of the text (Up and Down)*/
+                .attr("x", -haxispos + 40 - textWidth / 2) /*the position of the text (left to right)*/
+                .attr("y", 55 + horTitlePos) /*the position of the text (Up and Down)*/
                 .attr("class", "horizontalTitle")
-                .attr("width", 75)
+                .attr("width", textWidth)
                 .append("xhtml:div")
                 .text(txt);
+            var tip = d3.tip()
+                .attr('class', 'd3-tip')
+                .offset([-10, 0])
+                .html(function (d) {
+                var res = d.join(',');
+                return "<strong>Technology:</strong> <span style='color:red'>" + res + "</span>";
+            });
+            svg.call(tip);
             hpos += 1;
-            var years = [2016, 2020];
-            var items = [];
-            _this.data.items.forEach(function (i) {
-                var f = null;
-                years.forEach(function (y) {
-                    var future = (years.length > 1 && years[1] === y);
-                    var horValue = _this.appState.getDimensionValue(i, _this.data.activeConfig.horizontalDimension, y);
-                    if (horValue === h) {
-                        var radValue = _this.appState.getDimensionValue(i, _this.data.activeConfig.radialDimension, y);
-                        var pos = _this.data.radial.indexOf(radValue);
-                        if (pos !== -1) {
-                            var segment = _.find(segmentData, (function (s) { return s.title === radValue; }));
-                            if (segment) {
-                                segment.items.push(i);
-                                i._future = future;
-                                i._segment = segment;
-                                i._segmentPos = pos;
-                                i._segmentItemPos = segment.items.length;
-                                items.push(i);
-                                f = i;
+            var years = [2016];
+            // if (this.appState.activeConfig.ShowTrend) years.push(2020);
+            var its = [];
+            console.log('colors');
+            console.log(_this.appState.activeConfig.colorDimension);
+            _this.appState.project.radarinput.forEach(function (i) {
+                var techs = [];
+                if (_this.view === 'all' && _this.appState.items) {
+                    techs = _this.appState.items;
+                }
+                else if (_this.appState.activeTrend) {
+                    techs = _this.appState.activeTrend._Technologies;
+                }
+                if (_.findIndex(techs, function (t) { return t.Technology === i.Technology; }) >= 0) {
+                    years.forEach(function (y) {
+                        if (years.indexOf(y) >= 0) {
+                            var future = (years.length > 1 && years[1] === y);
+                            var horScore = _this.appState.getDimensionScore(i, _this.appState.activeConfig.horizontalDimension, y);
+                            if (horScore.Value === h) {
+                                var radScore = _this.appState.getDimensionScore(i, _this.appState.activeConfig.radialDimension, y);
+                                if (radScore) {
+                                    var pos = _this.appState.radial.indexOf(radScore.Value);
+                                    if (pos !== -1) {
+                                        var segment = _.find(segmentData, (function (s) { return s.title === radScore.Value; }));
+                                        if (segment) {
+                                            segment.items.push(i);
+                                            var c = new RadarCircle();
+                                            c._future = future;
+                                            c._segment = segment;
+                                            c._year = y;
+                                            c._segmentPos = pos;
+                                            c._segmentItemPos = segment.items.length;
+                                            c._Input = i;
+                                            c._Technology = i._Technology;
+                                            c._horScore = horScore;
+                                            c._radScore = radScore;
+                                            //    console.log(horScore.Value + ' - ' + radScore.Value);
+                                            if (i._Technology) {
+                                                its.push(c);
+                                                all.push(c);
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
-                    }
-                });
+                        ;
+                    });
+                }
             });
             var depth = ((arcDepth * id) + minDepth) / 2;
-            //Creates a function that makes SVG paths in the shape of arcs with the specified inner and outer radius 
+            //Creates a function that makes SVG paths in the shape of arcs with the specified inner and outer radius
             var arc = d3.svg.arc()
                 .innerRadius(width * depth - arcWidth)
                 .outerRadius(width * depth);
@@ -235,12 +317,24 @@ var Radar = (function () {
                 .attr("id", function (d, i) { return "monthArc_" + i; })
                 .style("fill", mycolor.toString())
                 .attr("d", arc)
-                .on('mouseover', function (d) {
+                .on('mouseenter', function (d) {
+                console.log(d);
+                if (d.data && d.data.items && d.data.items.length > 0) {
+                    var res_1 = [];
+                    d.data.items.forEach(function (t) { return res_1.push(t.Technology); });
+                    tip.show(res_1);
+                }
                 // bus.publish("segment", "mouseover", d.data);
-                d.parentNode.appendChild(d);
+                if (d.parentNode)
+                    d.parentNode.appendChild(d);
+                // radar.ts:367 Uncaught TypeError: Cannot read property 'appendChild' of undefined
+            })
+                .on('mouseleave', function (d) {
+                tip.hide();
             });
-            items.forEach(function (i) {
-                //console.log(i._segment.items.length);
+            // console.log(its);
+            its.forEach(function (i) {
+                console.log(i._segment.items.length);
                 var difS = 0;
                 var difE = 1;
                 if (i._segment.items.length > 1) {
@@ -254,19 +348,21 @@ var Radar = (function () {
                 var pos = segmentArc.centroid();
                 i._pos = pos;
                 var color = "black";
-                if (_this.data.activeConfig.colorDimension) {
-                    var colorValue = _this.appState.getDimensionValue(i, _this.data.activeConfig.colorDimension);
-                    if (colorValue && _this.data.colors.indexOf(colorValue) !== -1) {
-                        color = c10(_this.data.colors.indexOf(colorValue).toString());
+                if (_this.appState.activeConfig.colorDimension) {
+                    var colorValue = _this.appState.getDimensionValue(i._Input, _this.appState.activeConfig.colorDimension, i._year);
+                    if (!colorValue && i._future)
+                        colorValue = _this.appState.getDimensionValue(i._Input, _this.appState.activeConfig.colorDimension);
+                    if (colorValue && _this.appState.colorsD.indexOf(colorValue) !== -1) {
+                        color = _this.appState.colors[_this.appState.colorsD.indexOf(colorValue)];
                     }
                 }
                 i._color = color;
                 var size = 10;
-                if (_this.data.activeConfig.sizeDimension && _this.data.activeConfig.sizeDimension !== "-none-") {
-                    var sizeValue = _this.appState.getDimensionValue(i, _this.data.activeConfig.sizeDimension);
-                    var sizeIndex = _this.data.size.length - _this.data.size.indexOf(sizeValue);
+                if (_this.appState.activeConfig.sizeDimension && _this.appState.activeConfig.sizeDimension !== "-none-") {
+                    var sizeValue = _this.appState.getDimensionValue(i._Input, _this.appState.activeConfig.sizeDimension, i._year);
+                    var sizeIndex = _this.appState.size.length - _this.appState.size.indexOf(sizeValue);
                     if (sizeValue && sizeIndex >= 0) {
-                        size = (15 / _this.data.size.length * sizeIndex) + 5;
+                        size = (10 / _this.appState.size.length * sizeIndex) + 3;
                     }
                 }
                 var circle = tech.append("circle")
@@ -276,44 +372,29 @@ var Radar = (function () {
                     .attr("class", "techCircle")
                     .style("fill", color.toString())
                     .style("opacity", i._future ? 0.5 : 1)
+                    .on('mouseenter', function (d) {
+                    tip.show([i._Technology.Technology]);
+                    console.log('Enter ' + i._Technology.Technology);
+                })
+                    .on('mouseleave', function (d) {
+                    tip.hide();
+                    console.log('Leave ' + i._Technology.Technology);
+                })
                     .on("mousedown", function () {
-                    // bus.publish('radarinput', 'selected', i);
+                    _this.bus.publish('technologysheet', 'show', i._Technology);
                 });
-                // var text = svg.append("text")
-                //     .attr("x", pos[0])
-                //     .attr("y", pos[1] + size + 15)
-                //     .style("z-index", 100)
-                //     .attr("text-anchor", "middle")
-                //     .text(i.Technology);
                 var px = pos[0] - 75 / 2;
                 var py = pos[1] + size + 5;
-                if (!i._future) {
+                if (!i._future && i._Technology) {
                     tech.append("foreignObject")
                         .attr("x", px) /*the position of the text (left to right)*/
                         .attr("y", py) /*the position of the text (Up and Down)*/
                         .attr("class", "techTitle !important")
                         .attr("width", 75)
                         .append("xhtml:div")
-                        .text(i.Technology);
+                        .text(i._Technology.Technology);
                 }
             });
-            // items.forEach((i: csComp.Services.RadarInput) => {
-            //     if (i._future) {
-            //         var origin = _.find(items, (item: csComp.Services.RadarInput) => item._Technology === item._Technology);
-            //         if (origin) {
-            //             tech.append('line')
-            //                 .style("stroke", i._color.toString())
-            //                 .attr({
-            //                     "class": "arrow",
-            //                     "marker-end": "url(#arrow)",
-            //                     "x1": i._pos[0],
-            //                     "y1": i._pos[1],
-            //                     "x2": origin._pos[0],
-            //                     "y2": origin._pos[1]
-            //                 });
-            //         }
-            //     }
-            // });
             if (first) {
                 //Append the month names within the arcs
                 radar.selectAll(".monthText")
@@ -326,23 +407,57 @@ var Radar = (function () {
                     .append("textPath")
                     .attr("xlink:href", function (d, i) { return "#monthArc_" + i; })
                     .text(function (d) {
-                    return d.title;
+                    var txt = d.title;
+                    if (h.length > 10 && h.indexOf('-') > 0)
+                        txt = h[0];
+                    if (txt.length > 30)
+                        txt = txt.substr(0, 29);
+                    return txt;
                 });
                 first = false;
             }
             //arcPos -= (1 / this.data.horizontal.length);
-            mycolor = mycolor.darker(0.5 / _this.data.horizontal.length);
+            mycolor = mycolor.darker(0.5 / _this.appState.horizontal.length);
             id -= 1;
         });
+        //console.log(all);
+        all.forEach(function (i) {
+            if (i._future) {
+                var origin = _.find(all, function (item) {
+                    var o = (item._Input === i._Input && item._pos != i._pos);
+                    return o;
+                });
+                //all.forEach((origin: classes.RadarCircle) => {
+                //console.log("link");
+                // console.log(origin);
+                // console.log(i);
+                tech.append('line')
+                    .style("stroke", i._color.toString())
+                    .attr({
+                    "class": "arrow",
+                    "marker-end": "url(#arrow)",
+                    "x2": i._pos[0],
+                    "y2": i._pos[1],
+                    "x1": origin._pos[0],
+                    "y1": origin._pos[1]
+                });
+                //});
+            }
+        });
     };
+    __decorate([
+        bindable,
+        __metadata("design:type", Object)
+    ], Radar.prototype, "view", void 0);
+    __decorate([
+        bindable,
+        __metadata("design:type", Trend)
+    ], Radar.prototype, "trend", void 0);
+    Radar = __decorate([
+        inject(Element, ApplicationState, MessageBusService),
+        __metadata("design:paramtypes", [Object, Object, Object])
+    ], Radar);
     return Radar;
 }());
-__decorate([
-    bindable,
-    __metadata("design:type", Object)
-], Radar.prototype, "trend", void 0);
-Radar = __decorate([
-    inject(Element, ApplicationState),
-    __metadata("design:paramtypes", [Object, Object])
-], Radar);
 export { Radar };
+//# sourceMappingURL=radar.js.map

@@ -13,3 +13,4 @@ var ChildRouter = (function () {
     return ChildRouter;
 }());
 export { ChildRouter };
+//# sourceMappingURL=child-router.js.map

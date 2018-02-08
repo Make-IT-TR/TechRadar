@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t;
-    return { next: verb(0), "throw": verb(1), "return": verb(2) };
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -37,11 +37,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 import 'font-awesome/css/font-awesome.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../static/styles.css';
+import '../static/radar.css';
+import 'valueconverters';
 import 'aurelia-bootstrapper';
 import 'bootstrap';
+import 'bootstrap-select';
 import 'd3';
+import 'feathers/client';
+import 'socket.io-client';
 import { PLATFORM } from 'aurelia-pal';
 import * as Bluebird from 'bluebird';
+import 'aurelia-google-analytics';
+// import '../node_modules/ag-grid/dist/styles/ag-grid.css';
 // remove out if you don't want a Promise polyfill (remove also from webpack.config.js)
 Bluebird.config({ warnings: { wForgottenReturn: false } });
 export function configure(aurelia) {
@@ -51,16 +58,51 @@ export function configure(aurelia) {
                 case 0:
                     aurelia.use
                         .standardConfiguration()
-                        .developmentLogging();
+                        .developmentLogging()
+                        .plugin(PLATFORM.moduleName('aurelia-validation'));
+                    //   .plugin(PLATFORM.moduleName('aurelia-google-analytics'), config => {
+                    //   config.init('UA-98391880-1');
+                    //   config.attach({
+                    //     logging: {
+                    //       enabled: true // Set to `true` to have some log messages appear in the browser console.
+                    //     },
+                    //     pageTracking: {
+                    //       enabled: true // Set to `false` to disable in non-production environments.
+                    //     }, 
+                    //     clickTracking: {
+                    //       enabled: true // Set to `false` to disable in non-production environments.
+                    //     },
+                    //     exceptionTracking: {
+                    //       enabled: true // Set to `false` to disable in non-production environments.
+                    //     }
+                    //   })
+                    // });
                     // Uncomment the line below to enable animation.
-                    // aurelia.use.plugin(PLATFORM.moduleName('aurelia-animator-css'));
+                    //aurelia.use.plugin(PLATFORM.moduleName('aurelia-animator-css'));
                     // if the css animator is enabled, add swap-order="after" to all router-view elements
                     // Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
                     // aurelia.use.plugin(PLATFORM.moduleName('aurelia-html-import-template-loader'));
                     return [4 /*yield*/, aurelia.start()];
                 case 1:
+                    //   .plugin(PLATFORM.moduleName('aurelia-google-analytics'), config => {
+                    //   config.init('UA-98391880-1');
+                    //   config.attach({
+                    //     logging: {
+                    //       enabled: true // Set to `true` to have some log messages appear in the browser console.
+                    //     },
+                    //     pageTracking: {
+                    //       enabled: true // Set to `false` to disable in non-production environments.
+                    //     }, 
+                    //     clickTracking: {
+                    //       enabled: true // Set to `false` to disable in non-production environments.
+                    //     },
+                    //     exceptionTracking: {
+                    //       enabled: true // Set to `false` to disable in non-production environments.
+                    //     }
+                    //   })
+                    // });
                     // Uncomment the line below to enable animation.
-                    // aurelia.use.plugin(PLATFORM.moduleName('aurelia-animator-css'));
+                    //aurelia.use.plugin(PLATFORM.moduleName('aurelia-animator-css'));
                     // if the css animator is enabled, add swap-order="after" to all router-view elements
                     // Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
                     // aurelia.use.plugin(PLATFORM.moduleName('aurelia-html-import-template-loader'));
@@ -73,3 +115,4 @@ export function configure(aurelia) {
         });
     });
 }
+//# sourceMappingURL=main.js.map

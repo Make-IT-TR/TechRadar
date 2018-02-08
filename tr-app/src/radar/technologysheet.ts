@@ -41,8 +41,10 @@ export class Technologysheet {
   public selectPlatform(e: MouseEvent, example: Example) {
     e.cancelBubble = true;
     this.show = false;
-    this.appState.selectPlatform(example);
-    
+    // this.appState.selectPlatform(example);
+    this.appState.searchFilter = example.Name;       
+    this.router.navigateToRoute('Platforms', { category: 'all', technology: 'all', search: example.Name});    
+    this.bus.publish('platformsearch', example.Name, null);
   }
 
   public selectCategory()

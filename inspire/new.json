@@ -1,0 +1,1163 @@
+{
+  "config": {
+    "id": "makeit",
+    "title": "make-it"
+  },
+  "id": "makeit",
+  "dimensions": {
+    "TRL": [
+      "1 - Basic research",
+      "2 - Applied Research",
+      "3 - Market Ready",
+      "4 - Market presence"
+    ],
+    "Flexibility": [
+      "No",
+      "Maybe",
+      "Limited",
+      "Definitely",
+      "Undesirable"
+    ],
+    "Business Model Impact": [
+      "No",
+      "Maybe",
+      "Limited",
+      "Definitely",
+      "Undesirable"
+    ],
+    "Sustainability": [
+      "No",
+      "Maybe",
+      "Limited",
+      "Definitely",
+      "Undesirable"
+    ],
+    "Regional Impact": [
+      "No",
+      "Maybe",
+      "Limited",
+      "Definitely",
+      "Undesirable"
+    ],
+    "Industrial Applicability": [
+      "No",
+      "Maybe",
+      "Limited",
+      "Definitely",
+      "Undesirable"
+    ]
+  },
+  "presets": [
+    {
+      "Title": "Custom",
+      "Description": "",
+      "Filters": [
+        {
+          "Dimension": "Category",
+          "Value": "Collaboration",
+          "Enabled": true,
+          "Options": [
+            "3D printing",
+            "Laser Cutter",
+            "Milling",
+            "Sharing",
+            "Collaboration",
+            "Internet of things",
+            "Electronics",
+            "Commercialization",
+            "Interaction",
+            "Communication",
+            "Learning",
+            "Organisation",
+            "Software Development",
+            "Telecommunication"
+          ]
+        },
+        {
+          "Dimension": "TRL",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "1 - Basic principles observed ",
+            "2 - Technology concept formulated",
+            "3 - Experimental Proof of concept",
+            "4 - Technology validated in lab",
+            "5 - Technology validated",
+            "6 - Technology demonstrated",
+            "7 - System prototype",
+            "8 - System complete",
+            "9 - System operational"
+          ]
+        },
+        {
+          "Dimension": "Adoption",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "None",
+            "Innovators",
+            "Early Adopters",
+            "Early Majority",
+            "Late Majority",
+            "Laggards"
+          ]
+        },
+        {
+          "Dimension": "Perez Technological Revolution",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Innovation and experimentation",
+            "Development and installation",
+            "Disappointment & uncertainty",
+            "Reassessment & revaluation",
+            "Creative construction & demand-pull"
+          ]
+        },
+        {
+          "Dimension": "Scale and interaction",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Network",
+            "Ecosystem",
+            "Community",
+            "Collaboration",
+            "Single",
+            "None"
+          ]
+        },
+        {
+          "Dimension": "SubCategory",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "FFF",
+            "SLA",
+            "BJ",
+            "LM",
+            "Files repository",
+            "Collaborative Design",
+            "Data analytics",
+            "DIY electronics",
+            "Funding",
+            "Sales",
+            "Source Code Management",
+            "Team Collaboration",
+            "Concrete 3D printing",
+            "3D printing material",
+            "Drag and drop production",
+            "Content communities",
+            "Connecting",
+            "Co Design",
+            "Community Tools",
+            "Programming",
+            "Social networking sites",
+            "Long Range",
+            "Cloud Computing",
+            "Online Collaborative Design Platform",
+            "Input",
+            "Short Range"
+          ]
+        },
+        {
+          "Dimension": "Domain",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Manufacturing",
+            "Community",
+            "IT"
+          ]
+        }
+      ],
+      "Visualisation": [
+        {
+          "Visual": "Horizontal",
+          "Dimension": "Adoption",
+          "Enabled": false,
+          "Reverse": true
+        },
+        {
+          "Visual": "Radial",
+          "Dimension": "TRL",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Color",
+          "Dimension": "Perez Technological Revolution",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Size",
+          "Dimension": "TRL",
+          "Enabled": false,
+          "Reverse": false
+        }
+      ]
+    },
+    {
+      "Title": "Technology Adoption",
+      "Description": "",
+      "Filters": [
+        {
+          "Dimension": "TRL",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "1 - Basic principles observed ",
+            "2 - Technology concept formulated",
+            "3 - Experimental Proof of concept",
+            "4 - Technology validated in lab",
+            "5 - Technology validated",
+            "6 - Technology demonstrated",
+            "7 - System prototype",
+            "8 - System complete",
+            "9 - System operational"
+          ]
+        },
+        {
+          "Dimension": "Adoption",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "None",
+            "Innovators",
+            "Early Adopters",
+            "Early Majority",
+            "Late Majority",
+            "Laggards"
+          ]
+        },
+        {
+          "Dimension": "Perez Technological Revolution",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Innovation and experimentation",
+            "Development and installation",
+            "Disappointment & uncertainty",
+            "Reassessment & revaluation",
+            "Creative construction & demand-pull"
+          ]
+        },
+        {
+          "Dimension": "Scale and interaction",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Network",
+            "Ecosystem",
+            "Community",
+            "Collaboration",
+            "Single",
+            "None"
+          ]
+        },
+        {
+          "Dimension": "Category",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "3D printing",
+            "Laser Cutter",
+            "Milling",
+            "Sharing",
+            "Collaboration",
+            "Internet of things",
+            "Electronics",
+            "Commercialization",
+            "Interaction",
+            "Communication",
+            "Learning",
+            "Organisation",
+            "Software Development",
+            "Telecommunication"
+          ]
+        },
+        {
+          "Dimension": "SubCategory",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "FFF",
+            "SLA",
+            "BJ",
+            "LM",
+            "Files repository",
+            "Collaborative Design",
+            "Data analytics",
+            "DIY electronics",
+            "Funding",
+            "Sales",
+            "Source Code Management",
+            "Team Collaboration",
+            "Concrete 3D printing",
+            "3D printing material",
+            "Drag and drop production",
+            "Content communities",
+            "Connecting",
+            "Co Design",
+            "Community Tools",
+            "Programming",
+            "Social networking sites",
+            "Long Range",
+            "Cloud Computing",
+            "Online Collaborative Design Platform",
+            "Input",
+            "Short Range"
+          ]
+        },
+        {
+          "Dimension": "Domain",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Manufacturing",
+            "Community",
+            "IT"
+          ]
+        }
+      ],
+      "Visualisation": [
+        {
+          "Visual": "Horizontal",
+          "Dimension": "Adoption",
+          "Enabled": false,
+          "Reverse": true
+        },
+        {
+          "Visual": "Radial",
+          "Dimension": "Category",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Color",
+          "Dimension": "Perez Technological Revolution",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Size",
+          "Dimension": "TRL",
+          "Enabled": false,
+          "Reverse": true
+        }
+      ]
+    },
+    {
+      "Title": "IT Technology Adoption",
+      "Description": "",
+      "Filters": [
+        {
+          "Dimension": "Domain",
+          "Value": "IT",
+          "Enabled": true,
+          "Options": [
+            "Manufacturing",
+            "Community",
+            "IT"
+          ]
+        },
+        {
+          "Dimension": "TRL",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "1 - Basic principles observed ",
+            "2 - Technology concept formulated",
+            "3 - Experimental Proof of concept",
+            "4 - Technology validated in lab",
+            "5 - Technology validated",
+            "6 - Technology demonstrated",
+            "7 - System prototype",
+            "8 - System complete",
+            "9 - System operational"
+          ]
+        },
+        {
+          "Dimension": "Adoption",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "None",
+            "Innovators",
+            "Early Adopters",
+            "Early Majority",
+            "Late Majority",
+            "Laggards"
+          ]
+        },
+        {
+          "Dimension": "Perez Technological Revolution",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Innovation and experimentation",
+            "Development and installation",
+            "Disappointment & uncertainty",
+            "Reassessment & revaluation",
+            "Creative construction & demand-pull"
+          ]
+        },
+        {
+          "Dimension": "Scale and interaction",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Network",
+            "Ecosystem",
+            "Community",
+            "Collaboration",
+            "Single",
+            "None"
+          ]
+        },
+        {
+          "Dimension": "Category",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "3D printing",
+            "Laser Cutter",
+            "Milling",
+            "Sharing",
+            "Collaboration",
+            "Internet of things",
+            "Electronics",
+            "Commercialization",
+            "Interaction",
+            "Communication",
+            "Learning",
+            "Organisation",
+            "Software Development",
+            "Telecommunication"
+          ]
+        },
+        {
+          "Dimension": "SubCategory",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "FFF",
+            "SLA",
+            "BJ",
+            "LM",
+            "Files repository",
+            "Collaborative Design",
+            "Data analytics",
+            "DIY electronics",
+            "Funding",
+            "Sales",
+            "Source Code Management",
+            "Team Collaboration",
+            "Concrete 3D printing",
+            "3D printing material",
+            "Drag and drop production",
+            "Content communities",
+            "Connecting",
+            "Co Design",
+            "Community Tools",
+            "Programming",
+            "Social networking sites",
+            "Long Range",
+            "Cloud Computing",
+            "Online Collaborative Design Platform",
+            "Input",
+            "Short Range"
+          ]
+        }
+      ],
+      "Visualisation": [
+        {
+          "Visual": "Horizontal",
+          "Dimension": "Adoption",
+          "Enabled": false,
+          "Reverse": true
+        },
+        {
+          "Visual": "Radial",
+          "Dimension": "Category",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Color",
+          "Dimension": "Domain",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Size",
+          "Dimension": "TRL",
+          "Enabled": false,
+          "Reverse": false
+        }
+      ]
+    },
+    {
+      "Title": "Industry Technology Adoption",
+      "Description": "",
+      "Filters": [
+        {
+          "Dimension": "TRL",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "1 - Basic principles observed ",
+            "2 - Technology concept formulated",
+            "3 - Experimental Proof of concept",
+            "4 - Technology validated in lab",
+            "5 - Technology validated",
+            "6 - Technology demonstrated",
+            "7 - System prototype",
+            "8 - System complete",
+            "9 - System operational"
+          ]
+        },
+        {
+          "Dimension": "Adoption",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "None",
+            "Innovators",
+            "Early Adopters",
+            "Early Majority",
+            "Late Majority",
+            "Laggards"
+          ]
+        },
+        {
+          "Dimension": "Perez Technological Revolution",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Innovation and experimentation",
+            "Development and installation",
+            "Disappointment & uncertainty",
+            "Reassessment & revaluation",
+            "Creative construction & demand-pull"
+          ]
+        },
+        {
+          "Dimension": "Scale and interaction",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Network",
+            "Ecosystem",
+            "Community",
+            "Collaboration",
+            "Single",
+            "None"
+          ]
+        },
+        {
+          "Dimension": "Category",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "3D printing",
+            "Laser Cutter",
+            "Milling",
+            "Sharing",
+            "Collaboration",
+            "Internet of things",
+            "Electronics",
+            "Commercialization",
+            "Interaction",
+            "Communication",
+            "Learning",
+            "Organisation",
+            "Software Development",
+            "Telecommunication"
+          ]
+        },
+        {
+          "Dimension": "SubCategory",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "FFF",
+            "SLA",
+            "BJ",
+            "LM",
+            "Files repository",
+            "Collaborative Design",
+            "Data analytics",
+            "DIY electronics",
+            "Funding",
+            "Sales",
+            "Source Code Management",
+            "Team Collaboration",
+            "Concrete 3D printing",
+            "3D printing material",
+            "Drag and drop production",
+            "Content communities",
+            "Connecting",
+            "Co Design",
+            "Community Tools",
+            "Programming",
+            "Social networking sites",
+            "Long Range",
+            "Cloud Computing",
+            "Online Collaborative Design Platform",
+            "Input",
+            "Short Range"
+          ]
+        },
+        {
+          "Dimension": "Domain",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Manufacturing",
+            "Community",
+            "IT"
+          ]
+        }
+      ],
+      "Visualisation": [
+        {
+          "Visual": "Horizontal",
+          "Dimension": "TRL",
+          "Enabled": false,
+          "Reverse": true
+        },
+        {
+          "Visual": "Radial",
+          "Dimension": "Category",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Color",
+          "Dimension": "Domain",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Size",
+          "Dimension": "Adoption",
+          "Enabled": false,
+          "Reverse": false
+        }
+      ]
+    },
+    {
+      "Title": "Immersive Interaction",
+      "Description": "",
+      "Filters": [
+        {
+          "Dimension": "TRL",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "1 - Basic principles observed ",
+            "2 - Technology concept formulated",
+            "3 - Experimental Proof of concept",
+            "4 - Technology validated in lab",
+            "5 - Technology validated",
+            "6 - Technology demonstrated",
+            "7 - System prototype",
+            "8 - System complete",
+            "9 - System operational"
+          ]
+        },
+        {
+          "Dimension": "Adoption",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "None",
+            "Innovators",
+            "Early Adopters",
+            "Early Majority",
+            "Late Majority",
+            "Laggards"
+          ]
+        },
+        {
+          "Dimension": "Perez Technological Revolution",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Innovation and experimentation",
+            "Development and installation",
+            "Disappointment & uncertainty",
+            "Reassessment & revaluation",
+            "Creative construction & demand-pull"
+          ]
+        },
+        {
+          "Dimension": "Scale and interaction",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Network",
+            "Ecosystem",
+            "Community",
+            "Collaboration",
+            "Single",
+            "None"
+          ]
+        },
+        {
+          "Dimension": "Category",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "3D printing",
+            "Laser Cutter",
+            "Milling",
+            "Sharing",
+            "Collaboration",
+            "Internet of things",
+            "Electronics",
+            "Commercialization",
+            "Interaction",
+            "Communication",
+            "Learning",
+            "Organisation",
+            "Software Development",
+            "Telecommunication"
+          ]
+        },
+        {
+          "Dimension": "SubCategory",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "FFF",
+            "SLA",
+            "BJ",
+            "LM",
+            "Files repository",
+            "Collaborative Design",
+            "Data analytics",
+            "DIY electronics",
+            "Funding",
+            "Sales",
+            "Source Code Management",
+            "Team Collaboration",
+            "Concrete 3D printing",
+            "3D printing material",
+            "Drag and drop production",
+            "Content communities",
+            "Connecting",
+            "Co Design",
+            "Community Tools",
+            "Programming",
+            "Social networking sites",
+            "Long Range",
+            "Cloud Computing",
+            "Online Collaborative Design Platform",
+            "Input",
+            "Short Range"
+          ]
+        },
+        {
+          "Dimension": "Domain",
+          "Value": "",
+          "Enabled": false,
+          "Options": [
+            "Manufacturing",
+            "Community",
+            "IT"
+          ]
+        }
+      ],
+      "Visualisation": [
+        {
+          "Visual": "Horizontal",
+          "Dimension": "Adoption",
+          "Enabled": false,
+          "Reverse": true
+        },
+        {
+          "Visual": "Radial",
+          "Dimension": "Category",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Color",
+          "Dimension": "Perez Technological Revolution",
+          "Enabled": false,
+          "Reverse": false
+        },
+        {
+          "Visual": "Size",
+          "Dimension": "TRL",
+          "Enabled": false,
+          "Reverse": true
+        }
+      ]
+    }
+  ],
+  "years": [
+    2016,
+    2020
+  ],
+  "examples": [],
+  "technologies": [
+    {
+      "id": 1,
+      "Technology": "Product-aging simulation",
+      "Description": "",
+      "Category": "3D printing",
+      "SubCategory": "FFF",
+      "Examples": "",
+      "Wikipedia": "https://en.wikipedia.org/wiki/Fused_deposition_modeling",
+      "Exclude": "",
+      "Platforms": [],
+      "WikiResult": {}
+    },
+    {
+      "id": 2,
+      "Technology": "Design for X PLM",
+      "Description": "Assembled and ready to print ( some are locked to few materials from the machine supplier).",
+      "Category": "3D printing",
+      "SubCategory": "FFF",
+      "Examples": "BigRep - One [https://bigrep.com/bigrep-one/], Stratasys - Fortus [http://www.stratasys.com], Dimension [http://www.stratasys.com], uPrint and Mojo [http://www.stratasys.com/3d-printers/technologies/fdm-technology]",
+      "Wikipedia": "https://en.wikipedia.org/wiki/Fused_deposition_modeling",
+      "Exclude": "",
+      "Platforms": [
+        "4",
+        "6",
+        "7",
+        "0",
+        "325",
+        "326"
+      ],
+      "WikiResult": {
+      }
+    },
+    {
+      "id": 3,
+      "Technology": "Well-aging materials",
+      "Description": "Assembled and ready to print ( some are locked to few materials from the machine supplier).",
+      "Category": "3D printing",
+      "SubCategory": "FFF",
+      "Examples": "BigRep - One [https://bigrep.com/bigrep-one/], Stratasys - Fortus [http://www.stratasys.com], Dimension [http://www.stratasys.com], uPrint and Mojo [http://www.stratasys.com/3d-printers/technologies/fdm-technology]",
+      "Wikipedia": "https://en.wikipedia.org/wiki/Fused_deposition_modeling",
+      "Exclude": "",
+      "Platforms": [
+      ],
+      "WikiResult": {
+      }
+    }
+  ],
+  "categories": [
+    {
+      "Category": "3D printing",
+      "Domain": "Manufacturing",
+      "Description": "An additive manufacturing method for fabricating tangiable products in 3 dimensions in various materials. If not stated otherwise, the part is build up layer by layer for each technology.",
+      "Wikipedia": "https://en.wikipedia.org/wiki/3D_printing",
+      "Hide": "",
+      "WikiResult": {
+        "ref": [],
+        "summary": "3D printing, also known as additive manufacturing (AM), refers to various processes used to synthesize a three-dimensional object. In 3D printing, successive layers of material are formed under computer control to create an object. These objects can be of almost any shape or geometry and are produced from a 3D model or other electronic data source. A 3D printer is a type of industrial robot.",
+        "abstract": "3D printing, also known as additive manufacturing (AM), refers to various processes used to synthesize a three-dimensional object. In 3D printing, successive layers of material are formed under computer control to create an object. These objects can be of almost any shape or geometry and are produced from a 3D model or other electronic data source. A 3D printer is a type of industrial robot. Futurologists such as Jeremy Rifkin believe that 3D printing signals the beginning of a third industrial revolution, succeeding the production line assembly that dominated manufacturing starting in the late 19th century. Using the power of the Internet, it may eventually be possible to send a blueprint of any product to any place in the world to be replicated by a 3D printer with \"elemental inks\" capable of being combined into any material substance of any desired form. 3D printing in the term's original sense refers to processes that sequentially deposit material onto a powder bed with inkjet printer heads. More recently, the meaning of the term has expanded to encompass a wider variety of techniques such as extrusion and sintering-based processes. Technical standards generally use the term additive manufacturing for this broader sense.",
+        "title": "3D printing",
+        "source": "http://en.wikipedia.org/wiki/3D_printing"
+      }
+    },
+    {
+      "Category": "Modelling",
+      "Domain": "Manufacturing",
+      "Description": "Using hardware is one of numorous ways to make a digital file in 2 or 3D. These applikations is controlled manually but the digital files size, shape and color are generated automaticlly by the device.\n( to be moved: e.g. 3D scanners,  HP Sprout, coordinate measuring machine (cmm))",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Sharing",
+      "Domain": "Community",
+      "Description": "Files, knowledge sharing",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Internet of things",
+      "Domain": "IT",
+      "Description": "Network of physical objects—devices, vehicles, buildings and other items—embedded with electronics, software, sensors, and network connectivity that enables these objects to collect and exchange data.",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Electronics",
+      "Domain": "IT",
+      "Description": "Technologies enabling building electronics devices (sensors, microcontrolers, actuators...)",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Learning",
+      "Domain": "Community",
+      "Description": "When having a specific issue to solve, one can look it up in the numerous of websites with guidance to make with detailed instructions or participate in an actual maker education",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Software Development",
+      "Domain": "IT",
+      "Description": "Software development covers programming as either textually or visually, Cloud computing and documentation and artificial intelligence. Coding can take place in the cloud when working on open or closed source projects. The communication is often through platforms intended for this purpose.",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Communication",
+      "Domain": "Community",
+      "Description": "Platform for communication varies a lot depended on the intended use. Social network defers somewhat from one-way communication as news blogs, video and podcast broadcasting. Some examples is also closely related to collaboration tools.",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Collaboration",
+      "Domain": "Community",
+      "Description": "Technologies for collaboration includes specialized platforms for joint development of e.g. text documents, 3D models, electronics or software. It also includes tools for communicating within the team for meeting, development and decision-making.",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Commercialization",
+      "Domain": "Community",
+      "Description": "Commercialization of a product can be a big hurdle for most makers. With online marketplaces for selling finished goods and platforms for crowdfunding for products under developments, it is much easier for makers and entrepreneurs, to reach the market and get feedback from the end-users of the products.",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Interaction",
+      "Domain": "Community",
+      "Description": "Virtual Reality and Augmented Reality is new technology under rapid development and with new interesting application appearing all the time. New technology like this could change the way we engage and communicate, and properly enhance the efficiency of online collaboration.",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Organisation",
+      "Domain": "Community",
+      "Description": "There are several online management platforms to use for structuring work in relation to e.g. project and event management. In addition, examples of smart contracts can be found here. All technologies to facilitate collaboration in the community.",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Telecommunication",
+      "Domain": "IT",
+      "Description": "Telecommunication technologies is evolving, expanding the possibilities for wirelesss control of industrial or home application or creating new possibilities for data exchange in the world of IoT.",
+      "Wikipedia": "",
+      "Hide": ""
+    },
+    {
+      "Category": "Robotics",
+      "Domain": "Manufacturing",
+      "Description": "Robotics comes in many sizes and shapes with various purposes. The most advanced is developed within and for the enterprise market, but the makers are close behind with DIY and robotic arm for manufacturing and assembling.",
+      "Wikipedia": "",
+      "Hide": ""
+    }
+  ],
+  "subcategories": [
+    {
+      "SubCategory": "FFF",
+      "Category": "3D printing",
+      "Description": "Fused Filament Fabrication (FFF) \n - Commonly known as FDM, which is actually a Stratasys' trademark.\nThe material in shape of a strand, called filament, is extruded by a heated head typically controlled in y and x direction. This is by far the most well-known 3D-print technology. Surface finish, strength, precision etc. vary a depending on the machine quality and the users ability to adjust and replace components.\nSynonyms: Fused Deposition Modeling (FDM), Plastic Jet Printing (PJP)"
+    },
+    {
+      "SubCategory": "BJ",
+      "Category": "3D printing",
+      "Description": "Binder Jetting (BJ) \nPowder material (gypsum or plastic) is clued together with a binder extruded through print heads. These printers are often able to print in colours and the mechanism is very simple so they can be opened to any material. Parts are often fragile but can be strengthened with epoxy or similar."
+    },
+    {
+      "SubCategory": "SLS",
+      "Category": "3D printing",
+      "Description": "Selective Laser Sintering (SLS)\nPlastic powder is melted together by a CO2 laser. Mirrors control the laser spot in Y and X direction. By scanning the powder surface several times a solid durable part is build up layer by layer. SLS is the only (or one of few) 3D print technologies that have absolutely no need for support structure while building durable parts. This allow the user to manufacture with completely free geometry."
+    },
+    {
+      "SubCategory": "SLA",
+      "Category": "3D printing",
+      "Description": "Stereolithography (SLA)\nThe part is built on a platform submerged in liquid photopolymer resin. The resin is exposed to a UV-laser where parts are build. SLA is known for its high level of detail, precision and smooth surface.\nSynonyms: CLIP, SGC, "
+    },
+    {
+      "SubCategory": "LOM",
+      "Category": "3D printing",
+      "Description": "Laminated Object Manufacturing (LOM)\nLayers of paper, plastic or metal foil is glued together and cut by a knife or laser. This technology is not widely used though it is quite simple, mainly due to limited geometrical freedom - compared to other types of 3D printers.\nSynonyms: Selective Deposition Laminiation (SDL)"
+    },
+    {
+      "SubCategory": "LM",
+      "Category": "3D printing",
+      "Description": "Laser Melting (LM)\nA fiber laser beam is controlled in Y and X direction by mirrors (scanning). This generates a melt pool (typically of 200 µm), which micro welds fine metal powder fully together, achieving mechanical properties comparable with traditional machined parts.\nSynonyms: Selective Laser Melting (SLM), Direct Metal Laser Sintering (DMLS), Laser Cusing"
+    },
+    {
+      "SubCategory": "Cladding",
+      "Category": "3D printing",
+      "Description": "Cladding\nCladding is combining the basics of FDM in term of a moving print head with LM in term of strength. The print head is usually moved in multiple dimensions e.g. combined with a 5-axis cnc or on a robot arm. The 5 axis CNC platform allow alternately machining and fabrication and the robot arm allow manufacturing of extraordinary large parts. Both techniques enables deposition in all direction and is not restricted to solely Z-direction. The printhead deposits melted material on a solidified surface. The feedstock can be either metal wire or powder, which is melted by an electronic beam or a laser.\nSynonyms: Laser Cladding, Directed Energy Deposition (DED), Laser Metal Deposition, Laser Engineered Net Shaping (LENS)"
+    },
+    {
+      "SubCategory": "Photopolymer Jetting",
+      "Category": "3D printing",
+      "Description": "Photopolymer Jetting (PJ)\n"
+    },
+    {
+      "SubCategory": "Material Jetting",
+      "Category": "3D printing",
+      "Description": "Material Jetting (MJ)\nFor this technology, all material is extruded from a printhead, in contrast to BJ, but stil similar with a injektion print head."
+    }
+  ],
+  "domains": [
+    {
+      "Title": "Manufacturing"
+    },
+    {
+      "Title": "Community"
+    },
+    {
+      "Title": "IT"
+    }
+  ],
+  "trends": [
+    {
+      "Name": "Desktop manufacturing",
+      "Description": "# Desktop Manufacturing\r\nDesktop Manufacturing relates to machines usually associated with size ranging from a normal inkjet 2D-printer to maximum 1x1x1 meter and with a price range from 0–5000 €. However, sometimes the production depends on further processes in additional machines, which in total does not fit the desktop anymore. This size of machines is available for most digital tools for manufacturing like 3D printing, Laser cutting and CNC routing. \r\n\r\nFor some makers and enterprises the ideal machine is reliable and cannot be fiddled with, a so-called out-of-the-box machine (3D printers like UP3D UP Plus 2 and CraftUnique CraftBot – see picture below) and for others, it needs to be completely open and adjustable in any way – even by building it themselves like the RepRap. This printer is a low \r\n\r\nbudget project for the real hardware-software enthusiast. The idea is to make a machine that can reproduce itself. All brackets and joints have been printed with another 3D-printer. It comes in many shapes and sizes. \r\n\r\n<img src=\"../img/details/desktop1.jpg\" style=\"width:80%\" />\r\n\r\n<img src=\"../img/details/desktop2.jpg\" />\r\n\r\n## Gap is closing in the years to come \r\nThe gap between more expensive machines for manufacturing and cheaper desktop models is closing. Part quality regarding surface finish, mechanical properties, resolution and reliability of the printer is equal to many of the bigger and professional machines within many technologies like laser cutters and 3D printers like FDM and SLA technologies. “In the next year or so, competition between desktop 3D printers and industrial systems will increase as the capabilities of the desktop systems continue to grow”5 E.g. we already see printers in this market with features to recognise the material and adjust the print settings automatically. \r\n\r\nThe key enabler for making these machines attractive for makers and small enterprises is the low price range compared to larger and more professional systems. Even though the technology is not on the same level, in many cases it does not justify the 90 times higher price on professional systems.6  \r\n\r\nAnother advantage making these machines attractive for enterprises is the wide range of materials available on the market. With the number of machines manufacturers exploding the recent years, so is material manufacturers. For the “open” desktop 3D printers, material is actually available that is not yet available for the “closed” professional machines, e.g. soft TPU, metal filled, metal clay, conductive and biodegradable filament. In Wholers report Joris Peels estimate that filament developers and manufacturers could drive the desktop market growth, as they develop material the industrial end users needs. \r\n\r\n## Known technology will be cheap and at desktop size \r\nStratasys’ patent on FDM printing opened in 2009 and since then the market have flooded with FDM-printers. Just recently, the patents on Laser sintering (SLS) and Stereolithography (SLA) opened, so these technologies will soon be available on “low budget”. \r\n\r\nThis SLS technology is widely used in the enterprise market (print services). These is due to good mechanical properties of the parts. The downside is poor surface roughness due to powder materials. The powder material causes an issue with material handling, when it comes to makers and consumers, as it needs to be handled with personal protection equipment. These machines are already available in desktop size but the price is not below 5000 Euro yet, though this is expected to happen within five years or so. \r\n\r\nPlastic printers will be more reliable, have slightly better detail and finish, but will also print in several materials in one printer. The materials will be more advances, making it possible to print electrical circuits and combine the materials e.g. rubber-like and rigid plastic. Few machines already have the ability to print a continuous fibre reinforcement into the print, increasing the strength and stiffness several times, addressing the issue with poor mechanical properties in FDM parts. This is likely to pick up, when consumers adapt to the technology and find more \r\n\r\napplications to this. When more technologies have accessed the consumer market, new exciting materials will follow e.g. Metals and ceramics in liquid SLA material.7 \r\n\r\nIn approximately five years, ongoing projects about extruding metals with a desktop printer will be finished. June 2016 a metal printer (aluminium) with droplets had its debut. In the beginning, this will only be available for the enterprise. Other projects related to this, e.g. using electroplating techniques for printing will also be close to market techniques for printing will also be close to market. \r\n\r\n## Machines are getting smaller and smarter \r\nBetter, cheaper and more reliable machines will make digital manufacturing more popular in general in all markets; maker, consumer and enterprise. This will accelerate product development8 and lead to greater mass customisation and distributed manufacturing \r\n\r\nThis could eventually lead to more home manufacturing and thus to more “makers”. Later on, these makers will be “ordinary” end users - without the thinking of maker movement but home manufacturing could be as natural as shopping (you shop online and print it yourself). \r\n\r\nTechnologies for 3D-printing which will access the market for makers in few years, like SLA and Poly-jetting (both light polymerization) is now suitable for enterprises. In order to prepare it for hobbyist, issues about material handling must be taken care of. Very fine powder from the SLS and the toxic epoxy liquid from SLA can cause health damage if it is not suitable handled. \r\n\r\n<img src=\"../img/details/desktop2.jpg\" />\r\n\r\n## From a makers perspective\r\nThe increase in numbers of cheap FDM printers, laser cutters and even CNC routers on the market have facilitated huge growth in the maker movement. More technologies that are available, opening up to an even wider range of materials (different surface finishes and mechanical properties) and new design freedom will lead to continues exponential growth9 in the maker movement. \r\n\r\nWhen all these machines becomes better and smarter and one does not need to be a real “tinkerer” or even have technical insight. \r\n\r\n## From a consumer perspective\r\nFor every day consumers the machine will only be useful when it is completely reliable and only the material needs to be refilled. By now, it is completely applicable in homes for making small gadgets with very easy to use machines. When it comes to ease of use machines, the collaboration between Microsoft and MakerBot10 serves a good example on how machines for home manufacturing will soon be “plug and print”, as we are all used to when printing out a document.  \r\n\r\nOne way, this user group is already in contact with the new technology, is through educational systems. One of the largest markets for desktop machines is believed to be in educational institutions.11 3D-printing and other digital tools for manufacturing is already a permanent piece of equipment in the workshop at some public schools and most \r\n\r\nschools for higher education. Here it facilitates better understanding and acquire skills when teaching STEM12 13 (Science, technology, engineering and mathematics). \r\n\r\nEventually this will also lead to more advanced parts in every home. \r\n\r\n## From an enterprise perspective \r\nThis will accelerate with designers increased awareness of the new possibilities with digital tooling – facilitated by. \r\n\r\nEven though it is believed that hundreds of companies produce desktop 3d-printers in this low price range, the majority ends up in enterprises, perhaps as many as 65-75%. Engineering departments and designers have been the largest users.14 Like stated before, this will speed up the pace which products are being developed when small manufacturing machines is wide spread in all engineering departments 15 and make products better and smart with the bigger freedom of design that comes with digital tools for manufacturing. Even though the small desktop machines technology wise will still lag behind larger professional machines at the current time, this trend will by time facilitate, that designers and engineers, will design each product smarter (e.g. more efficient or have tweaked mechanical properties like damping) and consist of fewer parts. E.g. vital and compact parts in high performance applications like turbine engines.16 ",
+      "Preset": "Technology Adoption",
+      "Preset2": "Industry Technology Adoption",
+      "(old) Person": "Troels",
+      "Person responsible ": "Troels",
+      "Review": "CIR?",
+      "Scenario1": "",
+      "Scenario2": "",
+      "References": "",
+      "ImageUrl": "3d-printer.jpg",
+      "Order": 1,
+      "Status": "",
+      "in draft 4.1": "",
+      "deskman": "Completed",
+      "id": "deskman",
+      "Technologies": []
+    }
+  ],
+  "radarinput": [
+    {
+      "Technology": "Product-aging simulation",
+      "Users": "Makers",
+      "Description": "Assembled and ready to print ( some are locked to few materials from the machine supplier).",
+      "Scores": [
+        {
+          "Title": "TRL",
+          "Year": 2016,
+          "Value": "1 - Basic research"
+        },
+        {
+          "Title": "Flexibility",
+          "Year": 2016,
+          "Value": "No"
+        },
+        {
+          "Title": "Business Model Impact",
+          "Year": 2016,
+          "Value": "Limited"
+        },
+        {
+          "Title": "Sustainability",
+          "Year": 2016,
+          "Value": "Definitely"
+        },
+        {
+          "Title": "Regional Impact",
+          "Year": 2016,
+          "Value": "Limited"
+        },
+        {
+          "Title": "Industrial Applicability",
+          "Year": 2016,
+          "Value": "Undesirable"
+        }
+      ],
+      "Remarks": "",
+      "Examples": "Makerbot - Replicator 5th Gen [http://store.makerbot.com/replicator], UP Plus [https://www.up3d.com/], Metal [https://www.indiegogo.com/projects/produce-the-mini-metal-maker#/],BigRep - One [https://bigrep.com/bigrep-one/], Stratasys - Fortus [http://www.stratasys.com], Dimension [http://www.stratasys.com], uPrint and Mojo [http://www.stratasys.com/3d-printers/technologies/fdm-technology]",
+      "Trend": ""
+    },
+    {
+      "Technology": "Design for X PLM",
+      "Users": "Makers",
+      "Description": "Assembled and ready to print ( some are locked to few materials from the machine supplier).",
+      "Scores": [
+        {
+          "Title": "TRL",
+          "Year": 2016,
+          "Value": "3 - Market Ready"
+        },
+        {
+          "Title": "Flexibility",
+          "Year": 2016,
+          "Value": "Limited"
+        },
+        {
+          "Title": "Business Model Impact",
+          "Year": 2016,
+          "Value": "Limited"
+        },
+        {
+          "Title": "Sustainability",
+          "Year": 2016,
+          "Value": "Maybe"
+        },
+        {
+          "Title": "Regional Impact",
+          "Year": 2016,
+          "Value": "Definitely"
+        },
+        {
+          "Title": "Industrial Applicability",
+          "Year": 2016,
+          "Value": "Limited"
+        }
+      ],
+      "Remarks": "",
+      "Examples": "Makerbot - Replicator 5th Gen [http://store.makerbot.com/replicator], UP Plus [https://www.up3d.com/], Metal [https://www.indiegogo.com/projects/produce-the-mini-metal-maker#/],BigRep - One [https://bigrep.com/bigrep-one/], Stratasys - Fortus [http://www.stratasys.com], Dimension [http://www.stratasys.com], uPrint and Mojo [http://www.stratasys.com/3d-printers/technologies/fdm-technology]",
+      "Trend": ""
+    },
+    {
+      "Technology": "Well-aging materials",
+      "Users": "Makers",
+      "Description": "Assembled and ready to print ( some are locked to few materials from the machine supplier).",
+      "Scores": [
+        {
+          "Title": "TRL",
+          "Year": 2016,
+          "Value": "3 - Market Ready"
+        },
+        {
+          "Title": "Flexibility",
+          "Year": 2016,
+          "Value": "Definitely"
+        },
+        {
+          "Title": "Business Model Impact",
+          "Year": 2016,
+          "Value": "Limited"
+        },
+        {
+          "Title": "Sustainability",
+          "Year": 2016,
+          "Value": "Limited"
+        },
+        {
+          "Title": "Regional Impact",
+          "Year": 2016,
+          "Value": "Limited"
+        },
+        {
+          "Title": "Industrial Applicability",
+          "Year": 2016,
+          "Value": "Definitely"
+        }
+      ],
+      "Remarks": "",
+      "Examples": "Makerbot - Replicator 5th Gen [http://store.makerbot.com/replicator], UP Plus [https://www.up3d.com/], Metal [https://www.indiegogo.com/projects/produce-the-mini-metal-maker#/],BigRep - One [https://bigrep.com/bigrep-one/], Stratasys - Fortus [http://www.stratasys.com], Dimension [http://www.stratasys.com], uPrint and Mojo [http://www.stratasys.com/3d-printers/technologies/fdm-technology]",
+      "Trend": ""
+    }
+  ]
+}

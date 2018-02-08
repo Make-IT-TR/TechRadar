@@ -13,6 +13,7 @@ const feathers = require("feathers");
 const configuration = require('feathers-configuration');
 const hooks = require('feathers-hooks');
 const rest = require('feathers-rest');
+const swagger = require('feathers-swagger');
 // const socketio = require('feathers-socketio');
 const handler = require('feathers-errors/handler');
 const notFound = require('feathers-errors/not-found');
@@ -41,6 +42,14 @@ app.use('/', feathers.static(app.get('public')));
 // Set up Plugins and providers
 app.configure(hooks());
 app.configure(rest());
+app.configure(swagger({
+    docsPath: '/docs',
+    uiIndex: true,
+    info: {
+        title: 'A test',
+        description: 'A description'
+    }
+}));
 // app.configure(socketio());
 app.use('/categories', memory());
 app.use('/subcategories', memory());
@@ -103,10 +112,10 @@ function loadProjects(app) {
                 // console.log(pl);
             });
             app.service('examples').on('update', pl => {
-                // console.log(JSON.stringify(pl));
+                console.log(JSON.stringify(pl));
             });
             app.service('technologies').on('update', pl => {
-                // console.log(JSON.stringify(pl));
+                console.log(JSON.stringify(pl));
             });
             project.trends.forEach(trend => {
                 // trend.id = trend.Name;

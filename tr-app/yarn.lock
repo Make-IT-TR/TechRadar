@@ -2850,9 +2850,9 @@ feathers-authentication-client@^0.3.1, feathers-authentication-client@^0.3.3:
     feathers-errors "^2.4.0"
     jwt-decode "^2.1.0"
 
-feathers-authentication-oauth2@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/feathers-authentication-oauth2/-/feathers-authentication-oauth2-0.3.1.tgz#01b2b204e1427185dc71b2eb695d3007e98d4c58"
+feathers-authentication-oauth2@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/feathers-authentication-oauth2/-/feathers-authentication-oauth2-0.3.2.tgz#32580433b915a8709622f357fefa736316adf95b"
   dependencies:
     debug "^3.0.0"
     feathers-commons "^0.8.5"

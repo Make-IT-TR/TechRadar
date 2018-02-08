@@ -22,15 +22,21 @@
       <div class="row">
         <!-- Trend description -->
         <div class="col-lg-8">
-            <radar view="trend" if.one-time="!mobile" trend="${trend.id}"></radar>
+          <radar view="trend" if.bind="trend.show_radar && !mobile" trend="${trend.id}"></radar>
+          <!-- if.one-time="!mobile"  -->
           <!-- <div class="trend-title-image" style="background-repeat: no-repeat; background-position: 100%;background-size: cover;background-image: url('img/trends/${trend.ImageUrl}'); "></div> -->
           <div markdown.bind="trend.Description"></div>
         </div>
         <!-- Legend and related topics -->
         <div class="col-lg-3">
+          <div class="toggleRadar" click.delegate="trend.show_radar = !trend.show_radar">
+            <span if.bind="trend.show_radar">Hide </span>
+            <span if.bind="!trend.show_radar">Show </span>radar
+          </div>
+          <div if.bind="trend.show_radar && !mobile">
             <h3>Visualisation</h3>
             <div class="rounded-separator-h3-bottom"></div>
-  
+
             <!-- Second -->
             <div repeat.for="f of appState.activeConfig.Visualisation" class="input-group">
               <h5>${f.Visual}</h5>
@@ -44,11 +50,12 @@
                 <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
               </label>
             </div>
-          <div class="related">
-            <!-- <div class="rounded-separator-h3-top"></div> -->
-            <h3>Legend</h3>
-            <div class="rounded-separator-h3-bottom"></div>
-            <legendsidebar></legendsidebar>
+            <div class="related">
+              <!-- <div class="rounded-separator-h3-top"></div> -->
+              <h3>Legend</h3>
+              <div class="rounded-separator-h3-bottom"></div>
+              <legendsidebar></legendsidebar>
+            </div>
           </div>
           <div class="related">
             <!-- <div class="rounded-separator-h3-top"></div> -->
@@ -57,7 +64,7 @@
             <div class="related">
               <h2>
                 <span repeat.for="tt of trend._Technologies">
-                  <label class="label label-default label-button" click.trigger="selectTechnology(tt)">
+                  <label class="label label-default label-button" style="cursor:pointer" click.trigger="selectTechnology(tt)">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                     ${tt.Technology}</label>
                   <span click.trigger="removeTrendTechnology(tt)" if.bind="appState.adminMode" class="fa fa-remove platform-technology"></span>
@@ -74,12 +81,12 @@
           </div>
           <div class="">
             <!-- <div class="rounded-separator-h3-top"></div> -->
-            <h3>Related Platforms</h3>
+            <h3>Example Platforms</h3>
             <div class="rounded-separator-h3-bottom"></div>
             <div class="related">
               <h2>
                 <span repeat.for="p of platforms">
-                  <label class="label label-default label-button" click.trigger="appState.selectPlatform(p)">
+                  <label class="label label-default label-button" style="cursor:pointer" click.trigger="selectPlatform(p)">
                     <i class="fa fa-th-large" aria-hidden="true"></i>
                     ${p.Name}</label>
                 </span>

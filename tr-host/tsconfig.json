@@ -4,6 +4,8 @@
       "target": "es2016",
       "noImplicitAny": false,
       "sourceMap": true,
+      "outDir": "./dist/",
+      "sourceRoot": "./src/",
       "allowJs": true
   }
 }

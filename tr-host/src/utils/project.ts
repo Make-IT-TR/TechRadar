@@ -91,8 +91,8 @@ function convert(sheet: classes.SpreadsheetService, project: string) {
 }
 
 
-export function loadProject(project, callback: Function) {
-    const file = process.env.FOLDER + '/projects/' + project + '/new.json';
+export function loadProject(projectid, callback: Function) {
+    const file = process.env.FOLDER + '/projects/' + projectid + '/new.json';
     fs.readFile(file, (err, data) => {
         if (err) {
             console.log('Error writing sheet file at ' + process.env.SHEET_FILE + ' (' + err + ')');

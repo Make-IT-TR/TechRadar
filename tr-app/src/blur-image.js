@@ -24,12 +24,12 @@ var BlurImageCustomAttribute = (function () {
             newImage.onload = function () { return drawBlur(_this.element, newImage); };
         }
     };
+    BlurImageCustomAttribute = __decorate([
+        __param(0, inject(Element)),
+        __metadata("design:paramtypes", [Element])
+    ], BlurImageCustomAttribute);
     return BlurImageCustomAttribute;
 }());
-BlurImageCustomAttribute = __decorate([
-    __param(0, inject(Element)),
-    __metadata("design:paramtypes", [Element])
-], BlurImageCustomAttribute);
 export { BlurImageCustomAttribute };
 /* eslint-disable */
 /*
@@ -316,3 +316,4 @@ function drawBlur(canvas, image) {
     stackBlurCanvasRGBA(canvas, 0, 0, w, h, BLUR_RADIUS);
 }
 ;
+//# sourceMappingURL=blur-image.js.map

@@ -21,6 +21,6 @@ WORKDIR /tr-host
 RUN yarn
 
 # Run
-EXPOSE 8010
+EXPOSE 80
 ENV NODE_ENV=production
 CMD ["supervisor", "-w", "../../tr-host/src","../../tr-host/src/index"]

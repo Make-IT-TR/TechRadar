@@ -1404,7 +1404,7 @@
         "Description": "The market places can sell both the 3D files and the printed parts but also connect customers with 3D printing companies.",
         "Category": "Commercialization",
         "SubCategory": "",
-        "Examples": "[www.3Dhubs.com] , [https://www.redpah.com/] , [https://www.rinkak.com/] , [https://www.3dpartsource.com/] , [https://www.threeding.com/]",
+        "Examples": "[www.3Dhubs.com] , [https://www.redpah.com/] , [https://www.rinkak.com/] ,   [https://www.threeding.com/]",
         "Exclude": "",
         "_Category": "~sheets~Examples~0~_Technologies~0~_TrendTechnologies~0~_Trend~_TrendTechnologies~2~_Technology~_Category",
         "_RadarInput": [],
@@ -1722,7 +1722,7 @@
     }, {
       "Name": "snapchat",
       "Description": "",
-      "Url": "http://www.snapchat.com",
+      "Url": "http://www.snapchat.com/l/nl-nl/",
       "Featured": 1,
       "Icon": "",
       "_Technologies": ["~sheets~Examples~117~_Technologies~0"],
@@ -2020,9 +2020,9 @@
       }],
       "Webshot": "img/webshots/ws-1317974481.jpg"
     }, {
-      "Name": "sense.io",
+      "Name": "www.cloudera.com/products/data-science-and-engineering/data-science-workbench.html",
       "Description": "",
-      "Url": "http://sense.io",
+      "Url": "http://www.cloudera.com/products/data-science-and-engineering/data-science-workbench.html",
       "Featured": 0,
       "Icon": "",
       "_Technologies": [{
@@ -2031,7 +2031,7 @@
         "Description": "Platforms for data analysis for research purposes.",
         "Category": "Internet of things",
         "SubCategory": "Data analytics",
-        "Examples": "sense.io, ",
+        "Examples": "www.cloudera.com/products/data-science-and-engineering/data-science-workbench.html, ",
         "Exclude": "",
         "_Category": "~sheets~Examples~41~_Technologies~1~_Category",
         "_RadarInput": [],
@@ -6729,7 +6729,7 @@
         "Value": "CAPS"
       }],
       "Remarks": "",
-      "Examples": ",[www.3Dhubs.com] , [https://www.redpah.com/] , [https://www.rinkak.com/] , [https://www.3dpartsource.com/] , [https://www.threeding.com/]",
+      "Examples": ",[www.3Dhubs.com] , [https://www.redpah.com/] , [https://www.rinkak.com/] ,   [https://www.threeding.com/]",
       "Trend": "",
       "_Examples": ["~sheets~Examples~166", "~sheets~Examples~92", "~sheets~Examples~93", "~sheets~Examples~94", "~sheets~Examples~95", "~sheets~Examples~96"],
       "_Technology": "~sheets~Examples~92~_Technologies~0"
@@ -6777,7 +6777,7 @@
         "Value": "CAPS"
       }],
       "Remarks": "",
-      "Examples": ",[www.3Dhubs.com] , [https://www.redpah.com/] , [https://www.rinkak.com/] , [https://www.3dpartsource.com/] , [https://www.threeding.com/]",
+      "Examples": ",[www.3Dhubs.com] , [https://www.redpah.com/] , [https://www.rinkak.com/] ,   [https://www.threeding.com/]",
       "Trend": "",
       "_Examples": ["~sheets~Examples~166", "~sheets~Examples~92", "~sheets~Examples~93", "~sheets~Examples~94", "~sheets~Examples~95", "~sheets~Examples~96"],
       "_Technology": "~sheets~Examples~92~_Technologies~0"
@@ -6825,7 +6825,7 @@
         "Value": "CAPS"
       }],
       "Remarks": "",
-      "Examples": ",[www.3Dhubs.com] , [https://www.redpah.com/] , [https://www.rinkak.com/] , [https://www.3dpartsource.com/] , [https://www.threeding.com/]",
+      "Examples": ",[www.3Dhubs.com] , [https://www.redpah.com/] , [https://www.rinkak.com/] ,   [https://www.threeding.com/]",
       "Trend": "",
       "_Examples": ["~sheets~Examples~166", "~sheets~Examples~92", "~sheets~Examples~93", "~sheets~Examples~94", "~sheets~Examples~95", "~sheets~Examples~96"],
       "_Technology": "~sheets~Examples~92~_Technologies~0"
@@ -10473,7 +10473,7 @@
         "Value": "IT"
       }],
       "Remarks": "",
-      "Examples": ",sense.io, ",
+      "Examples": ",www.cloudera.com/products/data-science-and-engineering/data-science-workbench.html, ",
       "Trend": "",
       "_Examples": ["~sheets~Examples~166", "~sheets~Examples~146", "~sheets~Examples~166"],
       "_Technology": "~sheets~Examples~146~_Technologies~0"
@@ -10521,7 +10521,7 @@
         "Value": "IT"
       }],
       "Remarks": "",
-      "Examples": ",sense.io, ",
+      "Examples": ",www.cloudera.com/products/data-science-and-engineering/data-science-workbench.html, ",
       "Trend": "",
       "_Examples": ["~sheets~Examples~166", "~sheets~Examples~146", "~sheets~Examples~166"],
       "_Technology": "~sheets~Examples~146~_Technologies~0"
@@ -10569,7 +10569,7 @@
         "Value": "IT"
       }],
       "Remarks": "",
-      "Examples": ",sense.io, ",
+      "Examples": ",www.cloudera.com/products/data-science-and-engineering/data-science-workbench.html, ",
       "Trend": "",
       "_Examples": ["~sheets~Examples~166", "~sheets~Examples~146", "~sheets~Examples~166"],
       "_Technology": "~sheets~Examples~146~_Technologies~0"

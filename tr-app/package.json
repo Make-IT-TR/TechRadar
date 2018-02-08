@@ -95,7 +95,7 @@
     "cookieconsent": "^3.0.4",
     "d3": "3.5.17",
     "feathers-authentication-client": "^0.3.3",
-    "feathers-authentication-oauth2": "^0.3.1",
+    "feathers-authentication-oauth2": "^0.3.2",
     "feathers-authentication-popups": "^0.1.2",
     "feathers-client": "^2.4.0",
     "feathers-hooks": "^2.1.0",
@@ -105,7 +105,7 @@
     "katex": "^0.7.1",
     "localstorage-memory": "^1.0.2",
     "lodash": "^4.17.4",
-    "marked": "^0.3.6",
+    "marked": "^0.3.12",
     "passport": "^0.4.0",
     "passport-google-oauth2": "^0.1.6",
     "socket.io-client": "^2.0.3"

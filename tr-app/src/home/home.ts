@@ -88,7 +88,6 @@ export class SuggestionService {
         .forEach(e => result.push(new SuggestionResult(e.Name, 'example', (sr: SuggestionResult) => {
           this.appState.searchFilter = e.Name;
           this.router.navigateToRoute('Platforms', { category: 'all', technology: 'all'}, { search: e.Name});          
-          
         })));
 
       this.project.technologies

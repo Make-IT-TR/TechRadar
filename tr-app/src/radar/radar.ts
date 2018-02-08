@@ -298,6 +298,9 @@ export class Radar {
 
       var its = [];
 
+      console.log('colors');
+      console.log(this.appState.activeConfig.colorDimension);
+
       this.appState.project.radarinput.forEach(i => {
         let techs = [];
         if (this.view === 'all' && this.appState.items) {

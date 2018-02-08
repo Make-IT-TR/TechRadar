@@ -33,3 +33,4 @@ describe('aurelia skeleton app', function () {
         expect(po_skeleton.getCurrentPageTitle()).toBe('Github Users | Aurelia');
     });
 });
+//# sourceMappingURL=demo.e2e.js.map

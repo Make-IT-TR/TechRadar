@@ -327,6 +327,7 @@ export class Example {
   Featured: number;
   Description: string;
   Webshot: string;
+  WikiLookup: string;
   Wikipedia: string;
   WikiResult: WikiResult;
   Removed: boolean;

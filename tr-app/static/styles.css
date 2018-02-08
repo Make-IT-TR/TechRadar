@@ -41,6 +41,35 @@ svg
   position:absolute;
 }
 
+.toggleRadar 
+{
+    font-size: 28px;
+    line-height: 35px;
+    padding: 5px;
+
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+
+    color: #fff;
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
+    background: #3e6684;
+}
+
+.toggleRadar:hover
+{
+    -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+
+    color: rgb(62, 102, 133);
+    background: rgba(62, 102, 133, .1);
+    -webkit-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+       -moz-box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+            box-shadow: 0 0 6px 0 rgba(62, 102, 133, .575);
+}
+
 .navbar
 {
     padding: 0;

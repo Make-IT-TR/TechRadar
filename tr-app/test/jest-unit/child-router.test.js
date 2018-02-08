@@ -34,3 +34,4 @@ describe('the Child Router module', function () {
         expect(sut.router.routes).toContainEqual({ route: 'child-router', name: 'child-router', moduleId: './child-router', nav: true, title: 'Child Router' });
     });
 });
+//# sourceMappingURL=child-router.test.js.map

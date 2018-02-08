@@ -64,7 +64,9 @@ export class Trends {
   }
 
   public selectPlatform(platform: Example) {
-
+    // this.router.navigateToRoute('Platforms', { category: e.Category, technology: encodeURIComponent(e.Technology)});   
+    this.appState.searchFilter = platform.Name;       
+    this.router.navigateToRoute('Platforms', { category: 'all', technology: 'all', search: encodeURIComponent(platform.Name)});
   }
 
   activate(parms, routeConfig) {    
@@ -125,7 +127,7 @@ export class Trends {
     this.mobile = $(document).width() < 800;
 
 
-    console.log(this.params);
+    // console.log(this.params);
     this.appState.loadSheets().then(() => {
       this.update();
 
