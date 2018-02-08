@@ -38,7 +38,7 @@ docker build -t makeit/techradar .
 
 run:
 ```
-docker run -p 8080:8080 makeit/techradar
+docker run -d -p 8080:80 makeit/techradar
 ```
 
 The TechRadar will be then accessible at [http://localhost:8080](http://localhost:8080).
