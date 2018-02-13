@@ -13,6 +13,7 @@ const configuration = require('feathers-configuration');
 const hooks = require('feathers-hooks');
 const rest = require('feathers-rest');
 const swagger = require('feathers-swagger');
+const express = require('feathers-express');
 // const socketio = require('feathers-socketio');
 
 const handler = require('feathers-errors/handler');
@@ -47,9 +48,10 @@ app.use(helmet());
 app.use(compress());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
+// app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
 app.use('/', feathers.static(app.get('public')));
+// app.use('/projects', feathers.static(app.get('.//projects')));
 
 // Set up Plugins and providers
 app.configure(hooks());
@@ -233,6 +235,10 @@ function loadProjects(app: feathers.Application) {
       project.radarinput.forEach(ri => {
         // trend['id'] = trend.Name;
         app.service('radarinput').create(ri);
+      });
+
+      updateScreenshots(project, () => {
+        saveProject(project);
       });
 
 

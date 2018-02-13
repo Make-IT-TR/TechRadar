@@ -27,10 +27,10 @@ body
     background: url('../img/background-particles-seamless-white.png') repeat center center fixed !important;
 }
 
-svg
+/* svg
 {
     font-family: 'Fira Sans', sans-serif;
-}
+} */
 
 .btn-login
 {
@@ -319,7 +319,7 @@ svg
     margin-bottom: 10px;
     margin-left: 10px;
 
-    box-shadow: rgba(0, 0, 0, .0980392) 0 2px 5px;
+    /* box-shadow: rgba(0, 0, 0, .0980392) 0 2px 5px; */
 }
 
 .navbar-nav li.loader
@@ -334,15 +334,14 @@ svg
 
 
 /* animate page transitions */
-
+/* 
 section.au-enter-active
 {
     animation: fadeInRight 1s;
 }
 
 div.au-stagger
-{
-    /* 50ms will be applied between each successive enter operation */
+{    
     animation-delay: 50ms;
 }
 
@@ -354,7 +353,7 @@ div.au-stagger
 .card-container.au-enter-active
 {
     animation: fadeIn 2s;
-}
+} */
 
 .wiki-ref
 {
@@ -624,9 +623,9 @@ div.au-stagger
     font-size: 18px;
 
     color: white;
-    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+    /* -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
        -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
-            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175);
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .175); */
 }
 
 .card .header-bg

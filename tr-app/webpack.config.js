@@ -92,13 +92,13 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
     ]
   },
   plugins: [
-    // new BrowserSyncPlugin({
-    //   // browse to http://localhost:3000/ during development,
-    //   // ./public directory is being served
-    //   host: 'localhost',
-    //   port: 3000,
-    //   server: { baseDir: ['dist'] }
-    // }),
+    new BrowserSyncPlugin({
+      // browse to http://localhost:3000/ during development,
+      // ./public directory is being served
+      host: 'localhost',
+      port: 3000,
+      server: { baseDir: ['dist'] }
+    }),
     new AureliaPlugin(),
     new ProvidePlugin({
       'Promise': 'bluebird',

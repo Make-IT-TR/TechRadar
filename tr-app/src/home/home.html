@@ -37,7 +37,7 @@
         <div id="search-form">
           <div class="input-group" style="width:100%">
             <!-- <input type="search" class="form-control main-search" placeholder="search technologies and platforms" value.two-way="searchInput"> -->
-            <autocomplete style="width: 100%;" service.bind="suggestionService.example" value.bind="model.example" placeholder="search technologies and platforms" change.delegate="model.city = null"></autocomplete>
+            <autocomplete style="width: 100%;font-size:20px" service.bind="suggestionService.example" value.bind="model.example" placeholder="search technologies and platforms" change.delegate="model.city = null"></autocomplete>
             <!-- <span class="input-group-addon search-button"> <button type="submit"> <i class="fa fa-search" aria-hidden="true"></i> </button> </span> -->
           </div>
         </div>
@@ -60,7 +60,7 @@
             in technologies used by and affecting the Maker movement.
           </p>
           <img class="img-responsive center-block" src="../../img/home_trends.png"/>
-          <a href="#" go-to-route="route: trends" class="btn btn-default">Explore Trends</a>
+          <a go-to-route="route: trends" class="btn btn-default">Explore Trends</a>
         </div>
       </div>
       <div class="col-xs-12 col-sm-4">

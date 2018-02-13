@@ -16,14 +16,14 @@ module.exports = {
     all: [ ],
     find: [],
     get: [],
-    create: [logger()],
-    update: [logger()],
-    patch: [logger()],
-    remove: [logger()]
+    create: [],
+    update: [],
+    patch: [],
+    remove: []
   },
 
   error: {
-    all: [ logger() ],
+    all: [  ],
     find: [],
     get: [],
     create: [],

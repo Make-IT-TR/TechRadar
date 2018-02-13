@@ -216,7 +216,7 @@ function summary(url, results) {
 function getWiki(wikiUrl: string, project: string, callback: Function) {
   let url = getDBPedia(wikiUrl);
   var id = screenshots.sdbmCode(url);
-  var file = process.env.FOLDER + '/projects/' + project + '/wiki/' + id + ".json";
+  var file = process.env.FOLDER + '/public/projects/' + project + '/wiki/' + id + ".json";
 
   if (!fs.existsSync(file)) {
     var sparqlQuery = 'DESCRIBE <{{url}}>'.replace('{{url}}', url);

@@ -26,7 +26,7 @@
     "github": {
       "clientID": "681c3e6ae2c787f3caad",
       "clientSecret": "b843de202a3d450f817aed27f8df46630f416866",
-      "successRedirect": "http://techradar.make-it.io/"
+      "successRedirect": "http://techradar.make-it.io/#/"
     },
     "cookie": {
       "enabled": true,

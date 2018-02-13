@@ -184,7 +184,7 @@ export class Platforms {
       if (this.searchText && this.searchText.length > 0 && this.match(p) === false) score = 0;
       if (score > 0) temp.push(p);
     })
-    this.availablePlatforms = _.orderBy(temp, 'Featured', 'desc');
+    this.availablePlatforms = temp; //_.orderBy(temp, 'Featured', 'desc');
     this.bus.publish('platformselect', null, null);
 
   }

@@ -54,12 +54,12 @@ export class Trends {
   }
 
   public prevTrend() {
-    this.trend = this.getPrevTrend();
-    history.pushState({}, "new title", "#/trends/" + this.trend.id + "/detail");
+    this.trend = this.getNextTrend();
+    history.pushState({}, "new title", "#/trends/" + this.trend.id + "/detail");    
   }
 
   public nextTrend() {
-    this.trend = this.getNextTrend();
+    this.trend = this.getPrevTrend();
     history.pushState({}, "new title", "#/trends/" + this.trend.id + "/detail");
   }
 

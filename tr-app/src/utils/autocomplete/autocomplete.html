@@ -9,7 +9,7 @@
            id.one-time="'au-autocomplete-' + id"
            placeholder.bind="placeholder"
            value.bind="inputValue & debounce:delay"
-           
+           style="font-size:20px"
            blur.trigger="blur()">
     <ul class="suggestions" role="listbox"
         if.bind="expanded"

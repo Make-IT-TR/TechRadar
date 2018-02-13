@@ -20,6 +20,13 @@ import 'aurelia-google-analytics';
 Bluebird.config({ warnings: { wForgottenReturn: false } });
 
 export async function configure(aurelia: Aurelia) {
+  (<any>Promise).config({
+    longStackTraces: false,  
+    warnings: {
+      wForgottenReturn: false
+    }
+  });
+
   aurelia.use
     .standardConfiguration()
     .developmentLogging()

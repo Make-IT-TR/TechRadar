@@ -19,13 +19,14 @@ export function updateScreenshots(project: classes.Project, callback: Function) 
   let websites = [];
   var options = {
     userAgent: "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
-    timeout: 2000,
+    // timeout: 10000,
     phantomConfig: { 'ssl-protocol': 'ANY', 'ignore-ssl-errors': true }
   };
   // project.examples.forEach(e => {
   //   websites.push(e.Url);
   // });
   async.eachSeries(project.examples, (e: classes.Example, cb) => {
+
     if (!e.WebshotFailed) {
       let url = e.Url;
       var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
@@ -40,6 +41,7 @@ export function updateScreenshots(project: classes.Project, callback: Function) 
             // screenshot now saved to flickr.jpeg
             if (err) {
               console.log('Error saving ' + url);
+              console.log(err);
               e.WebshotFailed = true;
             };
             // open a file called "lenna.png"

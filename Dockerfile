@@ -23,4 +23,4 @@ RUN yarn
 # Run
 EXPOSE 80
 ENV NODE_ENV=production
-CMD ["supervisor", "-w", "../../tr-host/src","../../tr-host/src/index"]
+CMD ["supervisor", "-w", "../../tr-host/dist","../../tr-host/dist/index"]

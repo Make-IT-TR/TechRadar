@@ -206,6 +206,7 @@ export class Radar {
     svg.attr('preserveAspectRatio', "xMinYMin meet")
       .attr("viewBox", "0 0 1000 600")
       .attr('width', '100%')
+      .attr('height', '600px')
 
     var radar = svg.append("g")
       .attr("class", "wrapper")
@@ -271,7 +272,8 @@ export class Radar {
         .attr("y", 55 + horTitlePos) /*the position of the text (Up and Down)*/
         .attr("class", "horizontalTitle")
         .attr("width", textWidth)
-        .append("xhtml:div")
+        .attr("height", 20)
+        .append("xhtml:span")
         .text(txt);
 
       radar.append("foreignObject")
@@ -279,7 +281,8 @@ export class Radar {
         .attr("y", 55 + horTitlePos) /*the position of the text (Up and Down)*/
         .attr("class", "horizontalTitle")
         .attr("width", textWidth)
-        .append("xhtml:div")
+        .attr("height", 20)
+        .append("xhtml:span")
         .text(txt);
 
       var tip = d3.tip()
@@ -453,6 +456,7 @@ export class Radar {
             .attr("y", py) /*the position of the text (Up and Down)*/
             .attr("class", "techTitle !important")
             .attr("width", 75)
+            .attr("height", 20)
             .append("xhtml:div")
             .text(i._Technology.Technology);
         }
