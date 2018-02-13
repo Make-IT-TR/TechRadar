@@ -142,13 +142,20 @@
                 <option>all</option>
                 <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
               </select>
+              <span style="margin-left:3px;margin-right:3px" >
+                beginning with
+              </span>
+              <select class='platform-select' bootstrap-select value.bind="sorting">
+                <option>featured</option>
+                <option>alphabet</option>                
+              </select>
               <span class="fa fa-search" style="font-size:30px;margin-left:50px;margin-right:10px"></span>
-              <input type="search" blur.trigger="searchBlur()" focus.trigger="searchFocus()" style="font-size:40px; width:300px"
-                id="platformSearch" value.bind="searchText" />
+              <input type="search" blur.trigger="searchBlur()" focus.trigger="searchFocus()" style="font-size:40px; width:300px" id="platformSearch"
+                value.bind="searchText" />
               <!--<select>
                         <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
                       </select>-->
-            </form>
+            </form>            
           </div>
         </div>
       </div>
@@ -170,7 +177,7 @@
                 <div class="platform-url single-line">${platform.Url}</div>
               </span>
               <div style="margin-top:20px;width:100%;height:100%" hide.bind="!showTechnologies">
-                <span  class="card-technology-category" repeat.for="t of platform._Technologies" click.trigger="more(t)">
+                <span class="card-technology-category" repeat.for="t of platform._Technologies" click.trigger="more(t)">
                   ${t.Technology}
                 </span>
               </div>
@@ -180,6 +187,8 @@
                     aria-hidden="true"></span>
                   <span data-toggle="modal" data-target="#confirm-delete" click.trigger="activePlatform=platform" class="fa fa-remove action-button"
                     aria-hidden="true"></span>
+                  <span show.bind="platform.Featured" click.trigger="toggleLike(platform)" class="fa fa-heart action-button" style="background:green" aria-hidden="true"></span>
+                  <span hide.bind="platform.Featured" click.trigger="toggleLike(platform)" class="fa fa-heart action-button"  aria-hidden="true"></span>
                 </div>
               </div>
             </div>

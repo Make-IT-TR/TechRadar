@@ -116,7 +116,7 @@ app.listen(port, () => {
     // updateRadarShots(activeProject, () => {
     //   saveProject(activeProject);
     // });
-  }, 1000 * 60 * 5);
+  }, 1000 * 60);
 });
 
 // process.on('unhandledRejection', (reason, p) =>

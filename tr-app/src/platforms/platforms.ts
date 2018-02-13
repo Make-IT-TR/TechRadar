@@ -1,6 +1,6 @@
 
 import { Trend, Example, ITechnology, WikiResult, Project } from './../classes';
-import { bindable, NewInstance } from 'aurelia-framework';
+import { bindable, NewInstance, Platform } from 'aurelia-framework';
 import { inject } from 'aurelia-framework';
 import { ApplicationState } from '../ApplicationState';
 import * as _ from "lodash";
@@ -24,6 +24,7 @@ export class Platforms {
   selectedTech: string;
   @bindable searchText: string;
   isNew: boolean;
+  @bindable sorting = "featured";
 
   categoryOptions = {
     style: 'btn-info',
@@ -97,6 +98,10 @@ export class Platforms {
     }
   }
 
+  public sortingChanged(n,o) {
+    this.updatePlatforms();
+  }
+
   public more(tech: ITechnology) {
     this.bus.publish('technologysheet', 'show', tech);
   }
@@ -151,6 +156,16 @@ export class Platforms {
     return false;
   }
 
+  public toggleLike(example: Example) {
+    if (example.Featured === 0) {
+      example.Featured = 1;
+    } else {
+      example.Featured = 0;
+    }
+    this.appState.updatePlatform(example);
+    this.updatePlatforms();
+  }
+
   public updatePlatforms() {
     if (!this.selectedCategory) this.selectedCategory = "all";
     if (!this.selectedTechnology) this.selectedTechnology = "all";
@@ -161,7 +176,7 @@ export class Platforms {
     this.appState.project.examples.forEach((p) => {
       var score = 0;
       if (p.Name !== "" && !p.Removed) {
-        if (p._Technologies && p._Technologies.length>0) {
+        if (p._Technologies && p._Technologies.length > 0) {
           p._Technologies.forEach(t => {
             if (this.selectedCategory === "all") {
               score = 1;
@@ -184,7 +199,12 @@ export class Platforms {
       if (this.searchText && this.searchText.length > 0 && this.match(p) === false) score = 0;
       if (score > 0) temp.push(p);
     })
-    this.availablePlatforms = temp; //_.orderBy(temp, 'Featured', 'desc');
+    if (this.sorting === 'featured') {
+      this.availablePlatforms = _.orderBy(temp, 'Featured', 'desc');
+    } else {
+      this.availablePlatforms = _.orderBy(temp, 'Name', 'asc');
+    }
+    
     this.bus.publish('platformselect', null, null);
 
   }

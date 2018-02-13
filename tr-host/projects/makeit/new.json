@@ -950,7 +950,7 @@
       "Name": "Thingiverse",
       "Description": "",
       "Url": "http://thingiverse.com",
-      "Featured": 0,
+      "Featured": 1,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws1112359867.jpg",
       "id": "16"
@@ -1040,7 +1040,7 @@
       "Name": "Onshape",
       "Description": "",
       "Url": "https://www.onshape.com/",
-      "Featured": 0,
+      "Featured": 1,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-9984137056.jpg",
       "id": "26"
@@ -1175,7 +1175,7 @@
       "Name": "Smart Citizen Kit",
       "Description": "",
       "Url": "https://smartcitizen.me/",
-      "Featured": 0,
+      "Featured": 1,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-6797137161.jpg",
       "id": "41"
@@ -1328,7 +1328,7 @@
       "Name": "kickstarter",
       "Description": "",
       "Url": "https://www.kickstarter.com/",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-10618927463.jpg",
       "id": "58"
@@ -1425,7 +1425,7 @@
       "Name": "Slack",
       "Description": "",
       "Url": "http://www.slack.com",
-      "Featured": 0,
+      "Featured": 1,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-13159632198.jpg",
       "id": "68"
@@ -1765,7 +1765,7 @@
       "Name": "youtube",
       "Description": "",
       "Url": "http://youtube.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws2675254596.jpg",
       "id": "110"
@@ -1774,7 +1774,7 @@
       "Name": "vimeo",
       "Description": "",
       "Url": "http://vimeo.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-4279258747.jpg",
       "id": "111"
@@ -1783,7 +1783,7 @@
       "Name": "instagram",
       "Description": "",
       "Url": "http://instagram.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "instagram",
       "Webshot": "projects/makeit/webshots/ws3133020275.jpg",
       "id": "112",
@@ -1795,7 +1795,7 @@
       "Name": "flickr",
       "Description": "",
       "Url": "http://flickr.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws4866304108.jpg",
       "id": "113"
@@ -1804,7 +1804,7 @@
       "Name": "facebook",
       "Description": "",
       "Url": "http://facebook.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws9163614827.jpg",
       "id": "114"
@@ -1813,7 +1813,7 @@
       "Name": "twitter",
       "Description": "",
       "Url": "http://twitter.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-7997139980.jpg",
       "id": "115"
@@ -1847,7 +1847,7 @@
       "Name": "instagram",
       "Description": "",
       "Url": "http://www.instagram.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-905920004.jpg",
       "id": "118"
@@ -1856,7 +1856,7 @@
       "Name": "snapchat",
       "Description": "",
       "Url": "http://www.snapchat.com/l/nl-nl/",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "https://en.wikipedia.org/wiki/Snapchat",
       "Webshot": "projects/makeit/webshots/ws-9062810122.jpg",
       "id": "119",
@@ -1946,15 +1946,6 @@
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-7558546373.jpg",
       "id": "127"
-    },
-    {
-      "Name": "wunderlist",
-      "Description": "",
-      "Url": "http://http://wunderlist.com",
-      "Featured": 0,
-      "Wikipedia": "",
-      "Webshot": "projects/makeit/webshots/ws-16025688270.jpg",
-      "id": "128"
     },
     {
       "Name": "meetup",
@@ -2183,7 +2174,7 @@
       "Name": "Fablabs.io",
       "Description": "",
       "Url": "http://fablabs.io",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-2320591751.jpg",
       "id": "154"
@@ -2192,7 +2183,7 @@
       "Name": "Shapeways",
       "Description": "",
       "Url": "http://www.shapeways.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-2467394353.jpg",
       "id": "155"
@@ -2201,7 +2192,7 @@
       "Name": "Medium",
       "Description": "",
       "Url": "http://www.medium.com",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-660085359.jpg",
       "id": "156"
@@ -2246,7 +2237,7 @@
       "Name": "Matrix",
       "Description": "",
       "Url": "http://www.matrix.org",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws735948000.jpg",
       "id": "161"
@@ -2255,7 +2246,7 @@
       "Name": "Mattermost",
       "Description": "",
       "Url": "https://about.mattermost.com/",
-      "Featured": 1,
+      "Featured": 0,
       "Wikipedia": "",
       "Webshot": "projects/makeit/webshots/ws-11005752984.jpg",
       "id": "162"
