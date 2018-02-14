@@ -116,7 +116,8 @@
           <div class="rounded-separator-h1-top"></div>
           <h1>
             <i class="fa fa-th-large" aria-hidden="true"></i> Platforms</h1>
-          <div style="text-align: center;margin-bottom: 20px;">This section allows you to navigate and search the available
+          <div style="text-align: center;margin-bottom: 20px;">This section allows you to navigate and search the available (
+            <b>${availablePlatforms.length}</b>)
             <em>Platforms</em> within the radar.</div>
           <!-- <div class="rounded-separator-h1-bottom"></div> -->
           <a style="position:absolute;right:20px;top:20px" class="btn btn-default" data-toggle="modal" click.trigger="addPlatform()"
@@ -142,12 +143,13 @@
                 <option>all</option>
                 <option repeat.for="tech of availableTechnologies">${tech.Technology}</option>
               </select>
-              <span style="margin-left:3px;margin-right:3px" >
+              <span style="margin-left:3px;margin-right:3px">
                 beginning with
               </span>
               <select class='platform-select' bootstrap-select value.bind="sorting">
                 <option>featured</option>
-                <option>alphabet</option>                
+                <option>alphabet</option>
+                <option>latest</option>
               </select>
               <span class="fa fa-search" style="font-size:30px;margin-left:50px;margin-right:10px"></span>
               <input type="search" blur.trigger="searchBlur()" focus.trigger="searchFocus()" style="font-size:40px; width:300px" id="platformSearch"
@@ -155,7 +157,7 @@
               <!--<select>
                         <option repeat.for="cat of appState.sheets.sheets.Categories">${cat.Category}</option>
                       </select>-->
-            </form>            
+            </form>
           </div>
         </div>
       </div>
@@ -182,15 +184,19 @@
                 </span>
               </div>
               <div if.bind="showTechnologies" class="edit-platform-card">
-                <div if.bind="appState.adminMode">
-                  <span data-toggle="modal" click.trigger="editPlatform(platform)" data-target="#editplatform" class="glyphicon glyphicon-pencil action-button"
+                <div>
+                  <span if.bind="platform.WikiResult.source" data-toggle="modal" click.trigger="selectWiki(platform)" data-target="#editplatform" class="fa fa-wikipedia-w action-button"
                     aria-hidden="true"></span>
-                  <span data-toggle="modal" data-target="#confirm-delete" click.trigger="activePlatform=platform" class="fa fa-remove action-button"
+                  <span data-toggle="modal" if.bind="appState.adminMode" click.trigger="editPlatform(platform)" data-target="#editplatform"
+                    class="glyphicon glyphicon-pencil action-button" aria-hidden="true"></span>
+                  <span data-toggle="modal" if.bind="appState.adminMode" data-target="#confirm-delete" click.trigger="activePlatform=platform"
+                    class="fa fa-remove action-button" aria-hidden="true"></span>
+                  <span show.bind="platform.Featured" if.bind="appState.adminMode" click.trigger="toggleLike(platform)" class="fa fa-heart action-button"
+                    style="background:green" aria-hidden="true"></span>
+                  <span hide.bind="platform.Featured" if.bind="appState.adminMode" click.trigger="toggleLike(platform)" class="fa fa-heart action-button"
                     aria-hidden="true"></span>
-                  <span show.bind="platform.Featured" click.trigger="toggleLike(platform)" class="fa fa-heart action-button" style="background:green" aria-hidden="true"></span>
-                  <span hide.bind="platform.Featured" click.trigger="toggleLike(platform)" class="fa fa-heart action-button"  aria-hidden="true"></span>
                 </div>
-              </div>
+              </div>  
             </div>
 
             <!--anchor-->

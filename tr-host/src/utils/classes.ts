@@ -276,6 +276,8 @@ export class Example {
     Wikipedia: string;
     WikiLookup: string;
     WikiResult: WikiResult;
+    DateAdded: number;
+    DateUpdated: number;
 
     _Technologies: ITechnology[];
 

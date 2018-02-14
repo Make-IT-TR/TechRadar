@@ -20,19 +20,34 @@ export function updateWikipedia(projects: classes.Project, callback: Function) {
     (callback) => {
       console.log('Updating examples');
       async.eachSeries(projects.examples, (c: Example, cb) => {
-        if (c.Wikipedia) {
-          getWiki(c.Wikipedia, projects.id, (sum) => { c.WikiResult = sum; cb(); });
+        if (c.Name === "bitcoin") {
+          console.log(c);
+        }
+        if (c.Wikipedia && !c.WikiResult) {
+          getWiki(c.Wikipedia, projects.id, (sum) => {
+            console.log('Got ' + c.Name);
+            if (sum) { c.WikiResult = sum; }
+            cb();
+          });
         } else {
           cb();
+          // if (!c.WikiLookup) {
 
-          // lookUp(c.Name, projects.id, (wiki: string) => {
-          //   if (wiki) {
-          //     c.WikiLookup = "https://en.wikipedia.org/wiki/" + wiki;
-          //     getWiki(c.WikiLookup, projects.id, (sum) => { c.WikiResult = sum; cb(); });
-          //   } else {
-          //     cb();
-          //   };
-          // });
+
+          //   lookUp(c.Name, projects.id, (wiki: string) => {
+          //     if (wiki) {
+          //       c.WikiLookup = "https://en.wikipedia.org/wiki/" + wiki;
+          //       cb();
+          //       // getWiki(c.WikiLookup, projects.id, (sum) => { c.WikiResult = sum; cb(); });
+          //     } else {
+          //       cb();
+          //     };
+          //   });
+          // } else {
+          //   cb();
+
+          // }
+
         }
       }, () => callback()
       );
@@ -214,40 +229,47 @@ function summary(url, results) {
 
 
 function getWiki(wikiUrl: string, project: string, callback: Function) {
-  let url = getDBPedia(wikiUrl);
-  var id = screenshots.sdbmCode(url);
-  var file = process.env.FOLDER + '/public/projects/' + project + '/wiki/' + id + ".json";
+  try {
+    wikiUrl = wikiUrl.replace(new RegExp(' ', 'g'), '_');
+    let url = getDBPedia(wikiUrl);
+    var id = screenshots.sdbmCode(url);
+    var file = process.env.FOLDER + '/projects/' + project + '/wiki/' + id + ".json";
 
-  if (!fs.existsSync(file)) {
-    var sparqlQuery = 'DESCRIBE <{{url}}>'.replace('{{url}}', url);
-    console.log('Getting ' + url);
-    var client = new SparqlClient(endpoint);
-    client.query(sparqlQuery)
-      //.bind('city', 'db:Chicago')
-      //.bind('city', 'db:Tokyo')
-      //.bind('city', 'db:Casablanca')
-      // .bind('city', '<http://dbpedia.org/resource/Vienna>')
-      .execute((error, results) => {
-        if (!error) {
-          fs.writeFile(file, JSON.stringify(results), (err) => {
-          });
-          var sum = summary(url, results);
-          console.log("WIKI:" + JSON.stringify(sum.title));
+    if (!fs.existsSync(file)) {
+      var sparqlQuery = 'DESCRIBE <{{url}}>'.replace('{{url}}', url);
+      console.log('Getting ' + url);
+      var client = new SparqlClient(endpoint);
+      client.query(sparqlQuery)
+        //.bind('city', 'db:Chicago')
+        //.bind('city', 'db:Tokyo')
+        //.bind('city', 'db:Casablanca')
+        // .bind('city', '<http://dbpedia.org/resource/Vienna>')
+        .execute((error, results) => {
+          if (!error) {
+            fs.writeFile(file, JSON.stringify(results), (err) => {
+            });
+            var sum = summary(url, results);
+            console.log("WIKI:" + JSON.stringify(sum.title));
+            callback(sum);
+          } else {
+            callback(null);
+          }
+          //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n"); 1
+        });
+    }
+    else {
+      fs.readFile(file, (err, data) => {
+        if (!err) {
+          var sum = summary(url, JSON.parse(data));
+          callback(sum);
+        } else {
           callback(sum);
         }
-        //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n"); 1
-      });
-  }
-  else {
-    fs.readFile(file, (err, data) => {
-      if (!err) {
-        var sum = summary(url, JSON.parse(data));
-        callback(sum);
-      } else {
-        callback(sum);
       }
+      );
     }
-    );
+  } catch (e) {
+    callback(null);
   }
 }
 

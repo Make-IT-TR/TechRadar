@@ -330,6 +330,8 @@ export class Example {
   WikiLookup: string;
   Wikipedia: string;
   WikiResult: WikiResult;
+  DateAdded: number;
+  DateUpdated: number;
   Removed: boolean;
   _isNew: boolean;
   _Technologies: ITechnology[];

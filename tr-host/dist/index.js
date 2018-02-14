@@ -26,6 +26,7 @@ const authentication = require('./authentication');
 const wikiUtils = require('./utils/wikipedia');
 const project_1 = require("./utils/project");
 const screenshots_1 = require("./utils/screenshots");
+const wikipedia_1 = require("./utils/wikipedia");
 const app = feathers();
 var projects = {};
 var activeProject;
@@ -151,6 +152,48 @@ function loadProjects(app) {
     const dirs = p => fs.readdirSync(p).filter(f => fs.statSync(p + "/" + f).isDirectory());
     dirs(process.env.FOLDER + '/projects').forEach(projectFile => {
         project_1.loadProject(projectFile, ((project) => {
+            // const file = process.env.FOLDER + '/projects/' + project.id + '/all.json';
+            // var data = fs.readFileSync(file);
+            // var sheet = CircularJSON.parse(data);
+            // console.log(project.technologies.length);
+            // sheet.sheets.Technologies.forEach(t => {
+            //   if (t.Technology === "3D printing service") {
+            //     console.log(t);
+            //   }
+            //   t.Technology = t.Technology.trim();
+            //   let technology = project.technologies.find(tech => tech.Technology.trim().toLowerCase() === t.Technology.toLowerCase());
+            //   if (!technology) {
+            //     console.log(t.Technology);
+            //     let pr = {
+            //       "Id": project.technologies.length,
+            //       "Technology": t.Technology,
+            //       "Description": t.Description,
+            //       "Category": t.Category,
+            //       "SubCategory": t.SubCategory,
+            //       "Examples": t.Examples,
+            //       "WikiResult": {},
+            //       "Wikipedia": t.Wikipedia,
+            //       "Platforms": [],
+            //       "Tags": [
+            //         {
+            //           "id": t.Category,
+            //           "type": "category"
+            //         },
+            //         {
+            //           "id": t.SubCategory,
+            //           "type": "subcategory"
+            //         }
+            //       ]
+            //     };
+            //     t._Examples.forEach(e => {
+            //       if (e.Name !== "http://www..com") {
+            //         let ex = project.examples.find(ex => ex.Name === e.Name);
+            //         if (ex) pr.Platforms.push(ex.id);
+            //       }
+            //     })
+            //     project.technologies.push(pr as any);
+            //   }
+            // });
             activeProject = project;
             projects[project.config.id] = project;
             project.id = projectFile;
@@ -161,6 +204,8 @@ function loadProjects(app) {
                 app.service('dimensions').create(o);
             }
             project.technologies.forEach(technology => {
+                if (technology.Technology.startsWith('2')) {
+                }
                 app.service('technologies').create(technology);
             });
             project.categories.forEach(category => {
@@ -171,6 +216,12 @@ function loadProjects(app) {
             });
             project.examples.forEach(example => {
                 // example['id'] = example.Name;
+                if (!example.DateAdded) {
+                    example.DateAdded = new Date(2017, 1, 1).getTime();
+                }
+                if (!example.DateUpdated) {
+                    example.DateUpdated = new Date(2017, 1, 1).getTime();
+                }
                 example.Webshot = "projects/" + project.id + "/webshots/ws" + screenshots_1.sdbmCode(example.Url) + ".jpg";
                 app.service('examples').create(example);
             });
@@ -200,9 +251,13 @@ function loadProjects(app) {
                 // trend['id'] = trend.Name;
                 app.service('radarinput').create(ri);
             });
-            screenshots_1.updateScreenshots(project, () => {
+            wikipedia_1.updateWikipedia(project, () => {
                 saveProject(project);
             });
+            screenshots_1.updateScreenshots(project, () => { });
+            //   updateScreenshots(project, () => {
+            //   });
+            // });
             // updateWikipedia(project, () => {
             //   updateScreenshots(project, () => {
             //     saveProject(project);

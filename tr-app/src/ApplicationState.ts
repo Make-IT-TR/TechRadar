@@ -150,7 +150,7 @@ export class ApplicationState {
       s4() + '-' + s4() + s4() + s4();
   }
 
-  public updateTechnology(t: ITechnology) {
+  public updateTechnology(t: ITechnology) {    
     this.services['technologies'].update(t.id, _.omitBy(t, ((value, key) => { return key[0] === '_'; }))).catch(e => {
       console.log(e);
     }).then(() => {
@@ -167,6 +167,7 @@ export class ApplicationState {
   }
 
   public updatePlatform(platform: Example) {
+    platform.DateUpdated = new Date().getTime();
     this.services['examples'].update(platform.id, _.omitBy(platform, ((value, key) => { return key[0] === '_'; }))).catch(e => {
       console.log(e);
     }).then(v => {
@@ -184,6 +185,7 @@ export class ApplicationState {
 
   public addPlatform(p: Example): any {
     p._Technologies.forEach(t => {
+      if (!t.Platforms) { t.Platforms = []; }
       if (!t.Platforms.includes(p.id)) t.Platforms.push(p.id);
     })
     this.services['examples'].create(_.omitBy(p, ((value, key) => { return key[0] === '_'; }))).catch(e => {

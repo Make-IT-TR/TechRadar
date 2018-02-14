@@ -66,7 +66,7 @@
                       <div class="col-sm-8">
                         <label class="control-label" for="pwd">Platform Technology</label>
                         <select class="form-control" value.bind="selectedTech" id="sel1">
-                          <option repeat.for="tech of appState.project.technologies">${tech.Technology}</option>
+                          <option repeat.for="tech of appState.project.technologies | sort:'Technology'">${tech.Technology}</option>
                         </select>
 
                       </div>

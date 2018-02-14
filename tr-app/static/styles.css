@@ -41,6 +41,13 @@ body
   position:absolute;
 }
 
+.platform-wiki {
+  position:absolute;
+  cursor:pointer;
+  bottom: 5px;
+  right:5px;  
+}
+
 .toggleRadar 
 {
     font-size: 28px;

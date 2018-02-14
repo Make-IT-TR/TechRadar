@@ -18,19 +18,33 @@ function updateWikipedia(projects, callback) {
         (callback) => {
             console.log('Updating examples');
             async.eachSeries(projects.examples, (c, cb) => {
-                if (c.Wikipedia) {
-                    getWiki(c.Wikipedia, projects.id, (sum) => { c.WikiResult = sum; cb(); });
+                if (c.Name === "bitcoin") {
+                    console.log(c);
+                }
+                if (c.Wikipedia && !c.WikiResult) {
+                    getWiki(c.Wikipedia, projects.id, (sum) => {
+                        console.log('Got ' + c.Name);
+                        if (sum) {
+                            c.WikiResult = sum;
+                        }
+                        cb();
+                    });
                 }
                 else {
                     cb();
-                    // lookUp(c.Name, projects.id, (wiki: string) => {
-                    //   if (wiki) {
-                    //     c.WikiLookup = "https://en.wikipedia.org/wiki/" + wiki;
-                    //     getWiki(c.WikiLookup, projects.id, (sum) => { c.WikiResult = sum; cb(); });
-                    //   } else {
-                    //     cb();
-                    //   };
-                    // });
+                    // if (!c.WikiLookup) {
+                    //   lookUp(c.Name, projects.id, (wiki: string) => {
+                    //     if (wiki) {
+                    //       c.WikiLookup = "https://en.wikipedia.org/wiki/" + wiki;
+                    //       cb();
+                    //       // getWiki(c.WikiLookup, projects.id, (sum) => { c.WikiResult = sum; cb(); });
+                    //     } else {
+                    //       cb();
+                    //     };
+                    //   });
+                    // } else {
+                    //   cb();
+                    // }
                 }
             }, () => callback());
         }
@@ -185,35 +199,44 @@ function summary(url, results) {
     return res;
 }
 function getWiki(wikiUrl, project, callback) {
-    let url = getDBPedia(wikiUrl);
-    var id = screenshots.sdbmCode(url);
-    var file = process.env.FOLDER + '/public/projects/' + project + '/wiki/' + id + ".json";
-    if (!fs.existsSync(file)) {
-        var sparqlQuery = 'DESCRIBE <{{url}}>'.replace('{{url}}', url);
-        console.log('Getting ' + url);
-        var client = new SparqlClient(endpoint);
-        client.query(sparqlQuery)
-            .execute((error, results) => {
-            if (!error) {
-                fs.writeFile(file, JSON.stringify(results), (err) => {
-                });
-                var sum = summary(url, results);
-                console.log("WIKI:" + JSON.stringify(sum.title));
-                callback(sum);
-            }
-            //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n"); 1
-        });
+    try {
+        wikiUrl = wikiUrl.replace(new RegExp(' ', 'g'), '_');
+        let url = getDBPedia(wikiUrl);
+        var id = screenshots.sdbmCode(url);
+        var file = process.env.FOLDER + '/projects/' + project + '/wiki/' + id + ".json";
+        if (!fs.existsSync(file)) {
+            var sparqlQuery = 'DESCRIBE <{{url}}>'.replace('{{url}}', url);
+            console.log('Getting ' + url);
+            var client = new SparqlClient(endpoint);
+            client.query(sparqlQuery)
+                .execute((error, results) => {
+                if (!error) {
+                    fs.writeFile(file, JSON.stringify(results), (err) => {
+                    });
+                    var sum = summary(url, results);
+                    console.log("WIKI:" + JSON.stringify(sum.title));
+                    callback(sum);
+                }
+                else {
+                    callback(null);
+                }
+                //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n"); 1
+            });
+        }
+        else {
+            fs.readFile(file, (err, data) => {
+                if (!err) {
+                    var sum = summary(url, JSON.parse(data));
+                    callback(sum);
+                }
+                else {
+                    callback(sum);
+                }
+            });
+        }
     }
-    else {
-        fs.readFile(file, (err, data) => {
-            if (!err) {
-                var sum = summary(url, JSON.parse(data));
-                callback(sum);
-            }
-            else {
-                callback(sum);
-            }
-        });
+    catch (e) {
+        callback(null);
     }
 }
 function getWikiText(wiki) {

@@ -24,7 +24,7 @@ export class Platforms {
   selectedTech: string;
   @bindable searchText: string;
   isNew: boolean;
-  @bindable sorting = "featured";
+  @bindable sorting = "latest";
 
   categoryOptions = {
     style: 'btn-info',
@@ -51,6 +51,12 @@ export class Platforms {
     // $('#platformSearch').css('width', n.length>0 ? '300px' : '50px');
   }
 
+  public selectWiki(p: Example){
+    if (p.WikiResult && p.WikiResult.source) {
+      window.open(p.WikiResult.source, 'wiki');
+    }
+  }
+
   public searchFocus() {
     $('#platformSearch').css('width', '300px');
   }
@@ -71,6 +77,8 @@ export class Platforms {
   public savePlatform() {
     if (this.activePlatform._isNew) {
       this.activePlatform._isNew = false;
+      this.activePlatform.DateAdded = new Date().getTime();
+      this.activePlatform.DateUpdated = new Date().getTime();
       this.appState.addPlatform(this.activePlatform);
     } else {
       this.updatePlatform();
@@ -98,7 +106,7 @@ export class Platforms {
     }
   }
 
-  public sortingChanged(n,o) {
+  public sortingChanged(n, o) {
     this.updatePlatforms();
   }
 
@@ -199,14 +207,16 @@ export class Platforms {
       if (this.searchText && this.searchText.length > 0 && this.match(p) === false) score = 0;
       if (score > 0) temp.push(p);
     })
-    if (this.sorting === 'featured') {
-      this.availablePlatforms = _.orderBy(temp, 'Featured', 'desc');
-    } else {
-      this.availablePlatforms = _.orderBy(temp, 'Name', 'asc');
+    switch (this.sorting) {
+      case "featured":
+        this.availablePlatforms = _.orderBy(temp, 'Featured', 'desc');
+        break;
+      case "latest":
+        this.availablePlatforms = _.orderBy(temp, 'DateUpdated', 'desc');
+        break;
+      default:
+        this.availablePlatforms = _.orderBy(temp, 'Name', 'asc');
     }
-    
-    this.bus.publish('platformselect', null, null);
-
   }
 
 
